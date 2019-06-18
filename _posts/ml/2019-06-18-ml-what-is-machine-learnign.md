@@ -15,10 +15,10 @@ permalink: "ml/01"
  
  >
    ![supervised/unsupervised learnign][ml-image]
-  - [Supervised Learning](https://www.coursera.org/learn/machine-learning/lecture/1VkCb/supervised-learning){:target="_black"}
+  - [Supervised Learning](https://www.coursera.org/learn/machine-learning/lecture/1VkCb/supervised-learning){:target="_black"} : [article](https://www.coursera.org/learn/machine-learning/supplement/NKVJ0/supervised-learning){:target="_black"}
     - Regression Problems: Predict continuous valued output
     - Classification Problems: Discrete valued optput
-  - Unsupervised Learning
+  - [Unsupervised Learning](https://www.coursera.org/learn/machine-learning/lecture/olRZo/unsupervised-learning){:target="_black"}
 
 
 
