@@ -1,6 +1,6 @@
 ---
 layout: 'post'
-title: '機器學習'
+title: '機器學習-introduction'
 permalink: "ml/01"
 ---
 
@@ -18,7 +18,16 @@ permalink: "ml/01"
   - [Supervised Learning](https://www.coursera.org/learn/machine-learning/lecture/1VkCb/supervised-learning){:target="_black"} : [article](https://www.coursera.org/learn/machine-learning/supplement/NKVJ0/supervised-learning){:target="_black"}
     - Regression Problems: Predict continuous valued output
     - Classification Problems: Discrete valued optput
-  - [Unsupervised Learning](https://www.coursera.org/learn/machine-learning/lecture/olRZo/unsupervised-learning){:target="_black"}
+  - [Unsupervised Learning](https://www.coursera.org/learn/machine-learning/lecture/olRZo/unsupervised-learning){:target="_black"} : [article](https://www.coursera.org/learn/machine-learning/supplement/1O0Bk/unsupervised-learning){:target="_back"}
+    - Clustering Problems:
+    > EX: Organize computing clusters、Social network analysis、Market segmentation、 Astronomical data analysis
+    - [Cocktail party problem](https://www.youtube.com/watch?time_continue=3407&v=UzxYlbK2c7E){:target="_back"}:
+    > Cocktail party problem algorithm:
+    [`Octave`](https://www.gnu.org/software/octave/){:target="_back"}
+    ```
+    [W,s,v] = svd((repmat(sum(x.*x,1),size(x,1),1).*x)*x')
+    ```
+
 
 
 
