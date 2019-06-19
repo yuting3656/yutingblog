@@ -23,5 +23,5 @@ permalink: /about/
 - ~~發大財~~
 - Fake it until you become it
 - Practice makes perfect
-- 堅持困難，貫徹堅持難能可貴 
+- 堅持困難，貫徹堅持，難能可貴 !
 - 龍五的手上只要有槍，誰都殺不了他 :smile:
