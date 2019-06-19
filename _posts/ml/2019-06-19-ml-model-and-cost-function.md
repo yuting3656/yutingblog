@@ -120,7 +120,7 @@ hθ = 50 + 0.06x
     ~~~
  ![contour2][contour-2]
 >
-   - minimize the cose function 
+   - minimize the cost function 
    ![contour3][contour-3]
 
 
