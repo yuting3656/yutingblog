@@ -22,7 +22,11 @@
             {%- if site.baseurl != "" -%}
           <img src="{{ site.url }}/{{ site.baseurl }}/assets/yuting_.ico" alt="" width="20"> <span> 。{{- site.description | escape -}}</span>
             {%- endif -%}
+
+            {%- if site.baseurl == "" -%}
             <img src="{{ site.url }}/assets/yuting_.ico" alt="" width="20"> <span> 。{{- site.description | escape -}}</span>
+            {%- endif -%}
+
         </div>
   
         <div class="social-links">
