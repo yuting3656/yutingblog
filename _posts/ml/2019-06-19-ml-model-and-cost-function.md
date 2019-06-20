@@ -48,7 +48,9 @@ When the target variable that we’re trying to predict is continuous, such as i
 __Linear Regression :__
 ~~~
 Hypothesis : hθ(x) = θ0 + θ1x
- θi's : Parameters
+θi's : Parameters
+Linear Regression Model:
+J( θ0, θ1 ) =  1/2m * ∑ ( hθ * ( x^(i) ) - y^(i) )^2
 ~~~
 > 
 ![idaeLinearRegression][idea-linear-regression]
