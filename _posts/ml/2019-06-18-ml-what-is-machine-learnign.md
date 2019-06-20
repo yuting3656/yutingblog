@@ -1,7 +1,8 @@
 ---
 layout: 'post'
-title: '機器學習-introduction'
+title: '機器學習 - introduction'
 permalink: "ml/01"
+tags: machine-learning ai
 ---
 
 ### What is Machine Learning?
