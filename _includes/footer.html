@@ -19,7 +19,10 @@
         </div>
   
         <div class="footer-col one-half">
-          <img src="{{ site.url }}/assets/yuting_.ico" alt="" width="20"> <span> 。{{- site.description | escape -}}</span>
+            {%- if site.baseurl != "" -%}
+          <img src="{{ site.url }}/{{ site.baseurl }}/assets/yuting_.ico" alt="" width="20"> <span> 。{{- site.description | escape -}}</span>
+            {%- endif -%}
+            <img src="{{ site.url }}/assets/yuting_.ico" alt="" width="20"> <span> 。{{- site.description | escape -}}</span>
         </div>
   
         <div class="social-links">
