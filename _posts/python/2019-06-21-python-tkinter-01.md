@@ -1,7 +1,7 @@
 ---
 layout: 'post'
 title: 'Tkinter 畫笑臉'
-permalink: 'python/tkinter/01'
+permalink: 'python/tkinter/smile-face'
 tags: python tkinter
 ---
 **廢話不多說  直接上程式!**

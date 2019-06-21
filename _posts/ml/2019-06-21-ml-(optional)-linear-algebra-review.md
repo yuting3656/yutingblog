@@ -55,7 +55,7 @@ y = |y2|  y = |y1|
 1-indexed   0-indexed    
 ~~~
 
-## [Addition adn Scalar Multiplication](https://www.coursera.org/learn/machine-learning/lecture/R4hiJ/addition-and-scalar-multiplication){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/FenyC/addition-and-scalar-multiplication){:target="_back"}
+## [Addition and Scalar Multiplication](https://www.coursera.org/learn/machine-learning/lecture/R4hiJ/addition-and-scalar-multiplication){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/FenyC/addition-and-scalar-multiplication){:target="_back"}
 
 **[Matrix Addition][matrix-addition]{:target="_back"}**
 ~~~
@@ -94,6 +94,47 @@ y = |y2|  y = |y1|
 = | 12 | --> # 3 x 1 matrix / 3-dimensional vector
   |31/3|
 ~~~
+
+## [Matrix Vector Multiplication](https://www.coursera.org/learn/machine-learning/lecture/aQDta/matrix-vector-multiplication){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/cgVgM/matrix-vector-multiplication){:target="_back"}
+
+~~~
+# Example
+
+|1 3|               | 16 |
+|4 0|       |1|  =  |  4 |  
+|2 1|   x   |5|     |  7 | 
+3 x 2     2 x 1    3 x 1  matrix
+
+# Details:
+     A             X         x　          =            y
+| 　      |                |   |   　       　       |   |
+| 　      |        X       |   |   　     =　        |   |
+| 　      |                |   |   　       　       |   |
+m x n matrix              n x 1 matrix 
+(m rows n cloumns)       (n-dimentional vector)    m-dimensional vector
+~~~
+
+**Hypothesis Example:**
+~~~
+House sizes:
+   2104
+   1416               hθ(x) = -40 + 0.25x 
+   1534
+   852
+ 
+(4,2) Matrix      (2,1) vector           (4,1) Matrix
+
+| 1  2104 |                        | -40 x 1 + 2104 x 0.25 |
+| 1  1416 |   x   | -40  |    =    | -40 x 1 + 1416 x 0.25 |
+| 1  1534 |       | 0.25 |         | -40 x 1 + 1534 x 0.25 |
+| 1   852 |                        | -40 x 1 +  852 x 0.25 |
+
+DataMatrix    x    Parameters   =   prediction
+
+~~~
+
+
+## [Matrix Matrix Multiplication](https://www.coursera.org/learn/machine-learning/lecture/dpF1j/matrix-matrix-multiplication){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/l0myT/matrix-matrix-multiplication){:target="_back"}
 
 [ha-url]: https://www.khanacademy.org/
 [matrix-url]: https://www.khanacademy.org/math/precalculus/precalc-matrices
