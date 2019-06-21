@@ -1,7 +1,7 @@
 ---
 layout: 'post'
 title: '機器學習 - model and cost function'
-permalink: "ml/02"
+permalink: "ml-coursera/week1/model-and-cost-function"
 tags: machine-learning
 ---
 

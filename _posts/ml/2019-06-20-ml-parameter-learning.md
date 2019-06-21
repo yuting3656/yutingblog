@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "機器學習 - parameter learning"
-permalink: "ml/03"
+permalink: "ml-coursera/week1/parameter-learning"
 tags: machine-learning
 ---
 
@@ -44,7 +44,7 @@ a = b
 >
 ---
 >
-__Simulaneous update :__
+__Simultaneous update :__
 >
 - Simultaneously update  θ0 and θ1 : `θj := θj − α * ∂/∂θj * J(θ0,θ1)`
 ![simbultaneousImg][simultaneous-img]
