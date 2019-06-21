@@ -2,6 +2,7 @@
 layout: "post"
 title: "機器學習 - parameter learning"
 permalink: "ml/03"
+tags: machine-learning
 ---
 
 ### [Gradient Descent](https://www.coursera.org/learn/machine-learning/lecture/8SpIM/gradient-descent){:target="_bakc"} : [article](https://www.coursera.org/learn/machine-learning/supplement/2GnUg/gradient-descent){:target="_back"}
@@ -99,7 +100,7 @@ repeat until convergence {
 **θj := θj − α * ∂/∂θj * J( θ0, θ1 )**
 <br/>
 (for j=1 and j=0)
-<br/>
+<br/> 
 }
    - Linear Regression Model :
 <br/>
