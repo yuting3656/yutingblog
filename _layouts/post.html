@@ -11,7 +11,7 @@ layout: default
         {{ page.date | date: date_format }}
         |
         {% for tag in page.tags %}
-	      <span ><a style="color: lightseagreen" href="{{ site.baseurl }}/blog/tag#{{ tag | slugify }}"> {{ tag }} </a></span> 
+	      <span ><a style="color: lightseagreen" href="/{{ site.baseurl }}/blog/tag#{{ tag | slugify }}"> {{ tag }} </a></span> 
         {% endfor %}
       </time>
       {%- if page.author -%}
