@@ -32,8 +32,71 @@ A1,3 = -3
 A4,2 = 3
 A5,1 = undefined (error)
 ~~~
+**[Vector][vector]{:target="_back"}:  An n x 1 matrix**
+~~~
+# 4 dimensional vector
 
+    |460|
+y = |232| 
+    |315|
+    |178|
+-------------------------------    
+# yi = ith element
+
+y1 = 460
+y2 = 232
+-------------------------------
+# 1-indexed vs 0-indexed:
+
+    |y1|      |y0|
+y = |y2|  y = |y1|   
+    |y3|      |y2|
+    |y4|      |y3|
+1-indexed   0-indexed    
+~~~
+
+## [Addition adn Scalar Multiplication](https://www.coursera.org/learn/machine-learning/lecture/R4hiJ/addition-and-scalar-multiplication){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/FenyC/addition-and-scalar-multiplication){:target="_back"}
+
+**[Matrix Addition][matrix-addition]{:target="_back"}**
+~~~
+|1 0|   |4 0.5|   |5 0.5|   
+|2 5| + |2   5| = |4  10|  
+|3 1|   |0   1|   |3   2|
+~~~
+**Scalar Multiplication**
+> Scalar = real number
+
+~~~
+    |1 0|   |3  0|   |1 0|
+3 x |2 5| = |6 15| = |2 5| x 3  
+    |3 1|   |9  3|   |3 1|
+
+|4 0|            |4 0|   |  1   0 |
+|6 3| / 4  = 1/4 |6 3| = | 3/2 3/4|   
+~~~
+**Combination of Operands**
+~~~
+# x: Scalar multiplication
+# /: Scalar division
+
+    |1|   |0|   |3|
+3 x |4| + |0| - |0| / 3
+    |2|   |5|   |2|
+
+# +: matrix addition / vector addition
+# -: matrix subtraction / vector subtraction
+
+  | 3|   |0|   | 1 |
+= |12| + |0| - | 0 |
+  | 6|   |5|   |2/3|  
+
+  |  2 |
+= | 12 | --> # 3 x 1 matrix / 3-dimensional vector
+  |31/3|
+~~~
 
 [ha-url]: https://www.khanacademy.org/
 [matrix-url]: https://www.khanacademy.org/math/precalculus/precalc-matrices
 [matrix-elements]: https://www.khanacademy.org/math/precalculus/precalc-matrices/intro-to-matrices/e/understand-matrix-coordinates
+[vector]: https://www.khanacademy.org/math/precalculus/vectors-precalc
+[matrix-addition]: https://www.khanacademy.org/math/precalculus/precalc-matrices/adding-and-subtracting-matrices/e/matrix_addition_and_subtraction
