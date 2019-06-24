@@ -176,10 +176,10 @@ House sizes:         Have 3 competing hypotheses:
 | 1   852 |                                | 173 285 191 |
 
 DataMatrix    x    Parameters   =       prediction
-                         | (prediction of 1:hθ) (prediction of 1:hθ) (prediction of 3:hθ)|
-                         | (prediction of 1:hθ) (prediction of 1:hθ) (prediction of 3:hθ)| 
-                         | (prediction of 1:hθ) (prediction of 1:hθ) (prediction of 3:hθ)| 
-                         | (prediction of 1:hθ) (prediction of 1:hθ) (prediction of 3:hθ)| 
+                         | (prediction of 1:hθ) (prediction of 2:hθ) (prediction of 3:hθ)|
+                         | (prediction of 1:hθ) (prediction of 2:hθ) (prediction of 3:hθ)| 
+                         | (prediction of 1:hθ) (prediction of 2:hθ) (prediction of 3:hθ)| 
+                         | (prediction of 1:hθ) (prediction of 2:hθ) (prediction of 3:hθ)| 
 ~~~
 
 
