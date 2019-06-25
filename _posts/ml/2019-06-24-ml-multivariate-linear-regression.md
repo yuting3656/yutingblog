@@ -45,7 +45,7 @@ Hypothesis :
 ex: 
     hθ(x) = 80 + 0.1x1 + 0.01x2 + 3x3 + -2x4 
                      |        |     |      |  
-                 (feet) (bedrooms) (floor) (age)
+                 (size) (bedrooms) (floor) (age)
 ~~~
 
 __Hypothesis form:__
@@ -84,4 +84,30 @@ Gradient descent:
 
 [gradient-descent]: https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/MYm8uqafEeaZoQ7hPZtKqg_c974c2e2953662e9578b38c7b04591ed_Screenshot-2016-11-09-09.07.04.png?expiry=1561507200000&hmac=kUYZ0TO2dpcwLOMSw_GhuxdjyJYsFYBkm3g662LNydk
 
+> ideal: Make sure features are on a similar scale
 
+__Feature Scaling:__
+> Get every feature into **approximately** a `-1 <= xi <= 1` range
+
+>  Feature scaling involves dividing the input values by the range (i.e. the maximum value minus the minimum value) of the input variable, resulting in a new range of just 1
+
+__Mean normmalization:__
+>
+>Replace xi wiht xi - μi to make features have approximately zero mean (Do not apply to x0=1)
+
+>
+
+
+~~~
+EX: 
+ x1 = size - 1000 / 2000
+ x2 = #bedrooms -2 / 5
+
+
+x1 = x1 - μ1  / s1
+
+μ1 --> avg value of x1, in training set
+
+s1 --> range (max-min) (or standard deviation)
+
+~~~
