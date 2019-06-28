@@ -303,19 +303,6 @@ tags: octave
 
 
 
-## [Control Statements: for, while, if statement](https://www.coursera.org/learn/machine-learning/lecture/LRQnl/control-statements-for-while-if-statement){:target="_back"}
-
-
-
-
-
-
-
-
-
-
-
-
 
  [log-wiki]: https://en.wikipedia.org/wiki/Logarithm
  [log-kh]: https://www.khanacademy.org/math/algebra2/exponential-and-logarithmic-functions
