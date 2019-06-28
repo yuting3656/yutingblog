@@ -130,9 +130,9 @@ hθ = 50 + 0.06x
 
 [housing-prices]: https://2.bp.blogspot.com/-hLzpkK0ki_0/Wnvx-hb-CbI/AAAAAAAAGr8/RUXx7lffmYE5KVobjun1wfiU3Tl5LqOSQCLcBGAs/s640/ml1.png
 
-[hypothesis-function]: https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/H6qTdZmYEeaagxL7xdFKxA_2f0f671110e8f7446bb2b5b2f75a8874_Screenshot-2016-10-23-20.14.58.png?expiry=1561075200000&hmac=rPmq4h26hvSz5mlGIVGUjaT-3hSCR8EchYPXzYUhBho
+[hypothesis-function]: https://raw.githubusercontent.com/ritchieng/machine-learning-stanford/master/w1_linear_regression_one_variable/hypothesis.png
 
-[idea-linear-regression]: https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/R2YF5Lj3EeajLxLfjQiSjg_110c901f58043f995a35b31431935290_Screen-Shot-2016-12-02-at-5.23.31-PM.png?expiry=1561075200000&hmac=N2MOILik4blFUbiBiNchuggHJo5NKHonwtBFsoEjsj0
+[idea-linear-regression]: https://raw.githubusercontent.com/ritchieng/machine-learning-stanford/master/w1_linear_regression_one_variable/minimisation.png
 
 [simplified-cost-function]: https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/_B8TJZtREea33w76dwnDIg_3e3d4433e32478f8df446d0b6da26c27_Screenshot-2016-10-26-00.57.56.png?expiry=1561075200000&hmac=rPoJzPHlAz6xqKjAb4ImFg--WfT7q0YQK7KYnsdoWMI
 

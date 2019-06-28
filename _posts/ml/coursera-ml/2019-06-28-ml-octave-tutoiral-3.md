@@ -316,4 +316,4 @@ tags: octave
    θ2 := θ2 - α * 1/m * ∑ ( hθ * ( x^(i) ) - y^(i) )* x2^(i)   # [∑ i=1, m]    
    ~~~
 
-[review-img]: https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/R2YF5Lj3EeajLxLfjQiSjg_110c901f58043f995a35b31431935290_Screen-Shot-2016-12-02-at-5.23.31-PM.png?expiry=1561075200000&hmac=N2MOILik4blFUbiBiNchuggHJo5NKHonwtBFsoEjsj0
+[review-img]: https://raw.githubusercontent.com/ritchieng/machine-learning-stanford/master/w1_linear_regression_one_variable/minimisation.png
