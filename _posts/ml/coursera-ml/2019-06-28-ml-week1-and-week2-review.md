@@ -13,7 +13,7 @@ tags: machine-learning
 **Derivate :**
 > 第一張在 imgur 的手稿圖XD
 
-有時候，聽老師講都 :)<br/>懂阿自己來練習一次的時候就... 哈哈 魔鬼都在細節~ <br/> 所以先來複習一下久違的 [Derivate](https://www.youtube.com/watch?v=9vKqVkMQHKk&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr){:target="_back"}
+有時候，聽老師講都很懂阿 :)<br/>阿自己來練習一次的時候就... 哈哈 魔鬼都在細節~ <br/> 所以先來複習一下久違的 [Derivate](https://www.youtube.com/watch?v=9vKqVkMQHKk&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr){:target="_back"}
 
 ![derivate][Imgur-derivate]
 
