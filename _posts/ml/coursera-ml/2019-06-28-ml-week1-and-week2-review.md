@@ -18,4 +18,26 @@ tags: machine-learning
 ![derivate][Imgur-derivate]
 
 
+
+
+**為什麼多了 1/2 ?**
+- cost function:
+
+   ![costFunction][Imgur-cost-function]
+
+   - 用谷哥大神查，說服自己理解的方式: 
+      1. [MSE][mse]{:target="_back"} (Mean squared error)
+      2. 當在做 Gradient descent 時候 為了後續計算 [方便][squared-root-function]{:target="_back"} 
+      <br/> ![gradientDescent][gradient-descent]
+      3. 使用了 [One Half Mean Squared Error][one-half-mean-squared-error]{:target="_back"}
+      4. 不會影響到找 θj
+
+
+
+
 [Imgur-derivate]: https://i.imgur.com/yotXm4Pm.jpg?1
+[Imgur-cost-function]: https://i.imgur.com/XsaXu5wm.jpg?1
+[squared-root-function]: https://datascience.stackexchange.com/questions/10188/why-do-cost-functions-use-the-square-error
+[mse]: https://en.wikipedia.org/wiki/Mean_squared_error
+[one-half-mean-squared-error]: https://mccormickml.com/2014/03/04/gradient-descent-derivation/
+[gradient-descent]: https://i.imgur.com/Fsjj4yPm.jpg?1
