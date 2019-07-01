@@ -50,10 +50,43 @@ __Logistic Regression is actually a classification algorithm:__
 
 __Logistic Regression Model:__
 
-   - Want 0 ≤ hθ(x) ≤ 1
+- Want 0 ≤ hθ(x) ≤ 1
+   ~~~
+   hθ(x) = g ( θ^T * x )
+   ~~~
 
+
+- __Sigmoid function (Logistic function):__
    ~~~
-   hθ(x) = θ^T * x
+   g(z) = 1 / 1 + e^-z
    ~~~
+
+*We Got:*
+-  ~~~
+   hθ(x) = 1 / 1 + e^-(θ^T * x)
+   ~~~
+- ![sigmoidFunction][sigmoid-function]
+
+__Interpretation of Hypothesis Output:__
+
+> hθ(x) = estimated probability that y = 1 on input x
+
+- EX:  
+   ~~~
+          | x0 |   |     1     |
+   if x = | x1 | = | tumorSize |
+   hθ(x) = 0.7
+   ~~~
+
+   - Tell patient that 70 % change of tumor being malignant
+   - **hθ(x) = P(y=1|x;θ), y = 0 or 1** "Probability that y = 1, given x, parameterized by θ"
+   ~~~
+   P(y=0|x;θ) + P(y=1|x;θ) = 1
+   P(y=0|x;θ) = 1 - P(y=1|x;θ)
+   ~~~
+
+## [Decision Boundary](https://www.coursera.org/learn/machine-learning/lecture/WuL1H/decision-boundary){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/N8qsm/decision-boundary){:target="_back"}
+
 
 [linear-regression-with-class]: https://i.imgur.com/ES9IacAm.jpg
+[sigmoid-function]: https://i.imgur.com/jha4DSem.jpg
