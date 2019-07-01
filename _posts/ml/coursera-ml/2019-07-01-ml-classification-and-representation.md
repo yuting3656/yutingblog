@@ -105,7 +105,13 @@ __Decision Boundary:__
 
 __Non-linear decision boundaries:__
 
+> 漸漸回到手寫筆記王的港決了!!
+
+![nonLinearDesisionBoundaries][non-linear-decision-boundaries]
+> 圖像表示，代表 **non-linear decision boundaries** 有各式各種可能(形狀)
+
 [linear-regression-with-class]: https://i.imgur.com/ES9IacAm.jpg
 [sigmoid-function]: https://i.imgur.com/jha4DSem.jpg
 [logistic-regression]: https://i.imgur.com/MJUZtFL.jpg
 [decision-boundary]: https://i.imgur.com/NXoLVK8.jpg
+[non-linear-decision-boundaries]: https://i.imgur.com/n7v4UXV.jpg?1
