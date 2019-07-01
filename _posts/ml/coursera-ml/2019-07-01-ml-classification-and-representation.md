@@ -78,7 +78,7 @@ __Interpretation of Hypothesis Output:__
    hθ(x) = 0.7
    ~~~
 
-   - Tell patient that 70 % change of tumor being malignant
+   - Tell patient that 70 % chance of tumor being malignant
    - **hθ(x) = P(y=1|x;θ), y = 0 or 1** "Probability that y = 1, given x, parameterized by θ"
    ~~~
    P(y=0|x;θ) + P(y=1|x;θ) = 1
@@ -87,6 +87,25 @@ __Interpretation of Hypothesis Output:__
 
 ## [Decision Boundary](https://www.coursera.org/learn/machine-learning/lecture/WuL1H/decision-boundary){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/N8qsm/decision-boundary){:target="_back"}
 
+__Logistic regression:__
+
+~~~
+hθ(x) = g ( θ^T * x )
+g(z) = 1 / 1 + e^-z
+~~~
+- y = 1  `(θ^T * x) ≥ 0`
+- y = 0  `(θ^T * x) < 0`
+
+![logisticRegression][logistic-regression]
+
+__Decision Boundary:__
+
+![decisionBoundary][decision-boundary]
+
+
+__Non-linear decision boundaries:__
 
 [linear-regression-with-class]: https://i.imgur.com/ES9IacAm.jpg
 [sigmoid-function]: https://i.imgur.com/jha4DSem.jpg
+[logistic-regression]: https://i.imgur.com/MJUZtFL.jpg
+[decision-boundary]: https://i.imgur.com/NXoLVK8.jpg
