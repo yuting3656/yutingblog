@@ -104,6 +104,79 @@ If y=0: Cost(hθ(x), y) = -log(1-hθ(x)
        * logistic regression: hθ(x) = 1 / 1 + e ^ -(θ^T * x)
 
 
+## [Advanced Optimization](https://www.coursera.org/learn/machine-learning/lecture/licwf/advanced-optimization){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/cmjIc/advanced-optimization){:target="_back"}
+
+> 今日 2019/07/03 當了一日保母舅舅 哈哈哈哈哈 
+
+__OPtimization algorithm:__
+- Given θ, We have code that can compute 
+  * J(θ)
+  * ∂/∂θj J(θ) (for j = 0, 1, ..., n)
+
+- Optimization algorithms:
+  * Gradient descent 
+  * `Conjugate gradient`
+  * `BFGS`
+  * `L-BFGS`
+
+  > `Advantages:` 
+   - No need to manually pick α
+   - Often faster than gradient descent
+
+  > `Disadvantages:`
+   - More complex
+
+Example:
+~~~
+θ = | θ1 |
+    | θ2 |
+J(θ) = ( θ1 - 5 )^2 + ( θ2 - 5 )^2
+
+∂/∂θ1 * J(θ) = 2 * ( θ1 - 5 )
+
+∂/∂θ2 * J(θ) = 2 * ( θ2 - 5 )
+~~~
+- Octave
+
+   ~~~m
+   function [jVal, gradient] = costFunction(theta)
+   
+   jVal = (theta(1)-5)^2 + (theta(2)-5)^2;
+   gradient = zeros(2,1)
+   gradient(1) = 2*(theta(1)-5);
+   gradient(2) = 2*(theta(2)-5);
+   
+   ======================================================
+
+   options = optimset('GradObj', 'on', 'MaxIter', '100');
+   initialTheta = zeros(2,1);
+   [optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, options);
+
+   ~~~
+
+- logistic regression: vector theta
+   ~~~
+   theta = | θ0 |  ----> theta(1)
+           | θ1 |  ----> theta(2)  
+           |  . |
+           |  . |
+           |  . |
+           |  θ | ----> theta(n+1)   {in Octave index starting at one[1] }
+   
+   function [jVal, gradient] = costFunction(theta)
+
+   jVa l= [code to compute J(θ)];
+
+   gradient(1) = [code to compute ∂/∂θ0 * J(θ)];
+   gradient(2) = [code to compute ∂/∂θ1 * J(θ)];
+   gradient(3) = [code to compute ∂/∂θ2 * J(θ)];
+        .
+        .
+        .
+   gradient(n+1) = [code to compute ∂/∂θn * J(θ)];
+   ~~~  
+
+
 [non-convex]: https://i.imgur.com/wAxUdLJ.jpg?1
 [cost-function]: https://i.imgur.com/70XZTK1.jpg
 [summary]: https://i.imgur.com/mpDgpIm.jpg
