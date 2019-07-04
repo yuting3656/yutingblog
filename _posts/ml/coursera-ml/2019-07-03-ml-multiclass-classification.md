@@ -12,3 +12,15 @@ tags: machine-learning
 __Multiclass classification:__
 
 - Email foldering/tagging: Work, Friends, Family, Hobby
+- Medical diagrams: Not ill, Cold, Flu
+- Weather: Sunny, Cloudy, Rain, Snow
+
+__One-vs-all (one-vs-rest) :__
+- Train a logistic regression classifier hθ^(i) * (x) for each class i to predict the probability that y = i 
+- To make a prediction on a new x, pick the class that mazimizes hθ(x)
+
+![OneVsAll][one-vs-all]
+- 
+
+
+[one-vs-all]: https://i.imgur.com/ByVvkKs.jpg
