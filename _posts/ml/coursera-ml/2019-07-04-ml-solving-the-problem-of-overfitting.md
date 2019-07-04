@@ -19,5 +19,14 @@ __Linear Regression/Logistic Regression:__
 
 > *Overfitting:* If we have too many features, the learned hypothesis may fit the training ser very well, but fail to generalize to new examples.
 
+__Addressing overfitting:__
+1. Reduce number of features
+   - Manually select which features to keep.
+   - Model selection algorithm.
+2. Regularization
+   - Keep all the features, but reduce magnitude/ value of parameters θj.
+   - Works well when we have a lot of features, each of which contributes a bit to predicting y.
 
+   
+    
 [overfitting]: https://i.imgur.com/fMTYhcE.jpg
