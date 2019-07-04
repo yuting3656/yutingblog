@@ -94,7 +94,7 @@ If y=0: Cost(hθ(x), y) = -log(1-hθ(x)
    
       Want minθ J(θ):
       Repeat {
-          θj := θj - α * 1/m Σ ( hθ * x^(i) - y^(i) ) * x^(i)
+          θj := θj - α * 1/m Σ ( hθ * x^(i) - y^(i) ) * xj^(i)
       } (simultaneously update all θj)
       ~~~
     
