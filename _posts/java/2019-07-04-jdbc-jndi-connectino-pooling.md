@@ -33,7 +33,7 @@ tags: java connection-pooling jdbc
 ![Imgur](https://i.imgur.com/HNkybR6.jpg)
 
 
-[pon-blog]: https://pengpon.github.io/
+
 
 ## 接下來的範例 code:
 > 就是直接寫一支程式去接 DB，中間沒有經過其他額外的程式邏輯串接！
@@ -158,7 +158,7 @@ conn.close();
 
 ![Imgur](https://i.imgur.com/NfwBLMU.jpg?1)
 
-**有屎就要拉屎<br/>想吃火鍋就要配牛頭牌<br/>想要發大財民調就要唯一指名Korea-Fish<br/>想要解決資料庫生氣氣就要知道Connection-Poling!!!**
+**有屎就要拉屎<br/>想吃火鍋就要配牛頭牌<br/>想要發大財民調就要唯一指名Korea-Fish<br/>想要解決資料庫生氣氣就要知道Connection-Po0ling!!!**
 
 ![Imgur](https://i.imgur.com/BhV6xpB.jpg)
 
@@ -445,3 +445,7 @@ try (
 
 
 > 爽！！！！！！！！　先這樣！！！　哈哈哈哈哈哈哈
+
+
+
+[pon-blog]: https://pengpon.github.io/

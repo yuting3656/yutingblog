@@ -11,7 +11,7 @@ permalink: /about/
    - *Jekyll [YouTube](https://www.youtube.com/watch?v=T1itpPvFWHI&list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB&index=1){:target="_back"} 超級棒棒的教學影片*
    - *可以督促自己打開 [VSC](https://en.wikipedia.org/wiki/Visual_Studio_Code){:target="_black"}* 
    - *可以無痛丟上 github、還保有機會可以打 `git add .` `git commit -m "first commit"` XDD*
-   - *真心感謝 [帆哥](https://josephjsf2.github.io/){:target="_black"}、[一姊](https://pengpon.github.io/yushanblog/){:target="_back"} 如果你們看到的話 __鳩咪~__* :heart:
+   - *真心感謝 [帆哥](https://josephjsf2.github.io/){:target="_black"}、[一姊](https://pengpon.github.io/){:target="_back"} 如果你們看到的話 __鳩咪~__* :heart:
 
 ### 阿 [WordPress](https://yutingboy.home.blog/){:target="_black"} 不用了嗎 ?
 
