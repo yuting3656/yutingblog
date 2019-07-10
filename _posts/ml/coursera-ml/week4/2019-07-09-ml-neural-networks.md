@@ -1,7 +1,7 @@
 ---
 layout: 'post'
 title: 'Neural Networks'
-permalink: 'ml-coursera/week4/Neural Networks'
+permalink: 'ml-coursera/week4/neural-networks'
 tags: machine-learning neural-networks
 ---
 
@@ -56,8 +56,8 @@ __Neuron in the brain__
     where s  = 2  and  
            j
     
-    s  +  1 = 4,  so 
-     j
+    s      = 4,  so 
+     j + 1
     
     s        *  ( s  + 1 ) = 4 * 3
      j + 1         j
