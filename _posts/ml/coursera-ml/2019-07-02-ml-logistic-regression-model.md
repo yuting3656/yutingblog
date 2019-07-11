@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Logistic Regression Model'
 permalink: 'ml-coursera/week3/logistic-regression-model'
-tags: machine-learning
+tags: machine-learning octave
 ---
 
 ## [Cost Function](https://www.coursera.org/learn/machine-learning/lecture/1XG8G/cost-function){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/bgEt4/cost-function){:target="_back"}
