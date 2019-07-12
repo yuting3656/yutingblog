@@ -2,10 +2,13 @@
 layout: "post"
 title: "機器學習 - parameter learning"
 permalink: "ml-coursera/week1/parameter-learning"
-tags: machine-learning
+tags: machine-learning gradient-descent
 ---
 
 ### [Gradient Descent](https://www.coursera.org/learn/machine-learning/lecture/8SpIM/gradient-descent){:target="_bakc"} : [article](https://www.coursera.org/learn/machine-learning/supplement/2GnUg/gradient-descent){:target="_back"}
+
+- Gradient Descent ---> to minimize the J(θ0, θ1)
+
 >
 __Outline :__ <br/>
 start with some (θ0, θ1)<br/>keep changing θ0, θ1 to reduce J(θ0, θ1) until we hopefully end up at a minimum
@@ -107,16 +110,19 @@ repeat until convergence {
 **J( θ0, θ1 ) =  1/2m * ∑ ( hθ * ( x^(i) ) - y^(i) )^2**
 >
    - ![newFormDerivative][new-form-derivative]
-
+>
+   - ![newFormDerivative2][new-form-derivative-2]
 >
 - The point of all this is that if we start with a guess for our hypothesis and then repeatedly apply these gradient descent equations, our hypothesis will become more and more accurate.
 
-[simultaneous-img]: https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/yr-D1aDMEeai9RKvXdDYag_627e5ab52d5ff941c0fcc741c2b162a0_Screenshot-2016-11-02-00.19.56.png?expiry=1561161600000&hmac=n0EtFnyq8dLpYejSNB_E5e_nMCdlMzoG1JfwyD0H6Eo
+[simultaneous-img]: https://i.imgur.com/vmAAoMnh.gif
 
-[simplified-img]: https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/SMSIxKGUEeav5QpTGIv-Pg_ad3404010579ac16068105cfdc8e950a_Screenshot-2016-11-03-00.05.06.png?expiry=1561161600000&hmac=Nex-naOQ0vZWlcGT8dbCWIDwOQ_ZRjVXYcE2ONX-jr4
+[simplified-img]: https://i.imgur.com/sWgZnCOh.gif
 
-[adjusting-params]: https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/UJpiD6GWEeai9RKvXdDYag_3c3ad6625a2a4ec8456f421a2f4daf2e_Screenshot-2016-11-03-00.05.27.png?expiry=1561161600000&hmac=iZDXnWBWd9ACx2j7kHv-bjoNWqPajSmTtHYke-gkU4g
+[adjusting-params]: https://i.imgur.com/DdKw4nmh.gif
 
-[learning-rate-fixed]: https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/RDcJ-KGXEeaVChLw2Vaaug_cb782d34d272321e88f202940c36afe9_Screenshot-2016-11-03-00.06.00.png?expiry=1561161600000&hmac=ZlHwEtOt9w5siAX2j1OtKMhvsOmNJk1SKJBvBpzGC3E
+[learning-rate-fixed]: https://i.imgur.com/PZCa5w4h.gif
 
-[new-form-derivative]: https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/QFpooaaaEea7TQ6MHcgMPA_cc3c276df7991b1072b2afb142a78da1_Screenshot-2016-11-09-08.30.54.png?expiry=1561161600000&hmac=V974QdsDdO5Cjzg-A4OJNekZ3ESotm4OjS7ptP1YXbs
+[new-form-derivative]: https://i.imgur.com/TQah4m9h.gif
+
+[new-form-derivative-2]: https://i.imgur.com/wJrCq3Mh.gif
