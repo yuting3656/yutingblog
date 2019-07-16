@@ -51,3 +51,28 @@ tags: machine-learning neural-networks backpropagation
 ### Backpropagation algorithm
 
 ![Imgur](https://i.imgur.com/dA88o4r.gif)
+
+
+## [Backpropagation Intuition](https://www.coursera.org/learn/machine-learning/lecture/du981/backpropagation-intuition){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/v5Bu8/backpropagation-intuition){:target="_back"}
+
+> 大神教到這邊的時候也說，他自己有時候也沒法度很很有港覺得說出 __backpropagation__ 在銃三學~ 但就是用了粉多年且用的好棒棒!
+
+- 筆記一下當初學 cs231 學的
+<iframe width="560" height="315" src="https://www.youtube.com/embed/d14TUNcbn1k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+- 推導
+   
+   - ~~~
+    (2)     (2)    (3)      (2)    (3)
+   δ     = Θ    * δ      + Θ    * δ   
+    2       12     1        22     2   
+   ~~~
+   
+   - ~~~
+    (3)     (3)    (4)
+   δ     = Θ    * δ   
+    2       12     1  
+   ~~~
+
+
+![Imgur](https://i.imgur.com/1YKRh7W.gif)
