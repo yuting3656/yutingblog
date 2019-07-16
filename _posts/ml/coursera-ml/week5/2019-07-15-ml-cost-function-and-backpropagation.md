@@ -48,6 +48,3 @@ tags: machine-learning neural-networks backpropagation
 
 ![Imgur](https://i.imgur.com/ed9XUlHh.jpg)
 
-## [Backpropagation Algorithm](https://www.coursera.org/learn/machine-learning/lecture/1z9WW/backpropagation-algorithm){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/pjdBA/backpropagation-algorithm){:target="_back"}
-
-> Coursea :heart: 提示這章超級重要~ 偶的學長學姊都這樣說~~ 所以要多看遍 多多熟悉唷~~
