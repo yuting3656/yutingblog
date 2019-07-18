@@ -185,8 +185,8 @@ end;
 > 我發現這幾篇開始，都跟實作有關西! 所以，我決定要用 python 來練習! 
 
 
+- zero initialization ---> GG 不優
 
-
-
+- Random initialization: Symmetry breaking --> Good! 棒棒～
 
 ![Imgur](https://i.imgur.com/usAKzYM.gif)
