@@ -234,7 +234,7 @@ set git remote heroku to https://git.heroku.com/<<<<<你的URL>>>>>>
 
 - 在目錄下新建一Procfile
 ~~~
-web: node serve.js
+web: node server.js
 ~~~
 
 - package.json 加入 "start": "node server.js"
@@ -278,5 +278,9 @@ git push heroku master
 ~~~
 heroku logs
 ~~~
+
+## 架構大概長這樣　XD
+
+![Imgur](https://i.imgur.com/acmGEXO.jpg)
 
 > 靠好像來不及了 哈哈哈 掰
