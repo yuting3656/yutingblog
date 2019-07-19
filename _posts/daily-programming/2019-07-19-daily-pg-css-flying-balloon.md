@@ -1,7 +1,7 @@
 ---
 layout: 'post'
 title: 'daily Programming: css flying balloon'
-permalink: 'daily-programming/css-flying-ballon'
+permalink: 'daily-programming/css-flying-balloon'
 tags: daily-programming css
 ---
 
@@ -139,6 +139,18 @@ tags: daily-programming css
   margin-left: -27px; 
 } 
 
+/* RWD */
+@media (max-width: 768px) {
+    .balloon > div:nth-child(2), 
+    .balloon > div:nth-child(3), 
+    .balloon > div:nth-child(4), 
+    .balloon > div:nth-child(5), 
+    .balloon > div:nth-child(6){
+        display: none;
+    }
+}
+
+
 /*BALLOON 1 4*/
 @-webkit-keyframes balloon1 {
   0%,100%{ -webkit-transform:translateY(0) rotate(-6deg);}
@@ -246,6 +258,7 @@ __參考網站：__
 __code:__
 ~~~html
 <style>
+
 
 .balloon span {
   text-transform: uppercase;  
@@ -369,7 +382,18 @@ __code:__
   top: 30px;
   left: 50%;
   margin-left: -27px; 
-} 
+}
+
+/* RWD */
+@media (max-width: 768px) {
+    .balloon > div:nth-child(2), 
+    .balloon > div:nth-child(3), 
+    .balloon > div:nth-child(4), 
+    .balloon > div:nth-child(5), 
+    .balloon > div:nth-child(6){
+        display: none;
+    }
+}
 
 /*BALLOON 1 4*/
 @-webkit-keyframes balloon1 {

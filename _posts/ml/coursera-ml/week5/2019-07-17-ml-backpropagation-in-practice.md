@@ -166,6 +166,9 @@ __Numerical estimation of gradients__
 __Gradient Checking__
 ![Imgur](https://i.imgur.com/oIyouVD.gif)
 
+**Note:**
+![Imgur](https://i.imgur.com/HTa7Tsa.gif)
+
 ### Octave example
 ~~~
 for i = 1:n,
