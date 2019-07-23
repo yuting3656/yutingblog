@@ -1,7 +1,7 @@
 ---
 layout: 'post'
 title: 'evaluating a learning algrithm'
-permalink: 'ml-coursera/week5/evaluating-a-learning-algrithm'
+permalink: 'ml-coursera/week6/evaluating-a-learning-algrithm'
 tags: machine-learning 
 ---
 > 喔喔喔~~~ 明天第一天上課 好期待 :)
