@@ -61,3 +61,14 @@ tags: machine-learning
 ![Imgur](https://i.imgur.com/tNuGJxn.jpg)
 
 
+## [Model Selection and Train/Validation/Test Sets](https://www.coursera.org/learn/machine-learning/lecture/QGKbr/model-selection-and-train-validation-test-sets){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/XHQqO/model-selection-and-train-validation-test-sets){:target="_back"}
+
+__Model Selection:__
+> 用 test set 來去抓J(θ)，結果會造成
+![Imgur](https://i.imgur.com/EIGyOY9.gif)
+
+__Train / Validation / Test Sets__
+![Imgur](https://i.imgur.com/4oZ4c9g.gif)
+
+__Train / Validation / Test Sets Error__
+![Imgur](https://i.imgur.com/oD5TIA6.gif)

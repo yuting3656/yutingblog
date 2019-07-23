@@ -55,4 +55,5 @@ tags: 今日隨意 aiacademy
      - Engineering: engineer
 
   - 找不到這次的影片，看看第二期孔校長的分享 :) 真的很有智慧唷!
-     <iframe width="560" height="315" src="https://www.youtube.com/embed/RkRRtWlu_8c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+     <iframe  src="https://www.youtube.com/embed/RkRRtWlu_8c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
