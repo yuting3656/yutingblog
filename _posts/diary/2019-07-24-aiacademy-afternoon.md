@@ -392,8 +392,12 @@ input -->    Parameters,       --->  Output
 
 ## New Trends and Others 
 
-AI ===> Comuting ability
+AI ===> Computing ability
 
 ## Which solves faster
 
 a top modern algorithm on a 1980s processor or a 1980s algorithm running on a top modern model.
+
+## Musical AI
+
+- https://composing.ai/dataset
