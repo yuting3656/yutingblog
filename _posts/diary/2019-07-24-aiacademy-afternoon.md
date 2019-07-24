@@ -251,4 +251,149 @@ input -->    Parameters,       --->  Output
    - normalize: feature scaling, standard score
 
 
+## Data Label Problem
+> data, data, data 很重要！
 
+> Enough Data
+
+> Enough Labeled Data
+
+<br/>
+<br/>
+
+> Problem Definition
+
+> Metrics
+
+> Domain Experts
+   - 回去跟　domain 的人多聊聊！
+   - 定義一個有意義的問題
+   
+
+## AIA: Course
+
+- python:
+- 機率與統計
+- 機器學習概論(ML)
+- 深度學習(DL)
+- 卷積神經網路與電腦視覺(CNN/CV)
+- RNN
+- NLP
+- 遷移學習TL(transfeom learning) & 生成對抗網路(GAN)
+
+## AI: Boom
+
+- reasons behind the boom
+   > 計算複雜度下降　+ 計算力的提升　--> 人工智慧的黃金交叉！
+   - Theories Ready: ANN, DNN, CNN, RNN, RL ...
+      - DNN: Gradient Descent and Backpropagation
+      - CNN: Convolution and NN-ized
+   - Hardware Capability: Nvidia GPU + CUDA 
+   - Big Data: ImageNet and ILSVRC
+   - Software Tools / Communities:
+      - Open Source
+
+- Why DL is hotter than ML ?
+![why-dl-is-hotter-than-ml](https://cdn-images-1.medium.com/max/750/0*hY-PMxeQFvBuwbTj)
+
+
+- Software Tools
+
+   - Language: python, c++, java
+   - framework: Tensorflow, keras, pytorch...
+
+- Architecture of Development in DL/ML
+   - Framework/Package: Tendorflow + keras, PyTorch, CNTK ...
+   - Language: Python
+   - Environment(Execution): Jupyter(julia, Python, R ...)
+   - Environment(Package): anaconda
+   - Hardware: local: pc,  Cloud (CPU/GPU): Google, ...
+
+- Software Communities
+
+   - GitHub:
+      - type: service, code version control, SCM
+   - [Kaggle](https://www.kaggle.com/){:target="_back"}:
+      - type: community and platform for data scientists
+
+
+- Type of Applications
+
+1. Problem-driven
+   - EX: AOI (瑕疵檢測)
+2. Off-the-shelf
+   - 有套件在那邊了，EX: yolo
+3. Goal-driven
+4. Data-driven
+   - 要有 data 導向思維
+5. Labor-oriented
+
+## Typical Application: 製造業
+   - 瑕疵檢測
+   - 預測性維護
+   - 自動流程控制
+   - 原料組合最佳化
+
+## Challenge from Data - 1
+- Data, more data, more labeled data! 
+- Training data is not the real world => overfitting
+- Model is sensitive to minor change of data 
+
+## Challenge from Data - 2
+- 有data，沒技術
+- 有技術，沒data
+- 有data，有技術：
+   - 不確定這訓練出來的 model　ok?
+
+
+## "Heruistic" and "Empirical" 
+
+## AI 產業化
+
+![Imgur](https://i.imgur.com/c8jwoUU.jpg)
+
+- AI infrastucture
+- AI Chipset
+- AI Consultant
+- Product with Ai Functionality
+
+## 大神們
+- Geoffrey Hinton
+   - British
+   - Multi-layer neuron network, backpropagation
+   - Univ. of Toronto.
+- Yann LeCun(楊立昆)
+   - CNN. ML, VS, Robotics 
+- Yoshua Bengio
+   - 
+
+## 大神們們
+- 黃仁勳
+- 李飛飛
+- 吳恩達
+
+## AI
+
+- 1980: pc
+
+- 1990: internet
+
+- 2000: Mobile networking
+
+- 2010: AIOT
+
+## Trends 
+
+> Portability
+
+> Computing
+
+> Networking
+
+## New Trends and Others 
+
+AI ===> Comuting ability
+
+## Which solves faster
+
+a top modern algorithm on a 1980s processor or a 1980s algorithm running on a top modern model.
