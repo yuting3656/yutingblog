@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'evaluating a learning algrithm 2'
 permalink: 'ml-coursera/week6/evaluating-a-learning-algrithm2'
-tags: machine-learning 
+tags: machine-learning learning-curves
 ---
 
 ## [Learning Curves](https://www.coursera.org/learn/machine-learning/lecture/Kont7/learning-curves){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/79woL/learning-curves){:target="_back"}
