@@ -7,14 +7,14 @@ tags: 今日隨意 aiacademy
 
 > 靠邀根本在練速打　ＸＤＤＤ
 
-## Alan Turning 
+## Alan Turing 
 - Mathematicain, logician, cryptanalyst, philosopher, theoretical biologist, and computer scientist.
 
-- The father of theoetical computer science and artificail intelegent
+- The father of theoetical computer science and artificial intelligence
 
 ## Turing Test (1950)
 
-- If tester annot distinguish a machine and a man, this machine can be considered to have "intelligence".(First time to use)
+- If tester cannot distinguish a machine and a man, this machine can be considered to have "intelligence".(First time to use)
 
 - "Imitation Game"
 
@@ -148,7 +148,7 @@ input -->    Parameters,       --->  Output
 ## Learn: Minimize
 
 - finding minimum: Gradient Descent (a numerical method)
-- 請看我自己 [愛心的筆記](http://localhost:4000//yutingblog//ml-coursera/week1/parameter-learning){:target="_back"}　：）
+- 請看我自己 [愛心的筆記](https://yuting3656.github.io/yutingblog//ml-coursera/week1/parameter-learning){:target="_back"}　：）
 
 ## Multi-Layer Perceptron (MLP)
 ![mlp-img](https://matthewdixon2015.files.wordpress.com/2016/09/screen-shot-2016-09-17-at-12-23-09-pm.png)
