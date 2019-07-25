@@ -125,4 +125,4 @@ def linearRegCostFunction(X, y, theta, lambda_=0.0):
 ~~~
 
 > YA! 開工~
-
+> 接下來 就從 ex1 一題一題的練起來 :)
