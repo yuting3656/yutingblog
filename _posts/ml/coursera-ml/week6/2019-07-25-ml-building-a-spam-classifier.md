@@ -51,3 +51,19 @@ __Machine learning System Design__
       - Develop algorithms to process your input in different ways (ex: recognizing misspellings in spam)
 
       `it is difficult to tell which of the options will be most helpful` 
+
+
+## [Error Analysis](https://www.coursera.org/learn/machine-learning/lecture/x62iE/error-analysis){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/Z11RP/error-analysis){:target="_back"}
+
+__Recommended approach__
+   - Start with a simple algorithm that you can implement quickly. Implement it and test it on your cross-validation data.
+   - `Plot leraning curves` to decide if more datra, more features, ect. are likely to help
+   - Error analysis: Manually examine the examples (in cross validation set) that your algorithm made errors on. See if you spot any systematic trend in what type of examples it is making errors on. 
+
+
+__Error Analysis__
+![Imgur](https://i.imgur.com/9MFOWwI.gif)
+
+- ![Imgur](https://i.imgur.com/LvvXWpZ.gif)
+
+### VERY IMPORTANT: to get error results as __a single, numerical value.__ Otherwise it is difficult to assess your algorithm's performance.
