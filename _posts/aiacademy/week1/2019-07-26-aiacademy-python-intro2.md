@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'python intro 2'
 permalink: 'aiacademy/week1/python-intro-2'
-tags: aiacademy python
+tags: aiacademy python jupyter-notebook
 ---
 
 ### Python function
