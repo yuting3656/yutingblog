@@ -44,15 +44,21 @@ tags: machine-learning
    <br/>
    <br/>
    __Higher precision, lower recall__
+      - 很確切的知道病患有得癌症的機率才告知，避免病患緊張過度!
    ![Imgur](https://i.imgur.com/pRWBgVI.gif)
    <br/>
    <br/>
    __Higher recall, lower precision__
+      - 有可能罹患癌症的時候就告知，怕錯過深度觀察或著治療等
    ![Imgur](https://i.imgur.com/CDFb2ha.gif)
+
+___以上兩種都可以用各自的觀點解讀唷!__
+
+---
 
    __Precision / Recall curve__
 
-    - More generally: Predict 1 if hθ(x) ≥ threshold
+   - More generally: Predict 1 if hθ(x) ≥ threshold
 
        ![Imgur](https://i.imgur.com/oBYZ0ttm.gif)
 

@@ -129,3 +129,72 @@ tags: aiacademy python pandas
    #2011-01-04  13904           12       53.367347        50.408163    2.510204
    #2011-01-05  13904           12       57.965517        40.068966    4.689655   
    ~~~
+
+### 5. 吃新的 csv、轉 index 成datetime、resample、比較
+
+   ~~~python
+   # Downsample df_climate by day and aggregate by mean: daily_cilmate
+   df_climate = pd.read_csv("weather_data_austin_2010.csv")
+   
+   date = pd.to_datetime(df_climate["Date"], format="%Y%m%d ")
+   df_climate = df_climate.set_index(date)
+   daily_climate = df_climate.resample("D").mean()
+   
+   daily_temp_climate = daily_climate["Temperature"].values
+   
+   difference = daily_temp_2011 - daily_temp_climate
+   print(difference.mean())
+   ~~~
+
+
+### 6. 再看其他資料
+
+  - DataFrame.column.str.contains("你要找的字")
+
+  > 沒什麼特別的
+
+### 7. 畫圖~
+   ~~~python
+   import matplotlib.pyplot as plt
+
+   weekly_mean = df_clean.loc[:, ['wind_speed', 'dry_bulb_faren']].resample("W").mean()
+   print(weekly_mean.corr())
+   #                 wind_speed  dry_bulb_faren
+   # wind_speed        1.000000        0.197826
+   # dry_bulb_faren    0.197826        1.000000
+   
+   ~~~
+
+   ![Imgur](https://i.imgur.com/YTgfBEJ.gif)
+
+   ~~~python
+   sunny = df_clean.sky_condition == "CLR"
+   sunny_hours = sunny.resample("D").sum() # sum by day
+   
+   total_hours = sunny.resample("D").count()
+   
+   sunny_fraction = sunny_hours / total_hours
+   
+   sunny_fraction.plot(kind="box")
+   plt.show()
+   ~~~
+
+   ![Imgur](https://i.imgur.com/thWDjxG.gif)
+
+### 8. 看熱和濕度
+
+
+   ~~~python
+   monthly_max = df_clean.loc[:, ["dew_point_faren", "dry_bulb_faren"]].resample("M").max()
+   
+   monthly_max
+   ~~~
+
+ ![Imgur](https://i.imgur.com/KbGBjEr.gif)
+   
+   ~~~python
+   monthly_max.plot(kind="hist", bins=8, alpha=0.5, subplots=True)
+   plt.show()
+   ~~~
+
+   ![Imgur](https://i.imgur.com/AoM6NZA.gif)
