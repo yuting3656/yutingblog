@@ -198,3 +198,22 @@ tags: aiacademy python pandas
    ~~~
 
    ![Imgur](https://i.imgur.com/AoM6NZA.gif)
+
+
+### 9. 看高溫比較
+   
+   ~~~python
+   august_max = df_climate.loc["2010-08", "Temperature"].max()
+   
+   august_2011 = df_clean.loc["2011-08", "dry_bulb_faren"].resample("D").max()
+   
+   augest_2011_high = augest_2011[august_2011 > august_max]
+   
+   augest_2011_high.plot(kind="hist", bins = 25, cumulative = True, density = True)
+   augest_2011_high.plot(kind="hist", bins = 25, density = True )
+   
+   plt.show()
+   print(augest_2011_high.count())
+   ~~~
+
+   ![Imgur](https://i.imgur.com/Lc35vLZ.gif)
