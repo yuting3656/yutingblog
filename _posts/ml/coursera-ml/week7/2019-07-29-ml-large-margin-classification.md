@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Large Margin Classification'
 permalink: 'ml-coursera/week7/large-margin-classification'
-tags: machine-learning 
+tags: machine-learning SVM
 ---
 
 
@@ -28,3 +28,27 @@ tags: machine-learning
 
 
 ## [Support Vector Machines: large Margin Intuition](https://www.coursera.org/learn/machine-learning/lecture/wrjaS/large-margin-intuition){:target="_back"}
+
+- SVM
+
+   ![Imgur](https://i.imgur.com/WbsV0l4.gif)
+
+
+- SVM: Decision Boundary
+   
+   ![Imgur](https://i.imgur.com/f4LKGK5.gif)
+
+   ![Imgur](https://i.imgur.com/no1zbRq.gif)
+
+- SVM EX:
+   - question:
+
+   ![Imgur](https://i.imgur.com/zlTmeRZh.gif)
+
+   ![Imgur](https://i.imgur.com/SXD7RSdh.gif)
+
+   ![Imgur](https://i.imgur.com/cxnuNYQh.gif)
+
+- SVM: in presence of outliners
+
+   ![Imgur](https://i.imgur.com/795V9Bhh.gif)
