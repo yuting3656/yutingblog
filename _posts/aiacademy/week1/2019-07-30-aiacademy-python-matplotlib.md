@@ -112,3 +112,181 @@ __[Matplotlib](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.html#module-
 
    ![Imgur](https://i.imgur.com/Zua1HzKl.gif)
 
+### Subplots Vs. Axes
+
+- axes: 自由擺放的圖標，甚至可以相互重疊 
+- subplots: 是“自動對齊到網格”
+
+> 這篇 [Stackoverflow](https://stackoverflow.com/questions/45048255/matplotlib-subplots-vs-axes-vs-axis-singular-plural){:target="_back"} 寫得很棒
+
+![Imgur](https://i.imgur.com/JyD1zCu.gif)
+
+
+- Subplots
+
+   - ex1
+      
+      ~~~
+       ________________
+      |                |
+      | subplot(2,1,1) |
+      |________________|
+       ________________
+      |                |
+      | subplot(2,1,2) |
+      |________________|
+      ~~~
+
+   - ex2
+
+      ~~~
+       ________________   ________________ 
+      |                | |                |   
+      | subplot(1,2,1) | | subplot(1,2,2) |   
+      |________________| |________________|   
+      ~~~
+
+   - ex3
+
+      ~~~
+       ________________   ________________ 
+      |                | |                |
+      | subplot(2,2,1) | | subplot(2,2,2) |
+      |________________| |________________|
+      
+       ________________   ________________       
+      |                | |                |      
+      | subplot(2,2,3) | | subplot(2,2,4) |      
+      |________________| |________________|      
+      ~~~
+
+### Sbplots
+
+   ~~~python
+   plt.subplot(2, 1, 1)
+   plt.plot(x, y_sin)
+   plt.title("Sine")
+   
+   plt.subplot(2, 1, 2)
+   plt.plot(x, y_cos)
+   plt.title("Cosine")
+   
+   plt.show()
+   ~~~
+
+   > 幹！　不截圖了XDD 超級花時間！！自己去[github](https://github.com/yuting3656/aiacademy){:target="_back"} 看XDD :smile::smile::smile:
+
+### fig, ax in matplotlib
+- [資料相關連結](https://pbpython.com/effective-matplotlib.html){:target="_back"}
+
+> 教學影片有點歪歪的兒KKK
+
+> 直接看 code & [github](https://github.com/yuting3656/aiacademy){:target="_back"} 
+
+   ~~~python
+   import pandas as pd
+   from matplotlib.ticker import FuncFormatter
+   
+   # 處理資料
+   df = pd.read_excel("https://github.com/chris1610/pbpython/blob/master/data/sample-salesv3.xlsx?raw=true")
+   top_10 = (df.groupby('name')['ext price', 'quantity'].agg({'ext price': 'sum', 'quantity':'count'}).sort_values(by='ext price', ascending=False))[:10].reset_index()
+   top_10.rename(columns={'name': 'Name', 'ext price': 'Sales', 'quantity': 'Purchases'}, inplace=True)
+
+   # 開始畫圖
+   fig, (ax0, ax1) = plt.subplots(nrows=1, ncols=2, sharey=True, figsize=(7, 4))
+   top_10.plot(kind='barh', y="Sales", x='Name', ax=ax0, color='r')
+   ax0.set(title="Revenue", xlabel="Total Revenue", ylabel="Customers")
+   
+   # 在 ax0 加入垂直的平均 line
+   avg=top_10['Sales'].mean()
+   ax0.axvline(x=avg, color='b', linestyle='--', linewidth=1)
+   
+   top_10.plot(kind="barh", y="Purchases", x="Name", ax=ax1, color='r')
+   avg_purchases = top_10['Purchases'].mean()
+   ax1.set(title="Units", xlabel="Total Units",)
+   ax1.axvline(x=avg_purchases, color="b", label="Average", linestyle="--",    linewidth=1)
+   
+   # title of the figure
+   fig.suptitle('2014 Sales Analysis', fontsize=14, fontweight='bold');
+   
+   # Hide the Legends
+   ax0.legend().set_visible(False)
+   ax1.legend().set_visible(False)
+   ~~~
+
+- 看圖畫紙 支援哪那些格式
+   - fig.canvas.get_supported_filetypes()
+   ~~~python
+   fig.canvas.get_supported_filetypes()
+   
+   """
+   {'ps': 'Postscript',
+   'eps': 'Encapsulated Postscript',
+   'pdf': 'Portable Document Format',
+   'pgf': 'PGF code for LaTeX',
+   'png': 'Portable Network Graphics',
+   'raw': 'Raw RGBA bitmap',
+   'rgba': 'Raw RGBA bitmap',
+   'svg': 'Scalable Vector Graphics',
+   'svgz': 'Scalable Vector Graphics',
+   'jpg': 'Joint Photographic Experts Group',
+   'jpeg': 'Joint Photographic Experts Group',
+   'tif': 'Tagged Image File Format',
+   'tiff': 'Tagged Image File Format'}
+   """
+   ~~~
+
+- 把圖畫紙存起來 
+   - `fig.savefig('name-of-pics.ext', transparent=False, dpi=80, bbox_inches="tight")`
+   - dpi: 每平方英寸 多少 *   多少的 pixel
+   <br/>
+   <br/>
+   ~~~python
+   fig.savefig('sales-practice-20190739.png', transparent=False, dpi=80, bbox_inches="tight")
+   ~~~
+
+### Scatter plot
+   
+   - [np.random.normal](https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.random.normal.html){:target="_back"}
+      - numpy.random.normal(loc=0.0, scale=1.0, size=None)
+         - loc : float or array_like of floats
+                 <br/>Mean (“centre”) of the distribution.
+
+         - scale : float or array_like of floats
+                   <br/>Standard deviation (spread or “width”) of the distribution.
+
+         - size : int or tuple of ints, optional
+                  <br/>Output shape. If the given shape is, e.g., (m, n, k), then m * n * k samples are drawn. If size is None (default), a single value is returned if loc and scale are both scalars. Otherwise, np.broadcast(loc, scale).size samples are drawn.
+
+      ~~~python
+      X = np.random.normal(0, 1, 100)
+      Y = np.random.normal(0, 1, 100)
+      plt.scatter(X, Y)
+      plt.title("Scatter plot")
+      ~~~
+
+      ![Imgur](https://i.imgur.com/MWQAYha.gif)
+
+
+### 畫中畫
+
+   ~~~python
+   fig_ya = plt.figure()
+   
+   axes1_ya = fig_ya.add_axes([0.1, 0.1, 0.8, 0.8])
+   axes2_ya = fig_ya.add_axes([0.2, 0.5, 0.4, 0.3])
+   
+   # 大圖一
+   axes1_ya.plot(x, y_sin , 'r')
+   axes1_ya.set_xlabel('x axis label')
+   axes1_ya.set_ylabel('y axis label')
+   axes1_ya.set_title('sine')
+   
+   # 大圖二
+   axes2_ya.plot(x, y_cos, 'g')
+   axes2_ya.set_xlabel('x axis label')
+   axes2_ya.set_ylabel('y axis label')
+   axes2_ya.set_title('cosine')
+   ~~~
+
+   ![Imgur](https://i.imgur.com/JnEi3On.gif)
