@@ -11,7 +11,7 @@ tags: daily-programming python octave
 > <br/>coursera 課的程式實作是 octave，接下來 aiacademy 用的都是 python
 > <br/>為了讓讀書更有效率且可以兼顧 coursera & aiacademy 的課 那就把 octave 轉成 python 吧~~
 
-- 好:heart:的大神們整理的: [ml-coursera-python-assignments](https://github.com/dibgerge/ml-coursera-python-assignments)
+- 好:heart:的大神們整理的: [ml-coursera-python-assignments](https://github.com/dibgerge/ml-coursera-python-assignments){:target="_back"}
 
 - 那今天的小練習，就練習 week6 的 ex5 裡面的: __Regularized linear regression cost function__ 
    ![Imgur](https://i.imgur.com/6houez3.gif)
