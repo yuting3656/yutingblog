@@ -20,3 +20,5 @@ x = np.linspace( mu - 3 *sigma, mu + 3*sigma, 100 )
 plt.plot(x, stats.nprm.pdf(x, mu, sigma))
 plt.show()
 ~~~
+
+![Imgur](https://i.imgur.com/tNTxAH0.gif)
