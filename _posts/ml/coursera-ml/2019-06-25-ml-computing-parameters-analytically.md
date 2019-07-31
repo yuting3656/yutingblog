@@ -2,7 +2,7 @@
 layout: 'post'
 title: '機器學習 - computing parameters analytically'
 permalink: 'ml-coursera/week2/computing-parameters-analytically'
-tags: machine-learning
+tags: coursera-machine-learning
 ---
 
 ## [Normal Equation](https://www.coursera.org/learn/machine-learning/lecture/2DKxQ/normal-equation){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/bjjZW/normal-equation){:target="_back"}

@@ -2,7 +2,7 @@
 layout: 'post'
 title: '機器學習 - multivariate linear regression 2'
 permalink: 'ml-coursera/week2/multivariate-linear-regression-2'
-tags: machine-learning
+tags: coursera-machine-learning
 ---
 
 > 昨日　2019/06/24 因為　2019/06/23 的 [**遊行**][623-taiwan-go]{:target="_back"}，在現場淋雨 5小!!! 進度有點順延～　哈哈　今日努力補回兒：）

@@ -2,7 +2,7 @@
 layout: 'post'
 title: '機器學習 - model and cost function'
 permalink: "ml-coursera/week1/model-and-cost-function"
-tags: machine-learning
+tags: coursera-machine-learning
 ---
 
 ### [Model Representation](https://www.coursera.org/learn/machine-learning/lecture/db3jS/model-representation){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/cRa2m/model-representation){:target="_back"}

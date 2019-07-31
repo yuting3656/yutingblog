@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Handling Skewed Data'
 permalink: 'ml-coursera/week6/handling-skewed-data'
-tags: machine-learning 
+tags: coursera-machine-learning 
 ---
 
 ## [Error Metrics for Skewed Classes](https://www.coursera.org/learn/machine-learning/lecture/tKMWX/error-metrics-for-skewed-classes){:target="_back"}

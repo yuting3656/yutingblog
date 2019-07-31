@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Solving the Problem of Overfitting 2'
 permalink: 'ml-coursera/week3/solving-the-problem-of-overfitting2'
-tags: machine-learning
+tags: coursera-machine-learning
 ---
 
 ## [Cost Function](https://www.coursera.org/learn/machine-learning/lecture/B1MnL/cost-function){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/1tJlY/cost-function){:target="_back"}

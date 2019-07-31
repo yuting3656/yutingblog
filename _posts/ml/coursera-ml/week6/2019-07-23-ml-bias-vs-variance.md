@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Bias VS. Variance'
 permalink: 'ml-coursera/week6/bias-vs-variance'
-tags: machine-learning 
+tags: coursera-machine-learning
 ---
 
 ## [Diagnosing Bias vs. Variance](https://www.coursera.org/learn/machine-learning/lecture/yCAup/diagnosing-bias-vs-variance){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/81vp0/diagnosing-bias-vs-variance){:target="_back"}

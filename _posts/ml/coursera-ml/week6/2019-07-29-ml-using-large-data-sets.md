@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Using Large Data Sets'
 permalink: 'ml-coursera/week6/using-large-data-sets'
-tags: machine-learning  
+tags: coursera-machine-learning  
 ---
 
 > 瘋狂的一週開始! 很多要補完! 速度上工拉~!

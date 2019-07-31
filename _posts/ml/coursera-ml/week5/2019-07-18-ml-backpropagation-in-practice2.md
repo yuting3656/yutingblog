@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Backpropagation in Practice 2'
 permalink: 'ml-coursera/week5/backpropagation-in-practice2'
-tags: machine-learning neural-networks
+tags: coursera-machine-learning neural-networks
 ---
 
 > Blog 滿月~　滿月~ 滿月~

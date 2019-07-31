@@ -2,7 +2,7 @@
 layout: 'post'
 title: '數學 - linear algebra review'
 permalink: "ml-coursera/week1/linear-algebra-review"
-tags: linear-algebra machine-learning
+tags: linear-algebra coursera-machine-learning
 ---
 
 > 說到數學補腦好幫手，一定要推薦     [__Khan Academy__][ha-url]{:target="_back"}  ! 生活良伴，時不時看一看，身心清爽，

@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Motivations: Neural Networkd [Non-linear hypotheses]'
 permalink: 'ml-coursera/week4/motivation-neural-networks-non-linear-hypotheses'
-tags: machine-learning neural-networks
+tags: coursera-machine-learning neural-networks
 ---
 
 ## [Non-linear Hypotheses](https://www.coursera.org/learn/machine-learning/lecture/OAOhO/non-linear-hypotheses){:target="_back"}

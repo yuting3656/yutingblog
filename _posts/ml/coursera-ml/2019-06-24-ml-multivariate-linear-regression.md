@@ -2,7 +2,7 @@
 layout: post
 title: '機器學習 - multivariate linear regression'
 permalink: 'ml-coursera/week2/multivariate-linear-regression'
-tags: machine-learning
+tags: coursera-machine-learning
 ---
 
 ## [Multiple features](https://www.coursera.org/learn/machine-learning/lecture/6Nj1q/multiple-features){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/WKgbA/multiple-features){:target="_back"}

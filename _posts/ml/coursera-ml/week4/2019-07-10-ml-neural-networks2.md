@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Neural Networks 2'
 permalink: 'ml-coursera/week4/neural-networks2'
-tags: machine-learning neural-networks
+tags: coursera-machine-learning neural-networks
 ---
 
 > 認真的過每一天

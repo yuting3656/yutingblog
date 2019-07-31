@@ -2,7 +2,7 @@
 layout: "post"
 title: "機器學習 - parameter learning"
 permalink: "ml-coursera/week1/parameter-learning"
-tags: machine-learning gradient-descent
+tags: coursera-machine-learning gradient-descent
 ---
 
 ### [Gradient Descent](https://www.coursera.org/learn/machine-learning/lecture/8SpIM/gradient-descent){:target="_bakc"} : [article](https://www.coursera.org/learn/machine-learning/supplement/2GnUg/gradient-descent){:target="_back"}

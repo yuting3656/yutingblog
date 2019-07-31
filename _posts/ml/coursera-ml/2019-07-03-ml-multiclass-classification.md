@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Multiclass Classification'
 permalink: 'ml-coursera/week3/multiclass-classification'
-tags: machine-learning
+tags: coursera-machine-learning
 ---
 
 > 這兩天都當優質保母九九~~ 哈哈哈

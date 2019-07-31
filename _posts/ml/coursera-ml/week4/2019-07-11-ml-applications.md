@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Neural Networks: Applications'
 permalink: 'ml-coursera/week4/neural-networks-applications'
-tags: machine-learning neural-networks
+tags: coursera-machine-learning neural-networks
 ---
 
 ## [Examples and Intuitions I](https://www.coursera.org/learn/machine-learning/lecture/rBZmG/examples-and-intuitions-i){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/kivO9/examples-and-intuitions-i){:target="_back"}

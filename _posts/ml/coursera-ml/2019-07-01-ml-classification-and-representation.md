@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Classification and Representation'
 permalink: 'ml-coursera/week3/classification-and-representation'
-tags: machine-learning logistic-regression
+tags: coursera-machine-learning logistic-regression
 ---
 > 7 月第一天!!! oh~~ Summer~~ :sunny: GOGO!
 <br/>

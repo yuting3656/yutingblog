@@ -2,7 +2,7 @@
 layout: 'post'
 title: '機器學習 - introduction'
 permalink: "ml-coursera/week1/introduction"
-tags: machine-learning
+tags: coursera-machine-learning
 ---
 
 ### What is Machine Learning?

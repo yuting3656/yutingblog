@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'building a spam classifier'
 permalink: 'ml-coursera/week6/building-a-spam-classifier'
-tags: machine-learning 
+tags: coursera-machine-learning
 ---
 
 > 對的事情做，不對的事情不要做，認真做。

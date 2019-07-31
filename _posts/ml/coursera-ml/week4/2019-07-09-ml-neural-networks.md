@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Neural Networks'
 permalink: 'ml-coursera/week4/neural-networks'
-tags: machine-learning neural-networks
+tags: coursera-machine-learning neural-networks
 ---
 
 ## [Model Representation I](https://www.coursera.org/learn/machine-learning/lecture/ka3jK/model-representation-i){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/Bln5m/model-representation-i){:target="_back"}

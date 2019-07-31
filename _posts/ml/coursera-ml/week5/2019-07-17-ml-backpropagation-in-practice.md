@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Backpropagation in Practice'
 permalink: 'ml-coursera/week5/backpropagation-in-practice'
-tags: machine-learning neural-networks
+tags: coursera-machine-learning neural-networks
 ---
 
 > You ARE What You DO!
