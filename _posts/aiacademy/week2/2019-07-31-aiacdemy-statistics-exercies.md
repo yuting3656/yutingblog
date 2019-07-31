@@ -40,3 +40,21 @@ plt.show()
 > 量好多　ＸＤＤ
 
 
+### Exercise 4-2
+  
+  __小圓籃球細胞！！！__　
+
+- [github](https://github.com/yuting3656/aiacademy/blob/master/week2/StatPython_part2/AI_hmw_StatPython_4-2.ipynb){:target="_back"}
+
+
+### Exercise 5-2
+
+- [github](https://github.com/yuting3656/aiacademy/blob/master/week2/StatPython_part2/AI_hmw_StatPython_5-2%20.ipynb){:target="_back"}
+
+
+### Exercise 7-1
+
+- [github](https://github.com/yuting3656/aiacademy/blob/master/week2/StatPython_part2/AI_hmw_StatPython_7-1.ipynb){:target="_back"}
+
+
+> 不管了，反正我都有練到沒丟上　blog 的就自己去看　github XDD

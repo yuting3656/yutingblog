@@ -485,7 +485,7 @@ code: [Github](https://github.com/yuting3656/aiacademy/blob/master/week2/StatPyt
 - Which Imputation Method?
 
 
-### Example 7-1
+### Exercise 7-1
 
 - [github](https://github.com/yuting3656/aiacademy/blob/master/week2/StatPython_part2/AI_hmw_StatPython_7-1.ipynb){:target="_back"}
 
