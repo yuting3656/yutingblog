@@ -58,3 +58,8 @@ plt.show()
 
 
 > 不管了，反正我都有練到沒丟上　blog 的就自己去看　github XDD
+
+
+### Exercise 8-1: 資料轉換
+
+- [github](https://github.com/yuting3656/aiacademy/blob/master/week2/StatPython_part3/AI_hmw_StatPython_8-1.ipynb){:target="_back"}

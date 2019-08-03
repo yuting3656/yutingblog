@@ -73,7 +73,7 @@ Gradient descent:
 
 ~~~
 
-![gradienDescent][gradient-descent]
+![Imgur](https://i.imgur.com/GaYOebi.gif)
 
 
 

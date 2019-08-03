@@ -13,12 +13,12 @@ tags: coursera-machine-learning
 
 __確保 gradient descent 正常兒運作 :__
 >
-![gradientDescentWorkOk][gradient-descent-work-ok]{:target="_back"}
+![Imgur](https://i.imgur.com/azgD5pGl.gif)
 
 - For sufficiently small α, J(θ) should decrease on every iteration.
 - But if α is too small, gradient descent can be slow to converge.
 
-![gradientDescentWorkOk2][gradient-descent-work-ok-2]{:target="_back"}
+![Imgur](https://i.imgur.com/5vFVf4fl.gif)
 
 **Summary:**
 - If α is too small: slow convergence.
