@@ -110,7 +110,7 @@ df['prediction'] = ency.inverse_transform(prediction) #將預測完的結果做�
    ![Imgur](https://i.imgur.com/QJJPMhyl.gif)
 
 
-### Model Evaluation
+### Model Evaluation: 
 
 ![Imgur](https://i.imgur.com/i7H9FnJl.gif)
 
