@@ -112,6 +112,8 @@ df['prediction'] = ency.inverse_transform(prediction) #將預測完的結果做�
 
 ### Model Evaluation: 
 
+<iframe src="https://www.youtube.com/embed/op0tBlxfhTk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ![Imgur](https://i.imgur.com/i7H9FnJl.gif)
 
 ~~~python
