@@ -152,8 +152,16 @@ def linear_prediction(plot_dict):
 if __name__ == "__main__":
     x = {1:141, 9:142, 18:143, 1000:144}
     linear_prediction(x)
-
 ~~~
+
+### Weight Regularization
+
+<iframe src="https://www.youtube.com/embed/3j0pZLg2UWQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+- Regularization
+   - L1: Lasso Regularization
+   - L2: Ridge Regularization
+
 
 ### Classification - Accuracy
 > 嘿嘿~~ coursera 要到 [week6](/yutingblog//ml-coursera/week6/handling-skewed-data){:target="_back"} 才說這個 XXDDD 果然! 這課程 __夠硬__!!

@@ -47,3 +47,8 @@ __K-means for non-separated clusters__
 
 ![Imgur](https://i.imgur.com/JTvbhfh.gif)
 
+
+### [Optimization Objective](https://www.coursera.org/learn/machine-learning/lecture/G6QWt/optimization-objective){:target="_back"}
+
+
+![Imgur](https://i.imgur.com/0uqMCox.jpg)
