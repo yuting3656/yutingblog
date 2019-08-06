@@ -42,3 +42,8 @@ __Chossing the value of K__
 - EX:
 
 ![Imgur](https://i.imgur.com/4cXWrPr.gif)
+
+
+__Choosing the number of clusters__
+
+![Imgur](https://i.imgur.com/KULHkQS.gif)
