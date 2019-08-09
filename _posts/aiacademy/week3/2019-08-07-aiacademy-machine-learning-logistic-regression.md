@@ -111,3 +111,53 @@ __ROC Curve__
 - ROC Curve
 
 ![Imgur](https://i.imgur.com/EmhCh8N.gif)
+
+
+### Logistic Regression 
+
+- 1 
+
+<iframe src="https://www.youtube.com/embed/SKNt9LZi8io" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+- 2
+
+<iframe src="https://www.youtube.com/embed/jzOBgQAwgkU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+__Logistic Regression in Scikit-Leran__
+
+> C 值越大 對weight 的控制力越弱
+
+![Imgur](https://i.imgur.com/aalPauB.gif){:target="_back"}
+
+<br/>
+<br/>
+<br/>
+
+> multi_class: `ovr`, `multinominal` 
+
+![Imgur](https://i.imgur.com/JbEgXZg.gif)
+
+
+__short summary__
+
+![Imgur](https://i.imgur.com/Gmqvcdd.gif)
+
+
+### F1-Score and AUC ROC
+
+<iframe src="https://www.youtube.com/embed/tflM7I6QhD0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+__Threshold__
+
+![Imgur](https://i.imgur.com/3d25Twx.gif)
+
+__F1 Score__
+
+![Imgur](https://i.imgur.com/4UrtIHx.gif)
+
+
+__Prcision vs. Recall  /  ROC:TPR vs. FPR__
+
+![Imgur](https://i.imgur.com/5edwW5l.gif)
+
+![Imgur](https://i.imgur.com/pq9VO3f.gif)
