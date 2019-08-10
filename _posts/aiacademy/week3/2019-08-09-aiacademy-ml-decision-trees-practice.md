@@ -1,9 +1,11 @@
 ---
 layout: 'post'
-title: 'aiacademy: 機器學習 - 實作: ch05 '
-permalink: 'aiacademy/week3/decicion-trees-practice'
+title: 'aiacademy: 機器學習 - 實作: ch06 (decision trees)'
+permalink: 'aiacademy/week3/decision-trees-practice'
 tags: aiacademy machine-learning decision-trees
 ---
+
+> [github-aiacademy](https://github.com/yuting3656/aiacademy/tree/master/week2/machine-learning/Chapter6){:target="_back"}
 
 ### decision tree 1
 

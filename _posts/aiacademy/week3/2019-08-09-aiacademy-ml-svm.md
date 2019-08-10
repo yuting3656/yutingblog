@@ -1,6 +1,6 @@
 ---
 layout: 'post'
-title: 'aiacademy: 機器學習 SVM '
+title: 'aiacademy: 機器學習 SVM & 實作: ch05'
 permalink: 'aiacademy/week3/svm'
 tags: aiacademy machine-learning SVM
 ---
