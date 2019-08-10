@@ -28,3 +28,4 @@ tags: aiacademy machine-learning ml-practical-concerns
    best_model = GridSearchCV(model, parameters, cv=5, scoring='accuracy',    return_train_score='cv_results_')
    best_model.fit(X, y)
    ~~~
+
