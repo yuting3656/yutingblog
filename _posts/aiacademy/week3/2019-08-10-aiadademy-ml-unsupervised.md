@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'aiacademy: 機器學習 Unsupervised Learning'
 permalink: 'aiacademy/week3/unsupervised-learning'
-tags: aiacademy machine-learning unsupervised-learning
+tags: aiacademy machine-learning unsupervised-learning dimensionality-reduction
 ---
 
 
@@ -13,7 +13,7 @@ tags: aiacademy machine-learning unsupervised-learning
 - Outline 
 
    - Unsupervised learning 
-   - Dimension reductionp
+   - Dimension reduction
       
       - Principal component analysis (PCA)
       - T-Distributed Stochastic Neighbor Embedding (t-SNE)

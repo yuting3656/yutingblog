@@ -8,6 +8,8 @@ tags: aiacademy machine-learning ensemble-methods
 
 ### Ensemble 
 
+> 用系統化的方式，將好幾個 supervised learning 的model 結合再一起，試圖將結果截長補短，變成一個更強的model !!
+
 <iframe src="https://www.youtube.com/embed/HvJsTAQ4mXY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 - Ensemble methods 
@@ -58,14 +60,12 @@ tags: aiacademy machine-learning ensemble-methods
 
    - Gradient boosting many trees one by one, the new trees try to __correct__ to predictions of previous trees
 
-
-
-###　Stacking 
+### Stacking 
 
 
 <iframe src="https://www.youtube.com/embed/cw09YM6T2KQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-[Imgur](https://i.imgur.com/mMN2ZJE.gif)
+![Imgur](https://i.imgur.com/mMN2ZJE.gif)
 
 
 ### Summary
