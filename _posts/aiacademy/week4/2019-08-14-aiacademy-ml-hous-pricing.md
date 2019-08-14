@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'aiacademy: 機器學習 Kaggle 房價預測'
 permalink: 'aiacademy/week4/kaggle-hous-pricing'
-tags: aiacademy machine-learning box-plots
+tags: aiacademy machine-learning box-plots kaggle
 ---
 
 > Practice makes perfect
@@ -37,3 +37,5 @@ tags: aiacademy machine-learning box-plots
 > 馬步扎穩！
 
 <iframe src="https://www.youtube.com/embed/CoVf1jLxgj4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+

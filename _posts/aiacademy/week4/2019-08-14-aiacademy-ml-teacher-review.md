@@ -7,6 +7,10 @@ tags: aiacademy machine-learning
 
 > [__ACM tkdd__](https://tkdd.acm.org/){:target="_back"} 好棒棒的論文網站
 
+### 棒棒資料
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/crXbQNkuxGDM7j" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/AIFrontiers/jeff-dean-trends-and-developments-in-deep-learning-research" title="Jeff Dean at AI Frontiers: Trends and Developments in Deep Learning Research" target="_blank">Jeff Dean at AI Frontiers: Trends and Developments in Deep Learning Research</a> </strong> from <strong><a href="https://www.slideshare.net/AIFrontiers" target="_blank">AI Frontiers</a></strong> </div>
+
 ### Common mistakes in data science
 
 - A good learning model is more important than data size?
@@ -178,3 +182,54 @@ tags: aiacademy machine-learning
 
 ![Imgur](https://i.imgur.com/eq6Mpym.jpg)
 
+
+
+### 中華民國人工智慧學會
+
+> [website](http://www.taai.org.tw/){:target="_back"}
+
+
+### Pca vs. Lasso
+
+- PCA: unsupervised
+   - 與y無關
+   - 只根據 x , 找到最大能保留 x 的ｋ方向
+
+- LASSO: supervised 
+   - 與y有關
+   - X 與 y　無關的 features　所對應的　theta 很可能變成 0
+
+### PCA 做降維　vs. autoencoder 
+
+
+
+### Recommender system
+
+- Netflix price competition
+
+### Collaborative filtering (CF)
+
+![img](https://upload.wikimedia.org/wikipedia/commons/5/52/Collaborative_filtering.gif)
+ 
+ - user-based CF
+
+
+
+ - item-based CF
+ - model-based CF
+
+
+### Matrix factorization
+
+<iframe src="https://www.youtube.com/embed/9AP-DgFBNP4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+### Summary of MF
+
+![Imgur](https://i.imgur.com/WJouGa4.jpg)
+
+### Summary
+
+![Imgur](https://i.imgur.com/u6El2pq.jpg)
+
+![Imgur](https://i.imgur.com/A9Fomph.jpg)
