@@ -233,3 +233,8 @@ tags: aiacademy machine-learning
 ![Imgur](https://i.imgur.com/u6El2pq.jpg)
 
 ![Imgur](https://i.imgur.com/A9Fomph.jpg)
+
+
+### FM vs MF
+
+![Imgur](https://i.imgur.com/QNz8bmq.jpg)
