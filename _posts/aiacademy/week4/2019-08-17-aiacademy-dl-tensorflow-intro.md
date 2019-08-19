@@ -31,7 +31,7 @@ tags: aiacademy deep-learning tensorflow
    ~~~python
    # create a session
    sess = tf.Session()
-   print(sess.run(a))
+   print(sess.run(a)) # [1. 0.]
    sess.close()
    ~~~
 
@@ -530,7 +530,7 @@ tags: aiacademy deep-learning tensorflow
        total_batch = len(x_train) // batch_size 
        train_loss_batch, train_acc_batch = [], []
    
-   #     training
+   # training
        for j in range(total_batch):
    
            batch_idx_start = j * batch_size
@@ -545,11 +545,11 @@ tags: aiacademy deep-learning tensorflow
            train_loss_batch.append(batch_loss) 
            train_acc_batch.append(batch_acc)  
    
-   #     validation
+   # validation
        valid_acc, valid_loss = sess.run([compute_acc, loss],
                                         feed_dict={x_input: x_valid, y_out : y_valid}   )
        
-   #     collect loss and accuracy
+   # collect loss and accuracy
        train_loss_epoch.append(np.mean(train_loss_batch)) 
        train_acc_epoch.append(np.mean(train_acc_batch))
        valid_loss_epoch.append(valid_loss) 
@@ -559,3 +559,313 @@ tags: aiacademy deep-learning tensorflow
        
    print('--- training done ---')
    ~~~
+
+   - tqdm_notebook:
+      
+      - 可顯示程式訓練的記錄條狀! 不會空等，心理阿雜。
+
+   - 畫圖看訓練的狀況:
+
+      ~~~python
+      # plot
+      plt.plot(train_loss_epoch, 'b', label='train')
+      plt.plot(valid_loss_epoch, 'r', label='valid')
+      plt.legend()
+      plt.title("Loss")
+      plt.show()
+      
+      plt.plot(train_acc_epoch, 'b', label='train')
+      plt.plot(valid_acc_epoch, 'r', label='valid')
+      plt.legend(loc=4)
+      plt.title("Accuracy")
+      plt.show()
+      ~~~
+
+      ![Imgur](https://i.imgur.com/FOYRBHa.gif)
+
+
+   - 看 test 最後的資料
+        
+        ~~~python
+        test_acc, test_loss = sess.run([compute_acc, loss],
+                                 feed_dict = {x_input: x_test, y_out : y_test})
+        print('testing accuracy: {:.2f}'.format(test_acc)) # testing accuracy: 0.98
+        sess.close()
+        ~~~
+
+> 另一種寫法，跟 __keras__ 和  __js__ 的寫法更類似!
+
+4b. Build the network with "layer"
+
+   ~~~python
+   tf.reset_default_graph() 
+   
+   with tf.name_scope('input'):
+       x_input = tf.placeholder(shape=(None, 64), 
+                                name='x_input',
+                                dtype=tf.float32)
+       y_out = tf.placeholder(shape=(None, 10), 
+                              name='y_label',
+                              dtype=tf.float32)
+   
+   with tf.variable_scope('hidden_layer'):
+       x_h1 = tf.layers.dense(inputs=x_input, units=25, activation=tf.nn.relu)
+   
+   with tf.variable_scope('output_layer'):
+       output = tf.layers.dense(x_h1, 10, name='output')
+   
+   with tf.name_scope('cross_entropy'):
+       loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=output, labels=y_out), name='loss')
+       
+   with tf.name_scope('accuracy'):
+       correct_prediction = tf.equal(tf.argmax(tf.nn.softmax(output), 1), tf.argmax(y_out, 1))
+       compute_acc = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+   
+   with tf.name_scope('train'):
+       train_step = tf.train.GradientDescentOptimizer(learning_rate=lr).minimize(loss)
+   ~~~
+
+   ~~~python
+   tf.global_variables()
+   # [<tf.Variable 'hidden_layer/dense/kernel:0' shape=(64, 25) dtype=float32_ref>,
+   #  <tf.Variable 'hidden_layer/dense/bias:0' shape=(25,) dtype=float32_ref>,
+   #  <tf.Variable 'output_layer/output/kernel:0' shape=(25, 10) dtype=float32_ref>,
+   #  <tf.Variable 'output_layer/output/bias:0' shape=(10,) dtype=float32_ref>]
+   ~~~
+
+5b. Train the model and record the performance
+
+   ~~~python
+   # create a session and train the model
+   train_loss_epoch, valid_loss_epoch = [], []
+   train_acc_epoch, valid_acc_epoch = [], []
+   
+   sess = tf.Session()
+       
+   sess.run(tf.global_variables_initializer())
+   
+   for i in tqdm_notebook(range(epochs)):
+   
+       total_batch = len(x_train) // batch_size 
+       train_loss_in_batch, train_acc_in_batch = [], []
+   
+       for j in range(total_batch):
+   
+           batch_idx_start = j * batch_size
+           batch_idx_stop = (j+1) * batch_size
+   
+           x_batch = x_train[batch_idx_start : batch_idx_stop] 
+           y_batch = y_train[batch_idx_start : batch_idx_stop]
+   
+           this_loss, this_acc, _ = sess.run([loss, compute_acc, train_step], 
+                                             feed_dict={x_input: x_batch, y_out: y_batch})
+   
+           train_loss_in_batch.append(this_loss) 
+           train_acc_in_batch.append(this_acc)  
+   
+   
+       valid_acc, valid_loss = sess.run([compute_acc, loss],
+                                        feed_dict={x_input: x_valid, y_out : y_valid})
+       
+       valid_loss_epoch.append(valid_loss) 
+       valid_acc_epoch.append(valid_acc)   
+       train_loss_epoch.append(np.mean(train_loss_in_batch)) 
+       train_acc_epoch.append(np.mean(train_acc_in_batch))  
+   
+       x_train, y_train = shuffle(x_train, y_train)
+   
+   
+   print('--- training done ---')
+   ~~~
+
+###  Tensorflow 5 : Save / load your model
+
+<iframe src="https://www.youtube.com/embed/cCyRlDQLRX0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+- 建構Graph
+
+   ~~~python
+   tf.reset_default_graph()
+   
+   x = tf.placeholder(tf.float32, shape=[None, 4], name="Input")
+   y = tf.placeholder(tf.float32, shape=[None, 4], name="Input")
+   
+   h1 = tf.layers.dense(x, units=10, activation=tf.nn.relu, name='hidden1')
+   y_pred = tf.layers.dense(h1, units=1, name='output')
+   
+   loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(labels=y, logits=y_pred), name='loss')
+   
+   train_op = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
+   init = tf.global_variables_initializer()
+   
+   saver = tf.train.Saver()
+   
+   pprint(tf.global_variables())
+   # [<tf.Variable 'hidden1/kernel:0' shape=(4, 10) dtype=float32_ref>,
+   #  <tf.Variable 'hidden1/bias:0' shape=(10,) dtype=float32_ref>,
+   #  <tf.Variable 'output/kernel:0' shape=(10, 1) dtype=float32_ref>,
+   #  <tf.Variable 'output/bias:0' shape=(1,) dtype=float32_ref>]
+   ~~~
+
+- saver = tf.train.Saver() 
+   - 在graph 中 要加上這行! 才能幫你存唷!
+
+   ~~~python
+   sess = tf.Session()
+   sess.run(init)
+   
+   X_train = np.tile(np.array([1, 2, 3]).reshape(-1, 1), 4)
+   y_train = np.array([1, 1, 0]).reshape(-1, 1)
+   
+   print('X:')
+   print(X_train)
+   print('y:')
+   print(y_train)
+   
+   # X:
+   # [[1 1 1 1]
+   #  [2 2 2 2]
+   #  [3 3 3 3]]
+   # y:
+   # [[1]
+   #  [1]
+   #  [0]]
+   ~~~
+
+- 比較訓練前和訓練後的樣子
+
+   ~~~python
+   print('before training:')
+   print('predict: ', sess.run(tf.nn.sigmoid(y_pred), feed_dict={x: X_train}))
+   print('loss: ', sess.run(loss, feed_dict={x: X_train, y:y_train}))
+   
+   for i in range(1000):
+       sess.run(train_op, feed_dict={x: X_train, y:y_train})
+   
+   print('')
+   print('after training:')
+   print('predict: ', sess.run(tf.nn.sigmoid(y_pred), feed_dict={x: X_train}))
+   print('loss: ', sess.run(loss, feed_dict={x: X_train, y:y_train}))
+   
+   # before training:
+   # predict:  [[0.16646636]
+   #  [0.03835496]
+   #  [0.0079025 ]]
+   # loss:  1.687256
+   # 
+   # after training:
+   # predict:  [[0.9996896 ]
+   #  [0.977794  ]
+   #  [0.01504102]]
+   # loss:  0.012640677
+   ~~~
+
+- 把模型 儲存起來!
+
+   - `.ckpt` __tensorflow 專用的檔案__
+
+   ~~~python
+   saver.save(sess, "./save_model/checkpoint_weight.ckpt")  # save the model
+   sess.close()
+   ~~~
+
+## 讀取方法 1: 載入weights
+
+   - Graph 模型還是要再寫一遍 __(一字不漏)__
+
+   ~~~python
+   tf.reset_default_graph()
+   
+   x = tf.placeholder(tf.float32, shape=[None, 4], name='Input')
+   y = tf.placeholder(tf.float32, shape=[None, 1], name='Output')
+   
+   h1 = tf.layers.dense(x, units=10, activation=tf.nn.relu, name='hidden1')
+   y_pred = tf.layers.dense(h1, units=1, name='output')
+   
+   loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(labels=y, logits=y_pred), name='loss')
+   
+   train_op = tf.train.GradientDescentOptimizer(0.1).minimize(loss)
+   
+   saver = tf.train.Saver()
+   ~~~
+
+- 只要一載入之前的 weights 變數就初始化，就不用再 init() 
+
+   ~~~python
+   sess = tf.Session()
+   saver.restore(sess, "./save_model/checkpoint_weight.ckpt")
+   ~~~
+
+- 看預測結果
+
+   ~~~python
+   X_train = np.tile(np.array([1, 2, 3]).reshape(-1, 1), 4)
+   y_train = np.array([1, 1, 0]).reshape(-1, 1)
+   
+   print('predict: ', sess.run(tf.nn.sigmoid(y_pred), feed_dict={x: X_train}))
+   print('loss: ', sess.run(loss, feed_dict={x: X_train, y:y_train}))
+   # predict:  [[0.9996896 ]
+   #  [0.977794  ]
+   #  [0.01504102]]
+   # loss:  0.012640677
+   sess.close()
+   ~~~
+
+## 讀取方法 2: 載入 graph
+
+~~~python
+sess = tf.Session()
+
+loader = tf.train.import_meta_graph("./save_model/checkpoint_weight.ckpt" + '.meta')
+loader.restore(sess, "./save_model/checkpoint_weight.ckpt")
+
+pprint(tf.global_variables())
+# [<tf.Variable 'hidden1/kernel:0' shape=(4, 10) dtype=float32_ref>,
+#  <tf.Variable 'hidden1/bias:0' shape=(10,) dtype=float32_ref>,
+#  <tf.Variable 'output/kernel:0' shape=(10, 1) dtype=float32_ref>,
+#  <tf.Variable 'output/bias:0' shape=(1,) dtype=float32_ref>]
+~~~
+
+- 取 graph 的元素
+   - sess.graph.get_tensor_by_name
+   - `EX:x = sess.graph.get_tensor_by_name('Input:0')`
+
+   ~~~python
+   X_train = np.tile(np.array([1, 2, 3]).reshape(-1, 1), 4)
+   y_train = np.array([1, 1, 0]).reshape(-1, 1)
+   
+   x = sess.graph.get_tensor_by_name('Input:0')
+   y = sess.graph.get_tensor_by_name('Output:0')
+   y_pred = sess.graph.get_tensor_by_name('output_1/BiasAdd:0')
+   loss = sess.graph.get_tensor_by_name('loss:0')
+   
+   print('predict: ', sess.run(tf.nn.sigmoid(y_pred), feed_dict={x: X_train}))
+   print('loss: ', sess.run(loss, feed_dict={x: X_train, y:y_train}))
+   
+   # predict:  [[0.9996896 ]
+   #  [0.977794  ]
+   #  [0.01504102]]
+   # loss:  0.012640677
+   
+   sess.close()
+   ~~~
+
+__給沒命名的 tensor 名字__
+
+   - 未命名前: <tf.Tensor 'output_1/BiasAdd:0' shape=(?, 1) dtype=float32>
+
+      ~~~python
+      y_pred = tf.layers.dense(h1, units=1, name='output')
+      print(y_pred) 
+      # <tf.Tensor 'output_1/BiasAdd:0' shape=(?, 1) dtype=float32>
+      ~~~
+
+
+   - 命名後: <tf.Tensor 'predict:0' shape=(?, 1) dtype=float32>
+
+      ~~~python
+      y_pred = tf.layers.dense(h1, units=1, name='output')
+      y_pred = tf.identity(y_pred, 'predict')
+      print(y_pred)
+      # <tf.Tensor 'predict:0' shape=(?, 1) dtype=float32>
+      ~~~ 

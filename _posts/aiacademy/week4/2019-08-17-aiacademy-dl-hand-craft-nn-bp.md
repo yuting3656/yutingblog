@@ -216,6 +216,183 @@ tags: aiacademy deep-learning neural-networks backpropagation
 
 <iframe src="https://www.youtube.com/embed/f0NCZYDaVls" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+- Sigmoid
+
+   - Sigmoid 方程式
+
+      ![Imgur](https://i.imgur.com/uKSEjKB.gif)
+
+      ~~~python
+      def sigmoid(X):
+          output = 1 / ( 1 + np.exp(-X) )
+          return output
+      ~~~
+
+      ~~~python
+      # Examples
+      X = np.arange(5)
+      sigmoid(X)
+      # array([0.5 , 0.73105858, 0.88079708, 0.95257413, 0.98201379])
+      ~~~
+
+- Sigmoid Gradient:
+
+   - Sigmoid Gradient 式子
+
+      ![Imgur](https://i.imgur.com/d0KFGz1.gif)
+
+      ~~~python
+      def sigmoid_gradient(X):
+          output = sigmoid(X) * (1 - sigmoid(X))
+          return output
+      ~~~
+
+      ~~~python
+      # Examples
+      X = np.arange(5)
+      sigmoid_gradient(X)
+      # array([0.25 , 0.19661193, 0.10499359, 0.04517666, 0.01766271])
+      ~~~
+
+- Softmax:
+    
+    - Softmax & Sigmoid
+
+       - sigmoid 至直接針對單一數值做壓縮
+
+       - softmax 至針對一整組數字做壓縮
+
+          - EX:
+    
+             ~~~
+             如果我們有一組數列  1,3,5  
+             Softmax 會回傳  0.016,0.117,0.867
+             ~~~
+
+    - Softmax 式子
+
+       ![Imgur](https://i.imgur.com/tV6U9Zy.gif)
+   
+    - [看不懂 keepdims在寫沙姣?](https://stackoverflow.com/questions/39441517/in-numpy-sum-there-is-parameter-called-keepdims-what-does-it-do){:target="_back"}
+
+       ~~~python
+       def softmax(X):
+           # Something to keeep in mind is that 
+           # np.sum can control the direction we are summing over
+           # which is why it is superior than the regular sum from python
+           # but when the shape of a matrix is (n, ) instead of (n,1)
+           # broadcasting can act in unexpected ways
+           # you can use keepdims (function within np.sum) to make sure the shape is right
+           # Write your code below!
+           return np.exp(X) / np.sum(np.exp(X), axis=1, keepdims=True)
+       ~~~
+
+- Cross entropy (Multiclass)
+
+   - Definition: Cross-entropy loss, or log loss, measures the performance of a classification model
+whose output is a probability value between 0 and 1. Cross-entropy loss increases as the predicted
+probability diverges from the actual label. So predicting a probability of .012 when the actual
+observation label is 1 would be bad and result in a high loss value. A perfect model would have a 
+log loss of 0.
+
+
+   ![Imgur](https://i.imgur.com/fgMGmDq.gif)
+
+   - [我的筆記](https://yuting3656.github.io/yutingblog//ml-coursera/week3/logistic-regression-model){:target="_back"}，有多少帶到一點觀念~ YA!
+   - [我的筆記2](https://yuting3656.github.io/yutingblog//ml-coursera/week5/cost-function-and-backpropagation){:target="_back"}，有多少帶到一點觀念~ YA!
+
+
+   ~~~python
+   def cross_entropy(p, q):
+    # As you probably notice
+    # log(0) = negative infinity 
+    # to avoid this we usually add a epsilon to our calculation
+    # and in sklearn they like to use 1e-15
+    # so thats what we'll be using here
+    # Write your codes below!
+    epsilon = 1e-15
+    H = 0
+    for i in range(len(p)):
+        H += - p[i] * np.log(q[i]+epsilon)
+    output = H.sum() / p.shape[0]
+    return output
+   ~~~
+
+   ~~~python
+   # Example
+   p = np.array([[1,0,0]])
+   q = np.array([[0.7, 0.2, 0.1]])
+   cross_entropy(p,q)
+   # 0.356674943938731
+   ~~~
+
+
+- One Hot Encoding
+
+   - [我的筆記](https://yuting3656.github.io/yutingblog//ml-coursera/week4/neural-networks-applications){:target="_back"}
+
+   - [how-to-one-hot-encode-in-python](https://machinelearningmastery.com/how-to-one-hot-encode-sequence-data-in-python/){:target="_back"}
+
+> 超級舒服的練習!! 燒腦:)
+
+   - 手刻 one hot encoding!!!
+   
+      ~~~python
+      def one_hot_encoding(array):
+      
+          sorted_array = np.sort(array)
+          count = 1
+          unique = [sorted_array[0]]
+          temp = sorted_array[0]
+          for i in range(len(array)):
+              if sorted_array[i] != temp:
+                  count += 1
+                  temp = sorted_array[i]
+                  unique.append(temp)
+          len_ = len(unique)
+          eye = np.zeros((len_, len_))
+          print('len_:', len_)
+          print('unique', unique)
+          for i in range(len_):
+              eye[i, i] = 1
+          print('eye: ', eye)
+          for i in range(len(array)):
+              for j in range(len(unique)):
+                  if array[i] == unique[j]:
+                      array[i] = j
+                      print('changing array', array)
+          result = eye[array]
+          return result
+      ~~~
+      
+      __example__
+      
+      ~~~python
+      if __name__ == '__main__':
+          array = ['John', 'Tim', 'Tom', 'John', 'Marry', 'Tom']
+          one_hot = one_hot_encoding(array)
+          print(one_hot)
+      
+      # len_: 4
+      # unique ['John', 'Marry', 'Tim', 'Tom']
+      # eye:  [[1. 0. 0. 0.]
+      #  [0. 1. 0. 0.]
+      #  [0. 0. 1. 0.]
+      #  [0. 0. 0. 1.]]
+      # changing array [0, 'Tim', 'Tom', 'John', 'Marry', 'Tom']
+      # changing array [0, 2, 'Tom', 'John', 'Marry', 'Tom']
+      # changing array [0, 2, 3, 'John', 'Marry', 'Tom']
+      # changing array [0, 2, 3, 0, 'Marry', 'Tom']
+      # changing array [0, 2, 3, 0, 1, 'Tom']
+      # changing array [0, 2, 3, 0, 1, 3]
+      # [[1. 0. 0. 0.]
+      #  [0. 0. 1. 0.]
+      #  [0. 0. 0. 1.]
+      #  [1. 0. 0. 0.]
+      #  [0. 1. 0. 0.]
+      #  [0. 0. 0. 1.]]
+      ~~~
+
 ### NN_BP_HANDCRAFT_7 (BackPropagation)
 
 <iframe src="https://www.youtube.com/embed/QepktWBrQ70" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
