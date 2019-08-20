@@ -396,3 +396,94 @@ log loss of 0.
 ### NN_BP_HANDCRAFT_7 (BackPropagation)
 
 <iframe src="https://www.youtube.com/embed/QepktWBrQ70" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+- Neural Network
+
+   ![Imgur](https://i.imgur.com/0Mq7tu1.gif)
+
+   - working flow chart
+   
+   ![Imgur](https://i.imgur.com/iJVu61P.gif)
+
+   ~~~python
+   def two_layer_net(X, Y, W1, W2):
+       # Forward
+       z1 = np.matmul(X, W1)
+       a1 = sigmoid(z1)
+       z2 = np.matmul(a1, W2)
+       out = softmax(z2)
+       J = cross_entropy(Y, out)
+       # Backward
+       d2 = out - Y
+       dW2 = np.matmul(a1.T, d2)
+       d1 = np.matmul(d2, (W2.T))*sigmoid_gradient(a1)
+       dW1 = np.matmul(X.T, d1)
+   
+       return J, dW1, dW2
+   ~~~
+
+   - example
+
+    ~~~python
+    iris = datasets.load_iris()
+    X = iris.data
+    Y = iris.target
+    Y = one_hot_encoding(Y)
+    names = iris.target_names
+    
+    X_train = np.vstack([X[0:40], X[50:90], X[100:140]])
+    X_valid = np.vstack([X[40:45], X[90:95], X[140:145]])
+    X_test = np.vstack([X[45:50], X[95:100], X[145:150]])
+    
+    Y_train = np.vstack([Y[0:40], Y[50:90], Y[100:140]])
+    Y_valid = np.vstack([Y[40:45], Y[90:95], Y[140:145]])
+    Y_test = np.vstack([Y[45:50], Y[95:100], Y[145:150]])
+    
+    # Neural Network
+    iteration = 1000
+    alpha = 0.01
+    history_train = np.zeros((iteration, 1))
+    history_valid = np.zeros((iteration, 1))
+    
+    np.random.seed(37)
+    W1 = np.random.randn(4, 10)
+    W2 = np.random.randn(10, 3)
+    
+    for i in range(iteration):
+        J_train, dW1, dW2 = two_layer_net(X_train, Y_train, W1, W2)
+        J_valid, _, _, = two_layer_net(X_valid, Y_valid, W1, W2)
+        W1 -= alpha * dW1
+        W2 -= alpha * dW2
+
+        history_train[i] = J_train
+        history_valid[i] = J_valid
+
+        if (i+1) % 50 == 0:
+            print("The training loss of the", i+1, "epoch is", history_train[i][0].round(4), ",", end="")
+            print("The validation loss of the", i+1, "epoch is", history_valid[i][0].round(4))
+
+    print("\n The loss of our testing set is", two_layer_net(X_test, Y_test, W1, W2)[0],round(4))
+    
+    # The training loss of the 50 epoch is 0.5166 ,The validation loss of the 50 epoch is 0.5436
+    # The training loss of the 100 epoch is 0.4769 ,The validation loss of the 100 epoch is 0.5154
+    # The training loss of the 150 epoch is 0.4492 ,The validation loss of the 150 epoch is 0.492
+    # The training loss of the 200 epoch is 0.3166 ,The validation loss of the 200 epoch is 0.2497
+    # The training loss of the 250 epoch is 0.244 ,The validation loss of the 250 epoch is 0.206
+    # The training loss of the 300 epoch is 0.1796 ,The validation loss of the 300 epoch is 0.1811
+    # The training loss of the 350 epoch is 0.122 ,The validation loss of the 350 epoch is 0.1271
+    # The training loss of the 400 epoch is 0.1348 ,The validation loss of the 400 epoch is 0.0477
+    # The training loss of the 450 epoch is 0.1349 ,The validation loss of the 450 epoch is 0.0451
+    # The training loss of the 500 epoch is 0.1336 ,The validation loss of the 500 epoch is 0.0412
+    # The training loss of the 550 epoch is 0.1308 ,The validation loss of the 550 epoch is 0.0373
+    # The training loss of the 600 epoch is 0.1283 ,The validation loss of the 600 epoch is 0.0343
+    # The training loss of the 650 epoch is 0.1264 ,The validation loss of the 650 epoch is 0.0322
+    # The training loss of the 700 epoch is 0.1249 ,The validation loss of the 700 epoch is 0.0306
+    # The training loss of the 750 epoch is 0.1238 ,The validation loss of the 750 epoch is 0.0293
+    # The training loss of the 800 epoch is 0.1228 ,The validation loss of the 800 epoch is 0.0282
+    # The training loss of the 850 epoch is 0.1221 ,The validation loss of the 850 epoch is 0.0272
+    # The training loss of the 900 epoch is 0.1215 ,The validation loss of the 900 epoch is 0.0261
+    # The training loss of the 950 epoch is 0.1212 ,The validation loss of the 950 epoch is 0.0251
+    # The training loss of the 1000 epoch is 0.1213 ,The validation loss of the 1000 epoch is 0.0239
+    # 
+    # The loss of our testing set is 0.024856599493450916 4
+    ~~~
