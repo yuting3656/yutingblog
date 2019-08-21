@@ -1,7 +1,7 @@
 ---
 layout: 'post'
 title: 'aiacademy: 深度學習 神經網路調教 model tuning'
-permalink: 'aiacademy/week4/deep-learning-neural-network-model-tuning'
+permalink: 'aiacademy/week5/deep-learning-neural-network-model-tuning'
 tags: aiacademy deep-learning neural-networks model-tuning
 ---
 
