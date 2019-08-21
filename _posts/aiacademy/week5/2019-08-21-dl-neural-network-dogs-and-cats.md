@@ -1,7 +1,7 @@
 ---
 layout: 'post'
 title: 'aiacademy: 深度學習 貓狗大戰! model tuning'
-permalink: 'aiacademy/week4/deep-learning-neural-network-dogs-and-cats-datasets'
+permalink: 'aiacademy/week5/deep-learning-neural-network-dogs-and-cats-datasets'
 tags: aiacademy deep-learning neural-networks model-tuning
 ---
 
@@ -327,7 +327,7 @@ tags: aiacademy deep-learning neural-networks model-tuning
 
 3. 改變優化器　optimizer
    
-[我的筆記](https://https://yuting3656.github.io/yutingblog/aiacademy/week4/deep-learning-neural-network-model-tuning){:target="_back"}
+   [我的筆記](https://yuting3656.github.io/yutingblog/aiacademy/week5/deep-learning-neural-network-model-tuning){:target="_back"}
 
    - Adam
 
