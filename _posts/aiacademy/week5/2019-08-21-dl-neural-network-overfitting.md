@@ -1,8 +1,8 @@
 ---
 layout: 'post'
-title: 'aiacademy: 深度學習 Overfitting'
+title: 'aiacademy: 深度學習 Overfitting & Overfitting 實作(貓狗大戰)'
 permalink: 'aiacademy/week5/deep-learning-neural-network-overfitting'
-tags: aiacademy deep-learning neural-networks model-tuning
+tags: aiacademy deep-learning neural-networks model-tuning overfitting tensorflow
 ---
 
 ### Overfitting

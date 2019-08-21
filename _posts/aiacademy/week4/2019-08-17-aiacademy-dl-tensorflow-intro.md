@@ -473,7 +473,9 @@ tags: aiacademy deep-learning tensorflow
    tf.reset_default_graph()
    
    with tf.name_scope('input'):
-       x_input = tf.placeholder(shape=(None, 64), name='x_input', dtype=tf.float32)
+       # None 代表 batch 的大小，這樣寫法是讓他有彈性!
+       x_input = tf.placeholder(shape=(None, 64), name='x_input', dtype=tf.float32) 
+       # None 代表 batch 的大小，這樣寫法是讓他有彈性!
        y_out = tf.placeholder(shape=(None, 10), name='y_label', dtype=tf.float32)
    
    with tf.variable_scope('hidden_layer'):
