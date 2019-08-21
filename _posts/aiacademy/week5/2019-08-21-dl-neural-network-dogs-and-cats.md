@@ -330,7 +330,64 @@ tags: aiacademy deep-learning neural-networks model-tuning
    [我的筆記](https://yuting3656.github.io/yutingblog/aiacademy/week5/deep-learning-neural-network-model-tuning){:target="_back"}
 
    - Adam
+      - 不會只計算現在的t度，而是會紀錄過去的t度為考量，而計算出更棒的兒數值
 
+      - `update = tf.train.AdamOptimizer(learning_rate=0.001).minimize(loss)`
+
+         ~~~python
+         tf.reset_default_graph()
+         
+         with tf.name_scope('placeholder'):
+             input_data = tf.placeholder(tf.float32, shape=[None, picsize*picsize], name='X')
+             y_true = tf.placeholder(tf.float32, shape=[None, 2], name='y')
+             
+         with tf.variable_scope('network'):
+             h1 = tf.layers.dense(input_data, 256, activation=tf.nn.relu, name='hidden1')  # try to change the activation function
+             h2 = tf.layers.dense(h1, 128, activation=tf.nn.relu, name='hidden2') 
+             h3 = tf.layers.dense(h2, 64, activation=tf.nn.relu, name='hidden3')
+             out = tf.layers.dense(h3, 2, name='output')
+             
+         with tf.name_scope('loss'):
+             loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(labels=y_true, logits=out), name='loss')
+             
+         with tf.name_scope('accuracy'):
+             correct_prediction = tf.equal(tf.argmax(tf.nn.softmax(out), 1), tf.argmax(y_true, 1))
+             compute_acc = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+             
+         with tf.name_scope('opt'):
+             update = tf.train.AdamOptimizer(learning_rate=0.001).minimize(loss) # try to change the optimuizer and learning rate
+             
+         init = tf.global_variables_initializer()
+         ~~~
+         
+   - 看tensor variables過去的紀錄
+
+   ![Imgur](https://i.imgur.com/twozIaP.gif)
+
+   - 計算 weight
+   
+       - 會有三百多萬組，不是我們要的兒！
+          
+   ![Imgur](https://i.imgur.com/n5qExAC.gif) 
+
+    
+    - 加入 `‵if 'Adam' not in tensor.name:`
+
+        ~~~python
+        var_sum = 0
+        for tensor in tf.global_variables(scope='network'):
+            if 'Adam' not in tensor.name:
+                var_sum += np.product(tensor.shape.as_list())
+            
+        print('the total number of weights is', var_sum)  # 4096*256 + 256 + 256*128 + 128 + 128*64 + 64 + 64*2 + 2
+        # the total number of weights is 1090114
+        ~~~
+
+    - 結果
+       - 7成多的成功率
+       - 還是有　overfitting 的狀況！
+
+　　　　![Imgur](https://i.imgur.com/TPDKwzg.gif)
 
 
 ### 本機程式實作
