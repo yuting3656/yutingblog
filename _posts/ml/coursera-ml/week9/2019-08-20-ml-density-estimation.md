@@ -32,3 +32,16 @@ tags: coursera-machine-learning
    - 通常用: 1/m，不寫 1/m-1 
 
    ![Imgur](https://i.imgur.com/feK9h56.gif)
+
+
+### [Anomaly Detection: Algorithm](https://www.coursera.org/learn/machine-learning/lecture/C8IJp/algorithm){:target="_back"}
+
+
+![Imgur](https://i.imgur.com/c3IPvgT.jpg)
+
+![Imgur](https://i.imgur.com/erJGMid.jpg)
+
+![Imgur](https://i.imgur.com/bWvdMGX.jpg)
+
+![Imgur](https://i.imgur.com/2wNfymK.jpg)
+
