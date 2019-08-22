@@ -849,7 +849,7 @@ if __name__ == "__main__":
 ![Imgur](https://i.imgur.com/3Agwi5U.jpg)
 
 
-##　GitHub Flow
+## GitHub Flow
 
 - [Github Flow](https://guides.github.com/introduction/flow/index.html){:target="_back"}
 
