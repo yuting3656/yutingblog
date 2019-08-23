@@ -58,6 +58,15 @@ tags: aiacademy deep-learning neural-networks model-tuning tensorflow
        return x_data, y_data
    ~~~
 
+   ~~~ptyhon
+   picsize = 64
+   X_train, y_train = df_to_data(train_df, picsize)
+   X_test, y_test = df_to_data(test_df, picsize)
+   
+   print('size of training data:', X_train.shape, y_train.shape)
+   print('size of testing data:', X_test.shape, y_test.shape)
+   ~~~
+
 - build the network
 
    ~~~python
