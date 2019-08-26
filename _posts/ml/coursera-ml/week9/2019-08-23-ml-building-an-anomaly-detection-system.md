@@ -6,3 +6,5 @@ tags: coursera-machine-learning
 ---
 
 ### [Developing and Evaluating an Anomaly Detection System](https://www.coursera.org/learn/machine-learning/lecture/Mwrni/developing-and-evaluating-an-anomaly-detection-system){:target="_back"}
+
+![Imgur](https://i.imgur.com/cXNKTpc.jpg)

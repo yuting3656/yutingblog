@@ -14,6 +14,10 @@ tags: aiacademy deep-learning neural-networks model-tuning
 
    ![Imgur](https://i.imgur.com/XKo8gZ0.gif)
 
+- Feature Scaling
+
+   ![Imgur](https://i.imgur.com/k15Zq7q.jpg)
+
 - Activation function
 
    ![Imgur](https://i.imgur.com/4bmG3cx.gif)
