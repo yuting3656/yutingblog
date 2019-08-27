@@ -46,6 +46,11 @@ tags: aiacademy tensorflow keras
    
    - cooc 1-cooc 151 - co-occurrence with any other pokemon (pokemon ids range between 1 and 151) within 100m distance and within the last 24 hours (Boolean) List of Pokémon by National Pokédex number
 
+- 練習方向
+
+   - Data preprocessing and feature engineering
+   - DNN model construction and hyper-parameter tuning
+   - Metrics: Accuracy
 
 ### 跑出這張真的感動!!!
 
@@ -59,3 +64,57 @@ tags: aiacademy tensorflow keras
 
 ![Imgur](https://i.imgur.com/BQfoT2u.jpg)
 
+
+### Keras 跑 early stop & 存取檔案！
+
+- 先做 callback funcs
+
+   ~~~python
+   import tensorflow as tf
+   from tensorflow.keras.callbacks import EarlyStopping
+   from tensorflow.keras.callbacks import ModelCheckpoint
+   from tensorflow.keras.layers import Dense, Dropout
+   
+   # early stop
+   es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=200)
+   
+   # model checkpoint
+   mc = ModelCheckpoint('best_model.h5', monitor='val_acc', mode='max', verbose=1, save_best_only=True)
+   ~~~
+
+- 在 fit 中放入　callback function
+
+   ~~~python
+   # 建模
+   model = tf.keras.Sequential()
+   model.add(Dense(50, activation='elu', input_shape=(225, ), ))
+   model.add(Dropout(0.45))
+   model.add(Dense(25, activation='elu', kernel_regularizer=regularizers.l2(0.02),))
+   model.add(Dropout(0.45))
+   model.add(Dense(12, activation='relu', kernel_regularizer=regularizers.l2(0.02)))
+   model.add(Dense(6, activation='sigmoid'))
+   
+   # compile
+   model.compile(loss='categorical_crossentropy',
+                optimizer=tf.keras.optimizers.Adam(),
+                metrics=['accuracy'])
+   
+   # fit
+   model_history = model.fit(x=x_train_best, 
+                             y=y_train_hot,
+                             batch_size=80, 
+                             epochs=1000,
+                             validation_split= 0.08,
+                             shuffle=True,
+                             callbacks=[es, mc]
+                             )
+   ~~~
+
+
+- 讀取
+
+   ~~~python
+   # load saved h5 model
+   best_model = tf.keras.models.load_model('best_model.h5')
+   y_predict = best_model.predict_classes(x_test_best)
+   ~~~
