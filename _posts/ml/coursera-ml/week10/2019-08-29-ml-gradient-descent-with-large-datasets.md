@@ -37,3 +37,38 @@ __畢卡索手稿__
 __quiz__
 
 ![Imgur](https://i.imgur.com/SrhYjYw.jpg)
+
+
+### [Large scale machine learning - Mini-batch gradient descent](https://www.coursera.org/learn/machine-learning/lecture/9zJUs/mini-batch-gradient-descent){:target="_back"}
+
+
+#### Mini-batch gredient descent
+
+- Batch gradient descent: Use all m examples in each iteration
+
+- Stocahastic gradient descent: Use 1 example in each iteration
+
+- Mini-batch gradient descent: Use b examples in each iteration
+
+![Imgur](https://i.imgur.com/TPOrRPF.jpg)
+
+#### quiz
+
+![Imgur](https://i.imgur.com/lTT6QJl.jpg)
+
+
+### [Large scale machine learning - Stochastic gradient descent convergence](https://www.coursera.org/learn/machine-learning/lecture/fKi0M/stochastic-gradient-descent-convergence){:target="_back"}
+
+
+#### Checking for convergence
+
+![Imgur](https://i.imgur.com/MfTlDYr.jpg)
+
+![Imgur](https://i.imgur.com/3s6jeBZ.jpg)
+
+![Imgur](https://i.imgur.com/8Z7n8W6.jpg)
+
+![Imgur](https://i.imgur.com/W93XTp1.jpg)
+
+
+
