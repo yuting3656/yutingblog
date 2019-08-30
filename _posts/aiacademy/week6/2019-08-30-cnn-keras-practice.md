@@ -143,6 +143,10 @@ x_train /= 255.
 x_test /= 255.
 ~~~
 
+- 畢卡葛
+
+![Imgur](https://i.imgur.com/a1nMqXD.jpg)
+
 ### 2.1 ImageDataGenerator (Data Augmentation)
 
 ~~~python
@@ -181,7 +185,7 @@ model_history = model.fit_generator(
 )
 ~~~
 
-###　3. Loading our save model
+### 3. Loading our save model
 
 ~~~python
 model = load_model(model_path)
