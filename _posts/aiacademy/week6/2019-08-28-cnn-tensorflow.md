@@ -1,7 +1,7 @@
 ---
 layout: 'post'
 title: 'aiacademy: 深度學習 CNN wtih tensorflow'
-permalink: 'aiacademy/week5/deep-learning-cnn-tensorflow'
+permalink: 'aiacademy/week6/deep-learning-cnn-tensorflow'
 tags: aiacademy cnn tensorflow
 ---
 
