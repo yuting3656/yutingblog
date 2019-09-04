@@ -18,6 +18,18 @@ tags: aiacademy deep-learning neural-networks model-tuning
 
    ![Imgur](https://i.imgur.com/k15Zq7q.jpg)
 
+
+   - Batch Normalization
+
+      ![Imgur](https://i.imgur.com/y5gwY1G.jpg)
+
+      ![Imgur](https://i.imgur.com/eMEP5Uq.jpg)
+
+   - Why Batch Normalization
+
+      - 減少了 internal covariate shift 帶來的問題，使得訓練過程中可以使用較高的 learning rate 進而加快了訓練速度。
+      - 依照 activation function 的特性，BN 可以減少 `梯度消失/爆炸` 的問題!
+
 - Activation function
 
    ![Imgur](https://i.imgur.com/4bmG3cx.gif)
