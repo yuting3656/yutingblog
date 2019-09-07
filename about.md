@@ -8,6 +8,12 @@ permalink: /about/
 
 主要是想要當成學 [ML](https://en.wikipedia.org/wiki/Machine_learning){:target="_black"} 的筆記 (主要從 [Coursera-Machine Learning](https://www.coursera.org/learn/machine-learning){:target="_back"} 和 [台灣人工智慧學校](https://aiacademy.tw/){:target="_back"} 所學的紀錄)。
 
+![Coursera-ML](https://i.imgur.com/Yfdb6Cm.jpg)
+
+- [Machine Learning by Stanford University on Coursera. Certificate earned at Saturday, September 7, 2019 8:32 AM GMT](https://www.coursera.org/account/accomplishments/certificate/PDEWSG5VVJ8F){:target="back"}
+
+
+
 外加想要繼續保持寫code的感覺，所以用 [Jekyll](https://jekyllrb.com/){:target="_black"} 來寫 :) 
    - *Jekyll用 [Markdown](https://en.wikipedia.org/wiki/Markdown){:target="_black"} 編輯*
    - *Jekyll [YouTube](https://www.youtube.com/watch?v=T1itpPvFWHI&list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB&index=1){:target="_back"} 超級棒棒的教學影片*

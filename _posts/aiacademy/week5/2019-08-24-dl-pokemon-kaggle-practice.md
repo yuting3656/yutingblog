@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'aiacademy: 深度學習 神奇寶貝!!! pokemon-kaggle'
 permalink: 'aiacademy/week5/deep-learning-neural-network-pokemon-kaggle'
-tags: aiacademy tensorflow keras
+tags: aiacademy tensorflow keras deep-learning kaggle
 ---
 
 > 超級好玩的兒~ AIA 在 [Kaggle 創建的 Pokemon 比賽](https://www.kaggle.com/c/aia-dnn-classification-pokemongo-tpe-5){:target="_back"}
