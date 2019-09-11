@@ -1,7 +1,7 @@
 ---
 layout: 'post'
 title: 'aiacademy: 深度學習 CNN Kaggle-Image-Classification'
-permalink: 'aiacademy/week5/deep-learning-kaggle-image-classification'
+permalink: 'aiacademy/week7/deep-learning-kaggle-image-classification'
 tags: aiacademy cnn kaggle
 ---
 
