@@ -80,3 +80,32 @@ __GRU(simplified)__
 __Full GRU__
 
 ![Imgur](https://i.imgur.com/em0ftdN.jpg)
+
+### [RNN: long short term memory (LSTM)](https://www.coursera.org/learn/nlp-sequence-models/lecture/agZiL/gated-recurrent-unit-gru){:target="_back"}
+
+__GRU and LSTM__
+
+![Imgur](https://i.imgur.com/gqLwXsK.jpg)
+
+![Imgur](https://i.imgur.com/0kx3DpE.jpg)
+
+__LSTM__
+
+![Imgur](https://i.imgur.com/d7Gf3No.jpg)
+
+
+### [RNN: bidirectionisal RNN](https://www.coursera.org/learn/nlp-sequence-models/lecture/fyXnn/bidirectional-rnn){:target="_back"}
+
+- disadvantage:
+   - need the entire sequence of data before you can make predictions anywhere
+   - ex: real time speech recognition system
+
+![Imgur](https://i.imgur.com/SVWX63b.jpg)
+
+
+### [RNN: deep RNNs](https://www.coursera.org/learn/nlp-sequence-models/lecture/ehs0S/deep-rnns){:target="_back"}
+
+
+![Imgur](https://i.imgur.com/5vIq7GQ.jpg)
+
+![Imgur](https://i.imgur.com/vQXP7Hd.jpg)
