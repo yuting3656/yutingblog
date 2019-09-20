@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'daily Programming: numpy clip'
 permalink: 'daily-programming/numpy-clip'
-tags: daily-programming
+tags: daily-programming numpy
 ---
 
 > 魔鬼都在細節裡!
