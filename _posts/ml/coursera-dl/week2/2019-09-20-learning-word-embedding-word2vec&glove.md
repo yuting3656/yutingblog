@@ -18,7 +18,7 @@ tags: coursera-deep-learning nlp word-embeddings Word2Vec
 ![Imgur](https://i.imgur.com/8lzcPxm.jpg)
 
 
-### [NLP and Word Embeddings: Word2Vec](https://www.coursera.org/learn/nlp-sequence-models/lecture/APM5s/learning-word-embeddings){:target="_back"}
+### [NLP and Word Embeddings: Word2Vec](https://www.coursera.org/learn/nlp-sequence-models/lecture/8CZiw/word2vec){:target="_back"}
 
 - Skip-grams 
 
@@ -39,6 +39,16 @@ tags: coursera-deep-learning nlp word-embeddings Word2Vec
 ![Imgur](https://i.imgur.com/j54eNxD.gif)
 
 ![Imgur](https://i.imgur.com/Rg5jCzF.gif)
+
+### [NLP and Word Embeddings: Glove Word vectors](https://www.coursera.org/learn/nlp-sequence-models/lecture/IxDTG/glove-word-vectors){:target="_back"}
+
+
+![Imgur](https://i.imgur.com/lFVSE2W.gif)
+
+![Imgur](https://i.imgur.com/tTuRcuZ.gif)
+
+![Imgur](https://i.imgur.com/I3xgzye.gif)
+
 
 
 
