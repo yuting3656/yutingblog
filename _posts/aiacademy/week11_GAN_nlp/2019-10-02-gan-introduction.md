@@ -1,6 +1,6 @@
 ---
 layout: 'post'
-title: 'Generative Adversarial Network (GAN): Introduction'
+title: 'aiacademy: 生成對抗網路 GAN - Generative Adversarial Network (GAN) Introduction'
 permalink: 'aiacademy/week11/gan-introduction'
 tags: aiacademy GAN
 ---

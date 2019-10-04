@@ -1,6 +1,6 @@
 ---
 layout: 'post'
-title: '手做 VanillaGAN & ConditionalGAN '
+title: 'aiacademy: 生成對抗網路 GAN - 手做 VanillaGAN & ConditionalGAN '
 permalink: 'aiacademy/week11/vanillagan-conditionalgan'
 tags: aiacademy GAN conditional-gan
 ---

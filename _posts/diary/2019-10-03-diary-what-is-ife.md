@@ -105,6 +105,11 @@ function clickF(){
 <table>
    <tr>
       <td>
+        <img src="https://i.imgur.com/Fiu2Wzx.jpg"/>
+      </td>
+   </tr>
+   <tr>
+      <td>
          <img src="https://i.imgur.com/ZdGovT8.jpg"/>
       </td>
    </tr>
