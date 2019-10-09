@@ -21,3 +21,8 @@ tags: coursera-deep-learning sequence-to-sequence
 
 
 ### [Picking the most likely sentence](https://www.coursera.org/learn/nlp-sequence-models/lecture/v2pRn/picking-the-most-likely-sentence){:target="_back"}
+
+
+![Imgur](https://i.imgur.com/8LSzfdK.gif)
+
+
