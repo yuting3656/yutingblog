@@ -1,6 +1,6 @@
 ---
 layout: 'post'
-title: 'aiacademy: 自然語言處理 NLP Sequence Encoding & Attention'
+title: 'aiacademy: 自然語言處理 NLP 3.2 Sequence Encoding & Attention'
 permalink: 'aiacademy/week12/nlp-sequence-encoding-attention'
 tags: aiacademy nlp sequence-encoding attention
 ---

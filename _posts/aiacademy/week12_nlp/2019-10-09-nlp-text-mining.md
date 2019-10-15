@@ -1,6 +1,6 @@
 ---
 layout: 'post'
-title: 'aiacademy: 自然語言處理 NLP Clustering Visualization / Document Vector'
+title: 'aiacademy: 自然語言處理 NLP 3.1 Clustering Visualization / Document Vector'
 permalink: 'aiacademy/week12/nlp-clustering-visualization-document-vector'
 tags: aiacademy nlp word2vec doc2vec
 ---
