@@ -5,6 +5,8 @@ permalink: 'aiacademy/week12/nlp-contextualized-word-embeddings'
 tags: aiacademy nlp
 ---
 
+- [youtube list](https://www.youtube.com/playlist?list=PL1f_B9coMEeAvsLxePN8VocV30kuspe0p){:target="_back"}
+
 # Contextualized Word Embeddings Background
 
 <iframe src="https://www.youtube.com/embed/VE2JZNymAwE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
