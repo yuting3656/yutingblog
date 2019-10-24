@@ -1,7 +1,7 @@
 ---
 layout: 'post'
 title: 'daily Programming: music21 GOT music'
-permalink: 'daily-programming/'
+permalink: 'daily-programming/python-music21'
 tags: daily-programming python music21
 ---
 
