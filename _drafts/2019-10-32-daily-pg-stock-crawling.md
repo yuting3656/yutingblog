@@ -10,6 +10,28 @@ tags: daily-programming python music21
 
 > 爬蟲抓股市 & 畫圖!
 
+- API 網站
+
+   - [https://www.alphavantage.co/](https://www.alphavantage.co/){:target="_back"}
+
+- code 
+
+~~~js
+
+function loadXMLDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("view").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=5min&apikey=QJJEIG66V8ASQX57", true);
+  xhttp.send();
+}
+
+~~~
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/then-request/2.2.0/request.js"></script>
 
 
@@ -37,11 +59,11 @@ function loadXMLDoc() {
       this.responseText;
     }
   };
-  xhttp.open("GET", "https://tw.stock.yahoo.com/", true);
+  xhttp.open("GET", "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=5min&apikey=QJJEIG66V8ASQX57", true);
   xhttp.send();
 }
 </script>
 
 <button type='button' style="color: snow; background-color: blue" onclick="loadXMLDoc()">點我</button>
 
-<div id='demo'></div>
+<div id='view'></div>
