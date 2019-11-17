@@ -30,7 +30,7 @@ tags: aiacademy ai-project reinforcement-learning q-learning
 
 ![q_learning](https://pythonprogramming.net/static/images/reinforcement-learning/new-q-value-formula.png)
 
-- [Q_Learning Play list](https://www.youtube.com/playlist?list=PLQVvvaa0QuDezJFIOU5wDdfy4e9vdnx-7){:"target="_back"}
+- [Q_Learning Play list](https://www.youtube.com/playlist?list=PLQVvvaa0QuDezJFIOU5wDdfy4e9vdnx-7){:target="_back"}
 
 #### part 1 
 
