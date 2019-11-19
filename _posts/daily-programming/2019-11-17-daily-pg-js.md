@@ -454,8 +454,8 @@ f(2);
   - null 
   - symbol
 
-  - 無法自由擴增屬性
-  - 但是不會報錯
+  - `無法自由擴增屬性`
+  - 亂加屬性... 但是不會報錯
   - Primitive Type 不會有屬性
   - Primitive Type (String, number, boolean) 有繼承父類別
 
@@ -464,9 +464,8 @@ f(2);
    - 原生物件
    - 宿主物件
 
-   - 有擴增性
+   - 可以自由擴增屬性
    
-   - 
    ~~~js
    delete window.xxx
    // 幾乎都會回傳 true
@@ -521,6 +520,14 @@ var b = +'10' // 直接轉 number type
 
 ## JavaScript: Primitive Type - string
 
+- ES6 string
+
+   ~~~js
+   var name = `Will`;
+   
+   var str = `Mr. ${name}`;
+   ~~~
+
 
 ## JavaScript: Primitive Type - boolean
 
@@ -559,9 +566,23 @@ var j = (undefined == null);       // true
 
 ## JavaScript: Primitive Type - nudefined
 
-~~~js
+- 使用方法
 
-~~~
+   ~~~js
+   var a;  // 變數 a 尚未定義 ( a === undefined )
+   a = undefined;
+   ~~~
+
+- 重點觀念
+
+    - undefined (型別) 是一個內建型別 (原始型別)
+    - undefined (物件) 在執行時期的記憶體中有個物件存在
+    - undefined (變數/屬性) 是一個全域變數 (也是個屬性)
+       - window.undefined === undefined
+       - 在 IE8 以下 (含) undefined 可以被重新指派成其他物件！
+    - 無論 null 或是 undefined 都會隱含轉型成 false
+       - undefined == null // true
+
 
 ## JavaScript: Primitive Type - symbol
 
@@ -903,6 +924,9 @@ function Myfun(){
    
    return obj
 }
+
+
+
 
 ~~~
 
