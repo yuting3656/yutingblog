@@ -172,7 +172,7 @@ tags: aiacademy ai-project
    - [https://towardsdatascience.com/learning-rate-scheduler-d8a55747dd90]{:target="_back"}
 
 
-## Group 23 音樂曲風辨識 
+## Group 23 音樂曲風辨識 1
 
 > 超棒～～～～～～～
 
@@ -227,7 +227,7 @@ tags: aiacademy ai-project
 - unet ++
 
 
-## Goup 24 新聞推薦系統
+## Goup 24 新聞推薦系統 1
 
 - Collaborative Filtering
 
@@ -286,3 +286,285 @@ tags: aiacademy ai-project
 
    - 用手控制音樂撥放
    - 玩俄羅斯方塊
+
+
+## Group 27 新聞推薦系統 2
+
+- non-negative matrix factorization
+
+## Group 28 音樂曲風辨識 2
+
+- ai-音樂玩家
+
+> 品味美、創造美
+
+- Preprocess
+
+   - music segementation: 8 s.
+
+
+- 兩組都用　Melspectrum 
+
+   - resullt & discussion
+      - 把　pop and rock 拿掉 
+       - 0.67 ---> 0.87
+
+   - normalization 
+
+      - min & max
+
+- 創造美!
+
+   - Genere Transfer 
+
+   - Change Pich 
+      - WGAN-GP
+      - CycleGAN 
+
+   - Change Velocity
+      - RNN
+
+   - 把所有樂器都壓成鋼琴
+
+   - 天空之城　轉 jazz
+
+
+   - RNN Architecture
+
+      - pitch change
+      - cycleGAN 可做 ---> music generation
+
+## Group 29 美國股債轉折點預測與投資組合交易回測 1
+
+> 最棒棒！！！！
+
+## Group 30 美國股債轉折點預測與投資組合交易回測 2
+
+- TA-lib (open source lib)
+
+- 1年(252交易日)
+
+- FB Prophet (open source)
+
+
+## Group 31 埋葬蟲移動軌跡偵測（Tracking）與行為偵測 (Action)
+
+- 社會性生物追蹤 與互動行為預測
+
+- 行為
+
+   - attck 
+   - chase
+   - escape
+   - Wrestle
+   
+- object detection
+   - yolov3, M2Det
+   - M2Det
+      - CFENet 對小物體駔最佳化
+      - 比 Faster-CNN, yolo 還棒棒!
+- object tracking
+   - Sort, NASNet,
+
+- Performance
+
+   - IOU 
+
+- Improve recall
+   
+   - recall 高
+      - 盡量框出埋葬蟲
+
+- Object Classification
+
+   - NASNet
+
+- SORT + NASNet
+
+- Behavior Prediction
+
+   - detection + tracking + classification +　behavior prediction
+
+## Group 32 新聞推薦系統 News Recommendation System
+
+- Objective
+
+   - news 2018/01 ~ 2018/12
+       - 最高點擊
+          - July 
+          - 5 pm 
+
+- Open Data + Sentiment Analytics + User Click Log + News Content
+
+   - 112 features
+
+- Model
+
+   - Wide & Deep
+      - [https://ai.googleblog.com/2016/06/wide-deep-learning-better-together-with.html](https://ai.googleblog.com/2016/06/wide-deep-learning-better-together-with.html){:target="_back"}
+   - K-means
+      - 人分群
+      - group n 
+
+   - FM
+      - [https://towardsdatascience.com/thrive-and-blossom-in-the-mud-fm-model-for-recommendation-system-1-95707839e235](https://towardsdatascience.com/thrive-and-blossom-in-the-mud-fm-model-for-recommendation-system-1-95707839e235){:target="_back"}
+      - 計算人與人之見的相近程度
+
+
+---
+---
+
+## Microsoft Azure Machine Learning
+
+- AI global trend
+- Clud or not (security)
+- MS AI solution 
+
+
+#### Adopting Advanced Analytics and AI in your company
+
+- Where do you see your company today ?
+
+
+#### 2020 3.9T
+
+ 1. decision support 
+ 2. virutal agents
+ 3. smart products 
+ 4. workflow sutomation
+
+
+#### Digital Transformation
+
+- Engage your `customers`
+
+- Epower your `employees`
+
+- Optimize your `operations`
+
+- Transform your `products`
+
+#### Momentum
+
+- `194 billion` / External Requesets made to Azure App Service
+
+- `750 million` / Azure Active Directory users
+
+- `340 billion` / Azure SQL query requests processed/day
+
+- `188 billion` / Hits to websites run on Azure Web App Service
+
+
+#### Cybersecurity Reference Architecture
+
+![security](https://www.microsoft.com/security/blog/wp-content/uploads/2018/06/SRA-1024x569.png)
+
+
+#### Azure Data Center
+
+- Microsoft Cloud Infrastructure and Operations Security starts with physical data center
+
+- Azure Compliance Engineering
+
+   - Certification
+      - ISO
+      - SOC I
+      - ...
+
+#### Continuous Compliance approach
+
+#### Projec tBrainwave
+
+- field-programmable gate array (FPGA)
+
+
+#### ONNX and Azure Machine Learning: Create and accelerate ML models
+
+- [https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-onnx](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-onnx){:target="_back"}
+
+
+#### Azure Cognitive Services
+
+- most comprehensive pre-trained AI
+   - Decision
+   - Speech 
+   - Language 
+   - vision
+   - web search
+
+
+#### IOT + Edge 
+
+- Azure IoT Edge
+
+- Coud GeteWay + Insights + Actions
+
+#### DevOps
+
+- k8s
+
+#### GPU
+- Broad Range of GPU Scenarios in Azure
+
+   - Visualization 
+   - Rendering 
+   - HPC/Simulation
+   - Deep-Learning/AI
+
+#### Autonomous 
+
+#### Azure Batch AI
+
+#### Automated machine learning 
+
+- automated ML
+
+#### Power BI with AI
+
+-[https://powerbi.microsoft.com/en-us/](https://powerbi.microsoft.com/en-us/){:target="_back"}
+
+
+- 丟掉、丟掉、丟掉、把不賺錢的都丟掉
+
+- cloud first & mobile first
+
+
+#### 微軟小冰！
+
+- [https://www.bnext.com.tw/article/49211/microsoft-xiaoice-chat-bot-phone-call-demo](https://www.bnext.com.tw/article/49211/microsoft-xiaoice-chat-bot-phone-call-demo){:target="_back"} 
+
+#### Microsoft Azure Data Lake
+
+- 在 lake 裡面放各種資料，不同格式不同類型的資料。
+
+
+
+#### Lambda architecture
+
+-[https://en.wikipedia.org/wiki/Lambda_architecture](https://en.wikipedia.org/wiki/Lambda_architecture){:target=:"_back"}
+
+
+### Cortana
+
+
+#### Power BI
+
+- Power BI Desktop
+
+- Power BI Free
+
+- Power BI Pro
+
+- Power BI Premium
+
+
+#### SQL2016, 2019
+
+   - +R
+   - +python, +java
+
+#### SQL Serve 
+
+
+- rxDTree & plot(create TreeView());
+

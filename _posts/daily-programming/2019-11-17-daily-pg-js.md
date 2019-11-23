@@ -82,15 +82,18 @@ tags: daily-programming javascript
       - 上面兩種呼叫方式，幾乎一樣不會影響效能
 
 
-## 
+## 取得網頁上第一個表單的 DOM 物件
+
 
 - window.document.forms[0]
 
  - 我取得 window 的物件，有一個 document 的屬性，document 下有一個屬性叫 forms
  - js array 就是一個物件，物件下就只有屬性
 
+ - 來了啦! 眼睛 compile!!! :notes::notes::notes:
 
-- 這樣呼叫都可以 work
+    - [http://utf-8.jp/public/aaencode.html](http://utf-8.jp/public/aaencode.html){:target="_back"}
+    - 這樣呼叫都可以 work
 
 ~~~js
 window.document.forms['0']
