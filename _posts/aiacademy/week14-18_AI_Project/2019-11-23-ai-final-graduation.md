@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'aiacademy: 期末結業拉!!!!!!!!'
 permalink: 'aiacademy/week18/aia-project-final-graduation'
-tags: aiacademy ai-project
+tags: aiacademy
 ---
 
 ## 孔校長!!!
@@ -61,6 +61,13 @@ tags: aiacademy ai-project
 
    - ![Imgur](https://i.imgur.com/WLM5X1n.jpg)
 
+   
+
+---
+---
+---
+
+
 
 ## 入選專題
 
@@ -115,11 +122,7 @@ tags: aiacademy ai-project
    - GOOD~~
 
 
----
----
----
-
-##　經理人班
+## 經理人班
 
 #### Yoga
 
@@ -142,3 +145,8 @@ tags: aiacademy ai-project
 
 
 #### TWX 化工產業廢水處理
+
+
+---
+---
+---
