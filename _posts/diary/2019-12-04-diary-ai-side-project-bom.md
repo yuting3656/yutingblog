@@ -133,3 +133,10 @@ speechSynthesis.onvoiceschanged = voiceGO;
 // }
 
 </script>
+
+- 乾貨
+
+  - http://teropa.info/blog/2016/07/28/javascript-systems-music.html
+  - https://codepen.io/teropa/pen/gvwwZL/
+  - https://medium.com/@oluwafunmi.ojo/getting-started-with-magenta-js-e7ffbcb64c21
+  - https://tensorflow.github.io/magenta-js/music/demos/
