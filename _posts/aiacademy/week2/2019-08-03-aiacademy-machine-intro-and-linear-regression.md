@@ -7,6 +7,18 @@ tags: aiacademy machine-learning
 
 > 只 PO 不怎麼熟悉的主題
 
+- [YouTube](https://www.youtube.com/playlist?list=PL1f_B9coMEeB9vVZLAVVY99Q6jUyMxxZ-){:target="_back"}
+
+
+ML 1 (觀念): https://www.youtube.com/playlist?list=PL1f_B9coMEeB9vVZLAVVY99Q6jUyMxxZ-
+ML 2 (實作): https://www.youtube.com/playlist?list=PL1f_B9coMEeAq0pcCCMx0UoxRkQ392hy2
+ML 3 (觀念 & 實作): https://www.youtube.com/playlist?list=PL1f_B9coMEeB0uxQwlKLGGyDpI_Xs8iCY
+ML 4 (觀念 & 實作 ): https://www.youtube.com/playlist?list=PL1f_B9coMEeCvbetNGYmW7fWUBSo0-D_i
+ML 5 (觀念 & 實作 ): https://www.youtube.com/playlist?list=PL1f_B9coMEeDnlocZvO4vREgupj3TWhh5
+ML 6 (觀念 & 實作 ): https://www.youtube.com/playlist?list=PL1f_B9coMEeDPl3dZ_ZmoDB1A2gjPa3hg
+ML 7 (觀念 & 實作 ): https://www.youtube.com/playlist?list=PL1f_B9coMEeDMRTE71laJp3BYe9dOE_Ak
+
+
 ### Gradient Descent VS. Stochastic Gradient Descent
 
 <iframe src="https://www.youtube.com/embed/93BIDobkD5A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

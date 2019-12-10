@@ -10,6 +10,8 @@ tags: aiacademy machine-learning
 ![Imgur](https://i.imgur.com/mzAwW6ol.gif)
 
 
+- [YouTube](https://www.youtube.com/playlist?list=PL1f_B9coMEeAq0pcCCMx0UoxRkQ392hy2){:target="_back"}
+
 ### sklearn data split
 
 ~~~python
