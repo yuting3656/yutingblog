@@ -7,6 +7,11 @@ tags: udemy-docker
 
 - `docker version`
 
+   - `Server` also called `Engine`: running in the background on my machine. 
+      - On Windows, it is usually called `servers`
+      - On Mac, Linux, it is usually called `demons`
+
+   - Docker command line is talking to the server on my machine and returning its values 
 ~~~
 Client: Docker Engine - Community
  Version:           19.03.5
