@@ -5,6 +5,21 @@ permalink: 'docker_matery/docker-containers'
 tags: udemy-docker
 ---
 
+
+
+## Udemy
+
+- [Docker Mastery: with Kubernetes +Swarm from a Docker Captain](https://www.udemy.com/course/docker-mastery/){:target="_back"}
+
+- [GitHub: udemy-docker-mastery](https://github.com/BretFisher/udemy-docker-mastery){:target="_back"}
+
+- [講師的YouTube](https://www.youtube.com/channel/UC0NErq0RhP51iXx64ZmyVfg){:target="_back"}
+
+---
+---
+---
+
+
 - `docker version`
 
    - `Server` also called `Engine`: running in the background on my machine. 
@@ -12,6 +27,7 @@ tags: udemy-docker
       - On Mac, Linux, it is usually called `demons`
 
    - Docker command line is talking to the server on my machine and returning its values 
+
 ~~~
 Client: Docker Engine - Community
  Version:           19.03.5

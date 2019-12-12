@@ -1,0 +1,35 @@
+---
+layout: 'post'
+title: 'Docker Matery: docker containers VS VM'
+permalink: 'docker_matery/docker-containers-vs-vm'
+tags: udemy-docker
+---
+
+
+## Udemy
+
+- [Docker Mastery: with Kubernetes +Swarm from a Docker Captain](https://www.udemy.com/course/docker-mastery/){:target="_back"}
+
+- [GitHub: udemy-docker-mastery](https://github.com/BretFisher/udemy-docker-mastery){:target="_back"}
+
+- [講師的YouTube](https://www.youtube.com/channel/UC0NErq0RhP51iXx64ZmyVfg){:target="_back"}
+
+---
+---
+---
+
+
+## Container vs. VM
+
+
+- images credit: [https://www.backblaze.com/blog/vm-vs-containers/](https://www.backblaze.com/blog/vm-vs-containers/){:target="_back"}
+<table>
+   <tr>
+    <td colspan="2"><img src="https://www.backblaze.com/blog/wp-content/uploads/2018/06/whats-the-diff-container-vs-vm.jpg"></td>
+   </tr>
+   <tr>
+    <td> <img src="https://www.backblaze.com/blog/wp-content/uploads/2018/06/vms.png"></td>
+    <td> <img src="https://www.backblaze.com/blog/wp-content/uploads/2018/06/containers.png"></td>
+   </tr>
+  </table>
+

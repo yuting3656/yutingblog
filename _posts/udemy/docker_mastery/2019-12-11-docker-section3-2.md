@@ -5,6 +5,20 @@ permalink: 'docker_matery/docker-containers-2'
 tags: udemy-docker
 ---
 
+
+## Udemy
+
+- [Docker Mastery: with Kubernetes +Swarm from a Docker Captain](https://www.udemy.com/course/docker-mastery/){:target="_back"}
+
+- [GitHub: udemy-docker-mastery](https://github.com/BretFisher/udemy-docker-mastery){:target="_back"}
+
+- [講師的YouTube](https://www.youtube.com/channel/UC0NErq0RhP51iXx64ZmyVfg){:target="_back"}
+
+---
+---
+---
+
+
 ## Images vs. Container
 
 - Images
@@ -148,3 +162,23 @@ Error response from daemon: You cannot remove a running container 4acbef2aa86181
    E:\Udemy\Docker Mastery\Docker-Mastery-Commands>docker container ls
    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
    ~~~
+
+
+## What happens in docker container run
+
+1. 先找 image locally 
+2. 找不到 再去 `Docker Hub` 抓 remote image repository
+3. 抓最新 version
+4. create new container based on that image and prepares to start
+5. 給一個 docker engine 虛擬ip
+6. opens up port 80 on host and forwars to port 80 in container
+7. Starts container by using CMD in the image Dockerfile
+
+- ex:
+~~~
+                                                      (change version of image)
+                                                                |
+docker container run --publish 8080:80 --name webhost -d nginx:1.1 nginx -T
+                                |                                     |
+                       (change host listening port)                 (change CMD run on start)
+~~~
