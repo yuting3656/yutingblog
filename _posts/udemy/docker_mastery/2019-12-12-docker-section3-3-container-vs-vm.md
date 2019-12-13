@@ -1,6 +1,6 @@
 ---
 layout: 'post'
-title: 'Docker Matery: docker containers VS VM'
+title: 'Docker Matery: docker containers VS VM and Windows Container '
 permalink: 'docker_matery/docker-containers-vs-vm'
 tags: udemy-docker
 ---
@@ -33,3 +33,17 @@ tags: udemy-docker
    </tr>
   </table>
 
+
+## Windows Containers and Docker: 101
+
+
+<iframe src="https://www.youtube.com/embed/066-9yw8-7c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+## Windows and Linux parity in Docker
+
+<iframe src="https://www.youtube.com/embed/4ZY_4OeyJsw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Investing in the Future of your Applications
+
+<iframe src="https://www.youtube.com/embed/QASAqcuuzgI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
