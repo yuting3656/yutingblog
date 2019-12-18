@@ -59,7 +59,8 @@ PS E:\> docker container port wehost
 
    - A common option for formatting the output of commands using "Go templates"
 
-   - 影片有出現 ip, 我本機用沒有 不知道為啥 TAT!
+   - 影片有出現 ip, 我本機用沒有 不知道為啥 TAT! 
+   
 ~~~
 PS E:\> docker container inspect --format "{{println .NetworkSettings.IPAddress }}" wehost
 
