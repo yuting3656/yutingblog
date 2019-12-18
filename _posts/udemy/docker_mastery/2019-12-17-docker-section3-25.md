@@ -5,6 +5,21 @@ permalink: 'docker_matery/docker-containers-cli'
 tags: udemy-docker 
 ---
 
+- section3-25, 26
+
+
+## Udemy
+
+- [Docker Mastery: with Kubernetes +Swarm from a Docker Captain](https://www.udemy.com/course/docker-mastery/){:target="_back"}
+
+- [GitHub: udemy-docker-mastery](https://github.com/BretFisher/udemy-docker-mastery){:target="_back"}
+
+- [講師的YouTube](https://www.youtube.com/channel/UC0NErq0RhP51iXx64ZmyVfg){:target="_back"}
+
+---
+---
+---
+
 ## Whatis Going On In Containers
 
 
