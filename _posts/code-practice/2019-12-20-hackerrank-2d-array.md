@@ -34,7 +34,6 @@ def hourglassSum(arr):
 ~~~js
 // Complete the hourglassSum function below.
 function hourglassSum(arr) {
-   let sumDict = {}
    let maxValue =  -Infinity;
    for (let nr = 0 ; nr <=3; nr++){
        for (let nc=0; nc <=3; nc++){

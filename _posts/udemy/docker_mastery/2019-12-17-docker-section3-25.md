@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Docker Matery: docker Container cli'
 permalink: 'docker_matery/docker-containers-cli'
-tags: udemy-docker 
+tags: udemy-docker docker-cli
 ---
 
 - section3-25, 26

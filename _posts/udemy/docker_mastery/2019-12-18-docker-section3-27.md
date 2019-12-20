@@ -5,7 +5,7 @@ permalink: 'docker_matery/docker-networks'
 tags: udemy-docker docker-network
 ---
 
-- section3-27, 28, 29, 30
+- section3-27, 28, 29
 
 ## Udemy
 
