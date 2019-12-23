@@ -2,7 +2,7 @@
 layout: "post"
 title: " HackerRank: Jumping on the Clouds "
 permalink: 'code-practice/hackerrank-jumping-on-the-cluds'
-tags: 紮馬步
+tags: 紮馬步 hackerrank
 ---
 
 ## [Jumping on the Clouds](https://www.hackerrank.com/challenges/jumping-on-the-clouds/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=warmup){:target="_back"}

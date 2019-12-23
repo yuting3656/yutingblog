@@ -2,7 +2,7 @@
 layout: "post"
 title: " HackerRank: Repeated String "
 permalink: 'code-practice/hackerrank-repeated-string'
-tags: 紮馬步
+tags: 紮馬步 hackerrank
 ---
 
 ## [Repeated String](https://www.hackerrank.com/challenges/repeated-string/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=warmup){:target='_back'}
