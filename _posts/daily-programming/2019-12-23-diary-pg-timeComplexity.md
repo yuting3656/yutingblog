@@ -56,4 +56,48 @@ __Expected Case__
 
 ## Space Complexity
 
-先運動...
+- Space complexity is a parallel concept to time complexity.
+
+   - O(n): create an array of size n
+
+   - O(n*n): two-dimentional array of size n x n
+
+- Take O(n) time and O(n) space
+
+   - Recursive calls
+
+    ~~~~java 
+       int sum(int n){
+          if (n <= 0) {
+             return 0;
+          }
+          return n + sum(n-1);
+       }
+    ~~~~
+
+
+    - Each call adds a level to the stack
+
+     ~~~js
+      sum(4)
+        -> sum(3)
+          -> sum(2)
+            -> sum(1)
+              -> sum(0)
+     ~~~
+
+- O(n) time and O(1) space
+
+~~~java 
+int pairSumSequence(int n) {
+   int sum = 0;
+   for (int i = 0; i < n; i++) {
+       sum += pairSum(i, i + 1);
+   }
+   return sum;
+}
+
+int pairSum(int a, int b) {
+   return a + b;
+}
+~~~
