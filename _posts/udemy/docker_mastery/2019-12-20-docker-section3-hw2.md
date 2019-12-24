@@ -5,7 +5,7 @@ permalink: 'docker_matery/docker-sections3-hw2-using-containers-for-cli-testing'
 tags: udemy-docker
 ---
  
-- section3-31
+- section3-31, 32
 
 ## Udemy
 
@@ -87,6 +87,6 @@ Status: Downloaded newer image for centos:7
 [root@a46c0ef74200 /]# 
 ~~~
 
-## --rm 
+## \-\-rm 
 
 - 跑起後當關閉時 container 也自動清除!
