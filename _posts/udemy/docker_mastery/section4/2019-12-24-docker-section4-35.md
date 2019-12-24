@@ -32,3 +32,18 @@ tags: udemy-docker
 - Managing our local image cache
 - Building our own images
 
+
+## What's In An Image (And What's Isn't)
+
+- App binaries and dependencies
+- Metatdata about the image data and how to run the image
+- [official definition](https://docs.docker.com/glossary/){:target="_back"}: "An Image is an ordered collection of root filesystem changes and the corresponding execution parameters for use within a container runtime."
+   - [Docker Overview](https://docs.docker.com/engine/docker-overview/){:target-"_back"}
+
+- Not a complete OS, No kernel, kernel modules (e.g. drivers)
+- Small as one file (your app binary) like a golang static binary
+- Big as a Ununtu distro with apt, and Apache, PHP, and more installed 
+
+## Docker Image Specification
+
+- [link](https://github.com/moby/moby/blob/master/image/spec/v1.md){:target="_back"}
