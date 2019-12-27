@@ -23,8 +23,6 @@ tags: 紮馬步 hackerrank
    - 我真的只想的到 `Chaotic` 的情況~
 
 ~~~py
-import sys
-
 # Complete the minimumBribes function below.
 def minimumBribes(q):
     origin_list = [ i for i in range(1, len(q) +1)]
