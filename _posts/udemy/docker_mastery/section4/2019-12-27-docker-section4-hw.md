@@ -5,7 +5,7 @@ permalink: 'docker_matery/docker-sections4-hw-build-own-dockerfile-and-run-conta
 tags: udemy-docker docker-image
 ---
 
-- section3-42, 43
+- section3-42, 43, 44
 
 ## Udemy
 
