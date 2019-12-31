@@ -56,3 +56,83 @@ tags: daily-programming aws docker
 
 
 > 好先這樣　預祝大家 2020 新年快樂～　一起 ~~~發大財~~~
+
+
+
+## Run 一個 EC2 Instance
+
+> 直接來看[這篇](https://www.ybrikman.com/writing/2015/11/11/running-docker-aws-ground-up/){:target="_back"}
+
+- 重點節錄
+
+   - 登入 [AWS](https://aws.amazon.com/){:target="_back"}
+
+   - Build a solutino: Launch a VM
+
+      - |![Imgur](https://i.imgur.com/xbNUIB1.jpg)|
+      
+   - select Amzaon Linux AMI
+
+      - |![Imgur](https://i.imgur.com/t6U79Jf.jpg)|
+
+   - choose an Instance Type 
+      - 唯一指名免費　`FREE`
+
+      - |![Imgur](https://i.imgur.com/WfpLR8q.jpg)|
+
+   - Review Instance Launch
+
+      - |![Imgur](https://i.imgur.com/oInaR92.jpg)|
+
+   - select: `create a new key pair`
+
+      - 下拉選單選擇 `create a new key pair`
+      - 輸入 key pair name
+      - 下載到本機，等等連接要用！
+         - __注意__ 要記得 __下載！！__
+         - __注意__ 只能下載一次，取消的話名字要更改！
+
+      - |![Imgur](https://i.imgur.com/A5ycdp1.jpg)|![Imgur](https://i.imgur.com/sT3qET1.jpg)|
+
+   - 成功
+
+      - |![Imgur](https://i.imgur.com/3lGgKSG.jpg)|
+
+- Run .pem file
+   - cd 到剛剛下載的 pem 目錄
+   - cmd
+      - `ssh -i my-ec2-key-pair.pem ec2-user@<EC2-INSTANCE-PUBLIC-IP-ADDRESS>`
+      - 唯一要改的 `<EC2-INSTANCE-PUBLIC-IP-ADDRESS>`
+         - |![Imgur](https://i.imgur.com/iotaqlJ.jpg)|
+      - 其他請照打
+         - 沒錯你跟我想的一樣: `ec2-user@` 請打這個不要改成自己的名字！！！！！
+
+- 成功連線到 AWS EC2
+
+   - ![Imgur](https://i.imgur.com/a3lL7rr.jpg)
+
+恩～　很好！　都跑成功了嗎～　鳩咪 :whale::whale::whale:
+
+> ＸＤＤＤＤＤＤＤＤＤＤ
+
+## 採雷研究院 :satisfied: :scream: :stuck_out_tongue_winking_eye: :flushed: :laughing:
+
+- Windows SSh
+
+   - [https://www.howtogeek.com/336775/how-to-enable-and-use-windows-10s-built-in-ssh-commands/](https://www.howtogeek.com/336775/how-to-enable-and-use-windows-10s-built-in-ssh-commands/){:target="_back"}
+
+
+- AWS CLI version 1
+
+   - [Linux](https://docs.aws.amazon.com/cli/latest/userguide/install-linux.html){:target="_back"}
+   - [maxOS](https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html){:target="_back"}
+   - [Windows](https://docs.aws.amazon.com/cli/latest/userguide/install-windows.html){:target="_back"}
+
+- permissions are too open 
+
+   - windows 
+    - [https://superuser.com/questions/1296024/windows-ssh-permissions-for-private-key-are-too-open](https://superuser.com/questions/1296024/windows-ssh-permissions-for-private-key-are-too-open){:target="_back"}
+
+    - 我最後本機的樣子
+       
+       - |![Imgur](https://i.imgur.com/jiPxtay.jpg)|
