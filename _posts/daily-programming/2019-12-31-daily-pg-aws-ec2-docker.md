@@ -88,6 +88,9 @@ tags: daily-programming aws docker
 
       - 下拉選單選擇 `create a new key pair`
       - 輸入 key pair name
+         - 建議打　`my-ec2-key-pair`
+         - 你問我為什麼？　喔！　~~~我談的是大海，你跟我說漱口杯~~~　因為我也是抄來的 ＸＤＤ
+         - 直覺跟我說一定可以自己命名，只是官方這樣寫大家都照舊ＸＤＤＤ
       - 下載到本機，等等連接要用！
          - __注意__ 要記得 __下載！！__
          - __注意__ 只能下載一次，取消的話名字要更改！
@@ -101,8 +104,8 @@ tags: daily-programming aws docker
 - Run .pem file
    - cd 到剛剛下載的 pem 目錄
    - cmd
-      - `ssh -i my-ec2-key-pair.pem ec2-user@<EC2-INSTANCE-PUBLIC-IP-ADDRESS>`
-      - 唯一要改的 `<EC2-INSTANCE-PUBLIC-IP-ADDRESS>`
+      - `ssh -i <my-ec2-key-pair>.pem ec2-user@<EC2-INSTANCE-PUBLIC-IP-ADDRESS>`
+      - 唯二要改的 `<EC2-INSTANCE-PUBLIC-IP-ADDRESS>`　and `<key-pair-name>` 你剛剛下載自己命名的
          - |![Imgur](https://i.imgur.com/iotaqlJ.jpg)|
       - 其他請照打
          - 沒錯你跟我想的一樣: `ec2-user@` 請打這個不要改成自己的名字！！！！！
