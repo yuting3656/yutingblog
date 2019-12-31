@@ -134,8 +134,8 @@ tags: daily-programming aws docker
 - permissions are too open 
 
    - windows 
-    - [https://superuser.com/questions/1296024/windows-ssh-permissions-for-private-key-are-too-open](https://superuser.com/questions/1296024/windows-ssh-permissions-for-private-key-are-too-open){:target="_back"}
+      - [https://superuser.com/questions/1296024/windows-ssh-permissions-for-private-key-are-too-open](https://superuser.com/questions/1296024/windows-ssh-permissions-for-private-key-are-too-open){:target="_back"}
 
-    - 我最後本機的樣子
+   - 我最後本機的樣子
        
-       - |![Imgur](https://i.imgur.com/jiPxtay.jpg)|
+      - |![Imgur](https://i.imgur.com/jiPxtay.jpg)|
