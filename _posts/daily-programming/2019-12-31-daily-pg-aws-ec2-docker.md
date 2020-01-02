@@ -139,3 +139,34 @@ tags: daily-programming aws docker
    - 我最後本機的樣子
        
       - |![Imgur](https://i.imgur.com/jiPxtay.jpg)|
+
+## 實作一下吧
+
+1. Yuting Angular
+   
+   - 抓我精心設計的 docker ang`luar` image XDDD 
+   
+      - `docker container run --rm -p 80:80 tim23656/yuting-angluar`
+   
+   - 連到你的 AWS Public DNS 看~ 有沒有可愛小鯨魚在跳動~
+   
+   - 移除 `docker stop <container-id>`
+      
+      - 可透過 `docker container ls` 看 running container 
+   
+2. ROCKET.CHAT
+
+   - 官方 [Docker Hub](https://hub.docker.com/_/rocket-chat){:target="_back"}
+   
+   - install 主要 __2__ 步驟
+   
+      - step 1:
+         - `docker run --name db -d mongo:4.0 --smallfiles --replSet rs0 --oplogSize 128`
+   
+         - `docker exec -ti db mongo --eval "printjson(rs.initiate())"`
+   
+      - step 2:
+   
+         - `docker run --name rocketchat -p 80:3000 --link db --env ROOT_URL=http://localhost --env MONGO_OPLOG_URL=mongodb://db:27017/local -d rocket.chat`
+   
+   - 快樂聊天吧!
