@@ -1,11 +1,11 @@
 ---
 layout: 'post'
 title: 'Docker Matery: Section 5 作業阿～！！！ Named Volumes and Bind Mounts'
-permalink: 'docker_matery/docker-sections4-hw-named-volumes-and-bind-mounts'
+permalink: 'docker_matery/docker-sections5-hw-named-volumes-and-bind-mounts'
 tags: udemy-docker docker-volumes
 ---
 
-- section3-48, 49, 50, 51
+- section5-48, 49, 50, 51
 
 ## Udemy
 
