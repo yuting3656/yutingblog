@@ -5,7 +5,7 @@ permalink: 'docker_matery/docker-sections6-docker-compose-and-the-yaml-file'
 tags: udemy-docker docker-compose
 ---
 
-- section6-52
+- section6-52, 53
 
 ## Udemy
 
@@ -58,6 +58,10 @@ tags: udemy-docker docker-compose
       
       networks: # Optional, same as docker network create
       ~~~
+
+- [https://yaml.org/refcard.html](https://yaml.org/refcard.html)
+
+- [https://yaml.org/start.html](https://yaml.org/start.html)
 
 ## docker-compose Documentation
 
