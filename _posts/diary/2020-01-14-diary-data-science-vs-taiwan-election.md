@@ -66,3 +66,32 @@ tags: 今日隨意
 - [T-Brain](https://tbrain.trendmicro.com.tw/){:target="_back"}
 - [AIcrowd](https://www.aicrowd.com/){:target="_back"}
 - [DrivenData](https://www.drivendata.org/accounts/signup/){:target="_back"}
+
+
+## Brainstorming Techniques
+
+- [19 Top Brainstorming Techniques to Generate Ideas for Every Situation](https://business.tutsplus.com/articles/top-brainstorming-techniques--cms-27181){:target="_back"}
+
+- Brainstroming works:
+   - 找一群人，丟各式`問題`、`挑戰`、`機會`
+   - 恣意隨想發揮個是可能的點子，無論多瘋狂，多不切實際，在討論期間不可以有批評的聲音!!
+   - 檢閱那些點子，看看那些最有趣，然後討論出如何`結合`、`加強`、`實作`點子們~
+
+
+
+- 哪些方法? 我找幾個自己覺得有趣的 XDD
+
+   - Reverse Brainstorming:
+      - 想辦法，`製造問題` 
+      - how could we cause this? 
+      - 當列出一堆問題後，就可以開始解決了
+
+   - Gap Filling
+      - Start with a `statement` of where you are.
+      - Then, write a `statemnet` of where you'd like to be.
+      - 想辦回答、腦力激盪各種答案來達到預期的 `statement`
+
+   - Drivers Analysis
+      - What's driving client loyalty down?
+      - Waht's driving the competition?
+      - What's driving a trend toward lower productivity?
