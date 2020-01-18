@@ -65,6 +65,7 @@ Sometimes cost function is also called the __squared error function__
 >
 - __Goal :__ try to minimize the cost function J(θ0, θ1)
 >
+   ![Imgur](https://i.imgur.com/ctltK73.jpg)
    ~~~
 Simplified: θ0 = 0
 J(θ0, θ1) ---> J(θ1)
@@ -74,11 +75,17 @@ when θ1 = 1
 J(θ1) = 0
 ~~~
 >
-   ![simplifiedCostFunction][simplified-cost-function]
+   ![Imgur](https://i.imgur.com/upWmtZI.jpg) 
 ~~~
 when θ1 = 0.5
 ~~~
-   ![thetaOne05CostFunction][thetaOne0.5-cost-function]
+   ![Imgur](https://i.imgur.com/KIdbXdf.jpg)
+
+
+~~~
+when θ1 = 0
+~~~
+   ![Imgur](https://i.imgur.com/2RBumeO.jpg)
 
 >
 - We can find out in this case θ1 = 1 is our **goal**
@@ -88,12 +95,15 @@ when θ1 = 1
 J(θ1) = 0
 ~~~
 >
-   ![minimizeCostFunction][minimize-cost-function]
+   ![Imgur](https://i.imgur.com/p6kUpfw.jpg)
 
 ---
 >
 
 ### [Cost Fuction - Intuition ii](https://www.coursera.org/learn/machine-learning/lecture/nwpe2/cost-function-intuition-ii){:target="_back"} : [article](https://www.coursera.org/learn/machine-learning/supplement/9SEeJ/cost-function-intuition-ii){:target="_back"}
+
+>
+ ![Imgur](https://i.imgur.com/upBjkxs.jpg)
 
 > 
 - When we have 2 parameters the plot will be a 3D plot 
@@ -107,23 +117,23 @@ hθ = 50 + 0.06x
 >
 - J(θ0, θ1): 2 parameters
 >
-![3dPlot][3d-plot]
+![Imgur](https://i.imgur.com/muf0OWw.jpg)
 
 >
 - [Contour graphs][contour-maps]{:target="_back"}
 >
    - hθ(x) θ0 + θ1x
-   ![contour1][contour-1]
+   ![Imgur](https://i.imgur.com/1wINy2y.jpg)
 >
    - hθ(x) 360
     ~~~
 θ0 = 360
 θ1 = 0
     ~~~
- ![contour2][contour-2]
+ ![Imgur](https://i.imgur.com/z70emJm.jpg)
 >
    - minimize the cost function 
-   ![contour3][contour-3]
+   ![Imgur](https://i.imgur.com/pE7PX4C.jpg)
 
 
 

@@ -24,3 +24,5 @@ tags: udemy-docker docker-compose
 - "Building Custom `drupal` image for local testing"
 - Compose isn't just for developers. Testing apps is easy/run!
 - Maybe your learning Drupal admin, or are a software tester
+- Start with Compose file from prevous assignment 
+- 
