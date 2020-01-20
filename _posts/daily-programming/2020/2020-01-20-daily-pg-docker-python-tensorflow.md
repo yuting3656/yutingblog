@@ -110,7 +110,12 @@ tags: daily-programming docker python tensorflow
 
 
 
+## 其他
 
+- 如果想要讓 container ml 的環境 __(PYTHON: jupyter notebbok)__ 吃到本機的資料夾？
+
+   - `docker container run -v $PWD:/tf -w /tf -p 8888:8888 tim23656/tensorflow:yuting-v1`
+   -  
 
 
 
