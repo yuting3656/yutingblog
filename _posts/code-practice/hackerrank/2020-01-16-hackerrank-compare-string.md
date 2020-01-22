@@ -1,12 +1,12 @@
 ---
 layout: "post"
 title: " HackerRank: Sorting - Comparator "
-permalink: 'code-practice/hackerrank-mark-and-toys'
+permalink: 'code-practice/hackerrank-sorting-commparator'
 tags: 紮馬步 hackerrank
 ---
 
 
-## [Ssorting:Comparator](https://www.hackerrank.com/challenges/ctci-comparator-sorting/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting){:target='_back'}
+## [Sorting:Comparator](https://www.hackerrank.com/challenges/ctci-comparator-sorting/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting){:target='_back'}
 
 > 這題一整個 怪怪的兒~
 
