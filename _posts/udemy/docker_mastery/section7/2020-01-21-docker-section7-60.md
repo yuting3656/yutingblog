@@ -5,7 +5,7 @@ permalink: 'docker_matery/docker-sections7-swarm-create-first-service-and-scale-
 tags: udemy-docker swarm
 ---
 
-- section7-59, 60
+- section7-60
 
 ## Udemy
 
