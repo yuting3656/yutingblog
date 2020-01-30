@@ -5,7 +5,7 @@ permalink: 'docker_matery/docker-sections7-swarm-create-a-3-node-swarm-cluster'
 tags: udemy-docker swarm
 ---
 
-- section7-60
+- section7-61, 62, 63
 
 ## Udemy
 
@@ -58,7 +58,7 @@ tags: udemy-docker swarm
 
 - 自行安裝 docker 
 
-   - [get.docker.com](get.docker.com){:target='_back'}
+   - [get.docker.com](https://get.docker.com/{:target='_back'}
 
 
 - 成功連線三台 + 完美安裝 docker
