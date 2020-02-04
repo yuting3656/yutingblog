@@ -1,7 +1,7 @@
 ---
 layout: 'post'
 title: 'Docker Matery: Section 6 作業阿～！！！ Build and Run Compose'
-permalink: 'docker_matery/docker-sections5-hw2-build-and-run-compose'
+permalink: 'docker_matery/docker-sections6-hw2-build-and-run-compose'
 tags: udemy-docker docker-compose
 ---
 

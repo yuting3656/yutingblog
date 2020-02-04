@@ -1,7 +1,7 @@
 ---
 layout: 'post'
 title: 'Docker Matery: Section 6 作業阿～！！！ Writting a compose file'
-permalink: 'docker_matery/docker-sections5-hw1-writting-a-cmopose-file'
+permalink: 'docker_matery/docker-sections6-hw1-writting-a-cmopose-file'
 tags: udemy-docker docker-compose
 ---
 
