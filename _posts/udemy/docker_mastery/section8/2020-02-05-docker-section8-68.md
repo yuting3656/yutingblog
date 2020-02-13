@@ -234,4 +234,4 @@ sx2u9uf4nk7w        voteapp_frontend    overlay             swarm
 
 - Visualizer:
    - 劃出目前 deploy 的架構，超酷～～～
-   - ![img]https://i.imgur.com/rE64xPI.jpg[/img]
+   - ![img](https://i.imgur.com/rE64xPI.jpg)

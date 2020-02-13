@@ -5,7 +5,7 @@ permalink: 'docker_matery/docker-sections8-swarm-secrets-for-swarm'
 tags: udemy-docker swarm swarm-secrets
 ---
 
-- section8-69, 70, 71
+- section8-69, 70, 71, 72
 
 ## Udemy
 
@@ -36,7 +36,7 @@ tags: udemy-docker swarm swarm-secrets
 - Secrets are first stored in Swarm, then assigned to Service(s)
 - Only containers in assigned Service(s) can see them
 - They look like files in container but are actually in-memory fs
-   - `/run/secrets/<ssecret_name>` or `/run/secrets/<secret_alias>`
+   - `/run/secrets/<secret_name>` or `/run/secrets/<secret_alias>`
 - Local docker-compose can use file-based secrets, but not secure
 
 ## Using Secrets in Swarm Services
@@ -175,3 +175,65 @@ PostgreSQL init process complete; ready for start up.
 - `docker secret update --secret-rm`
 
    - 這招會 recreated all contaienrs !!! 要特別注意~!
+
+## secrects with stacks 
+
+- `docker service create --name search --replicas 3 -p 9200:9200 elasticsearch:2`
+
+- docker-compose.yml
+
+   - 使用 stack: `version: 3` 以上
+   - 使用 stack & secrets: `version:3.1` 以上
+
+   ~~~yml
+   version: "3.1"
+
+   services:
+     psql:
+       image: postgres
+       secrets:
+         - psql_user
+         - psql_password
+       environment:
+         POSTGRES_PASSWORD_FILE: /run/secrets/psql_password
+         POSTGRES_USER_FILE: /run/secrets/psql_user
+   secrets:
+     psql_user:
+       file: ./psql_user.txt
+     psql_password:
+       file: ./psql_password.txt
+   ~~~
+
+- docker stack deploy
+
+
+   - `docker stack deploy -c docker-compose.yml mydb`
+
+   ~~~
+   root@node1:/srv/udemy-docker-mastery/secrets-sample-2# docker stack deploy -c docker-compose.yml mydb
+   Creating network mydb_default
+   Creating secret mydb_psql_user
+   Creating secret mydb_psql_password
+   Creating service mydb_psql
+   ~~~
+
+- 看 `secrets` 有無建進去
+
+   ~~~
+   root@node1:/srv/udemy-docker-mastery/secrets-sample-2# docker secret ls
+   ID                          NAME                 DRIVER              CREATED             UPDATED
+   muc8ibftevw5modwg7g2c591d   mydb_psql_password                       2 minutes ago       2 minutes ago
+   r0j6uu0c86no26dx3xhole1mx   mydb_psql_user                           2 minutes ago       2 minutes ago
+   ~~~
+
+- 移除 `stack` 也會順道把 用 `stack` 建的 `secrets` 移除掉 
+
+   ~~~
+   root@node1:/srv/udemy-docker-mastery/secrets-sample-2# docker stack rm mydb
+   Removing service mydb_psql
+   Removing secret mydb_psql_password
+   Removing secret mydb_psql_user
+   Removing network mydb_default
+   root@node1:/srv/udemy-docker-mastery/secrets-sample-2# docker secret ls
+   ID                          NAME                DRIVER              CREATED             UPDATED
+   ~~~

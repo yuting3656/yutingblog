@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Angular Object Detection 2 Heroku'
 permalink: 'ai-side-project/angular-object-detection'
-tags: ai-side-project angualr object-detection
+tags: ai-side-project angular object-detection
 ---
 
 ![Imgur](https://i.imgur.com/srXs0Pk.jpg)

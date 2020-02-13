@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'daily Programming:  AWS (EC2) + Docker'
 permalink: 'daily-programming/aws-ec2-wiht-docker'
-tags: daily-programming aws docker
+tags: daily-programming aws docker angular
 ---
 
 > 2019 最後一天 !  YA~~~ ~~發大財~~ gogo~~~
@@ -143,6 +143,21 @@ tags: daily-programming aws docker
 ## 實作一下吧
 
 1. Yuting Angular
+
+   - Dokcerfile
+      
+      - ~~~dockerfile
+        # step 1
+        FROM node:latest as node
+        WORKDIR /app
+        COPY . .
+        RUN npm install
+        RUN npm run build --prod
+        
+        # step 2
+        FROM nginx:alpine
+        COPY --from=node /app/dist/angualr-docker-image1 /usr/share/nginx/html
+      ~~~
    
    - 抓我精心設計的 docker ang`luar` image XDDD 
    
