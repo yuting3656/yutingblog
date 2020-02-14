@@ -5,7 +5,7 @@ permalink: 'docker_matery/docker-sections8-routing-mesh'
 tags: udemy-docker swarm swarm-routing-mesh
 ---
 
-- section8-65
+- section8-66
 
 ## Udemy
 

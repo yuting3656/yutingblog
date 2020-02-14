@@ -5,7 +5,7 @@ permalink: 'docker_matery/docker-sections8-swarm-stacks-and-production-grade-com
 tags: udemy-docker swarm swarm-stack
 ---
 
-- section8-68
+- section8-69
 
 ## Udemy
 

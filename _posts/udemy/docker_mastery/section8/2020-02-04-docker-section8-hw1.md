@@ -5,7 +5,7 @@ permalink: 'docker_matery/docker-sections8-hw1-create-a-multi-service-multi-node
 tags: udemy-docker swarm 
 ---
 
-- section8-66
+- section8-67
 
 ## Udemy
 

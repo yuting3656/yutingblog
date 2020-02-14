@@ -7,7 +7,7 @@ tags: udemy-docker swarm
 
 > 初六 開工摟~~~
 
-- section8-64
+- section8-64, 65
 
 ## Udemy
 
@@ -210,7 +210,7 @@ __drupal 支援最新 postgres 資料庫只到 postgres:11__
 
 ## 只 run 在一個 node 可是　3 個 ip 都吃的到！？
 
-   - section8 - 65 揭曉答案　ＸＤＤ
+   - section8 - 66 揭曉答案　ＸＤＤ
 
 ~~~
 root@node3:~# docker service ps drupal
