@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'daily Programming: 一姐重構'
 permalink: 'daily-programming/programmin-refactoring'
-tags: daily-programming
+tags: daily-programming 讀書會
 ---
 
 ### Whay? Why? When? How?

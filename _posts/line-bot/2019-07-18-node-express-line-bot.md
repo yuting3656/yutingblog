@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Line Bot'
 permalink: 'ndoe/line-bot'
-tags: line-bot Node.js heroku
+tags: line-bot Node.js heroku 讀書會
 ---
 
 ## 前置作業 LINE & Heroku

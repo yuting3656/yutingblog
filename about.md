@@ -18,6 +18,20 @@ permalink: /about/
    - *可以無痛丟上 github、還保有機會可以打 `git add .` `git commit -m "first commit"` XDD*
    - *真心感謝 [帆哥](https://josephjsf2.github.io/){:target="_black"}、[一姊](https://pengpon.github.io/){:target="_back"} 如果你們看到的話 __鳩咪~__* :heart:
 
+### 讀書會
+
+幾乎每週四。從兩棟邀溝讀到兩棟兩棟的此時此刻。
+從外太空念到行天宮。有聊技術。有聊心靈。有聊自我成長。當然還有八卦摟~~~
+。收穫很多大家都超級棒棒。:sunny::sunny::sunny:
+
+> “No matter how busy you may think you are, you must find time for reading, or surrender yourself to self-chosen ignorance.”
+> ― Atwood H. Townsend
+
+   - [帆哥](https://josephjsf2.github.io/){:target="_black"}
+   - [一姊](https://pengpon.github.io/){:target="_back"}
+   - [Sammie](https://sammiehsieh.github.io/blog/){:target="_black"}
+   - [家姊](https://op30132.github.io/){:target="_black"}
+
 ### 阿 [WordPress](https://yutingboy.home.blog/){:target="_black"} 不用了嗎 ?
 
 還是會拉~ WordPress 的最大好處就是可以方便的行動上傳內容，__搭車__、__通勤__、__拉屎__ 等的時候就可以快速的 PO 一篇文，還是有它的存在價值!

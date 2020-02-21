@@ -2,7 +2,7 @@
 layout: "post"
 title: "在呼吸之間"
 permalink: 'diary/:year-:month-:day'
-tags: 今日隨意
+tags: 今日隨意 讀書會
 ---
 
 > 今夜來呼吸~ YA~

@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'daily Programming: 帆哥 OWASP 資安 分享!'
 permalink: 'daily-programming/owasp'
-tags: daily-programming owasp
+tags: daily-programming owasp 讀書會
 ---
 ## [OWASP](https://www.owasp.org/index.php/Main_Page){:target="_back"}
 

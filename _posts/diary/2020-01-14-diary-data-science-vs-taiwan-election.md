@@ -2,7 +2,7 @@
 layout: "post"
 title: " 資料科學 vs. 總統大選"
 permalink: 'diary/:year-:month-:day/data-science-taiwan-presidential-election'
-tags: 今日隨意 
+tags: 今日隨意 讀書會
 ---
 
 - [https://data-flair.training/blogs/data-science-vs-artificial-intelligence/](https://data-flair.training/blogs/data-science-vs-artificial-intelligence/){:target="_back"}

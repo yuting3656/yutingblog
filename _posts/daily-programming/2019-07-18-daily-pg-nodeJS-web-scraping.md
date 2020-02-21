@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'daily Programming: node.js web scraping'
 permalink: 'daily-programming/nodejs-web-scraping'
-tags: daily-programming Node.js
+tags: daily-programming Node.js 讀書會
 ---
 
 > 今天是開站滿月~~ 耶~~ 吃紅蛋 吃油飯 吃雞腿~~~~ :)

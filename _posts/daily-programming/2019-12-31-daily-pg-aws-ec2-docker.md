@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'daily Programming:  AWS (EC2) + Docker'
 permalink: 'daily-programming/aws-ec2-wiht-docker'
-tags: daily-programming aws docker angular
+tags: daily-programming aws docker angular 讀書會
 ---
 
 > 2019 最後一天 !  YA~~~ ~~發大財~~ gogo~~~

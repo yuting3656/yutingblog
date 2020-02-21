@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'daily Programming: UML 一姐出品  品質保證!'
 permalink: 'daily-programming/uml-intro'
-tags: daily-programming uml
+tags: daily-programming uml 讀書會
 ---
 
 |![imgur](https://d3n817fwly711g.cloudfront.net/uploads/2012/02/UML-Diagram-types-1-1024x658.png)|
