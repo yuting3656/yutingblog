@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: Section 9 - Full App Lifecycle: Dev, Build and Deploy With a Single Compose Design'
-permalink: 'docker_matery/docker-sections9-full-app-lifecycle-dev-build-deploy'
+title: 'Docker Matery: Section 9 - Using Secrets with local docker compose'
+permalink: 'docker_matery/docker-sections9-using-secrets-with-lcoal-docker-compse'
 tags: udemy-docker  swarm-secrets 
 ---
 
@@ -20,106 +20,104 @@ tags: udemy-docker  swarm-secrets
 ---
 
 
-## Full App Lifecycle With Compose
+## Secrets Local docker compose
 
-- Live The Dream!
-- Single set of Compose files for:
-   - Local `docker-compose up` development environment
-   - Remote `docker-compose up` CI environment
-   - Remote `docker stack deploy` production environment
+- 先確定離開 `swarm`
 
-## 範例: swarm-stack-3
-
-- 看資料夾內有什麼
+   - `docker swarm leave -f`
 
    ~~~
-    目錄: E:\Udemy\Docker Mastery\udemy-docker-mastery\swarm-stack-3 
-    Mode                LastWriteTime         Length Name
-    ----                -------------         ------ ----
-    d-----      2019/12/6  上午 10:07                themes
-    -a----      2019/12/6  上午 10:07             13 .gitignore
-    -a----      2019/12/6  上午 10:07            614 docker-compose.override.yml
-    -a----      2019/12/6  上午 10:07            589 docker-compose.prod.yml
-    -a----      2019/12/6  上午 10:07            663 docker-compose.test.yml
-    -a----      2019/12/6  上午 10:07            115 docker-compose.yml
-    -a----      2019/12/6  上午 10:07            535 Dockerfile
-    -a----      2019/12/6  上午 10:07             10 psql-fake-password.txt
+   PS E:\Udemy\Docker Mastery\udemy-docker-mastery\secrets-sample-2> docker swarm leave
+   Error response from daemon: You are attempting to leave the swarm on a node that is participating as a manager. Removing the last manager erases all current state of the swarm. Use `--force` to ignore this message.
+   PS E:\Udemy\Docker Mastery\udemy-docker-mastery\secrets-sample-2> docker swarm leave --help
+   
+   Usage:  docker swarm leave [OPTIONS]
+   
+   Leave the swarm
+   
+   Options:
+     -f, --force   Force this node to leave the swarm, ignoring warnings
+   PS E:\Udemy\Docker Mastery\udemy-docker-mastery\secrets-sample-2> docker swarm leave -f
+   Node left the swarm.
    ~~~
 
 
-- __Default compose file:__ `docker-compose.yml`
+   - `docker node ls`
+
+   ~~~
+   PS E:\Udemy\Docker Mastery\udemy-docker-mastery\secrets-sample-2> docker node ls
+   Error response from daemon: This node is not a swarm manager. Use "docker swarm init" or "docker swarm join" to connect this node to swarm and try again.
+   ~~~
+
+## 複習一下 docker-compse
+
+- [我的筆記](https://yuting3656.github.io/yutingblog//docker_matery/docker-sections6-docker-compose-and-the-yaml-file){:target="_back"}
+
+
+## docker-compose up
+
+- docker-compose.yml
 
    ~~~yml
-   version: '3.1'
+   version: "3.1"
    
    services:
-     drupal:
-       image: bretfisher/custom-drupal:latest
-     postgres:
-       image: postgres:9.6   
-   ~~~
-
-- Override: `docker-compose.override.yml`
-
-   - 當執行 `docker-compose up` 會自動吃到這支 `docker-compose.override.yml` 上面的 __default compose file__ 是展示基本架構
-
-   - 這隻會直接取代 `docker-compose.yml`‵　裡面的內容
-
-   ~~~yml
-   version: '3.1'
-   
-   services:
-   
-     drupal:
-       build: .
-       ports:
-         - "8080:80"
-       volumes:
-         - drupal-modules:/var/www/html/modules
-         - drupal-profiles:/var/www/html/profiles
-         - drupal-sites:/var/www/html/sites
-         - ./themes:/var/www/html/themes
-    
-     postgres:
-       environment:
-         - POSTGRES_PASSWORD_FILE=/run/secrets/psql-pw
+     psql:
+       image: postgres
        secrets:
-         - psql-pw
-       volumes:
-         - drupal-data:/var/lib/postgresql/data
-   
-   volumes:
-     drupal-data:
-     drupal-modules:
-     drupal-profiles:
-     drupal-sites:
-     drupal-themes:
+         - psql_user
+         - psql_password
+       environment:
+         POSTGRES_PASSWORD_FILE: /run/secrets/psql_password
+         POSTGRES_USER_FILE: /run/secrets/psql_user
    
    secrets:
-     psql-pw:
-       file: psql-fake-password.txt
+     psql_user:
+       file: ./psql_user.txt
+     psql_password:
+       file: ./psql_password.txt
    ~~~
 
-   - 看到這邊是不是很想知道，上面 `build: .` 的 Dockerfile 長什麼樣子阿～
+   - psql_user.txt:
+      - dbuser
+   - psql_password.txt:
+      - QpqQcgD7dxVG
 
-   - Dockerfile
 
-      ~~~dockerfile
-         FROM drupal:8.6
+- 在本機跑起來的樣子
 
-         RUN apt-get update && apt-get install -y git \
-             && rm -rf /var/lib/apt/lists/*
-         
-         # this next part was corrected in 2018 to be more clear on how you'd typically 
-         # customize your own theme. first you need to clone the theme into this repo
-         # with something like downloading the lastest theme for bootstrap
-         # https://www.drupal.org/project/bootstrap and extract into themes dir on host.
-         # then you'll COPY it into image here:
-         
-         WORKDIR /var/www/html/core
-         
-         COPY ./themes ./themes
-         
-         WORKDIR /var/www/html
-      ~~~
- 
+   ~~~
+   PS E:\Udemy\Docker Mastery\udemy-docker-mastery\secrets-sample-2> docker-compose up -d
+   Creating network "secrets-sample-2_default" with the default driver
+   Pulling psql (postgres:)...
+   latest: Pulling from library/postgres
+   bc51dd8edc1b: Pull complete                                                                             
+   d2b355dbb6c6: Pull complete                                                                             
+   d237363a1a91: Pull complete                                                                             
+   ff4b9d2fde66: Pull complete                                                                             
+   646492d166e7: Pull complete                                                                             
+   50eeac6fd5fb: Pull complete                                                                             
+   502963de6da8: Pull complete                                                                             
+   d7263f7627b9: Pull complete                                                                             
+   46b135c7e429: Pull complete                                                                             
+   259a29a883ed: Pull complete                                                                             
+   b3b8f133c3f4: Pull complete                                                                             
+   49e91678bd48: Pull complete                                                                             
+   15326bd3db00: Pull complete                                                                             
+   0aab6409ca4d: Pull complete                                                                             
+   Digest: sha256:5181eccc7c903e4f1beffa89a735cb7ed72e0c81d6c34c471552c3fa8bff0858
+   Status: Downloaded newer image for postgres:latest
+   Creating secrets-sample-2_psql_1 ... done    
+   ~~~
+
+- 進去看
+
+   - `dockser-compose exec psql cat /run/secrets/psql_user`
+
+   ~~~
+   PS E:\Udemy\Docker Mastery\udemy-docker-mastery\secrets-sample-2> docker-compose exec psql cat /run/secrets/psql_user
+   dbuser
+   ~~~
+
+   - 這招只 `file based` 的方法，盡可能的模擬實際的狀況！
+   - docker-compose 在開發階段喔

@@ -5,7 +5,7 @@ permalink: 'docker_matery/docker-sections8-swarm-secrets-for-swarm'
 tags: udemy-docker swarm swarm-secrets
 ---
 
-- section8-70, 71, 72
+- section8-70, 71, 72, 73
 
 ## Udemy
 
