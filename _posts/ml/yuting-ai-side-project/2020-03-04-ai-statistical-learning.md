@@ -40,7 +40,7 @@ tags: ai-side-project statistics
 >
 > 有  `自律能力`  和  `時間規劃良好`  ，怎麼做原子彈都可學的到 XDD
 >
-> ![img](https://i1.kknews.cc/SIG=p9gshp/66o700055n1or0qnpon0.jpg)
+> ![Imgur](https://i.imgur.com/epu2pxI.jpg)
 
 - [Data Science 相關課程](https://www.coursera.org/browse/data-science){:target="_back"}
 
