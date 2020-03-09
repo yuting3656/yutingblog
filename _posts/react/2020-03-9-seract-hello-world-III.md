@@ -631,7 +631,7 @@ class  App extends React.Component {
 export default App;
 ~~~
 
-## 1:35:00 Add PropTues to components
+## 1:35:00 Add PropTypes to components
 
 - `import PropTyes from 'prop-types'`
 
