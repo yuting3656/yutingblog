@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: Section 4 作業阿～！！！ Build Own Dockerfile and Run Containers From It'
-permalink: 'docker_matery/docker-sections4-hw-build-own-dockerfile-and-run-containers-from-it'
+title: 'Docker Mastery: Section 4 作業阿～！！！ Build Own Dockerfile and Run Containers From It'
+permalink: 'docker_mastery/docker-sections4-hw-build-own-dockerfile-and-run-containers-from-it'
 tags: udemy-docker docker-image
 ---
 

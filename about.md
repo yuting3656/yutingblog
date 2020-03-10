@@ -28,7 +28,7 @@ permalink: /about/
 > ― Atwood H. Townsend
 
    - [帆哥](https://josephjsf2.github.io/){:target="_black"}
-   - [一姊](https://pengpon.github.io/){:target="_back"}
+   - [一姊](https://pengpon.github.io/){:target="_black"}
    - [Sammie](https://sammiehsieh.github.io/blog/){:target="_black"}
    - [家姊](https://op30132.github.io/){:target="_black"}
 

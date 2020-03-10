@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: Section3 作業阿!!!! Round-robin DNS'
-permalink: 'docker_matery/docker-sections3-hw2-2-round-robin-DNS'
+title: 'Docker Mastery: Section3 作業阿!!!! Round-robin DNS'
+permalink: 'docker_mastery/docker-sections3-hw2-2-round-robin-DNS'
 tags: udemy-docker
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: Section 5 - Persisten Data Bind Mounting'
-permalink: 'docker_matery/docker-sections5-persistent-data-bind-mounting'
+title: 'Docker Mastery: Section 5 - Persisten Data Bind Mounting'
+permalink: 'docker_mastery/docker-sections5-persistent-data-bind-mounting'
 tags: udemy-docker docker-volume docker-mounts
 ---
 

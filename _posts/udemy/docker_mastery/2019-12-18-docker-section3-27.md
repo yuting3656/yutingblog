@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: docker networks'
-permalink: 'docker_matery/docker-networks'
+title: 'Docker Mastery: docker networks'
+permalink: 'docker_mastery/docker-networks'
 tags: udemy-docker docker-network
 ---
 

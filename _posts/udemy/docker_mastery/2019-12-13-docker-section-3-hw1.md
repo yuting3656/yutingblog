@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: 作業阿!!!! Manage Multiple Containers'
-permalink: 'docker_matery/docker-sections3-hw1-manage-multiple-containers'
+title: 'Docker Mastery: 作業阿!!!! Manage Multiple Containers'
+permalink: 'docker_mastery/docker-sections3-hw1-manage-multiple-containers'
 tags: udemy-docker
 ---
 

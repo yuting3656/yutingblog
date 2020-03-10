@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: Section 8 - (Swarm) Routing Mesh'
-permalink: 'docker_matery/docker-sections8-routing-mesh'
+title: 'Docker Mastery: Section 8 - (Swarm) Routing Mesh'
+permalink: 'docker_mastery/docker-sections8-routing-mesh'
 tags: udemy-docker swarm swarm-routing-mesh
 ---
 

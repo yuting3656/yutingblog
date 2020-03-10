@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: Section 6 - docker compose'
-permalink: 'docker_matery/docker-sections6-docker-compose-and-the-yaml-file'
+title: 'Docker Mastery: Section 6 - docker compose'
+permalink: 'docker_mastery/docker-sections6-docker-compose-and-the-yaml-file'
 tags: udemy-docker docker-compose
 ---
 

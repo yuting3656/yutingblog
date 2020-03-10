@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: docker Container cli'
-permalink: 'docker_matery/docker-containers-cli'
+title: 'Docker Mastery: docker Container cli'
+permalink: 'docker_mastery/docker-containers-cli'
 tags: udemy-docker docker-cli
 ---
 

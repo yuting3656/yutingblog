@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: Section 8 - (Swarm) Secrets Storage for swarm'
-permalink: 'docker_matery/docker-sections8-swarm-secrets-for-swarm'
+title: 'Docker MasteryMatery: Section 8 - (Swarm) Secrets Storage for swarm'
+permalink: 'docker_mastery/docker-sections8-swarm-secrets-for-swarm'
 tags: udemy-docker swarm swarm-secrets
 ---
 

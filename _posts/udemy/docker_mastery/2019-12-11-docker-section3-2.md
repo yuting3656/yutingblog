@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: docker containers 2'
-permalink: 'docker_matery/docker-containers-2'
+title: 'Docker Mastery: docker containers 2'
+permalink: 'docker_mastery/docker-containers-2'
 tags: udemy-docker
 ---
 

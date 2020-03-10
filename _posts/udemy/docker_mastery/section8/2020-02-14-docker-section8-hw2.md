@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: Section 8 作業2阿～！！！ Create Stack w/ Secrets'
-permalink: 'docker_matery/docker-sections8-hw2-create-stack-with-secrets'
+title: 'Docker Mastery: Section 8 作業2阿～！！！ Create Stack w/ Secrets'
+permalink: 'docker_mastery/docker-sections8-hw2-create-stack-with-secrets'
 tags: udemy-docker swarm swarm-secrets ubuntu
 ---
 

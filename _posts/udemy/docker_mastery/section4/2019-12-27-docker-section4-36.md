@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: Section 4 - The Mighty Hub'
-permalink: 'docker_matery/docker-sections4-the-mighty-hub'
+title: 'Docker Mastery: Section 4 - The Mighty Hub'
+permalink: 'docker_mastery/docker-sections4-the-mighty-hub'
 tags: udemy-docker docker-image
 ---
 

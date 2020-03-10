@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: Section 7 - (Swarm) Creating a 3-Node Swarm Cluster'
-permalink: 'docker_matery/docker-sections7-swarm-create-a-3-node-swarm-cluster'
+title: 'Docker Mastery: Section 7 - (Swarm) Creating a 3-Node Swarm Cluster'
+permalink: 'docker_mastery/docker-sections7-swarm-create-a-3-node-swarm-cluster'
 tags: udemy-docker swarm
 ---
 

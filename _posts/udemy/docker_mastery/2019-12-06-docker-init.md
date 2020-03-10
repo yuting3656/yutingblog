@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: 開始吧！'
-permalink: 'docker_matery/docker-init'
+title: 'Docker Mastery: 開始吧！'
+permalink: 'docker_mastery/docker-init'
 tags: docker udemy-docker
 ---
 

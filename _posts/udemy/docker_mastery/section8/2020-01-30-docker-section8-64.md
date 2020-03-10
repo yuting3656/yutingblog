@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: Section 8 - (Swarm) scaling out with overaly networking'
-permalink: 'docker_matery/docker-sections8-scaling-out-with-overlay-networking'
+title: 'Docker Mastery: Section 8 - (Swarm) scaling out with overaly networking'
+permalink: 'docker_mastery/docker-sections8-scaling-out-with-overlay-networking'
 tags: udemy-docker swarm
 ---
 

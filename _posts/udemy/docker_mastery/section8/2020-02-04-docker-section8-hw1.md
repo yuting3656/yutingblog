@@ -1,7 +1,7 @@
 ---
 layout: 'post'
-title: 'Docker Matery: Section 8 作業阿～！！！ Create a Multi-Service Multi-Node Web App'
-permalink: 'docker_matery/docker-sections8-hw1-create-a-multi-service-multi-node-web-app'
+title: 'Docker Mastery: Section 8 作業阿～！！！ Create a Multi-Service Multi-Node Web App'
+permalink: 'docker_mastery/docker-sections8-hw1-create-a-multi-service-multi-node-web-app'
 tags: udemy-docker swarm 
 ---
 
