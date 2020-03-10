@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "所有的安排，都是最的安排"
+title: "所有的安排，都是最好的安排 :)"
 permalink: 'diary/:year-:month-:day/everything-happens-for-the-bset'
 tags: 今日隨意 axios
 ---
