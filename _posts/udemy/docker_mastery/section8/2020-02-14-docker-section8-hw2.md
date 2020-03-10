@@ -5,7 +5,7 @@ permalink: 'docker_matery/docker-sections8-hw2-create-stack-with-secrets'
 tags: udemy-docker swarm swarm-secrets ubuntu
 ---
 
-- section8-74, 75
+- section8-74, 75, 76
 
 ## Udemy
 
