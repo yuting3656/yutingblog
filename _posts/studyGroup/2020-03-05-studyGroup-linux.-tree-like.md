@@ -1,6 +1,6 @@
 ---
 layout: 'post'
-title: 'Study Group: 凡哥出品 品質保證 - Linux 目錄結構 '
+title: 'Study Group: 帆哥出品 品質保證 - Linux 目錄結構 '
 permalink: 'stydeGroup/linux-tree-like-structure'
 tags: 讀書會 linux
 ---
@@ -101,7 +101,7 @@ root@74c91245bee8:~# ls /yuting/[^A-Z]*.txt
         ~~~        
 
 - 建造檔案
-   - touch
+   - [touch](https://www.geeksforgeeks.org/touch-command-in-linux-with-examples/){:target="_back"}
    - echo
    - vi
    - nano
@@ -126,7 +126,7 @@ root@74c91245bee8:/yuting# ls
 - 
 
 ~~~
-root@74c91245bee8:/yuting/months# mkdir {jan,feb,apr,may,jun,aug,sep,oct,nov,dec}_{2017..2020}
+root@74c91245bee8:/yuting/months# mkdir {jan,feb,apr,may,jun,jul,aug,sep,oct,nov,dec}_{2017..2020}
 root@74c91245bee8:/yuting/months# ls
 apr_2017  aug_2018  dec_2019  feb_2020  jun_2017  may_2018  nov_2019  oct_2020
 apr_2018  aug_2019  dec_2020  jan_2017  jun_2018  may_2019  nov_2020  sep_2017
