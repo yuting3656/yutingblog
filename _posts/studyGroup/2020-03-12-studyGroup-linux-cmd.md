@@ -94,6 +94,3 @@ root@e03e6ed9f482:/exe/jul_2018# ls
    ~~~
     root@e03e6ed9f482:/exe# rm -r $(pwd)/*
    ~~~
-
-
-
