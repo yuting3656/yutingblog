@@ -1,10 +1,9 @@
 ---
 layout: 'post'
 title: 'Study Group: 帆哥出品 品質保證 - Linux cmd '
-permalink: 'stydeGroup/linux-tree-like-cmd'
+permalink: 'stydeGroup/linux-command-line'
 tags: 讀書會 linux
 ---
-
 
 ## 練習
 
