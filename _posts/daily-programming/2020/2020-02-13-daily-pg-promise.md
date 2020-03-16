@@ -140,7 +140,7 @@ Promise.resolve('Success')
 
 ~~~js
 async function series() {
-    aeait wait()
+    await wait()
 }
 ~~~
 
