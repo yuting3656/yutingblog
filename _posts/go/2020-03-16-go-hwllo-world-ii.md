@@ -166,7 +166,7 @@ func main() {
 // The
 ~~~
 
-- Use + tp concatenate strings, Unicode, Multiline
+- Use + to concatenate strings, Unicode, Multiline
 
 ~~~go
 package main
