@@ -23,3 +23,23 @@ tags: 今日隨意
 
 喔唷~
 
+## 喔唷！ 哥來自 潮牌 
+
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
+> :apple::apple::apple::apple::apple::apple::apple::apple:
