@@ -13,3 +13,13 @@ tags: 今日隨意
 ## 快樂丟個歌～ TESTING~~~
 
 <iframe src="https://www.youtube.com/embed/x7m7hZDs6Q4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+> 嘿嘿嘿~~ 哥來自 Windows~ 
+>
+> 這樣每次不就要
+>
+> `git pull origin gh-pages`
+
+喔唷~
+
