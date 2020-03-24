@@ -228,3 +228,17 @@ func main() {
     // -998
 }
 ~~~
+
+
+## Challenge: Structs
+
+- Square
+
+   - Define a Square struct, which has two fields: 
+      - center of type `point` and length of type `int`. Add two methods:
+
+         - Move(dx int, dy int)
+         - Area() int
+
+   - Also write:
+      - NewSquare(x int, y int, length int)(*Square, error)
