@@ -43,3 +43,9 @@ tags: 今日隨意
 > :apple::apple::apple::apple::apple::apple::apple::apple:
 > :apple::apple::apple::apple::apple::apple::apple::apple:
 > :apple::apple::apple::apple::apple::apple::apple::apple:
+
+
+## docker oh! yo!
+
+- docker [離開](https://stackoverflow.com/questions/25267372/correct-way-to-detach-from-a-container-without-stopping-it){:target="_back"} container bash
+   - `ctrl + p` then `ctrl + qs`

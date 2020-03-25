@@ -1,6 +1,6 @@
 ---
 layout: 'post'
-title: 'Go: gin && xorm'
+title: 'Go: gin && xorm && reflect && strconv && ...'
 permalink: 'go/go-gin-xorm'
 tags: go 
 ---
@@ -11,7 +11,7 @@ tags: go
 - gin
 - xorm 
 - net/http
-- reflectg
+- reflect
 - strconv
 
 
@@ -24,6 +24,8 @@ tags: go
 > productivity, you will love Gin
 
 - [Custom Middleware](https://github.com/gin-gonic/gin#blank-gin-without-middleware-by-default){:target="_back"}
+
+   - [list of external middleware](https://github.com/gin-gonic/contrib){:target="_back"}
 
 ~~~go
 
@@ -84,6 +86,7 @@ tags: go
    - [column types](https://github.com/coscms/xorm/blob/master/docs/COLUMNTYPE.md){:target="_back"}
 
 
+- [ORM_Methods](https://gowalker.org/github.com/go-xorm/xorm#hdr-ORM_Methods){:target="_back"}
 
 ### net/http
 
@@ -106,6 +109,11 @@ tags: go
    - In this article we attempt to clarify things by explaining how reflection works in Go. Each language's reflection model is different (and many languages don't support it at all), but this article is about Go, so for the rest of this article the word "reflection" should be taken to mean "reflection in Go".
 
 
+- [__Elem__](https://golang.org/pkg/reflect/){:target="_back"}
+
+   - return a type's element type
+   - It panics if the type's Kind is not Array, Chan, Map, Ptr, or Slice.
+
 ### [strconv](https://golang.org/pkg/strconv/){:target="_back"}
 
 > Package strconv implements conversions to and form string represntations of basic dataa types.
@@ -116,3 +124,28 @@ tags: go
       - string to int
    - Itoa
       - int to string
+
+
+### [Go: pointers](https://tour.golang.org/moretypes/1){:target="_back"}
+
+- [好棒棒網站](https://stackoverflow.com/questions/4938612/how-do-i-print-the-pointer-value-of-a-go-object-what-does-the-pointer-value-mea){:target="_back"}
+
+~~~go
+package main
+
+import "fmt"
+
+func main() {
+	i, j := 42, 2701
+
+	p := &i         // point to i
+	fmt.Println(*p) // read i through the pointer
+	*p = 21         // set i through the pointer
+	fmt.Println(i)  // see the new value of i
+
+	p = &j         // point to j
+	*p = *p / 37   // divide j through the pointer
+	fmt.Println(j) // see the new value of j
+}
+
+~~~
