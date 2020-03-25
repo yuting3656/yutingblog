@@ -27,11 +27,6 @@ tags: go
 
    - [list of external middleware](https://github.com/gin-gonic/contrib){:target="_back"}
 
-~~~go
-
-~~~
-
-
 ### [xorm](https://godoc.org/github.com/go-xorm/xorm){:target="_back"}
 
 - engine.count(): Count records
@@ -56,7 +51,7 @@ tags: go
          
          ~~~sql
             
-            CREATE TABLE work_order (
+            CREATE TABLE product_order (
                 id primary key,
                 create_time timestamp,
                 update_time timestamp,
@@ -71,7 +66,7 @@ tags: go
             
             import "time"
 
-            type WorkOder struct {
+            type ProductOder struct {
                 Id string `xorm:"pk"`
                 CreateTime time.Time `xorm:timestamp utc`
                 UpdateTime time.Time `xorm:timestamp utc`
