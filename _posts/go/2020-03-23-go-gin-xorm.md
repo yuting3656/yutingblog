@@ -66,7 +66,7 @@ tags: go
             
             import "time"
 
-            type ProductOder struct {
+            type ProductOrder struct {
                 Id string `xorm:"pk"`
                 CreateTime time.Time `xorm:timestamp utc`
                 UpdateTime time.Time `xorm:timestamp utc`
