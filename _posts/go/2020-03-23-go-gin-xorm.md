@@ -27,10 +27,9 @@ tags: go
 
    - [list of external middleware](https://github.com/gin-gonic/contrib){:target="_back"}
 
-~~~go
+- 實作心得區
 
-~~~
-
+   - 只要 statusCode 204, response body 就會空空喔～～～～～
 
 ### [xorm](https://godoc.org/github.com/go-xorm/xorm){:target="_back"}
 
@@ -81,12 +80,24 @@ tags: go
          ~~~
 
 
+   - 自動 generate time (app server time)
+      - 	
+      ~~~go
+         type GenerateTime struct {
+            UpdateTime time.Time `xorm:"created" json:"update_time"`
+	         CreateTime time.Time `xorm:"created" json:"create_time"`
+         }
+      ~~~
 - types:
 
    - [column types](https://github.com/coscms/xorm/blob/master/docs/COLUMNTYPE.md){:target="_back"}
 
 
 - [ORM_Methods](https://gowalker.org/github.com/go-xorm/xorm#hdr-ORM_Methods){:target="_back"}
+
+-  [xorm.io: struct tag method](http://gobook.io/read/gitea.com/xorm/manual-en-US/chapter-02/4.columns.html){:target="_back"}
+
+   - If field is name of `Id` and type of `int64`, __xorm__ makes it as __auto increment primary key.__ If another field, use struct tag xorm:"pk".
 
 ### net/http
 
