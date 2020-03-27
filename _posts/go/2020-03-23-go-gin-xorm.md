@@ -30,7 +30,7 @@ tags: go
 
 - 實作心得區
 
-   - 只要 statusCode 204, response body 就會空空喔～～～～～
+   - 只要 gin.Content set statusCode 204, response body 就會空空喔～～～～～
 
 ### [xorm](https://godoc.org/github.com/go-xorm/xorm){:target="_back"}
 
