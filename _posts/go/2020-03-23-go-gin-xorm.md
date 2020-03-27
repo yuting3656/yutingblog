@@ -27,6 +27,7 @@ tags: go
 
    - [list of external middleware](https://github.com/gin-gonic/contrib){:target="_back"}
 
+
 - 實作心得區
 
    - 只要 statusCode 204, response body 就會空空喔～～～～～
@@ -55,7 +56,7 @@ tags: go
          
          ~~~sql
             
-            CREATE TABLE work_order (
+            CREATE TABLE product_order (
                 id primary key,
                 create_time timestamp,
                 update_time timestamp,
@@ -70,7 +71,7 @@ tags: go
             
             import "time"
 
-            type WorkOder struct {
+            type ProductOrder struct {
                 Id string `xorm:"pk"`
                 CreateTime time.Time `xorm:timestamp utc`
                 UpdateTime time.Time `xorm:timestamp utc`
