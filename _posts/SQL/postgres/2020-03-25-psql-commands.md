@@ -15,7 +15,7 @@ tags: sql postgres
 - [Understanding PostgreSQL Timestamp Data Types](https://www.postgresqltutorial.com/postgresql-timestamp/){:target="_back"}
 
 - 格式:
-   - `'03/03/2014 02:03:04'`
+   -  TIMESTAMPTZ: `2020-03-27 17:30:20+00`
 
 ## pq uuid rule
 
