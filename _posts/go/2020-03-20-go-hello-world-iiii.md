@@ -242,3 +242,139 @@ func main() {
 
    - Also write:
       - NewSquare(x int, y int, length int)(*Square, error)
+
+
+   - Point 
+
+      ~~~go
+        type Point struct {
+            X int
+            Y int
+        }
+
+        func (p *Point) Move(dx int, dy int) {
+            p.X += dx
+            p.Y += dy
+        }
+      ~~~
+
+- 我的寫法
+
+~~~go
+package main
+
+import (
+	"fmt"
+)
+
+type Point struct {
+	X int
+	Y int
+}
+
+type Square struct {
+	Center Point
+	Length int
+}
+
+func (p *Point) Move(dx int, dy int) {
+	p.X += dx
+	p.Y += dy
+}
+
+func (s *Square) Area() int {
+	return s.Length * s.Length
+}
+
+func NewSquare(x int, y int, length int) (*Square, error) {
+	square := &Square{
+		Center: Point{x, y},
+		Length: length,
+	}
+	return square, nil
+}
+
+func main() {
+
+	s, err := NewSquare(10, 10, 5)
+	if err != nil {
+		fmt.Println("error kkk")
+	}
+	fmt.Println(s.Center) // {10, 10,}
+	s.Center.Move(2, 2) 
+	fmt.Println("move dx: 2, dy: 2") //move dx: 2, dy: 2
+	fmt.Println(s.Center) // {12, 12}
+	fmt.Println(s.Area()) // 25
+
+}
+
+~~~
+
+- 老師的寫法
+
+
+~~~go
+package main
+
+import (
+    "fmt"
+    "log"
+)
+
+// Point is a 2d point
+type Point struct {
+    X int
+    Y int
+}
+
+// Move moves the point
+func (p *Point) Move(dx int, dy int) {
+    p.X += dx
+    p.Y += dy
+}
+
+type Square struct {
+    Center Point
+    Length int
+}
+
+
+// NewSquare returns a new square
+func NewSquare(x int, y int, length int) (*Square, error) {
+    if length <= 0 {
+        return nil, fmt.Errorf("length must be > 0")
+    }
+
+    s := &Square{
+        Center: Point{x, y},
+        Length: length,
+    }
+
+    return s, nil
+}
+
+
+// Move movese the square
+func (s *Square) Move(dx int, dy int) {
+    s.Center.Move(dx, dy)
+}
+
+// Area returns the square are 
+func (s *Square) Area() int {
+    return s.Length * s.Length
+}
+
+func main() {
+    s, err := NewSquare(1, 1, 10)
+    if err != nil {
+        log.Fatalf("ERROR: cant't create square")
+    }
+
+    s.Move(2,3)
+    fmt.Printf("%+v\n",s)
+    fmt.Println(s.Area())
+}
+
+~~~
+
+> 我沒有在 Square 裡面再加方法 XD
