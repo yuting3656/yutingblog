@@ -1,6 +1,6 @@
 ---
 layout: 'post'
-title: 'Go: Hello World IIIII'
+title: 'Go: Hello World X'
 permalink: 'go/go-hello-world-iiiii'
 tags: go 
 ---
