@@ -13,6 +13,7 @@ tags: go
 - net/http
 - reflect
 - strconv
+- validator
 
 
 ### [gin](https://github.com/gin-gonic/gin){:target="_back"}
@@ -31,6 +32,14 @@ tags: go
 - 實作心得區
 
    - 只要 gin.Content set statusCode 204, response body 就會空空喔～～～～～
+
+
+- [binding tag](https://github.com/gin-gonic/gin#model-binding-and-validation){:target="_back"}
+
+   - 用 [shouldBindWithxxx...](https://godoc.org/github.com/gin-gonic/gin){:target="_back"}
+      - 在 model tag 中 加入 `binding:"required"` 等 會幫你檢查
+      - 格式不對 或沒有填必填欄位的時候 會出 __err__
+
 
 ### [xorm](https://godoc.org/github.com/go-xorm/xorm){:target="_back"}
 
@@ -161,3 +170,8 @@ func main() {
 }
 
 ~~~
+
+
+### [validate](https://github.com/go-playground/validator){:target="_backd"}
+
+- Package validator implements value validations for structs and individual fields based on tags.

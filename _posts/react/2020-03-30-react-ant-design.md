@@ -83,3 +83,78 @@ tags: react
    - npm start # 看 http://localhost:8000
 
 > 整包用起來 好肥!!!
+>
+> 太肥了～～～
+>
+> 自己來顆幾較實際且更熟悉的兒棒棒好啊啊啊啊
+
+### Ant Design Pro
+
+- [prolayout.ant.design](https://prolayout.ant.design/){:target="_back"}
+
+
+### Ant Layout
+
+- [codesandbox](https://codesandbox.io/s/0elhg){:target="_back"}
+
+- [https://ant.design/components/layout/](https://ant.design/components/layout/){:target="_back"}
+
+
+~~~js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import 'antd/dist/antd.css';
+import './index.css';
+import { Layout } from 'antd';
+
+const { Header, Footer, Sider, Content } = Layout;
+
+ReactDOM.render(
+  <div>
+    <Layout>
+      <Header>Header</Header>
+      <Content>Content</Content>
+      <Footer>Footer</Footer>
+    </Layout>
+
+    <Layout>
+      <Header>Header</Header>
+      <Layout>
+        <Sider>Sider</Sider>
+        <Content>Content</Content>
+      </Layout>
+      <Footer>Footer</Footer>
+    </Layout>
+
+    <Layout>
+      <Header>Header</Header>
+      <Layout>
+        <Content>Content</Content>
+        <Sider>Sider</Sider>
+      </Layout>
+      <Footer>Footer</Footer>
+    </Layout>
+
+    <Layout>
+      <Sider>Sider</Sider>
+      <Layout>
+        <Header>Header</Header>
+        <Content>Content</Content>
+        <Footer>Footer</Footer>
+      </Layout>
+    </Layout>
+  </div>,
+  document.getElementById('container'),
+);
+~~~
+
+
+- 長這樣
+
+![Imgur](https://i.imgur.com/u0GBg5F.png)
+
+### Bonus
+
+- install [homebrew](https://brew.sh/){:target="_back"}
+
+- install [yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable){:target="_back"}
