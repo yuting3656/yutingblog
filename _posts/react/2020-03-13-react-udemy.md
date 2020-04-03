@@ -216,3 +216,17 @@ Event names:
 
 onToggle
 ~~~
+
+
+## 42. Manipulating the State
+
+- `setState()` 來自 Component~
+ 
+   ~~~js
+   import React, { Component } from 'react'
+   ~~~
+
+
+   - `setState()` takes Object
+
+
