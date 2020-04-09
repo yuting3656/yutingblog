@@ -40,6 +40,8 @@ tags: go
       - 在 model tag 中 加入 `binding:"required"` 等 會幫你檢查
       - 格式不對 或沒有填必填欄位的時候 會出 __err__
 
+   - 後端(DB, Modle)如果吃 int 的話，前端要塞 number type，空值的話就 `null`
+
 
 ### [xorm](https://godoc.org/github.com/go-xorm/xorm){:target="_back"}
 
