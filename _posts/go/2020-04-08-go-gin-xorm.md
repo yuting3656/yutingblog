@@ -14,6 +14,7 @@ tags: go
 - reflect
 - strconv
 - validator
+- swagger 
 
 
 ### [gin](https://github.com/gin-gonic/gin){:target="_back"}
@@ -111,6 +112,15 @@ tags: go
 
    - If field is name of `Id` and type of `int64`, __xorm__ makes it as __auto increment primary key.__ If another field, use struct tag xorm:"pk".
 
+- Omitempty:
+
+   - 在 struct tag 加上 `binding:"omitempty"` 在 type 的地方加 __*__
+
+      - 預設數值才會是 null
+
+      - ex: name *string `xorm:"varchar" json:"name" bindgin:"omitempty"`
+
+  
 ### net/http
 
 - [status code](https://golang.org/src/net/http/status.go){:target="_back"}
@@ -177,3 +187,18 @@ func main() {
 ### [validate](https://github.com/go-playground/validator){:target="_backd"}
 
 - Package validator implements value validations for structs and individual fields based on tags.
+
+
+### [Swagger](https://github.com/swaggo/swag)
+
+- swagger install && init ~
+
+   - `go get -u github.com/swaggo/swag/cmd/swag`
+
+   - `swag init` 我 mac cmd 不會自動幫我抓 Windows 會唷～
+      - 所以我都直接 XDDD
+         - __EX:__ `/Users/yutingwu/go/bin/swag init`
+
+- [annotation info](https://github.com/swaggo/swag#general-api-info){:target="_back"}
+
+   - host 不加會自動抓 resource domain
