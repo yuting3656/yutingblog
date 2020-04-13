@@ -25,3 +25,8 @@ tags: sql postgres
 ## Procedures and functions 
 
 - [https://www.enterprisedb.com/postgres-tutorials/everything-you-need-know-about-postgres-stored-procedures-and-functions%C2%A0](https://www.enterprisedb.com/postgres-tutorials/everything-you-need-know-about-postgres-stored-procedures-and-functions%C2%A0){:target="_back"}
+
+
+## PostgresSQL SELECT DISTINCT
+
+- [https://www.postgresqltutorial.com/postgresql-select-distinct/](https://www.postgresqltutorial.com/postgresql-select-distinct/){:target="_back"}
