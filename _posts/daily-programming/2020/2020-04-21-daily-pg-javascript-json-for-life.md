@@ -1,7 +1,7 @@
 ---
 layout: 'post'
 title: 'daily Programming: javascript json for life'
-permalink: 'daily-programming/javascript json for life'
+permalink: 'daily-programming/javascript-json-for-life'
 tags: daily-programming javascript
 ---
 
@@ -87,3 +87,13 @@ const colors = data.reduce((total, amount) => {
 
 colors //['blue','green','green','black','orange','blue','green','red']
 ~~~
+
+## Object.keys()
+
+## Object.entries()
+
+## Array.prototype.forEach()
+
+> 雷阿!!!
+
+> Using Array.prototype.forEach() will not apply the callback to elements that are appended to, or removed from, the array during execution.
