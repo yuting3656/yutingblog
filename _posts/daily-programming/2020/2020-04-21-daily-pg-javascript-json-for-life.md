@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'daily Programming: javascript json for life'
 permalink: 'daily-programming/javascript-json-for-life'
-tags: daily-programming javascript
+tags: daily-programming javascript react
 ---
 
 > 靜下來 你就會浮起來
@@ -10,6 +10,7 @@ tags: daily-programming javascript
 > 蹲馬步吧 :dog::dog::dog: :beer::beer::beer:
 
 
+# Javascript 
 
 ## [Array.prototype.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce){:target="_backd"}
 
@@ -89,6 +90,48 @@ const colors = data.reduce((total, amount) => {
 colors //['blue','green','green','black','orange','blue','green','red']
 ~~~
 
+- reduce example
+
+~~~js
+let input = [{id: 1, companyName: "company14", companyId: 14, flActive: true, purchaseMonth: "2019-12-15T00:00:00", year: 2019, month: "December"},
+{id: 2, companyName: "company5", companyId: 5, flActive: true, purchaseMonth: "2019-12-15T00:00:00", year: 2019, month: "December"},
+{id: 3, companyName: "company13", companyId: 13, flActive: true, purchaseMonth: "2019-11-15T00:00:00", year: 2019, month: "November"},
+{id: 4, companyName: "company14", companyId: 14, flActive: true, purchaseMonth: "2019-11-15T00:00:00", year: 2019, month: "December"},
+{id: 5, companyName: "company5", companyId: 5, flActive: true, purchaseMonth: "2019-10-15T00:00:00", year: 2019, month: "October"},
+{id: 6, companyName: "company14", companyId: 14, flActive: true, purchaseMonth: "2020-09-15T00:00:00", year: 2020, month: "September"},
+{id: 7, companyName: "company7", companyId: 7, flActive: true, purchaseMonth: "2020-09-15T00:00:00", year: 2020, month: "September"}]
+
+let months = { "09": "September", "10": "October", "11": "November", "12": "December" }
+
+let result = input.reduce((state,current) => {
+   let {companyName, year, month} = current;
+   
+   let company = state[companyName] || (state[companyName] = {});
+   let yearObj = company[year] || (company[year] = {});
+   let monthArr = yearObj[month] || (yearObj[month] = []);
+   monthArr.push(current);
+   
+   return state;
+}, {});
+
+console.log(result);
+~~~
+
+## Object.keys()
+
+## Object.entries()
+
+## Array.prototype.forEach()
+
+> 雷阿!!!
+
+> Using Array.prototype.forEach() will not apply the callback to elements that are appended to, or removed from, the array during execution.
+
+
+
+
+
+# React 
 
 ## using useState in Form
 
@@ -135,3 +178,33 @@ const onDatePicker = (date, dateString, name) => {
 ~~~
 
 
+## Route with path params
+
+`<Route  exact path="/pathName/:id" component={ Wooh }/>`
+
+- method 1
+
+~~~js
+ const Wooh = ({match}) => {
+      return (
+        <div>
+          id: {match.params.id}
+        </div>
+      )
+   }
+~~~
+
+- methos 2
+
+~~~js
+import { useParams } from "react-router";
+　　　const Wooh = () => {
+        let {id} = useParams()
+　　　   return (
+　　　     <div>
+　　　       id: {id}
+　　　     </div>
+　　　   )
+~~~
+
+<iframe src="https://www.youtube.com/embed/CZeulkp1ClA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
