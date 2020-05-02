@@ -1,13 +1,14 @@
 ---
 layout: 'post'
 title: 'daily Programming: javascript json for life'
-permalink: 'daily-programming/javascript json for life'
+permalink: 'daily-programming/javascript-json-for-life'
 tags: daily-programming javascript
 ---
 
 > 靜下來 你就會浮起來
 > 
 > 蹲馬步吧 :dog::dog::dog: :beer::beer::beer:
+
 
 
 ## [Array.prototype.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce){:target="_backd"}
@@ -87,3 +88,50 @@ const colors = data.reduce((total, amount) => {
 
 colors //['blue','green','green','black','orange','blue','green','red']
 ~~~
+
+
+## using useState in Form
+
+- 獨立建出來
+
+~~~js
+import React, { useState } from "react";
+export const useForm = (initialValues) => {
+    const [ values, setValues ] = useState(initialValues)
+    return [
+        values,
+        e => {
+            setValues({
+                ...values,
+                [e.target.name]: e.target.value
+            });
+        }
+    ];
+}
+~~~
+
+
+## Moment with time zone
+
+- `npm install moment moment-timezone`
+
+~~~js
+
+import moment from 'moment-timezone'
+
+const onDatePicker = (date, dateString, name) => {
+  const time  =  moment.tz(dateString , "Asia/Taipei").format()
+  const obj = { target: { "name": name, "value": time  } }
+  setWorkOrderForm(obj)
+}
+
+<Form.Item label="完工時間 END_TIME">
+  <DatePicker
+     name="end_time"
+     onChange={(date, dateString) => onDatePicker(date, dateString, "end_time")} 
+     showTime={true}
+     />
+</Form.Item>
+~~~
+
+
