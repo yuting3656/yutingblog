@@ -1,7 +1,7 @@
 ---
 layout: 'post'
 title: 'Study Group: 凡歌出品 品質保證'
-permalink: 'stydeGroup/pon-cors'
+permalink: 'stydeGroup/joseph-copy-files-linux'
 tags: 讀書會
 ---
 
