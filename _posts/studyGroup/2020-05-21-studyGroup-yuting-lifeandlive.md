@@ -105,3 +105,9 @@ document.querySelector('tone-play-toggle').addEventListener('change', e => Tone.
 ## 希望 - 李宗盛
 
 <iframe src="https://www.youtube.com/embed/OKO2UVZUlzo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+## 讀書會之歌!
+
+<script async src="//jsfiddle.net/yuting23656/ncvkp3oL/43/embed/"></script>
