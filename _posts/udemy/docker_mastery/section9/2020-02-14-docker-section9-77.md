@@ -51,7 +51,7 @@ tags: udemy-docker  swarm-secrets
 
 ## 複習一下 docker-compse
 
-- [我的筆記](https://yuting3656.github.io/yutingblog//docker_matery/docker-sections6-docker-compose-and-the-yaml-file){:target="_back"}
+- [我的筆記](https://yuting3656.github.io/yutingblog//docker_mastery/docker-sections6-docker-compose-and-the-yaml-file){:target="_back"}
 
 
 ## docker-compose up

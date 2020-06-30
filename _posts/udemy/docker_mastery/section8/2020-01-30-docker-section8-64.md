@@ -32,7 +32,7 @@ tags: udemy-docker swarm
 
 
 
-### 實作: 用 [Creating-3-Node](https://yuting3656.github.io/yutingblog/docker_matery/docker-sections7-swarm-create-a-3-node-swarm-cluster){:target="_back"}為基底
+### 實作: 用 [Creating-3-Node](https://yuting3656.github.io/yutingblog/docker_mastery/docker-sections7-swarm-create-a-3-node-swarm-cluster){:target="_back"}為基底
 
 - `docker network create --driver overlay mydrupal`
 
@@ -53,7 +53,7 @@ bi0v9pic3gr0        mydrupal            overlay             swarm
 - `docker service create --name psql --network mydrupal -e POSTGRES_PASSWORD=mypass postgres`
 
    - 忘了 `docker servcie` ?? 
-      - 看[我的筆記](https://yuting3656.github.io/yutingblog//docker_matery/docker-sections7-swarm-create-first-service-and-scale-it-locally){:target="_back"}
+      - 看[我的筆記](https://yuting3656.github.io/yutingblog//docker_mastery/docker-sections7-swarm-create-first-service-and-scale-it-locally){:target="_back"}
    
 
 ~~~

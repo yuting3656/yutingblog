@@ -220,7 +220,7 @@ SECURITY WARNING: You are building a Docker image from Windows against a non-Win
 
 - 新建一個，可以上傳到　Hub  的image
    - 忘記指令了嗎？　
-      - [看我的筆記](https://yuting3656.github.io/yutingblog/docker_matery/docker-sections4-the-mighty-hub){:target="_back"}
+      - [看我的筆記](https://yuting3656.github.io/yutingblog/docker_mastery/docker-sections4-the-mighty-hub){:target="_back"}
 
    - 忘了的話可以
       - `docker image tag --help`

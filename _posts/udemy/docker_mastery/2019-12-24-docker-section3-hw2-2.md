@@ -57,7 +57,7 @@ tags: udemy-docker
 
 - `docker container run -d --net dude --net-alias search elasticesearch:2`
 
-- [看自己的筆記](https://yuting3656.github.io/yutingblog/docker_matery/docker-networks-dns){:target="_back"}
+- [看自己的筆記](https://yuting3656.github.io/yutingblog/docker_mastery/docker-networks-dns){:target="_back"}
 
     - 寫到 __Docker defaults the hostname to the container’s name, but you can also set aliases__。喔~~~ 更清楚了~ 所以這作業，把兩個 elasticesearch 的 DNS 都叫做 search `--net-alias search`。
 
