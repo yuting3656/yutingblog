@@ -400,3 +400,27 @@ tags: 讀書會 docker
       - 下載 [RAMMap](https://docs.microsoft.com/en-us/sysinternals/downloads/rammap){:target="_back"}
 
       - ![Imgur](https://i.imgur.com/kamedeY.jpg)
+
+
+- 自己快樂練習
+
+~~~dockerfile
+FROM alpine:3.6
+LABEL writer="yuting"
+RUN apk add --no-cache apache2 && \
+    mkdir -p /run/apache2 && \
+    echo "<html><h1>Yuting Have a Dream! YA~~~~</h1></html>" > \
+    /var/www/localhost/htdocs/index.html
+EXPOSE 80
+ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+~~~
+
+- apache2
+
+   - [Confused about DFOREGROUND with Apache](https://serverfault.com/questions/614348/confused-about-dforeground-with-apache){:target="_back"}
+
+
+- 好書推薦~
+
+   - [Docker 工作現場實戰寶典 (Docker Cookbook, 2/e)](https://www.tenlong.com.tw/products/9789865020637){:target="_back"}
+   - [Docker 專業養成 ─ 活用基礎與實踐技能 (暢銷回饋版)](https://www.tenlong.com.tw/products/9789864344437){:target="_back"}
