@@ -21,6 +21,7 @@ tags: udemy-docker
 
 ## Assignment
 
+- docs.docker.com and `--help` are your friend 
 - Run a `nginx`, a  `mysql`, and a `httpd` (apache) server
 - Run all of them `--detach` (or `-d`), name them with `--name`
 - nginx should listen on `80:80`, httpd on `8080:80`, mysql on `3306:3306`

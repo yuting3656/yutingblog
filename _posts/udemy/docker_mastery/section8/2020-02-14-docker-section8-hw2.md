@@ -218,7 +218,7 @@ secrets:
 - 老師的小貼心～
 
    - 沒有先在 `swarm` 裡建造 `secrets`
-   - [我的筆記](https://yuting3656.github.io/yutingblog//docker_matery/docker-sections8-swarm-secrets-for-swarm){:target="_back"}
+   - [我的筆記](https://yuting3656.github.io/yutingblog//docker_mastery/docker-sections8-swarm-secrets-for-swarm){:target="_back"}
 
    ~~~
    root@node1:/srv/udemy-docker-mastery/secrets-assignment-1# docker stack deploy -c docker-compose.yml drupal

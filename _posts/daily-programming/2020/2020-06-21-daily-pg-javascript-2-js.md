@@ -1,22 +1,29 @@
 ---
 layout: 'post'
-title: 'daily Programming: 寶哥出品 javascript 品質保證!'
+title: 'daily Programming: 又見 寶哥出品 javascript 品質保證 第二次拉!!'
 permalink: 'daily-programming/javascript-core-concepts-and-es6'
 tags: daily-programming javascript
 ---
 
 > 專題完後一天無縫直接再上課看我多棒棒～～
 
+`2020/06/21 又來上拉!`
+
+- [觀念驗證](https://gist.github.com/doggy8088/07c6dde26a42b622e03e90d714b7a502?fbclid=IwAR3UZIcGHVlXd_VPmwpMzguJ90vQuR4z9i8kIa2Hzo4OoWzjwdyFkZh5UHo){:target="_back"}
 
 ## 物件、變數與型別
 
-> javascript 物件可以指派給一個變數並會在`執行時期`擁有形別
+> javascript `物件` 可以指派給一個`變數`並會在`執行時期`擁有形別
 
 - 執行時期
    - 被電腦執行的時候
+   - 腦袋裡是執行時期
 
 - 開發時期
    - 在寫code的時候
+
+- 型別
+   - 一個物件該有的樣子
 
 - javascript　是弱型別的語言
 
@@ -24,32 +31,39 @@ tags: daily-programming javascript
 ## 何謂 物件
 
 - 物件
-   - 物件就是記憶體中的一個值
-   - in computer sciene, an object is a value in memory which is possibly referenced by an identifier
+   - 物件就是記憶體中的一個值(資料)
+   - in `computer sciene`, an `object` is a `value in memory` which is possibly referenced by an `identifier`(識別符號)
+
+- 名詞解釋
+   - computer science 
+   - value in memory
+   - referenced by an identifier
 
 
 ## Javascript 是 OOP
 
-- Primitive Type
-   - number
-   - string
-   - boolean
-   - null
-   - undefined 
-   - symbol
+- 所有的物件都是 __Object Type__ 除了 primitive Type (6個) :
+
+   - Primitive Type
+      - number
+      - string
+      - boolean
+      - null
+      - undefined 
+      - symbol `ES6+`
 
 - Object Type
 
 ## 物件型別 Object Type 的基本特性 (擁有屬性)
 
 - Property
-   - 任何一個 Javascript 物件只有一種成分: `屬性`
+   - 任何一個 Javascript 物件只有一種成分: `屬性(Property)`
    - `屬性`的特性和`變數`很像，可以指派`任意資料`給`任意屬性`
 
 - 建立物件
  
    ~~~js
-   var car = {};
+   var car = {};      // 物件 (Object)
    ~~~
 
 - 擴增屬性
@@ -79,16 +93,31 @@ tags: daily-programming javascript
    - 取用物件的方式
       - car.name
       - car[001]
+      - car['001'] 
+      - car['start']()
       - 上面兩種呼叫方式，幾乎一樣不會影響效能
+
+   - 有時候會遇到 拿不到東西!?  因為拿不到有效的識別語言
+      - car.001  
+      - car[001]
 
 
 ## 取得網頁上第一個表單的 DOM 物件
 
 
 - window.document.forms[0]
-
+ - window['document']['forms']['0']
  - 我取得 window 的物件，有一個 document 的屬性，document 下有一個屬性叫 forms
+
  - js array 就是一個物件，物件下就只有屬性
+    - 在js 中 array 就是 object!!!
+    - 
+    ~~~js
+       var a = [1, 2, 3]
+       a['name'] = 'will'
+       a 
+       [1, 2, 3, name: will]
+    ~~~
 
  - 來了啦! 眼睛 compile!!! :notes::notes::notes:
 
@@ -112,7 +141,7 @@ javascript 語法非常靈活
    - [http://www.jsfuck.com/](http://www.jsfuck.com/){:target="_back"}
 
 
-## JavaScript 是動態語言
+## JavaScript 是動態型別語言
 
 - 型別不可以單獨存在
 
@@ -130,18 +159,21 @@ x = "Will"
 
 - 變數沒有型別，物件有型別
 
+   - 在 js `變數` 只是記憶體位置 沒有型別的概念
+
 ## Object, Variable and Type 間的關係
 
 - Object
    - 僅存在於`執行時期`
-   - 這裡
+   - 這裡的物件代表的是一種存在於記憶體中的`資料`
 
 - Variable
    - 只能在開發時期進行宣告(var/let/const 關鍵字)
-   - 在執行時期只會用來儲存`物件`的`記憶體位置`
+   - 在執行時期只會用來儲存`物件`的`記憶體位置`(類似指標)
 
 - Type
-   - 
+   - 僅存在於`執行時期`，並用來標示`物件`的種類 (類型)
+   - – 不同型別之間可能會有不同的預設`屬性`與`方法`
 
 
 ## Object, Variable and Type (範例)
@@ -168,12 +200,41 @@ a = 'a' + a;
       - string
    - 5
 
+### 這段 code 怎麼寫 怎麼 run!!!
+
+- javascript 沒有 callby value 
+- javascript 只會傳位置
+
+- ex 1:
+
+~~~js
+var a = 1
+function test(p) {
+   p = 2
+}
+test(a);
+/// ans: a = 1
+~~~
+
+- ex 2: (side effect)
+
+~~~js
+var a = {'a1': 1, 'a2': 2};
+function test(p) {
+   p.a1 = 2;
+}
+test(a);
+~~~
+
 ## 變數與屬性之間的關係
 
 |__屬性__|__變數__|
 |執行時期為主|開發時期為主|
 |擁有指標特性|擁有指標特性|
 |屬性只會存在於特定物件下屬性可以透過 `delete` 刪除|只有用 var / let / const 宣告的才能算變數變數只存在於當前範圍下，而且`不能刪除`|
+
+- 全域變數: 宣告變數的同時 就會被註冊到跟物件的屬性
+   - `變數就是屬性`
 
 ## Scoping
 
@@ -183,7 +244,12 @@ a = 'a' + a;
    -  在 function 內執行　`區域‵變數`
 
 - nodeJs
+   - js file 就是一個模組(module)
    - global (根物件)
+   - 每個 `模組` 都會擁有一個 `變數` 的 作用域範圍
+   - 每個 `函式` 也會擁有一個 `變數` 的 作用域範圍
+   - 嚴格來說 Node.js 沒有 __全域變數__ 的概念
+      - 但 Node.js 有 global 可用來設定 __類全域變數__
 
 ## 執行時期的變數特性
 
@@ -359,10 +425,18 @@ console.log(b); // 讀取一個不存在的變數 會報錯
 
 - let
 
+   - 屬於 block scope 且同一範圍不允許重複宣告變數
+   -  用 var 宣告過的變數，不能再使用 let 宣告一次
+   -  用 let 宣告變數之後才能開始使用 ( 變數特性與 C# 非常類似 )
+
 - const
 
    - 常數是針對變數 (variable)
    - ![Imgur](https://i.imgur.com/Yb4wliG.gif)
+
+   - 宣告一個唯讀的變數 (變數無法再指向其他物件)
+   - 宣告完變數後必須立刻初始化變數 (給予變數預設值)
+   - 變數作用域範圍與 let 完全相同 ( block scope )
 
 
 ## 觀念驗證
@@ -405,7 +479,6 @@ f(2);
 
 
 
-
 4. 
 
 ~~~js
@@ -441,9 +514,9 @@ f(2);
 6. 
 
 ~~~js
-(function () { for (let i = 0; i < 10 ; i++) { setTimeout(function() { console.log(i); }, 100 * i); } })();
-(function () { for (var i = 0; i < 10 ; i++) { setTimeout(function() { console.log(i); }, 100 * i); } })();
-~~~
+(function () { for (let i = 0; i < 10 ; i++) { setTimeout(function() { console.log(i); }, 100 * i); } })(); // 0, 1, 2, 3, 4 ... 9
+(function () { for (var i = 0; i < 10 ; i++) { setTimeout(function() { console.log(i); }, 100 * i); } })(); // 10 個 10
+~~~ 
 
 
 ## Javascript 特性
@@ -467,7 +540,7 @@ f(2);
    - 原生物件
    - 宿主物件
 
-   - 可以自由擴增屬性
+   - `可以自由擴增屬性`
    
    ~~~js
    delete window.xxx
@@ -482,6 +555,12 @@ f(2);
    - 根物件
 
 - [https://alf.nu/ReturnTrue](https://alf.nu/ReturnTrue){:target="_back"}
+
+## 原始型別 不允許擁有屬性~~~
+
+- Number, string, boolean, null, undefined, symbol
+
+   - 你所用到 Number, string, 等的 屬性都是 原始 prototype 的屬性 用不了
 
 ## 物件型別資料下的屬性操作
 
@@ -503,6 +582,24 @@ var a = new Number('110a'); // --> NaN
 var b = +'10' // 直接轉 number type
 ~~~
 
+## 數值型別常見的使用技巧
+
+
+- 使用 `parseInt / parseFloat` 一律加上第 2 個參數
+   - `parseInt('070'); // IE8 以下會變成 8 進制`
+   - `parseInt('070', 10) // 這個才是建議的寫法！`
+
+-  使用 + 引發型別自動轉換 (自動轉成 number 型別)
+   - `var a = +'7';`
+   - `var b = +(a);`
+
+-  使用 (N).toString(baseN) 轉換進制
+   - `(0xAF).toString(10)`
+   - `65535..toString(16)`
+- 判斷 NaN 的唯一寫法
+   - Number.isNaN(NaN)
+
+
 - parseInt
   - 從左到右遇到看不懂後面的就忽略
   - ![Imgur](https://i.imgur.com/5IGA0Fe.gif)
@@ -521,6 +618,81 @@ var b = +'10' // 直接轉 number type
    - ![Imgur](https://i.imgur.com/Xti0C9C.gif)
 
 
+## 數值型別的 整數運算 特性
+
+- 最大安全整數 = 2^53 (判斷`最大安全整數`非常重要)
+   - Number.MAX_SAFE_INTEGER == 2**53-1
+   - Number.MAX_SAFE_INTEGER+1
+   - Number.MAX_SAFE_INTEGER+2
+-  浮點數系統可保存極大數值 (但有精準度問題)
+   - Number.MAX_VALUE == 1.7976931348623157e+308
+   - Number.MIN_VALUE == 5e-324
+- 判斷無限大數值的表示方法
+   - var a = 1 / 0;
+   - Number.POSITIVE_INFINITY == Infinity
+   - Number.NEGATIVE_INFINITY == -Infinity
+
+## 關於 BigInt 型別
+
+
+- Chrome 67+ / Opera 54+ 開始支援 BigInt 型別 (相容性)
+
+- 基本用法
+   - var a = 39837212195743250943287503298475432n
+   - var a = BigInt('39837212195743250943287503298475432')
+- 錯誤用法
+   - BigInt(39837212195743250943287503298475432)
+   - BigInt(1.5) // RangeError
+   - BigInt('1.5') // SyntaxError
+   - 1 + 1n // TypeError: 不能混用型別
+   - new BigInt(123) // TypeError: 不能用 new 建立物件
+
+- 比較運算
+   - 42n == 42 // true
+   - 42n === 42 // false
+   - 123 < 124n // true
+   - 42n === BigInt(42) // true
+   - typeof 42n === 'bigint' // true
+
+- 數學運算
+   - const num = BigInt(Number.MAX_SAFE_INTEGER);
+   - var a = num + 1n
+   - var a = num - 1n
+   - var a = num ** 2n
+   - var a = num * 1n
+   - var a = num / 10n (只取整數)
+   - var a = num % 10n
+
+## 數值型別的浮點數運算特性
+
+• 0.1 + 0.2 != 0.3
+• 0.2 + 0.4 != 0.6
+• 0.3 + 0.6 != 0.9
+• 0.4 + 0.8 != 1.2
+• 0.123123123123123123123 == 0.123123123123123123124
+• Math.ceil(0.1*0.2*100)
+• Math.ceil(0.1*0.2*1000)
+• Math.ceil(0.1*0.2*10000)
+• parseInt(0.000001)
+• parseInt(0.0000001) 
+
+## 數值名別處裡浮點數的注意事項
+
+- 自動取整數
+   - parseInt(2.99)
+   - ~~2.99
+- 自動取小數幾位
+   - parseInt(2.99 * 10) / 10
+   - +(2.999).toFixed(3)
+- 四捨五入 (負數超過 0.5 才會進位)
+   - Math.round(2.5) == 3
+   - Math.round(-2.5) == -2
+   - Math.round(-2.51) == -3
+- 無條件捨去 (小於自己的最大整數)
+   - Math.floor(2.99) == 2
+- 無條件進位 (大於自己的最小整數)
+   - Math.ceil(2.11) == 3
+
 ## JavaScript: Primitive Type - string
 
 - ES6 string
@@ -534,7 +706,6 @@ var b = +'10' // 直接轉 number type
 
 ## JavaScript: Primitive Type - boolean
 
-
 ~~~js
 var d = (null == false);           // false
 var e = (null == true);            // false
@@ -543,7 +714,6 @@ var g = (undefined == true);       // false
 var h = (null == null);            //true
 var i = (undefined == undefined);  // true
 var j = (undefined == null);       // true
-
 ~~~
 
 - Falsy
@@ -557,14 +727,34 @@ var j = (undefined == null);       // true
    - null
 
 
-- boolean 使用技巧
+- boolean 使用技巧 
+
+   - [https://dorey.github.io/JavaScript-Equality-Table/](https://dorey.github.io/JavaScript-Equality-Table/){:target="_back"}
 
    - 一律使用 `===` , `!==`
 
+   - 使用 !! 強迫引發自動轉型
+      - var a = !!(0);
+      - var b = !!("0");
+
+   - 判斷物件是否有初始值
+      - if (myVar) {}
+   
+   - 給予變數預設值
+      - var arr = arr || [];
+      - var num = num || 99;
+      - var str = str || "";
+      - var bool = bool || true;
+      - var obj = obj || {};
+
+> 任何兩個物件相比一定為 `false`
 
 ## JavaScript: Primitive Type - null
 
 ![Imgur](https://i.imgur.com/91bxlBZ.gif)
+
+- Nan  不是一個`物件`，但是型別卻是個`數值`| typeof(Nan) == "number"
+- null 不是一個`物件`，但是型別卻是個`物件`| typeof(null) == "object"
 
 
 ## JavaScript: Primitive Type - nudefined

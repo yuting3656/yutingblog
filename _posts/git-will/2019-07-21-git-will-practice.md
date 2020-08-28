@@ -1,6 +1,6 @@
 ---
 layout: 'post'
-title: 'git-will practice  保哥出品! 品質保證!'
+title: 'git-will practice 保哥出品! 品質保證!'
 permalink: 'git/git-will-practice'
 tags: git
 ---

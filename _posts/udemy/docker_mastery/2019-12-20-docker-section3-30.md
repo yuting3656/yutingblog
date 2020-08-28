@@ -20,8 +20,8 @@ tags: udemy-docker docker-network
 ---
 
 __UPDATE__
-
-- 原本在 [上一篇: docker networks](https://yuting3656.github.io/yutingblog/docker_matery/docker-networks){:target="_back"}認為是 windows container 的問題
+                                  https://yuting3656.github.io/yutingblog/docker_mastery/docker-networks
+- 原本在 [上一篇: docker networks](https://yuting3656.github.io/yutingblog/docker_mastery/docker-networks){:target="_back"}認為是 windows container 的問題
 
    - 因為我想轉成 linux container (os: window 10) 都會出現 `Not Enough memory to start docker`
    - 找到[這篇](https://stackoverflow.com/questions/43170089/docker-wont-start-on-windows-not-enough-memory-to-start-docker){:target="_back"}
@@ -106,7 +106,7 @@ PS E:\> docker network inspect my_app_net
 ## contaienrs 相互　ping
 
 - docker container exec -it <container-id/name> <cmd> <args..>
-   - [docker container exec: 複習](https://yuting3656.github.io/yutingblog/docker_matery/docker-containers-cli){:target="_back"}
+   - [docker container exec: 複習](https://yuting3656.github.io/yutingblog/docker_mastery/docker-containers-cli){:target="_back"}
    - 畢卡索葛！
        - |![Imgur](https://i.imgur.com/JDocG2i.jpg)|
 
