@@ -6,6 +6,19 @@ tags: 讀書會 docker swarm
 ---
 
 
+## Udemy
+
+- [Docker Mastery: with Kubernetes +Swarm from a Docker Captain](https://www.udemy.com/course/docker-mastery/){:target="_back"}
+
+- [GitHub: udemy-docker-mastery](https://github.com/BretFisher/udemy-docker-mastery){:target="_back"}
+
+- [講師的YouTube](https://www.youtube.com/channel/UC0NErq0RhP51iXx64ZmyVfg){:target="_back"}
+
+---
+---
+---
+
+
 ## [好棒棒文件](https://boxboat.com/2016/08/17/whats-docker-swarm-advertise-addr/){:target="_black"}
 
 ## 實作
