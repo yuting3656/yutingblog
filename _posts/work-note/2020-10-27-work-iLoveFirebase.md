@@ -2,14 +2,14 @@
 layout: 'post'
 title: '工作筆記: 我愛  Firebase'
 permalink: 'work-note/i-love-firebase'
-tags: 工作筆記 firebase
+tags: 工作筆記 firebase go javascript
 ---
 
 > 故事是這樣的 要照片 拿照片 安全的照片 好～開始！
 
 # Js read image
 
-- [Referencd:](https://blog.logrocket.com/how-to-extract-text-from-an-image-using-javascript-8fe282fb0e71/)
+- [Reference:](https://blog.logrocket.com/how-to-extract-text-from-an-image-using-javascript-8fe282fb0e71/)
 
 ~~~js
 const setImageSrc = (image: HTMLImageElement, imageFile: File) => {
@@ -133,4 +133,43 @@ func (d *demo) createFile(fileName string) {
 }
 ~~~
 
-> 好！線這樣！！ 目前卡在 用 go 傳圖到 storage
+> ~好！線這樣！！ 目前卡在 用 go 傳圖到 storage~
+
+> 一支全壘打! 爪抓今年拿冠軍~~~~
+
+> 快樂 用 `GO`寫進 firebase storage 就是開心~~ 
+
+- 前端 吃檔案 用 [`FileReader.readAsDataURL()`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL){:target="_back"} 
+   - 把資料變成 [Data-URL](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs){:target="_back"} 送到後端 
+
+- 後端 `Go` 要處裡 Data-URL (是 STRING 唷!)  `data:[<mediatype>][;base64],<data>` 
+   - 把 `<data>` 和 `[<mediatype>]` 找出來 燈燈燈~~~
+   - 找到 [github.com/vincent-petithory/dataurl](https://github.com/vincent-petithory/dataurl){:target="_back"} YA!!!
+
+
+~~~go
+c := *gin.Context
+
+type imageStruct struct {
+        Image string `json:"image"`
+}
+
+t := imageStruct{}
+_ := c.ShouldBindJSON(&t)
+
+dataURL, _ := dataurl.DecodeString(t.Image)
+contentType := dataURL.MediaType.ContentType() // contentType string
+fileData := dataURL.Data // fileData []byte
+
+writer := bucket.Object("filePath").NewWriter(c)
+writer.ObjectAttrs.ContentType = contentType
+writer.ObjectAttrs.CacheControl = "no-cache"
+if _, err := writer.Write(fileData); err != nil {
+	return "", err
+}
+if err := writer.Close(); err != nil {
+	fmt.Println(err)
+	return "", err
+}
+
+~~~
