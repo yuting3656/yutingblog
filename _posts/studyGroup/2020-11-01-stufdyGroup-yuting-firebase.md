@@ -4,6 +4,9 @@ title: 'Study Group: 那壺X舞 有口接杯 Firebase & Github Pages & Angular &
 permalink: 'stydeGroup/firebase-and-i-totally-have-no-ideas-kkk'
 tags: 讀書會 firebase angular react
 ---
+
+> 痛心! 難過! 日子還是要過! 該做的事還是做! :) 兄弟快拿總冠軍了 笑一個吧 :)
+
 ![Imgur](https://i.imgur.com/KzUILYa.jpg)
 
 ## [Understand Firebase projects](https://firebase.google.com/docs/projects/learn-more){:target="_back"} 
@@ -87,6 +90,76 @@ tags: 讀書會 firebase angular react
 5. `ng add angular-cli-ghpages`
 6. `ng deploy --base-href=/<repoName>/`
 7. 去 `https://<usernam>.github.io/<repositoryname>` 看有沒有可愛 Angular defalut 的 畫面
+
+
+- [AngularFire Quickstart](https://github.com/angular/angularfire/blob/master/docs/install-and-setup.md){:target="_back"}
+
+   1. cd 到剛剛創的 Angular Project `ng add @angular/fire` 
+      - 會跑出 `Allow Firebase to collect CLI usage and error reporting information?` 選 N
+   2. 把 firebase config 加到 `/src/environments/environment.ts` 裡面
+     - 
+      ~~~ts
+         export const environment = {
+           production: false,
+           firebase: {
+             apiKey: '<your-key>',
+             authDomain: '<your-project-authdomain>',
+             databaseURL: '<your-database-URL>',
+             projectId: '<your-project-id>',
+             storageBucket: '<your-storage-bucket>',
+             messagingSenderId: '<your-messaging-sender-id>'
+           }
+         };
+      ~~~
+   3. 加 AngularFireModule  &  AngularFirestoreModule 到 `/src/app/app.module.ts`
+      ~~~ts
+         import { BrowserModule } from '@angular/platform-browser';
+         import { NgModule } from '@angular/core';
+         import { AppComponent } from './app.component';
+         import { AngularFireModule } from '@angular/fire';
+         import { AngularFirestoreModule } from '@angular/fire/firestore';
+         import { environment } from '../environments/environment';
+         
+         @NgModule({
+           imports: [
+             BrowserModule,
+             AngularFireModule.initializeApp(environment.firebase),
+             AngularFirestoreModule
+           ],
+           declarations: [ AppComponent ],
+           bootstrap: [ AppComponent ]
+         })
+         export class AppModule {}
+      ~~~
+   4. 使用 AngaulrFirestore 吃 資源
+
+      - /src/app/app.component.ts:
+         ~~~ts
+           import { Component } from '@angular/core';
+           import { AngularFirestore } from '@angular/fire/firestore';
+           import { Observable } from 'rxjs';
+           
+           @Component({
+             selector: 'app-root',
+             templateUrl: 'app.component.html',
+             styleUrls: ['app.component.css']
+           })
+           export class AppComponent {
+             items: Observable<any[]>;
+             constructor(firestore: AngularFirestore) {
+               this.items = firestore.collection('items').valueChanges();
+             }
+          }
+         ~~~
+      - /src/app/app.component.html:
+   
+         ~~~html
+           <ul>
+            <li class="text" *ngFor="let item of items | async">
+              {{item.name}}
+            </li>
+          </ul>
+         ~~~
 
 
 ## 同廠家硬!! 硬起來~ [Github pages + React app](https://github.com/gitname/react-gh-pages){:target="_back"}
