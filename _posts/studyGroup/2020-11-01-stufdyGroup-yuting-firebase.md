@@ -183,6 +183,14 @@ tags: 讀書會 firebase angular react
 9. 去 `https://<usernam>.github.io/<repositoryname>` 看有沒有可愛 React defalut 的 畫面
 
 
+# 讀書會後紀錄! 我川感動 
+
+- 凡歌: [https://josephjsf2.github.io/test1/index.html](https://josephjsf2.github.io/test1/index.html){:target="_back"}
+- 一解: [https://pengpon.github.io/yoyo/project/](https://pengpon.github.io/yoyo/project/){:target="_back"}
+- 溫妮: [https://op30132.github.io/whatever/](https://op30132.github.io/whatever/){:target="_back"}
+- 珊謎: [https://sammiehsieh.github.io/thursdaynight/](https://sammiehsieh.github.io/thursdaynight/){:target="_back"}
+
+
 # 超棒棒資源
 
 - [Firebase YouTube](https://www.youtube.com/channel/UCP4bf6IHJJQehibu6ai__cg){:target="_back"}
