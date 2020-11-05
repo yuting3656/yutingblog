@@ -185,6 +185,9 @@ tags: 讀書會 firebase angular react
 
 # 讀書會後紀錄! 我川感動 
 
+- ng deploy issues 凡歌神救援!
+   - [https://josephjsf2.github.io/angular/2019/06/13/deploy-angular-to-gitpage.html](https://josephjsf2.github.io/angular/2019/06/13/deploy-angular-to-gitpage.html){:target="_back"}
+
 - 凡歌: [https://josephjsf2.github.io/test1/index.html](https://josephjsf2.github.io/test1/index.html){:target="_back"}
 - 一解: [https://pengpon.github.io/yoyo/project/](https://pengpon.github.io/yoyo/project/){:target="_back"}
 - 溫妮: [https://op30132.github.io/whatever/](https://op30132.github.io/whatever/){:target="_back"}
