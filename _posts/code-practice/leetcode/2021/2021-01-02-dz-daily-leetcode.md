@@ -511,8 +511,10 @@ tags: 紮馬步 leetcode
 
     - YY
         - Python (time: $\mathcal{O}(N)$, space: $\mathcal{O}(1)$)
+        
         ~~~python
-        R2I = {
+        
+         R2I = {
             'I': 1,
             'V': 5,
             'X': 10,
@@ -520,7 +522,7 @@ tags: 紮馬步 leetcode
             'C': 100,
             'D': 500,
             'M': 1000,
-        }
+         }
 
         class Solution:
             def romanToInt(self, s: str) -> int:
@@ -1206,7 +1208,7 @@ tags: 紮馬步 leetcode
         ~~~
    - Tim 😶
       - python
-      > Great Artists Stealu
+      > Great Artists Steal
       <iframe width="560" height="315" src="https://www.youtube.com/embed/IMyTlG0E_7c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       ~~~python
       class Solution(object):
@@ -1385,7 +1387,7 @@ tags: 紮馬步 leetcode
     - Tim
        - python
        > 人一定要靠自己！
-       >- <iframe src="https://www.youtube.com/embed/JRqbV4sQS6M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+       <iframe src="https://www.youtube.com/embed/JRqbV4sQS6M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
        
        ~~~
           000  
@@ -1515,5 +1517,37 @@ tags: 紮馬步 leetcode
             
         ~~~
 
+    - Chris
+        - 原來我還沒寫，趕快補寫
+        - 說明：
+        ```
+        在 nums 裡面，最小的那一個數每一輪一定都會幫他 +1，所以假設我們最後的答案是做了 x 次，我們可以試試看寫出等式。
+        1. 首先是以最小的那個數字每輪都要幫他 +1 來寫式子，這個最小的數字做完 x 輪，他最後會變成 min + x。
+        而做到最後，nums 裡面的每個元素都是一樣大，所以總和可以這樣算 (min + x) * length。
+        2. 為了要求出 x，我們可以試著寫看看另一種算總和的式子，也就是一開始給的 nums 先計算總合，後面用 sum 表示，一開始的總和加上 x 次的對 length - 1 個元素加一，因此可以寫成 sum + (length-1) * x。
+        3. 把 1 跟 2 的式子寫成方程式： (min + x) * length = sum + (length-1) * x
+        4. 3 的方程式中，除了 x 以外都是可以求得的已知數，因此我們稍微整理一下式子：
+            a. (min + x) * length = sum + (length-1) * x
+            b. 將乘法展開 => (min * length) + (x * length) = sum + (x * length) - x
+            c. 同時減掉 x * length => (min * length) = sum - x
+            d. 將等式的一邊只留下 x => x = sum - (min * length )
+        5. 因此我們就可以知道 x 可以根據 sum 、 min 、 length 求得，因此程式碼只要求出 nums 總和跟 nums 最小的那個元素就可以算出答案。
+        ```
+        - Golang
+        ~~~ golang
+        func minMoves(nums []int) int {
+            sum := 0
+            min := (1<<63) -1   //max int64
+
+            for _, value := range nums {
+                sum += value
+                if value < min {
+                    min = value
+                }
+            }
+
+            return sum - len(nums) * min
+        }
+        ~~~
 
 > 希望 可以持續到2021年終! XDD
