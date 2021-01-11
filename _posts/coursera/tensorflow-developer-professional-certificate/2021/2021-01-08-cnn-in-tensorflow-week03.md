@@ -147,6 +147,8 @@ plt.figure()
 plt.show()
 ~~~
 
+![Imgur](https://i.imgur.com/3ZeYcph.png)
+
 # Droupout
 
 > 我還記得 第一次調`超餐 dropout`時候的感動拉～～～ 超酷得兒！！！
