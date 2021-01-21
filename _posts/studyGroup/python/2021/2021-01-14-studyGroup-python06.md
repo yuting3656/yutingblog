@@ -1,6 +1,6 @@
 ---
 layout: 'post'
-title: 'Study Group: 凡哥出品 品質保證 python 06'
+title: 'Study Group: 巾凡哥出品 品質保證 python 06'
 permalink: 'stydeGroup/python-06'
 tags: 讀書會 python
 ---
