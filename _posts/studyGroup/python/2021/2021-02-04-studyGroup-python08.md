@@ -63,6 +63,30 @@ while True:
     break
 ~~~
 
+- [maketrans](https://www.programiz.com/python-programming/methods/string/maketrans)
+
+~~~python
+import string
+def play():
+    crypt = input("Type 'encode' to encrypt, type 'decode' to decrypt:")
+    input_str = input("Tell me something:").lower()
+    shift_num = int(input("shift :"))
+    text = string.ascii_lowercase
+    def caesar_cipher(lower_input_str, shift, crypt):
+        shift_text = ''
+        if crypt == 'encode':
+            shift_text = text[shift:] + text[:shift]
+        else:
+            shift_text = text[-shift:] + text[:-shift]
+        table = str.maketrans(text, shift_text)
+        return lower_input_str.translate(table)
+    print(caesar_cipher(input_str, shift_num, crypt))
+while True:
+  play()
+  if input("Do you want to play again? ~ (y/n)") == "n" :
+    break
+~~~
+
 # Simple Project - Blackjack
 
 - 遊戲中只有player 與 dealer
