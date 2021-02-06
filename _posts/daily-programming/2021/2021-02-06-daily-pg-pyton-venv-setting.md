@@ -111,3 +111,9 @@ wrapt                  1.12.1
 - pip freeze
 
    - will produce a similar list of the installed packages, but the output uses the format that pip install expects. A common convention is to put this list in a requirements.txt file:
+
+
+# 環境用好了 就用這環來練習 [TF]!(https://www.tensorflow.org/tutorials)
+
+- [Image classification](https://www.tensorflow.org/tutorials/images/classification)
+- [Word embeddings](https://www.tensorflow.org/tutorials/text/word_embeddings)
