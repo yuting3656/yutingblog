@@ -117,3 +117,12 @@ wrapt                  1.12.1
 
 - [Image classification](https://www.tensorflow.org/tutorials/images/classification)
 - [Word embeddings](https://www.tensorflow.org/tutorials/text/word_embeddings)
+
+# 其他
+
+- jupyter lab
+    - `pip install jupyterlab`
+
+- 把 venv 的環境 加到 [kernel](https://queirozf.com/entries/jupyter-kernels-how-to-add-change-remove){:target="_back"} 裡面
+
+   - `ipython kernel install --name "local-venv" --user`
