@@ -312,7 +312,7 @@ former versace store clerk sues over secret 'black code' for minority shoppers
 """
 ~~~
 
-# Quize 1 (錯一題~)
+# Quiz 1 (錯一題~)
 
 1. What is the name of the object used to tokenize sentences?
 
