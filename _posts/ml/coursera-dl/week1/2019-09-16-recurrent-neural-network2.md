@@ -2,7 +2,7 @@
 layout: 'post'
 title: 'Recurrent Neural Networks 2'
 permalink: 'dl-coursera-sequence-models/week1/rnn-sequence-models2'
-tags: coursera-deep-learning rnn GRU
+tags: coursera-deep-learning rnn GRU LSTM
 ---
 
 
