@@ -639,7 +639,289 @@ Non-trainable params: 0
 1. [Sarcasm with Bidirectional LSTM](https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/TensorFlow%20In%20Practice/Course%203%20-%20NLP/Course%203%20-%20Week%203%20-%20Lesson%202.ipynb#scrollTo=g9DC6dmLF8DC){:target="_back"}
 
 
+~~~python
+import numpy as np
+
+import json
+import tensorflow as tf
+
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+~~~
+
+~~~python
+!curl https://storage.googleapis.com/laurencemoroney-blog.appspot.com/sarcasm.json --output .\sarcasm.json
+~~~
+
+~~~python
+vocab_size = 1000
+embedding_dim = 16
+max_length = 120
+trunc_type = 'post'
+padding_type = 'post'
+oov_tok = "<OOV>"
+training_size = 20000
+
+with open(".\sarcasm.json") as f:
+    datastore = json.load(f)
+
+sentences = []
+labels = []
+urls = []
+for item in datastore:
+    sentences.append(item['headline'])
+    labels.append(item['is_sarcastic'])
+
+training_sentences = sentences[0:training_size]
+testing_sentences = sentences[training_size:]
+training_labels = labels[0:training_size]
+testing_labels = labels[training_size:]
+
+tokenizer = Tokenizer(num_words=vocab_size, oov_token=oov_tok)
+tokenizer.fit_on_texts(training_sentences)
+
+word_index = tokenizer.word_index
+
+# train
+training_sequences = tokenizer.texts_to_sequences(training_sentences)
+training_padded = pad_sequences(
+    training_sequences, 
+    maxlen=max_length, 
+    padding=padding_type,
+    truncating=trunc_type)
+
+# test
+testing_sequences = tokenizer.texts_to_sequences(testing_sentences)
+testing_padded = pad_sequences(
+   testing_sequences,
+   maxlen=max_length,
+   padding=padding_type,
+   truncating=trunc_type
+)
+~~~
+
+
+~~~python
+model = tf.keras.Sequential([
+    tf.keras.layers.Embedding(vocab_size, embedding_dim, input_length=max_length),
+    tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(32)),
+    tf.keras.layers.Dense(24, activation='relu'),
+    tf.keras.layers.Dense(1, activation='sigmoid')
+])
+
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+model.summary()
+
+"""
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+embedding (Embedding)        (None, 120, 16)           16000     
+_________________________________________________________________
+bidirectional (Bidirectional (None, 64)                12544     
+_________________________________________________________________
+dense (Dense)                (None, 24)                1560      
+_________________________________________________________________
+dense_1 (Dense)              (None, 1)                 25        
+=================================================================
+Total params: 30,129
+Trainable params: 30,129
+Non-trainable params: 0
+"""
+~~~
+
+
+~~~python
+num_epochs = 10
+training_padded = np.array(training_padded)
+training_labels = np.array(training_labels)
+testing_padded = np.array(testing_padded)
+testing_labels= np.array(testing_labels)
+history = model.fit(training_padded, training_labels, epochs=num_epochs, validation_data=(testing_padded, testing_labels), verbose=1)
+
+
+"""
+
+Epoch 1/10
+625/625 [==============================] - 15s 24ms/step - loss: 0.3604 - accuracy: 0.8360 - val_loss: 0.3822 - val_accuracy: 0.8269
+Epoch 2/10
+625/625 [==============================] - 15s 24ms/step - loss: 0.3316 - accuracy: 0.8501 - val_loss: 0.3709 - val_accuracy: 0.8313
+Epoch 3/10
+625/625 [==============================] - 16s 26ms/step - loss: 0.3132 - accuracy: 0.8588 - val_loss: 0.3737 - val_accuracy: 0.8292
+Epoch 4/10
+625/625 [==============================] - 16s 26ms/step - loss: 0.3014 - accuracy: 0.8663 - val_loss: 0.3801 - val_accuracy: 0.8316
+Epoch 5/10
+625/625 [==============================] - 16s 26ms/step - loss: 0.2921 - accuracy: 0.8709 - val_loss: 0.3883 - val_accuracy: 0.8277
+Epoch 6/10
+625/625 [==============================] - 16s 26ms/step - loss: 0.2840 - accuracy: 0.8781 - val_loss: 0.3854 - val_accuracy: 0.8298
+Epoch 7/10
+625/625 [==============================] - 16s 26ms/step - loss: 0.2760 - accuracy: 0.8810 - val_loss: 0.3876 - val_accuracy: 0.8305
+Epoch 8/10
+625/625 [==============================] - 16s 26ms/step - loss: 0.2679 - accuracy: 0.8862 - val_loss: 0.3947 - val_accuracy: 0.8293
+Epoch 9/10
+625/625 [==============================] - 17s 28ms/step - loss: 0.2615 - accuracy: 0.8872 - val_loss: 0.3925 - val_accuracy: 0.8259
+Epoch 10/10
+625/625 [==============================] - 18s 29ms/step - loss: 0.2545 - accuracy: 0.8889 - val_loss: 0.4315 - val_accuracy: 0.8256
+"""
+~~~
+
+
+~~~python
+import matplotlib.pyplot as plt
+
+def plot_graphs(histroy, string):
+    plt.plot(history.history[string])
+    plt.plot(history.history['val_' + string])
+    plt.xlabel("Epochs")
+    plt.ylabel(string)
+    plt.legend([string, 'val_' + string])
+    plt.show()
+    
+plot_graphs(history, 'accuracy')
+plot_graphs(history, 'loss')
+~~~
+
+![Imgur](https://i.imgur.com/hMNVms2.png)
+
+
 2. [Sarcasm with 1D Convolutional Layer](https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/TensorFlow%20In%20Practice/Course%203%20-%20NLP/Course%203%20-%20Week%203%20-%20Lesson%202c.ipynb#scrollTo=g9DC6dmLF8DC){:target="_back"}
+
+
+~~~python
+import numpy as np
+
+import json
+import tensorflow as tf
+
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+vocab_size = 1000
+embedding_dim = 16
+max_length = 120
+trunc_type = 'post'
+padding_type = 'post'
+oov_tok = "<OOV>"
+training_size = 20000
+
+with open(".\sarcasm.json") as f:
+    datastore = json.load(f)
+
+sentences = []
+labels = []
+urls = []
+for item in datastore:
+    sentences.append(item['headline'])
+    labels.append(item['is_sarcastic'])
+
+training_sentences = sentences[0:training_size]
+testing_sentences = sentences[training_size:]
+training_labels = labels[0:training_size]
+testing_labels = labels[training_size:]
+
+tokenizer = Tokenizer(num_words=vocab_size, oov_token=oov_tok)
+tokenizer.fit_on_texts(training_sentences)
+
+word_index = tokenizer.word_index
+
+# train
+training_sequences = tokenizer.texts_to_sequences(training_sentences)
+training_padded = pad_sequences(
+    training_sequences, 
+    maxlen=max_length, 
+    padding=padding_type,
+    truncating=trunc_type)
+
+# test
+testing_sequences = tokenizer.texts_to_sequences(testing_sentences)
+testing_padded = pad_sequences(
+   testing_sequences,
+   maxlen=max_length,
+   padding=padding_type,
+   truncating=trunc_type
+)
+
+model = tf.keras.Sequential([
+    tf.keras.layers.Embedding(vocab_size, embedding_dim, input_length=max_length),
+    tf.keras.layers.Conv1D(128, 5, activation='relu'),
+    tf.keras.layers.GlobalAveragePooling1D(),
+    tf.keras.layers.Dense(24, activation='relu'),
+    tf.keras.layers.Dense(1, activation='sigmoid')
+])
+
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+model.summary()
+
+
+"""
+Model: "sequential_1"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+embedding_2 (Embedding)      (None, 120, 16)           16000     
+_________________________________________________________________
+conv1d_1 (Conv1D)            (None, 116, 128)          10368     
+_________________________________________________________________
+global_average_pooling1d_1 ( (None, 128)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 24)                3096      
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 25        
+=================================================================
+Total params: 29,489
+Trainable params: 29,489
+Non-trainable params: 0
+___________________________________________________________________
+"""
+
+num_epochs = 10
+training_padded = np.array(training_padded)
+training_labels = np.array(training_labels)
+testing_padded = np.array(testing_padded)
+testing_labels= np.array(testing_labels)
+history = model.fit(training_padded, training_labels, epochs=num_epochs, validation_data=(testing_padded, testing_labels), verbose=1)
+
+
+"""
+Epoch 1/10
+625/625 [==============================] - 4s 6ms/step - loss: 0.6348 - accuracy: 0.6128 - val_loss: 0.4709 - val_accuracy: 0.7717
+Epoch 2/10
+625/625 [==============================] - 4s 6ms/step - loss: 0.4185 - accuracy: 0.8043 - val_loss: 0.4147 - val_accuracy: 0.8070
+Epoch 3/10
+625/625 [==============================] - 4s 6ms/step - loss: 0.3687 - accuracy: 0.8347 - val_loss: 0.3994 - val_accuracy: 0.8173
+Epoch 4/10
+625/625 [==============================] - 4s 6ms/step - loss: 0.3523 - accuracy: 0.8430 - val_loss: 0.3943 - val_accuracy: 0.8229
+Epoch 5/10
+625/625 [==============================] - 4s 6ms/step - loss: 0.3373 - accuracy: 0.8510 - val_loss: 0.3900 - val_accuracy: 0.8250
+Epoch 6/10
+625/625 [==============================] - 4s 6ms/step - loss: 0.3250 - accuracy: 0.8535 - val_loss: 0.3870 - val_accuracy: 0.8268
+Epoch 7/10
+625/625 [==============================] - 4s 6ms/step - loss: 0.3146 - accuracy: 0.8626 - val_loss: 0.3905 - val_accuracy: 0.8269
+Epoch 8/10
+625/625 [==============================] - 4s 6ms/step - loss: 0.3062 - accuracy: 0.8628 - val_loss: 0.3918 - val_accuracy: 0.8256
+Epoch 9/10
+625/625 [==============================] - 4s 6ms/step - loss: 0.2907 - accuracy: 0.8726 - val_loss: 0.3885 - val_accuracy: 0.8253
+Epoch 10/10
+625/625 [==============================] - 4s 6ms/step - loss: 0.2862 - accuracy: 0.8771 - val_loss: 0.3923 - val_accuracy: 0.8259
+"""
+
+import matplotlib.pyplot as plt
+
+def plot_graphs(histroy, string):
+    plt.plot(history.history[string])
+    plt.plot(history.history['val_' + string])
+    plt.xlabel("Epochs")
+    plt.ylabel(string)
+    plt.legend([string, 'val_' + string])
+    plt.show()
+    
+plot_graphs(history, 'accuracy')
+plot_graphs(history, 'loss')
+
+~~~
+
+![Imgur](https://i.imgur.com/maLnnsn.png)
 
 
 # Week 03  Quiz (錯一題而已啦!)
@@ -677,3 +959,185 @@ Non-trainable params: 0
 
    - None of the above
 
+
+# Exercise - [Exploring overfitting in NLP](https://colab.research.google.com/github/lmoroney/dlaicourse/blob/master/TensorFlow%20In%20Practice/Course%203%20-%20NLP/NLP%20Course%20-%20Week%203%20Exercise%20Question.ipynb){:taregt="_back"}
+
+- [kaggle - sentiment140](https://www.kaggle.com/kazanova/sentiment140){:target="_back"}
+
+- [GloVe](https://nlp.stanford.edu/projects/glove/){:target="_back"}
+
+
+~~~python
+!curl https://storage.googleapis.com/laurencemoroney-blog.appspot.com/training_cleaned.csv --output .\weektraining_cleaned.csv
+~~~
+
+~~~python
+import json
+import tensorflow as tf
+import csv
+import random
+import numpy as np
+
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.utils import to_categorical
+from tensorflow.keras import regularizers
+
+
+embedding_dim = 100
+max_length = 16
+trunc_type='post'
+padding_type='post'
+oov_tok = "<OOV>"
+training_size= 160000 #Your dataset size here. Experiment using smaller values (i.e. 16000), but don't forget to train on at least 160000 to see the best effects
+test_portion=.1
+
+corpus = []
+~~~
+
+~~~python
+num_sentences = 0
+corpus = []
+with open('./archive/training.1600000.processed.noemoticon.csv',encoding="LATIN1") as csvfile:
+    reader = csv.reader(csvfile, delimiter=",")
+    print(reader)
+    for row in reader:
+        list_item=[]
+        list_item.append(row[5])
+        list_item.append(0 if str(row[0]) == "0" else 1)
+        num_sentences = num_sentences + 1
+        corpus.append(list_item)
+~~~
+
+~~~python
+print(num_sentences)
+print(len(corpus))
+print(corpus[1])
+~~~
+
+~~~python
+sentences=[]
+labels=[]
+random.shuffle(corpus)
+for x in range(training_size):
+    sentences.append(corpus[x][0])
+    labels.append(corpus[x][1])
+
+
+tokenizer = Tokenizer()
+tokenizer.fit_on_texts(sentences)
+
+word_index = tokenizer.word_index
+vocab_size=len(word_index)
+
+sequences = tokenizer.texts_to_sequences(sentences)
+padded = pad_sequences(sequences, maxlen=max_length, padding=padding_type ,truncating=trunc_type)
+
+split = int(test_portion * training_size)
+
+test_sequences = padded[0:split]
+training_sequences = padded[split:training_size]
+test_labels = labels[0:split]
+training_labels = labels[split:0]
+~~~
+
+~~~python
+print(vocab_size)
+print(word_index['i'])
+~~~
+
+~~~python
+# Note this is the 100 dimension version of GloVe from Stanford
+# I unzipped and hosted it on my site to make this notebook easier
+!wget --no-check-certificate \
+    https://storage.googleapis.com/laurencemoroney-blog.appspot.com/glove.6B.100d.txt \
+    -O /tmp/glove.6B.100d.txt
+embeddings_index = {}
+with open('/tmp/glove.6B.100d.txt') as f:
+    for line in f:
+        values = line.split()
+        word = values[0]
+        coefs = np.asarray(values[1:], dtype='float32')
+        embeddings_index[word] = coefs
+
+embeddings_matrix = np.zeros((vocab_size+1, embedding_dim))
+for word, i in word_index.items():
+    embedding_vector = embeddings_index.get(word)
+    if embedding_vector is not None:
+        embeddings_matrix[i] = embedding_vector
+~~~
+
+~~~python
+print(len(embeddings_matrix))
+# Expected Output
+# 138859
+~~~
+
+~~~python
+model = tf.keras.Sequential([
+    tf.keras.layers.Embedding(vocab_size+1, embedding_dim, input_length=max_length, weights=[embeddings_matrix], trainable=False),
+    tf.keras.layers.Dropout(0.2),
+    tf.keras.layers.Conv1D(64, 5, activation='relu'),
+    tf.keras.layers.MaxPooling1D(pool_size=4),
+    tf.keras.layers.LSTM(64),
+    tf.keras.layers.Dense(1, activation='sigmoid')
+])
+model.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
+model.summary()
+
+num_epochs = 50
+
+training_padded = np.array(training_sequences)
+training_labels = np.array(training_labels)
+testing_padded = np.array(test_sequences)
+testing_labels = np.array(test_labels)
+
+history = model.fit(training_padded, training_labels, epochs=num_epochs, validation_data=(testing_padded, testing_labels), verbose=2)
+
+print("Training Complete")
+~~~
+
+
+~~~python
+import matplotlib.image  as mpimg
+import matplotlib.pyplot as plt
+
+#-----------------------------------------------------------
+# Retrieve a list of list results on training and test data
+# sets for each training epoch
+#-----------------------------------------------------------
+acc=history.history['accuracy']
+val_acc=history.history['val_accuracy']
+loss=history.history['loss']
+val_loss=history.history['val_loss']
+
+epochs=range(len(acc)) # Get number of epochs
+
+#------------------------------------------------
+# Plot training and validation accuracy per epoch
+#------------------------------------------------
+plt.plot(epochs, acc, 'r')
+plt.plot(epochs, val_acc, 'b')
+plt.title('Training and validation accuracy')
+plt.xlabel("Epochs")
+plt.ylabel("Accuracy")
+plt.legend(["Accuracy", "Validation Accuracy"])
+
+plt.figure()
+
+#------------------------------------------------
+# Plot training and validation loss per epoch
+#------------------------------------------------
+plt.plot(epochs, loss, 'r')
+plt.plot(epochs, val_loss, 'b')
+plt.title('Training and validation loss')
+plt.xlabel("Epochs")
+plt.ylabel("Loss")
+plt.legend(["Loss", "Validation Loss"])
+
+plt.figure()
+
+
+# Expected Output
+# A chart where the validation loss does not increase sharply!
+~~~
