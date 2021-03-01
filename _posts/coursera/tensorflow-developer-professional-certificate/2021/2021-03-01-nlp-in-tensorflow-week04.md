@@ -241,5 +241,232 @@ for _ in range(next_words):
 print(seed_text)
 # Laurence went to dublin all the ceiling would fall glisten then rose glisten twas your eyes glisten harp didnt how round round didnt mavrone girls be strangled strangled strangled died be strangled strangled strangled replied round round a acres room be how round round a cask strangled strangled died round a acres cask strangled girls them were them round a cask strangled strangled ground ground ground girls round round a room were them were them were them a ground ground youd how round round didnt how round a cask cask strangled died be strangled strangled strangled died round round a cask room be relations
 
-
 ~~~
+
+## Bidirection
+
+~~~python
+model = Sequential()
+model.add(Embedding(total_words, 64, input_length=max_sequence_len-1))
+model.add(Bidirectional(LSTM(20)))
+model.add(Dense(total_words, activation='softmax'))
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+history = model.fit(xs, ys, epochs=500, verbose=1)
+~~~
+
+## Songs sentences resources
+
+- [https://storage.googleapis.com/laurencemoroney-blog.appspot.com/irish-lyrics-eof.txt](https://storage.googleapis.com/laurencemoroney-blog.appspot.com/irish-lyrics-eof.txt){:tar4get="_back"}
+
+~~~batch
+!wegt --no-check-certificat \
+https://storage.googleapis.com/laurencemoroney-blog.appspot.com/irish-lyrics-eof.txt \
+-O /tmp/irish-lyrics-eof.txt
+~~~
+
+
+- Songs Coding
+
+~~~python
+data = open('/tmp/irish-lyrices-eof.txt').tead()
+~~~
+
+~~~python
+model= Sequential()
+model.add(Embedding(total_words, 100, input_length=max_sequence_len -1))
+model.add(Bidirectional(LSTM(150)))
+model.add(Desse(total_words, activation='softmax'))
+adam = Adam(lr=0.01)
+model.compile(loss='categorial_crossentropy', optimizer=adam, metrics=['accuracy'])
+history = model.fit(xs, ys, epochs=100, verbose=1)
+~~~
+
+## Songs Code 
+
+~~~python
+import tensorflow as tf
+
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.layers import Embedding, LSTM, Dense, Bidirectional
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.optimizers import Adam
+import numpy as np 
+~~~
+
+~~~python
+!wget --no-check-certificate \
+    https://storage.googleapis.com/laurencemoroney-blog.appspot.com/irish-lyrics-eof.txt \
+    -O /tmp/irish-lyrics-eof.txt
+~~~
+
+
+~~~python
+tokenizer = Tokenizer()
+
+data = open('/tmp/irish-lyrics-eof.txt').read()
+
+corpus = data.lower().split("\n")
+
+tokenizer.fit_on_texts(corpus
+total_words = len(tokenizer.word_index) + 1
+
+print(tokenizer.word_index)
+print(total_words)
+~~~
+
+~~~python
+input_sequences = []
+for line in corpus:
+    print("line: ", line)
+	# line: come all ye maidens young and fair
+	print("tokenizer.texts_to_sequences([line]):", tokenizer.texts_to_sequences([line]))
+	# tokenizer.texts_to_sequences([line]): [[51, 12, 96, 1217, 48, 2, 69]]
+    token_list = tokenizer.texts_to_sequences([line])[0]
+    for i in range(1, len(token_list)):
+        n_gram_sequence = token_list[:i+1]
+        input_sequences.append(n_gram_sequence)
+		"""
+		n_gram_sequence:  [51, 12]
+        n_gram_sequence:  [51, 12, 96]
+        n_gram_sequence:  [51, 12, 96, 1217]
+        n_gram_sequence:  [51, 12, 96, 1217, 48]
+        n_gram_sequence:  [51, 12, 96, 1217, 48, 2]
+        n_gram_sequence:  [51, 12, 96, 1217, 48, 2, 69]
+		"""
+
+# pad sequences 
+max_sequence_len = max([len(x) for x in input_sequences])
+input_sequences = np.array(pad_sequences(input_sequences, maxlen=max_sequence_len, padding='pre'))
+
+# create predictors and label
+xs, labels = input_sequences[:,:-1],input_sequences[:,-1]
+
+ys = tf.keras.utils.to_categorical(labels, num_classes=total_words)
+~~~
+
+
+~~~python
+print(tokenizer.word_index['in'])
+print(tokenizer.word_index['the'])
+print(tokenizer.word_index['town'])
+print(tokenizer.word_index['of'])
+print(tokenizer.word_index['athy'])
+print(tokenizer.word_index['one'])
+print(tokenizer.word_index['jeremy'])
+print(tokenizer.word_index['lanigan'])
+"""
+8
+1
+71
+6
+713
+39
+1790
+1791
+"""
+~~~
+
+~~~python
+print(xs[6])
+# [0 0 0 0 0 0 0 0 0 0 0 0 0 0 2]
+
+print(ys[6])
+# [0. 0. 0. ... 0. 0. 0.]
+~~~
+
+
+~~~python
+print(tokenizer.word_index)
+
+"""
+{'the': 1, 'and': 2, 'i': 3, 'to': 4, 'a': 5, 'of': 6, 'my': 7, 'in': 8, 'me': 9, 'for': 10, 'you': 11, 'all': 12, 'was': 13, 'she': 14, 'that': 15, 'on': 16, 'with': 17, 'her': 18, 'but': 19, 'as': 20, 'when': 21, 'love': 22, 'is': 23, 'your': 24, 'it': 25, 'will': 26, 'from': 27, 'by': 28, 'they': 29, 'be': 30, 'are': 31, 'so': 32, 'he': 33, 'old': 34, 'no': 35, 'oh': 36, 'ill': 37, ...
+"""
+~~~
+
+
+~~~python
+model = Sequential()
+model.add(Embedding(total_words, 100, input_length=max_sequence_len-1))
+model.add(Bidirectional(LSTM(150)))
+model.add(Dense(total_words, activation='softmax'))
+adam = Adam(lr=0.01)
+model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['accuracy'])
+#earlystop = EarlyStopping(monitor='val_loss', min_delta=0, patience=5, verbose=0, mode='auto')
+history = model.fit(xs, ys, epochs=100, verbose=1)
+#print model.summary()
+print(model)
+~~~
+
+
+~~~python
+import matplotlib.pyplot as plt
+
+
+def plot_graphs(history, string):
+  plt.plot(history.history[string])
+  plt.xlabel("Epochs")
+  plt.ylabel(string)
+  plt.show()
+~~~
+
+~~~python
+plot_graphs(history, 'accuracy')
+~~~
+
+
+~~~python
+seed_text = "I've got a bad feeling about this"
+next_words = 100
+  
+for _ in range(next_words):
+	token_list = tokenizer.texts_to_sequences([seed_text])[0]
+	token_list = pad_sequences([token_list], maxlen=max_sequence_len-1, padding='pre')
+	predicted = model.predict_classes(token_list, verbose=0)
+	output_word = ""
+	for word, index in tokenizer.word_index.items():
+		if index == predicted:
+			output_word = word
+			break
+	seed_text += " " + output_word
+print(seed_text)
+~~~
+
+# [Text generation with an RNN](https://www.tensorflow.org/tutorials/text/text_generation)
+
+
+# Week 4 Quiz
+
+1. What is the name of the method used to tokenize a list of sentences?
+
+   - fit_on_texts(sentences)
+
+
+2. If a sentence has 120 tokens in it, and a Conv1D with 128 filters with a Kernal size of 5 is passed over it, what’s the output shape?
+
+   - (None, 116, 128)
+
+3. What is the purpose of the embedding dimension?
+
+   - It is the number of dimensions for the vector representing the word encoding
+
+4. IMDB Reviews are either positive or negative. What type of loss function should be used in this scenario?
+
+   - Binary crossentropy
+
+5. If you have a number of sequences of different lengths, how do you ensure that they are understood when fed into a neural network?
+
+   - Use the pad_sequences object from the tensorflow.keras.preprocessing.sequence namespace
+
+6. When predicting words to generate poetry, the more words predicted the more likely it will end up gibberish. Why?
+
+   - Because the probability that each word matches an existing phrase goes down the more words you create
+
+7. What is a major drawback of word-based training for text generation instead of character-based generation?
+
+   - Because there are far more words in a typical corpus than characters, it is much more memory intensive
+
+8. How does an LSTM help understand meaning when words that qualify each other aren’t necessarily beside each other in a sentence?
+
+   - Values from earlier words can be carried to later ones via a cell state
+
