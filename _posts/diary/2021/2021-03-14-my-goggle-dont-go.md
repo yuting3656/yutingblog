@@ -103,7 +103,7 @@ circle {
      <svg class="blur" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
            <image filter="url(#filter2)" xlink:href="https://i.imgur.com/ZiJUoOY.png" width="100%" height="100%"></image>
            <filter id="filter2">
-               <fegaussianblur stdDeviation="5" />
+               <fegaussianblur stdDeviation="8" />
            </filter>
            <mask id="mask1">
                <circle cx="-50%" cy="-50%" r="30" fill="white" filter="url(#filter2)" />
@@ -252,7 +252,7 @@ $(document).ready(function() {
      <svg class="blur2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
            <image filter="url(#filter2_2)" xlink:href="https://i.imgur.com/fib72UQ.jpg" width="100%" height="100%"></image>
            <filter id="filter2_2">
-               <fegaussianblur stdDeviation="5" />
+               <fegaussianblur stdDeviation="8" />
            </filter>
            <mask id="mask2">
                <circle cx="-50%" cy="-50%" r="30" fill="white" filter="url(#filter2_2)" />
@@ -270,7 +270,7 @@ $(document).ready(function() {
      <svg class="blur3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%">
            <image filter="url(#filter3)" xlink:href="https://cdn2.ettoday.net/images/3931/3931683.jpg" width="100%" height="100%"></image>
            <filter id="filter3">
-               <fegaussianblur stdDeviation="5" />
+               <fegaussianblur stdDeviation="8" />
            </filter>
            <mask id="mask3">
                <circle cx="-50%" cy="-50%" r="30" fill="white" filter="url(#filter3)" />
@@ -360,3 +360,11 @@ $(document).ready(function() {
   });
 }); 
 </script>
+
+### 參考資料
+
+- [Unblur part of an image where the mouse hovers over](https://stackoverflow.com/questions/35099681/unblur-part-of-an-image-where-the-mouse-hovers-over){:target="_back"}
+- [codepen: unblur image on mousehover](https://codepen.io/tech-punkt/pen/gwzwXP){:target="_back"}
+- [w3school.com: SVG circle](https://www.w3schools.com/graphics/svg_circle.asp){:target="_back"}
+- [Get X, Y Coordinates of Mouse Within Box](https://css-tricks.com/snippets/jquery/get-x-y-mouse-coordinates/){:target="_back"}
+- [MDN: Document.createElementNS](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS){:target="_back"}
