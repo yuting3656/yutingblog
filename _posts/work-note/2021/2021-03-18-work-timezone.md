@@ -1,7 +1,7 @@
 ---
 layout: 'post'
 title: '工作筆記: ㄟ~~~ 是不是怪怪的 有甚麼問題!?'
-permalink: 'work-note/moment-greate-losses-are-great-lessons-utc'
+permalink: 'work-note/moment-great-losses-are-great-lessons-utc'
 tags: 工作筆記 moment UTC postgres
 ---
 
