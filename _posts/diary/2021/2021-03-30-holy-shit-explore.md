@@ -150,8 +150,37 @@ tags: 今日隨意 javascript
             winnerView.classList.remove("img-final")
        }
    }
+      const keepRunningMobile = (e) => {
+       console.log(e);
+       if (e) {
+            counter++
+            counterH3.innerHTML = counter
+       }
+       console.log(counter)
+      
+       if (counter === 20 ){
+          // runningImg.style.setProperty()
+           runningImg.style.webkitFilter = "blur(0px)"
+       }
+      
+       // game over
+       if (countdownNumber <= 0) {
+           window.removeEventListener('touchstart', keepRunning)
+           window.alert('時間到!!!')
+           if (counter < 60) {
+               overView.classList.remove('over')
+               overView.classList.add('showOver')
+           }
+       }
+   
+       if (counter === 60) {
+            winnerView.classList.remove("img-final")
+       }
+   }
+   
    // start
    window.addEventListener('keydown', keepRunning);
+   window.addEventListener('touchstart', keepRunningMobile);
    // countdown
    const timer = setInterval( () => {
        if(countdownNumber <= 0 ) {
@@ -168,10 +197,10 @@ tags: 今日隨意 javascript
 
 ## 快要屎炸拉~~~ :scream_cat: :scream_cat: :scream_cat:
 
-> 在 10 秒 快速按 `ENTER` 讓跑速 超過 60!!! 可以看到 進平唷~~~~ >\\\\\\\<
+> 在 10 秒 快速按 `ENTER` **(手機直接方點螢幕就行啦)** 讓跑速 超過 60!!! 可以看到 進平唷~~~~ >\\\\\\\<
 >
 > 可以 跳出本頁 再近來玩一次~~~
-
+>
 
 ### 倒數計時:
 <h3 id="countdown10"></h3>
@@ -233,8 +262,38 @@ const keepRunning = (e) => {
     }
 }
 
+
+const keepRunningMobile = (e) => {
+    console.log(e);
+    if (e) {
+         counter++
+         counterH3.innerHTML = counter
+    }
+    console.log(counter)
+   
+    if (counter === 20 ){
+       // runningImg.style.setProperty()
+        runningImg.style.webkitFilter = "blur(0px)"
+    }
+   
+    // game over
+    if (countdownNumber <= 0) {
+        window.removeEventListener('touchstart', keepRunning)
+        window.alert('時間到!!!')
+        if (counter < 60) {
+            overView.classList.remove('over')
+            overView.classList.add('showOver')
+        }
+    }
+
+    if (counter === 60) {
+         winnerView.classList.remove("img-final")
+    }
+}
+
 // start
 window.addEventListener('keydown', keepRunning);
+window.addEventListener('touchstart', keepRunningMobile);
 
 
 // countdown
