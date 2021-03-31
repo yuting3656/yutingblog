@@ -278,7 +278,7 @@ const keepRunningMobile = (e) => {
    
     // game over
     if (countdownNumber <= 0) {
-        window.removeEventListener('touchstart', keepRunning)
+        window.removeEventListener('touchstart', keepRunningMobile)
         window.alert('時間到!!!')
         if (counter < 60) {
             overView.classList.remove('over')
