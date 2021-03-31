@@ -235,12 +235,10 @@ const overView =  document.getElementById('overView')
 
 
 const keepRunning = (e) => {
-    console.log(e);
     if (e.keyCode === 13) {
          counter++
          counterH3.innerHTML = counter
     }
-    console.log(counter)
    
     if (counter === 20 ){
        // runningImg.style.setProperty()
@@ -264,12 +262,10 @@ const keepRunning = (e) => {
 
 
 const keepRunningMobile = (e) => {
-    console.log(e);
     if (e) {
          counter++
          counterH3.innerHTML = counter
     }
-    console.log(counter)
    
     if (counter === 20 ){
        // runningImg.style.setProperty()
@@ -279,7 +275,6 @@ const keepRunningMobile = (e) => {
     // game over
     if (countdownNumber <= 0) {
         window.removeEventListener('touchstart', keepRunningMobile)
-        window.alert('時間到!!!')
         if (counter < 60) {
             overView.classList.remove('over')
             overView.classList.add('showOver')
