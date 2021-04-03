@@ -202,6 +202,8 @@ tags: 今日隨意 javascript
 > 可以 跳出本頁 再近來玩一次~~~
 >
 
+<button onclick="startPlay()" id="playButton">開始玩</button>
+
 ### 倒數計時:
 <h3 id="countdown10"></h3>
 
@@ -232,6 +234,7 @@ const counterH3 =  document.getElementById('counterH3')
 const countdown10 =  document.getElementById('countdown10')
 const winnerView =  document.getElementById('winnerView')
 const overView =  document.getElementById('overView')
+const playButton = document.getElementById('playButton')
 
 
 const keepRunning = (e) => {
@@ -286,10 +289,15 @@ const keepRunningMobile = (e) => {
     }
 }
 
+
+
+const startPlay = () => {
+// hide button
+playButton.style.display= "none";
+
 // start
 window.addEventListener('keydown', keepRunning);
 window.addEventListener('touchstart', keepRunningMobile);
-
 
 // countdown
 const timer = setInterval( () => {
@@ -299,4 +307,5 @@ const timer = setInterval( () => {
     countdownNumber--
     countdown10.innerHTML = countdownNumber 
 }, 1000)
+}
 </script>
