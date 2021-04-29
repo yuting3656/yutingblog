@@ -32,3 +32,7 @@ git push origin master
 > 不用把 本地專案&remote rpo 移除
 >
 > 然後又再開 LOL ..... :kissing_heart::kissing_heart::kissing_heart:
+
+### Reference
+
+- [git](https://git-scm.com/docs/git-rm){:target="_back"}
