@@ -162,16 +162,151 @@ ans: **我就是 inline 之王!!! XDDD**
 
 好先吃飯 XDDD
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      One of three columns
+好吃完飯 XDD
+
+<div class="container" style="background-color:black; color:snow;">
+  <div class="row" style="border-bottom:2px solid snow; margin-bottom:5px;">
+    <div class="col-2">#</div>
+    <div class="col-3">Album Cover</div>
+    <div class="col-5">Artist & Album</div>
+    <div class="col-2">Released</div>
+  </div>
+  <div class="row" style="margin:2px;">
+    <div class="col-2">
+      <h3>1</h3>
     </div>
-    <div class="col-sm">
-      One of three columns
+    <div class="col-3">
+      <div style="min-height:80px; padding: 5px;">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/0/04/AFI_-_Decemberunderground_cover.jpg"
+        />
+      </div>
     </div>
-    <div class="col-sm">
-      One of three columns
+    <div class="col-5">AFI: Decemberunderground</div>
+    <div class="col-2">
+      <a style="color:snow;" href="https://en.wikipedia.org/wiki/Decemberunderground"
+      target="_blank"
+        >June 6, 2006</a
+      >
+    </div>
+  </div>
+  <div class="row" style="margin:2px;">
+    <div class="col-2">
+      <h3>2</h3>
+    </div>
+    <div class="col-3">
+      <div style="min-height:80px; padding: 5px;">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/3/37/Foiled_pop.jpg"
+        />
+      </div>
+    </div>
+    <div class="col-5">Blue October</div>
+    <div class="col-2">
+      <a style="color:snow;" href="https://en.wikipedia.org/wiki/Foiled"
+      target="_blank">April 4, 2006</a>
+    </div>
+  </div>
+  <div class="row" style="margin:2px;">
+    <div class="col-2">
+      <h3>3</h3>
+    </div>
+    <div class="col-3">
+      <div style="min-height:80px; padding: 5px;">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/f/fe/Angels_%26_Airwaves_-_We_Don%27t_Need_to_Whisper_cover.jpg"
+        />
+      </div>
+    </div>
+    <div class="col-5">Angels & Airwaves</div>
+    <div class="col-2">
+      <a  style="color:snow;" href="https://en.wikipedia.org/wiki/We_Don%27t_Need_to_Whisper"
+      target="_blank"
+        >May 23, 2006</a
+      >
     </div>
   </div>
 </div>
+
+ans: **我就是 inline 之王!!!!!!!**
+
+```html
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+  crossorigin="anonymous"
+/>
+
+<div class="container" style="background-color:black; color:snow;">
+  <div class="row" style="border-bottom:2px solid snow; margin-bottom:5px;">
+    <div class="col-2">#</div>
+    <div class="col-3">Album Cover</div>
+    <div class="col-5">Artist & Album</div>
+    <div class="col-2">Released</div>
+  </div>
+  <div class="row" style="margin:2px;">
+    <div class="col-2">
+      <h3>1</h3>
+    </div>
+    <div class="col-3">
+      <div style="min-height:80px; padding: 5px;">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/0/04/AFI_-_Decemberunderground_cover.jpg"
+        />
+      </div>
+    </div>
+    <div class="col-5">AFI: Decemberunderground</div>
+    <div class="col-2">
+      <a
+        style="color:snow;"
+        href="https://en.wikipedia.org/wiki/Decemberunderground"
+        target="_blank"
+        >June 6, 2006</a
+      >
+    </div>
+  </div>
+  <div class="row" style="margin:2px;">
+    <div class="col-2">
+      <h3>2</h3>
+    </div>
+    <div class="col-3">
+      <div style="min-height:80px; padding: 5px;">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/3/37/Foiled_pop.jpg"
+        />
+      </div>
+    </div>
+    <div class="col-5">Blue October</div>
+    <div class="col-2">
+      <a
+        style="color:snow;"
+        href="https://en.wikipedia.org/wiki/Foiled"
+        target="_blank"
+        >April 4, 2006</a
+      >
+    </div>
+  </div>
+  <div class="row" style="margin:2px;">
+    <div class="col-2">
+      <h3>3</h3>
+    </div>
+    <div class="col-3">
+      <div style="min-height:80px; padding: 5px;">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/f/fe/Angels_%26_Airwaves_-_We_Don%27t_Need_to_Whisper_cover.jpg"
+        />
+      </div>
+    </div>
+    <div class="col-5">Angels & Airwaves</div>
+    <div class="col-2">
+      <a
+        style="color:snow;"
+        href="https://en.wikipedia.org/wiki/We_Don%27t_Need_to_Whisper"
+        target="_blank"
+        >May 23, 2006</a
+      >
+    </div>
+  </div>
+</div>
+```
