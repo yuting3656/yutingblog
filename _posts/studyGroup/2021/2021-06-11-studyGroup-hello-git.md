@@ -10,6 +10,7 @@ tags: 讀書會 git
 # [Shan | 日常筆記 Hello, Git](https://pengpon.github.io/git/2021/03/21/Git-magic.html){:target="\_back"}
 
 - 好跑步去
+- 好回來惹
 
 # 使用者設定
 
