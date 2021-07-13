@@ -4,7 +4,7 @@ GEM
     activesupport (3.2.22.5)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     alembic-jekyll-theme (3.1.0)
       jekyll (~> 3.8)
@@ -95,7 +95,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
-    public_suffix (4.0.5)
+    public_suffix (4.0.6)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -112,7 +112,6 @@ GEM
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2020.1)
       tzinfo (>= 1.0.0)
-    wdm (0.1.1)
 
 PLATFORMS
   ruby
@@ -125,7 +124,6 @@ DEPENDENCIES
   jemoji
   minima (~> 2.0)
   tzinfo-data
-  wdm (~> 0.1.0)
 
 BUNDLED WITH
    2.1.4
