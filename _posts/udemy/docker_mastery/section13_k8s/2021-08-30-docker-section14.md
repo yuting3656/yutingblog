@@ -2,7 +2,7 @@
 layout: "post"
 title: "Docker Mastery: Section 14 Exposing K8s Ports"
 permalink: "docker_mastery/docker-sections14-exposing-k8s-ports"
-tags: udemy-docker k8s kj8s-ports
+tags: udemy-docker k8s k8s-ports
 ---
 
 - section14-105, 106
