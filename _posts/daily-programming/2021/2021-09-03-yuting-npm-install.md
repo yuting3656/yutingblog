@@ -171,7 +171,7 @@ tags: daily-programming npm react
 - npm publish
   - 現在好像要強制 OTP 唷唷!
 
-> 滿足!!!! :) :heart::heart::heart:
+> 滿足!!!! :) :heart::heart:
 >
 > 很多地方還沒到融會貫通!
 >
