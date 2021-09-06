@@ -144,6 +144,6 @@ tags: 今日隨意
 >
 > 不然　你會自討苦吃　ＸＤＤＤＤ　:bowtie::bowtie::bowtie:
 
-## 最後分享我最愛電影之一：　 The Great Debater
+## 最後分享我最愛電影之一：　 The Great Debater :)
 
 <iframe  src="https://www.youtube.com/embed/lcllrqZgxwE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
