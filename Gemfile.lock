@@ -120,7 +120,7 @@ PLATFORMS
 
 DEPENDENCIES
   alembic-jekyll-theme
-  jekyll (~> 3.8.5)
+  jekyll (~> 3.8.7)
   jekyll-feed (~> 0.6)
   jemoji
   minima (~> 2.0)
