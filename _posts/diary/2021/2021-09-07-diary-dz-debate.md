@@ -9,7 +9,7 @@ tags: 今日隨意
 
 互戳到彼此的點 :smirk:
 
-雙方的情緒經起來了 :sunglasses:
+雙方的情緒已經起來了 :sunglasses:
 
 有時候在這種 **情境** :fire: 之下
 
@@ -105,7 +105,7 @@ tags: 今日隨意
 - 內壺成五 :dog:
   - 目前滾動式調整從業人員的防疫規範是ＯＫ的
   - 信任為共創雙贏的基礎
-  - 一有破口（如[這次](https://udn.com/news/story/120940/5719152）速度抓 圏範圍
+  - 一有破口（如[這次](https://udn.com/news/story/120940/5719152){:target="\_back"})速度抓 圏範圍
   - 試著與病毒共存
 
 > 對我來說
@@ -128,7 +128,7 @@ tags: 今日隨意
 >
 > 這樣才會進步
 >
-> 如此這般的經驗歷練多一點的話
+> 如此這般的經驗 歷練多一點的話
 >
 > 不論是在同單位又或著是不同職場
 >
@@ -144,6 +144,6 @@ tags: 今日隨意
 >
 > 不然　你會自討苦吃　ＸＤＤＤＤ　:bowtie::bowtie::bowtie:
 
-## 最後分享我最愛電影之一：　 The Great Debater :)
+## 最後分享我最愛電影之一 The Great Debater :)
 
 <iframe  src="https://www.youtube.com/embed/lcllrqZgxwE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
