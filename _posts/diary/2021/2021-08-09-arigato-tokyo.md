@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Arigoto, Tokyo ❤️ lol.."
+title: "Arigoto, Tokyo ❤️"
 permalink: "diary/:year-:month-:day/arigato-tokyo"
 tags: 今日隨意
 ---
