@@ -33,7 +33,7 @@ tags: daily-programming js
 }
 
 .sideNav a:hover {
-   color: #EAECEE;
+   color: #85C1E9;
 }
 
 .sideNav .closeBtn{
@@ -137,7 +137,7 @@ const closeNav = () => {
 }
 
 .sideNav a:hover {
-   color: #EAECEE;
+   color: #85C1E9;
 }
 
 .sideNav .closeBtn{
