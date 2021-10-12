@@ -95,7 +95,7 @@ const closeNav = () => {
    <a href="https://yuting3656.github.io/yutingblog/2021-13th-ironman/day-26" target="blank">Day 26 - 轉行 跳槽或尋求升遷</a>
    <a href="https://yuting3656.github.io/yutingblog/2021-13th-ironman/day-27" target="blank">Day 27 - 適合你的 才是真正的好職涯</a>
    <a href="https://yuting3656.github.io/yutingblog/2021-13th-ironman/day-28" target="blank">Day 28 - 寫下你的故事 :)</a>
-   <a href="https://yuting3656.github.io/yutingblog/2021-13th-ironman/day-29" target="blank">Day 29 - </a>
+   <a href="https://yuting3656.github.io/yutingblog/2021-13th-ironman/day-29" target="blank">Day 29 - 零規則的帶腦去上班</a>
    <a href="https://yuting3656.github.io/yutingblog/2021-13th-ironman/day-30" target="blank">Day 30 - </a>
    <br/>
    <br/>
