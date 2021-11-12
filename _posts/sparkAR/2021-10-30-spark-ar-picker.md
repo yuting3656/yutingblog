@@ -1,8 +1,8 @@
 ---
 layout: "post"
-title: "daily Programming:  Spark AR 03 - picker ui"
-permalink: "daily-programming/spark-ar-picker-ui-"
-tags: daily-programming sparkAR
+title: "Spark AR: Spark AR 03 - picker ui"
+permalink: "spark-ar/spark-ar-picker-ui-"
+tags: SparkAR
 ---
 
 > 目的: 可以選擇不同圖案當背景 
