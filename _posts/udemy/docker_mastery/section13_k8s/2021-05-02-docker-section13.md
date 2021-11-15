@@ -5,7 +5,7 @@ permalink: 'docker_mastery/docker-sections13-kubernetes-install-and-your-first-p
 tags: udemy-docker k8s
 ---
 
-- section13-95, 96, 99, 100, 101, 102, 103
+- section13-95, 96, 99, 100, 101, 102, 103, 104
 
 ## Udemy
 
