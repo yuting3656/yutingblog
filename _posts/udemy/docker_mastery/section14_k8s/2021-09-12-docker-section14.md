@@ -47,13 +47,13 @@ tags: udemy-docker k8s k8s-ports
 
 # Basic Service Types
 
-- **ClusterIP (default)**
+- **ClusterIP (default)** `only good in the cluter`
 
   - Single, internal virtual IP allocated
   - Only reachable from within cluster (nodes and pods)
   - Pods and reach service on apps port number
 
-- **NodePort** (outside cluster)
+- **NodePort** (outside cluster) `outside the cluster to talk to servers`
   - High port allocated on each node
   - Port is open on every node's IP
   - Anyone can connect (if they reach node)
