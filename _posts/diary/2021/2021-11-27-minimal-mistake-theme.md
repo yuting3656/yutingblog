@@ -2,7 +2,7 @@
 layout: "single"
 title: "難就是懶 懶就是難"
 permalink: "diary/:year-:month-:day/hello-minimal-mistake"
-tags: 今日隨意 go
+tags: 今日隨意
 ---
 
 > 我一進這網站 就會離開 🤓🤓🤓
