@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Coursera Tensorflow Developer Professional Certificate - cnn in tensorflow week04 (multiclass classifications)'
 permalink: 'coursera-tensorflow-developer-professional-certificate/cnn-in-tensorflow/week04'
 tags: coursera-tensorflow-developer-professional-certificate tensorflow cnn transfer-learning

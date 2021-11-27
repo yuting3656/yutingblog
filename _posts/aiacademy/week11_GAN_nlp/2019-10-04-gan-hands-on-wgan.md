@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 生成對抗網路 GAN - 手做 WGAN & WGAN_GP'
 permalink: 'aiacademy/week11/wgan-wgan_gp-code-practice'
 tags: aiacademy GAN WGAN WGAN_GP

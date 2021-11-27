@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 Computer Vision and Convolutional Neural Networks'
 permalink: 'aiacademy/week6/deep-learning-cv-and-cnn'
 tags: aiacademy cnn 

@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "Study Group: 一姐出品 品質保證 KaBoom.js"
 permalink: "stydeGroup/kaboom-js"
 tags: 讀書會 KaBoom.js

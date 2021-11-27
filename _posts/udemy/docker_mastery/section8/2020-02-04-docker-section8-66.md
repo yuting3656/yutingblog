@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 8 - (Swarm) Routing Mesh'
 permalink: 'docker_mastery/docker-sections8-routing-mesh'
 tags: udemy-docker swarm swarm-routing-mesh

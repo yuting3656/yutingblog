@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'python intro 2'
 permalink: 'aiacademy/week1/python-intro-2'
 tags: aiacademy python jupyter-notebook

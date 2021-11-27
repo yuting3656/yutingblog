@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "daily Programming:  誰是小老鼠! 🐹 "
 permalink: "daily-programming/who-is-money-mouse"
 tags: daily-programming firebase python

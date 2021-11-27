@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Cost Function and Backpropagation 2'
 permalink: 'ml-coursera/week5/cost-function-and-backpropagation2'
 tags: coursera-machine-learning neural-networks backpropagation

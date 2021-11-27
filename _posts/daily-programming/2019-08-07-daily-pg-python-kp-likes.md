@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: 阿北的按讚數'
 permalink: 'daily-programming/kp-likes'
 tags: daily-programming python 

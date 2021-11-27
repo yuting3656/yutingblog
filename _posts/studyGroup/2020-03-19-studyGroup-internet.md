@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Study Group: 一姊出品 品質保證 網際網路' 
 permalink: 'stydeGroup/pon-what-is-internet'
 tags: 讀書會

@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "AI \"賽\" Project 採雷分享"
 permalink: 'diary/:year-:month-:day'
 tags: 今日隨意 ai-side-project 

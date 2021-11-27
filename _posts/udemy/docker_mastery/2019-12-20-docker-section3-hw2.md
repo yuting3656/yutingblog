@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section3 作業阿!!!! Using Containers for CLI Testing'
 permalink: 'docker_mastery/docker-sections3-hw2-using-containers-for-cli-testing'
 tags: udemy-docker

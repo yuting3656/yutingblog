@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 CNN Object Recognition and Detection'
 permalink: 'aiacademy/week6/deep-learning-cnn-object-recognition-and-detection'
 tags: aiacademy cnn object-detection

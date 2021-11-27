@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 自然語言處理 NLP 4.2  BERT / ELMo'
 permalink: 'aiacademy/week13/nlp-bert-elmo'
 tags: aiacademy nlp BERT ELMo

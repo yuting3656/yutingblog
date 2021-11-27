@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 生成對抗網路 GAN - Wasserstein GAN (WGAN)'
 permalink: 'aiacademy/week11/gan-wassertein-gan'
 tags: aiacademy GAN WGAN

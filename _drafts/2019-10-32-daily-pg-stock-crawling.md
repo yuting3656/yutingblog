@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: 股市抓抓'
 permalink: 'daily-programming/stock-crawling'
 tags: daily-programming python music21

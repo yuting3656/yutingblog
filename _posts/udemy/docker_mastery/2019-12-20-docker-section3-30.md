@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: docker networks - DNS'
 permalink: 'docker_mastery/docker-networks-dns'
 tags: udemy-docker docker-network

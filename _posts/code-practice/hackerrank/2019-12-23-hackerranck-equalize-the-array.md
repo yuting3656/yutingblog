@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " HackerRank: Equalize the Array "
 permalink: 'code-practice/hackerrank-equalize-the-array'
 tags: 紮馬步 hackerrank

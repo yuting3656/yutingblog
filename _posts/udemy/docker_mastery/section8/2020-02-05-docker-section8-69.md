@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 8 - Swarm Stacks and Production Grade Compose'
 permalink: 'docker_mastery/docker-sections8-swarm-stacks-and-production-grade-compose'
 tags: udemy-docker swarm swarm-stack

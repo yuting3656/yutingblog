@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "小雞老師的指導 😎 謝謝你 小雞老師!!! 有您真好❤️❤️❤️"
 permalink: "diary/:year-:month-:day/hello-git-again"
 tags: 今日隨意 go

@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "Study Group: 一姐出品 品質保證 hello-git"
 permalink: "stydeGroup/hello-git-firstSister"
 tags: 讀書會 git

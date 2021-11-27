@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 9 - Using Secrets with local docker compose'
 permalink: 'docker_mastery/docker-sections9-using-secrets-with-lcoal-docker-compse'
 tags: udemy-docker  swarm-secrets 

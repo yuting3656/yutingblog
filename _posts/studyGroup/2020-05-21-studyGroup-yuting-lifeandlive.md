@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Study Group: 內壺澄舞出品 音樂一夏'
 permalink: 'stydeGroup/neihu-yuting-music-and-life'
 tags: 讀書會

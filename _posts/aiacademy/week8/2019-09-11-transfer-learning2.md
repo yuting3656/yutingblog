@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 transfer-learning 2 (補充教材)'
 permalink: 'aiacademy/week8/transfer-learning-2'
 tags: aiacademy transfer-learning

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: 一姐出品 品質保證 Hoisting'
 permalink: 'daily-programming/javascript-hoisting'
 tags: daily-programming javascript 讀書會

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Go: gin && xorm && reflect && strconv && ...'
 permalink: 'go/go-gin-xorm'
 tags: go 

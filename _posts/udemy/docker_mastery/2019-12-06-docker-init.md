@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: 開始吧！'
 permalink: 'docker_mastery/docker-init'
 tags: docker udemy-docker

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Coursera Tensorflow Developer Professional Certificate - nlp in tensorflow week04 (Sequence models and literature)'
 permalink: 'coursera-tensorflow-developer-professional-certificate/nlp-in-tensorflow/week04'
 tags: coursera-tensorflow-developer-professional-certificate tensorflow nlp sequence-encoding rnn LSTM conv1d

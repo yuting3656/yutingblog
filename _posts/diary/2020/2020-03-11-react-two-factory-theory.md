@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Herzberg: Two-Factor Theory'
 permalink: 'diary/:year-:month-:day/herzverg-two-factor-theory'
 tags: 今日隨意 react 

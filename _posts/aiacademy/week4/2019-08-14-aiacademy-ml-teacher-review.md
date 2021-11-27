@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 機器學習 ML 講師來了！！！ Common mistakes in data science'
 permalink: 'aiacademy/week4/common-mistakes-in-data-science'
 tags: aiacademy machine-learning

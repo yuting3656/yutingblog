@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Recommender Systems - Collaborative Filtering'
 permalink: 'ml-coursera/week9/recommender-systerm-collaborative-filtering'
 tags: coursera-machine-learning

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Recommender Systems - Problem formulation'
 permalink: 'ml-coursera/week9/recommender-systerm-problem-formulation'
 tags: coursera-machine-learning

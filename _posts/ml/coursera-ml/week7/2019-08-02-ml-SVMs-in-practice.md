@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'SVMs in Practice'
 permalink: 'ml-coursera/week7/SVMs-in-practice'
 tags: coursera-machine-learning SVM

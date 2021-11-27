@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Raspberry Pi: Object Detection'
 permalink: 'raspberry_pi/object-detection'
 tags: raspberry-pi object-detection

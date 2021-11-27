@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'React: Ant Design '
 permalink: 'react/react-ant-design'
 tags: react 

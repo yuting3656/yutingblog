@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 Tensorflow Introduction'
 permalink: 'aiacademy/week4/deep-learning-tensorflow-introduction'
 tags: aiacademy deep-learning tensorflow

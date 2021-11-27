@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'NLP & Word Embeddings'
 permalink: 'dl-coursera-sequence-models/week2/nlp-and-word-embeddings'
 tags: coursera-deep-learning nlp

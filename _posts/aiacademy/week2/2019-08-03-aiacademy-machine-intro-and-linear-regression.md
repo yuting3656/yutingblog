@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 機器學習 intro '
 permalink: 'aiacademy/week2/ml-intro'
 tags: aiacademy machine-learning

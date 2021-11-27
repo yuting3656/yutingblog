@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Clustering 2'
 permalink: 'ml-coursera/week8/clustering2'
 tags: coursera-machine-learning clustering k-means

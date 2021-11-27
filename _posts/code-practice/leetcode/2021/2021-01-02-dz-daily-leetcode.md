@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "DZ 快樂 LeetCode: 2020 "
 permalink: 'dz-happy-leetcode/2020'
 tags: 紮馬步 leetcode

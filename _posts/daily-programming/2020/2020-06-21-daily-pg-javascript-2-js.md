@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: 又見 寶哥出品 javascript 品質保證 第二次拉!!'
 permalink: 'daily-programming/javascript-core-concepts-and-es6'
 tags: daily-programming javascript

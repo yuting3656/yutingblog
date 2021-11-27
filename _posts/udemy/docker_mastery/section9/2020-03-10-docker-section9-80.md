@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 9 - Healthchecks in Dockerfiles'
 permalink: 'docker_mastery/docker-sections9-healthchecks-in-dockerfiles'
 tags: udemy-docker docker-healthchecks

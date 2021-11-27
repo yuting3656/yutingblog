@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'SQL: postgres + docker-compose '
 permalink: 'sql/postgres-with-docker-and-docker-compose'
 tags: sql postgres docker-compose

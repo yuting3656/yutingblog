@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "在呼吸之間"
 permalink: 'diary/:year-:month-:day'
 tags: 今日隨意 讀書會

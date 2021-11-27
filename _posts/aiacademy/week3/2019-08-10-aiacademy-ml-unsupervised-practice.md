@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 機器學習 - 實作: ch09 (unsupervised learning)'
 permalink: 'aiacademy/week3/unsupervised-learning-practice'
 tags: aiacademy machine-learning unsupervised-learning

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Study Group: 巾凡哥出品 品質保證 python 08'
 permalink: 'stydeGroup/python-08'
 tags: 讀書會 python

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 機器學習 - 實作: ch07 (ensemble methods) '
 permalink: 'aiacademy/week3/ensemble-method-practice'
 tags: aiacademy machine-learning ensemble-methods

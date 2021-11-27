@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "看看自己 靜一下 我愛CSS"
 permalink: 'diary/:year-:month-:day/time-to-self-reflection'
 tags: 今日隨意 css

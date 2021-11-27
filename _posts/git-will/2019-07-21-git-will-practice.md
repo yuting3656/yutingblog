@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'git-will practice 保哥出品! 品質保證!'
 permalink: 'git/git-will-practice'
 tags: git
@@ -321,7 +321,7 @@ E:\jekyll_github_blog\yuting_blog>git cat-file -p fbd70a753292f959094b9720687176
 
 E:\jekyll_github_blog\yuting_blog>git cat-file -p fc2e2df92328cc4c7c044095a6fc91a2c83a465c
 ---
-layout: 'post'
+layout: "single"
 title: 'Tkinter 畫笑臉'
 permalink: 'python/tkinter/smile-face'
 tags: python tkinter

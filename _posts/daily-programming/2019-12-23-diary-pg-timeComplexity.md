@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: BIG O'
 permalink: 'daily-programming/time-complexity-big-o'
 tags: daily-programming 紮馬步 big-o time-complexity

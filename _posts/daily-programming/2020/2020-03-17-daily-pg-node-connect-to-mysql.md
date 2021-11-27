@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: Node.js (Express) connect to MySQL'
 permalink: 'daily-programming/node-go-connect-to-mysql'
 tags: daily-programming Node.js docker mysql

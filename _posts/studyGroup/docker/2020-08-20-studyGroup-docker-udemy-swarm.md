@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Study Group: 一姐出品 品質保證 docker-讀書會-06 docker swarm '
 permalink: 'stydeGroup/docker-06'
 tags: 讀書會 docker swarm

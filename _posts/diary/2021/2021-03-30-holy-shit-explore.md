@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "人間有愛系列: 謝謝你進平❤️ "
 permalink: 'diary/:year-:month-:day/holy-shit-almost-explore'
 tags: 今日隨意 javascript

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Go: Hello World XI Concurrnecy'
 permalink: 'go/go-hello-world-XI=concurrency'
 tags: go 

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 機器學習 Kaggle 房價預測'
 permalink: 'aiacademy/week4/kaggle-hous-pricing'
 tags: aiacademy machine-learning box-plots kaggle

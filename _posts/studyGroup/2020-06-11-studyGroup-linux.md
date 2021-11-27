@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Study Group: 凡哥出品 品質保證 linux'
 permalink: 'stydeGroup/linux-edit'
 tags: 讀書會 linux

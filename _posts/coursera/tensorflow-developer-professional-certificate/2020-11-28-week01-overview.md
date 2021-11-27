@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Coursera Tensorflow Developer Professional Certificate - intro tensorflow Week01'
 permalink: 'coursera-tensorflow-developer-professional-certificate/intro-tensorflow/week01-overview'
 tags: coursera-tensorflow-developer-professional-certificate

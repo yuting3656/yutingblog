@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " HackerRank: Jumping on the Clouds "
 permalink: 'code-practice/hackerrank-jumping-on-the-cluds'
 tags: 紮馬步 hackerrank

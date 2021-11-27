@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Using Large Data Sets'
 permalink: 'ml-coursera/week6/using-large-data-sets'
 tags: coursera-machine-learning  

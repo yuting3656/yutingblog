@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 CNN Representative cnn models'
 permalink: 'aiacademy/week6/deep-learning-cnn-representative-cnn-models'
 tags: aiacademy cnn 

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 機器學習 logistci regression & 實作:ch04'
 permalink: 'aiacademy/week3/K-nearest-neighbors'
 tags: aiacademy machine-learning knn precision-recall-f1Score

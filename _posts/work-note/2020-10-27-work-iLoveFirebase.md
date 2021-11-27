@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: '工作筆記: 我愛  Firebase'
 permalink: 'work-note/i-love-firebase'
 tags: 工作筆記 firebase go javascript

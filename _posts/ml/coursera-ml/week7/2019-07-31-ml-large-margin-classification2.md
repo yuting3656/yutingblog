@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Large Margin Classification 2'
 permalink: 'ml-coursera/week7/large-margin-classification2'
 tags: coursera-machine-learning SVM

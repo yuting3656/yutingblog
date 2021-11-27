@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Bias VS. Variance'
 permalink: 'ml-coursera/week6/bias-vs-variance'
 tags: coursera-machine-learning

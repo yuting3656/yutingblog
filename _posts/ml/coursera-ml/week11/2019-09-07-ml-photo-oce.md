@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Photo OCR (Optical Character Recognition)'
 permalink: 'ml-coursera/week11/photo-ocr'
 tags: coursera-machine-learning getting-more-data

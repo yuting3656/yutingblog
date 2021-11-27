@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'evaluating a learning algrithm'
 permalink: 'ml-coursera/week6/evaluating-a-learning-algrithm'
 tags: coursera-machine-learning

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 5 - Container Lifetime & Persistent Data'
 permalink: 'docker_mastery/docker-sections5-container-lifetime-persistent-data'
 tags: udemy-docker docker-volume docker-mounts

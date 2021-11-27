@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "daily Programming: photopea 拜師學姐 去背大神學姊們"
 permalink: "daily-programming/photopea-remove-background"
 tags: daily-programming photopea

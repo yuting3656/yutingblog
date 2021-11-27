@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " HackerRank: Arrays Left rotation "
 permalink: 'code-practice/hackerrank-left-rotation'
 tags: 紮馬步 hackerrank

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'octave tutotial 3'
 permalink: 'ml-coursera/week2/octave-tutorial-3'
 tags: octave

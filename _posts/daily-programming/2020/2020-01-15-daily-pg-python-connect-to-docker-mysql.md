@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: python connect 到 docker mysql container'
 permalink: 'daily-programming/python-connect-docker-mysql-container'
 tags: daily-programming docker python mysql

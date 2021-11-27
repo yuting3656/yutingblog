@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Study Group: 一姐出品 品質保證 http and https'
 permalink: 'stydeGroup/pon-http-and-https'
 tags: 讀書會

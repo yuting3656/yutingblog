@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Multiclass Classification'
 permalink: 'ml-coursera/week3/multiclass-classification'
 tags: coursera-machine-learning

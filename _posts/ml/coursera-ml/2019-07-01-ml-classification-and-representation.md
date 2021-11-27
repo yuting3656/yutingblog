@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Classification and Representation'
 permalink: 'ml-coursera/week3/classification-and-representation'
 tags: coursera-machine-learning logistic-regression

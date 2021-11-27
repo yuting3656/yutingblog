@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'React: Udemy React The Complete 筆記'
 permalink: 'react/udemy-react-the-complete'
 tags: react udemy-react

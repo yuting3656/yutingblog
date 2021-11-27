@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 機器學習 - 實作: ch06 (decision trees)'
 permalink: 'aiacademy/week3/decision-trees-practice'
 tags: aiacademy machine-learning decision-trees

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Building an Anomaly Detection System'
 permalink: 'ml-coursera/week9/building-an-anomaly-detection-system'
 tags: coursera-machine-learning

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: 滿月'
 permalink: 'daily-programming/dz-one-month'
 tags: daily-programming javascript react go postgres gorm

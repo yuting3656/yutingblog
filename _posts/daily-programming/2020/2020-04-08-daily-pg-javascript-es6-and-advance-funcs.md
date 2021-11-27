@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: js adv. func and es6'
 permalink: 'daily-programming/javascript-adv-func-es6'
 tags: daily-programming javascript

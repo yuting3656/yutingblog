@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'python: 抓抓神奇寶貝圖 '
 permalink: 'python/requests-get-pokemon'
 tags: python 

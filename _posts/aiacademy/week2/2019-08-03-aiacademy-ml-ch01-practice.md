@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 機器學習-實作 ch01'
 permalink: 'aiacademy/week2/ml-practice-ch01'
 tags: aiacademy machine-learning

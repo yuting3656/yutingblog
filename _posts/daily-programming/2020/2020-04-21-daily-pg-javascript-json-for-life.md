@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: javascript json for life'
 permalink: 'daily-programming/javascript-json-for-life'
 tags: daily-programming javascript react

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 Deep Learning 手刻神經網路!'
 permalink: 'aiacademy/week4/deep-learning-hand-craft-nerual-network-and-backpropagation'
 tags: aiacademy deep-learning neural-networks backpropagation

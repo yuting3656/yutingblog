@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Solving the Problem of Overfitting 2'
 permalink: 'ml-coursera/week3/solving-the-problem-of-overfitting2'
 tags: coursera-machine-learning

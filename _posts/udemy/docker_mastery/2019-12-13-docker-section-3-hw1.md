@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: 作業阿!!!! Manage Multiple Containers'
 permalink: 'docker_mastery/docker-sections3-hw1-manage-multiple-containers'
 tags: udemy-docker

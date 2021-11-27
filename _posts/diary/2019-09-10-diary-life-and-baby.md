@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "我想就這樣啦！　：）"
 permalink: 'diary/:year-:month-:day'
 tags: 今日隨意

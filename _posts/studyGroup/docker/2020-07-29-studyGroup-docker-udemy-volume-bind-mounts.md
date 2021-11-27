@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Study Group: 內湖成五 品質保證 docker-讀書會-04 volumes, Bind Mounts '
 permalink: 'stydeGroup/docker-04'
 tags: 讀書會 docker

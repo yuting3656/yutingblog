@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Various sequence to sequence architectures'
 permalink: 'dl-coursera-sequence-models/week3/various-sequence-to-sequence-architecrures'
 tags: coursera-deep-learning sequence-to-sequence

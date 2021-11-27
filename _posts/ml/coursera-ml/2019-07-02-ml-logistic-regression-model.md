@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Logistic Regression Model'
 permalink: 'ml-coursera/week3/logistic-regression-model'
 tags: coursera-machine-learning octave logistic-regression

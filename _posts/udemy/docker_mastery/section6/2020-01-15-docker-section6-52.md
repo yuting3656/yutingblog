@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 6 - docker compose'
 permalink: 'docker_mastery/docker-sections6-docker-compose-and-the-yaml-file'
 tags: udemy-docker docker-compose

@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " HackerRank: String- Making Anagrams"
 permalink: 'code-practice/hackerrank-string-making-anagrams'
 tags: 紮馬步 hackerrank

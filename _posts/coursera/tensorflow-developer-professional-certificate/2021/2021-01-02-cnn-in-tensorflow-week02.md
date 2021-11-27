@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Coursera Tensorflow Developer Professional Certificate - cnn in tensorflow week02'
 permalink: 'coursera-tensorflow-developer-professional-certificate/cnn-in-tensorflow/week02'
 tags: coursera-tensorflow-developer-professional-certificate tensorflow cnn 

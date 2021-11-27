@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'python pandas 2'
 permalink: 'aiacademy/week1/pandas2'
 tags: aiacademy python pandas

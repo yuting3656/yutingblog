@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 自然語言處理 NLP 4.3 實作自然語言 model'
 permalink: 'aiacademy/week13/nlp-rnn-and-bert-model-code'
 tags: aiacademy nlp BERT

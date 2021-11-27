@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Go: structed data'
 permalink: 'go/go-stucted-data'
 tags: go 

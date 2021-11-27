@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " HackerRank: Sorting - Comparator "
 permalink: 'code-practice/hackerrank-sorting-commparator'
 tags: 紮馬步 hackerrank

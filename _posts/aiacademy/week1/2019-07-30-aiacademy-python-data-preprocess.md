@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Titanic:Machine Learning from Disaster'
 permalink: 'aiacademy/week1/titanic-ml'
 tags: aiacademy python

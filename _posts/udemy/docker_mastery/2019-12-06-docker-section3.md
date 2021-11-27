@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: docker containers'
 permalink: 'docker_mastery/docker-containers'
 tags: udemy-docker

@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " 資料科學 vs. 總統大選"
 permalink: 'diary/:year-:month-:day/data-science-taiwan-presidential-election'
 tags: 今日隨意 讀書會

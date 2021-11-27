@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'python numpy'
 permalink: 'aiacademy/week1/python-numpy'
 tags: aiacademy python numpy

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: '半年 6個月 + 1個月 200+多天 '
 permalink: 'diary/:year-:month-:day'
 tags: 今日隨意

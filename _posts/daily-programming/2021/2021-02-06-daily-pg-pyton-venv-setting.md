@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: python Virtual Environments (windows) 驚奇冒險旅程!'
 permalink: 'daily-programming/python-venv-window'
 tags: daily-programming python python-venv

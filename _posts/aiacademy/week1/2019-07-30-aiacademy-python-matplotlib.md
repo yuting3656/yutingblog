@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'python matplotlib'
 permalink: 'aiacademy/week1/matplotlib'
 tags: aiacademy python matplotlib

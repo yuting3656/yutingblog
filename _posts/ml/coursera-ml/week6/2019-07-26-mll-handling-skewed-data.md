@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Handling Skewed Data'
 permalink: 'ml-coursera/week6/handling-skewed-data'
 tags: coursera-machine-learning precision-recall-f1Score

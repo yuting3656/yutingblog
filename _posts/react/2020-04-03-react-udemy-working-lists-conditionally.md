@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'React: Udemy React lists conditionally'
 permalink: 'react/udemy-working-lists-conditionally'
 tags: react udemy-react

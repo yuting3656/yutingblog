@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Principal Component Analysis'
 permalink: 'ml-coursera/week8/principal-component-analysis'
 tags: coursera-machine-learning dimensionality-reduction PCA

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 RNN 補充資料 & seq2seq'
 permalink: 'aiacademy/week9/rnn-additional-materials'
 tags: aiacademy rnn

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 10 - Docker Hub (Digging Deeper)'
 permalink: 'docker_mastery/docker-sections10-docker-hub-digging-deeper'
 tags: udemy-docker docker-hub docker-registry

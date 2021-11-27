@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'AI (資料/統計/數學相關)學習資源'
 permalink: 'ai-side-project/ai-math-and-statistics-learning-materials'
 tags: ai-side-project statistics

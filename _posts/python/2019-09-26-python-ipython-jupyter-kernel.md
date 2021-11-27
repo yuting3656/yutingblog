@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'jupyter notebook 使用 conda virtual 環境 '
 permalink: 'python/jupyter-notebook/ipykernel'
 tags: python jupyter-notebook

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'kernels'
 permalink: 'ml-coursera/week7/kernels'
 tags: coursera-machine-learning SVM

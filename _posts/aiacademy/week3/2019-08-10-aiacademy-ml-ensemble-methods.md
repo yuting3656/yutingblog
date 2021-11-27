@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 機器學習 Ensemble Methods '
 permalink: 'aiacademy/week3/ensemble-method'
 tags: aiacademy machine-learning ensemble-methods

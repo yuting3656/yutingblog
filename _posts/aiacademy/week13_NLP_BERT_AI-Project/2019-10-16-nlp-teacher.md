@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 自然語言處理 NLP 老師來拉～！！！'
 permalink: 'aiacademy/week13/nlp-teacher-is-here'
 tags: aiacademy nlp
