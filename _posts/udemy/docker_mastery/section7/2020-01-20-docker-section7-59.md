@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 7 - Swarm intro & creating a 3-Node Swarm Cluster'
 permalink: 'docker_mastery/docker-sections7-swarm-intro'
 tags: udemy-docker swarm

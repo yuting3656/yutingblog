@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Neural Networks 2'
 permalink: 'ml-coursera/week4/neural-networks2'
 tags: coursera-machine-learning neural-networks

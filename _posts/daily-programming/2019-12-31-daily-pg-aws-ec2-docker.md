@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming:  AWS (EC2) + Docker'
 permalink: 'daily-programming/aws-ec2-wiht-docker'
 tags: daily-programming aws docker angular 讀書會

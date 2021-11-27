@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " HackerRank: Mark and Toys "
 permalink: 'code-practice/hackerrank-mark-and-toys'
 tags: 紮馬步 hackerrank

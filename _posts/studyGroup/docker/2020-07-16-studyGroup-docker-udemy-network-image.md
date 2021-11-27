@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Study Group: 凡哥出品 品質保證 docker-讀書會-03 network, images'
 permalink: 'stydeGroup/docker-03'
 tags: 讀書會 docker

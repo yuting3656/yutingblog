@@ -1,7 +1,8 @@
 ---
-layout: page
+layout: "splash"
 title: about
 permalink: /about/
+classes: wide
 ---
 
 ### 為什麼開始這個 Blog ?

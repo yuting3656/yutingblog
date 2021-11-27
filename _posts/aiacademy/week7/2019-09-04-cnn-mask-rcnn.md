@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 CNN GitHub: Mask-Rcnn 安裝'
 permalink: 'aiacademy/week7/deep-learning-cnn-mask-rcnn'
 tags: aiacademy cnn Mask_RCNN

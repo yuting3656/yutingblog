@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Coursera Tensorflow Developer Professional Certificate - nlp in tensorflow week02 (Word Embeddings)'
 permalink: 'coursera-tensorflow-developer-professional-certificate/nlp-in-tensorflow/week02'
 tags: coursera-tensorflow-developer-professional-certificate tensorflow nlp word-embeddings

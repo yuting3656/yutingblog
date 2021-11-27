@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " HackerRank: New Year Chaos "
 permalink: 'code-practice/hackerrank-new-year-chaos'
 tags: 紮馬步 hackerrank

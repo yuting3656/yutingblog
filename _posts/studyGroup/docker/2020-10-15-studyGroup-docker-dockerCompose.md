@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Study Group: 家姊出品 品質保證 docker-讀書會-11 docker-compose'
 permalink: 'stydeGroup/docker-10'
 tags: 讀書會 docker docker-compose

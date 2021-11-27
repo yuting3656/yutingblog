@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 CNN Object Recognition tensorflow api'
 permalink: 'aiacademy/week6/deep-learning-cnn-object-detection-tensorflow-api'
 tags: aiacademy cnn object-detection tensorflow

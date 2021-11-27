@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'evaluating a learning algrithm 2'
 permalink: 'ml-coursera/week6/evaluating-a-learning-algrithm2'
 tags: coursera-machine-learning learning-curves

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Tkinter 畫笑臉'
 permalink: 'python/tkinter/smile-face'
 tags: python tkinter

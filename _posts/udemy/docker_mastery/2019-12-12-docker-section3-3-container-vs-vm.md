@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: docker containers VS VM and Windows Container '
 permalink: 'docker_mastery/docker-containers-vs-vm'
 tags: udemy-docker

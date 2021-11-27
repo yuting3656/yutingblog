@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "整理下腦袋瓜的東西 & 生活上的實際進行的任務"
 permalink: 'diary/:year-:month-:day'
 tags: 今日隨意 

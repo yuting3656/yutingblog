@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "Keep working hard!"
 permalink: 'diary/:year-:month-:day'
 tags: 今日隨意 aiacademy

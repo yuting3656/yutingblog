@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 4 - Whats in An Image (and what isnt)'
 permalink: 'docker_mastery/docker-sections4-what-is-in-an-image'
 tags: udemy-docker

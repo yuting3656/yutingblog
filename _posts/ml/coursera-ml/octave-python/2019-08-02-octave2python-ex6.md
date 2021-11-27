@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'octave2python: ex6'
 permalink: 'octave2python/ex6'
 tags: coursera-machine-learning octave2python

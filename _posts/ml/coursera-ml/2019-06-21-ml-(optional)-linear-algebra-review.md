@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: '數學 - linear algebra review'
 permalink: "ml-coursera/week1/linear-algebra-review"
 tags: linear-algebra coursera-machine-learning

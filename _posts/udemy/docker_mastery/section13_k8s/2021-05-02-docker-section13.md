@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "Docker Mastery: Section 13- Kubernetes install and your first pod"
 permalink: "docker_mastery/docker-sections13-kubernetes-install-and-your-first-pod"
 tags: udemy-docker k8s

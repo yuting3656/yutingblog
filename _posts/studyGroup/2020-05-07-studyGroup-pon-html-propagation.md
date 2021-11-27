@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Study Group: 一姊出品 品質保證 Event capturing & bubbling'
 permalink: 'stydeGroup/pon-events-capturing-bubbling'
 tags: 讀書會

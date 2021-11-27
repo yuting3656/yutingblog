@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "daily Programming:  忌妒 !忌妒 ! 忌妒 ! 我也想要!! npm install ! XD"
 permalink: "daily-programming/i-want-npm-instal-2"
 tags: daily-programming npm react

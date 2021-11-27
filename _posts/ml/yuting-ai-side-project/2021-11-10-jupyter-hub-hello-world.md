@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: '自架 JupyterHub (今年度最後計畫😁😁😁)'
 permalink: 'ai-side-project/jupyter-hub-hello-world'
 tags: ai-side-project jupyter-hub k8s helm

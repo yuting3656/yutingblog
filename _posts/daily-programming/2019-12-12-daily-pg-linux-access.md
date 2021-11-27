@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: linux 檔案權限 帆哥出品  品質保證!'
 permalink: 'daily-programming/linux-file-access'
 tags: daily-programming linux 讀書會

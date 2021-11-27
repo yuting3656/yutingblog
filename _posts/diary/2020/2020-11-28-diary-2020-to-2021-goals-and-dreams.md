@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: '2020 銜接 2021 當個快樂的小飛俠~~~ :) '
 permalink: 'diary/:year-:month-:day'
 tags: 今日隨意

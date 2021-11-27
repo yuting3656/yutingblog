@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Study Group: 內湖澄鵡 出品 歐蜜頭佛~ '
 permalink: 'stydeGroup/yuting-your-personality-and-brain-with-seven-roles'
 tags: 讀書會

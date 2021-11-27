@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 6 作業阿～！！！ Writting a compose file'
 permalink: 'docker_mastery/docker-sections6-hw1-writting-a-cmopose-file'
 tags: udemy-docker docker-compose

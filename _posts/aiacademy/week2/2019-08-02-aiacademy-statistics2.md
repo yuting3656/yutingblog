@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: '機率與統計 2'
 permalink: 'aiacademy/week2/statistics2'
 tags: aiacademy statistics

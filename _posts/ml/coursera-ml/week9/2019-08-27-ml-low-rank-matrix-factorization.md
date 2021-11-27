@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Recommender Systems - Low Rank Matrix Factorization'
 permalink: 'ml-coursera/week9/recommender-systerm-low-rank-matrix-factorization'
 tags: coursera-machine-learning

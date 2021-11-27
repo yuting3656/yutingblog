@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Backpropagation in Practice'
 permalink: 'ml-coursera/week5/backpropagation-in-practice'
 tags: coursera-machine-learning neural-networks

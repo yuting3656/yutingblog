@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 9 - Service Updates: Changing things in flight'
 permalink: 'docker_mastery/docker-sections9-service-updates-changing-things-in-flight'
 tags: udemy-docker  docker-service-update

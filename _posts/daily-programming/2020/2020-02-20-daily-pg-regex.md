@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: sammie 姐出品 品質保證 Regex'
 permalink: 'daily-programming/studyGroup-sammie-regex'
 tags: daily-programming regex 讀書會

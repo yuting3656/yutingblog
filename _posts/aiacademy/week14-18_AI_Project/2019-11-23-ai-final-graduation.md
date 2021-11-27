@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 期末結業拉!!!!!!!!'
 permalink: 'aiacademy/week18/aia-project-final-graduation'
 tags: aiacademy

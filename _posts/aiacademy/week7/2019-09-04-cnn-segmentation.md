@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 CNN Segmentation'
 permalink: 'aiacademy/week7/deep-learning-cnn-segmentation'
 tags: aiacademy cnn

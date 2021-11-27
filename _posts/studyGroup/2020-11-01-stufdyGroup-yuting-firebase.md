@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Study Group: 那壺X舞 有口接杯 Firebase & Github Pages & Angular & React & ???'
 permalink: 'stydeGroup/firebase-and-i-totally-have-no-ideas-kkk'
 tags: 讀書會 firebase angular react

@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "機器學習 - parameter learning"
 permalink: "ml-coursera/week1/parameter-learning"
 tags: coursera-machine-learning gradient-descent

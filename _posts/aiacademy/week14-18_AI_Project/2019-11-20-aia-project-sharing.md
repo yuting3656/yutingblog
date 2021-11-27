@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 期末專題分享'
 permalink: 'aiacademy/week14-18/aia-project-sharing'
 tags: aiacademy ai-project

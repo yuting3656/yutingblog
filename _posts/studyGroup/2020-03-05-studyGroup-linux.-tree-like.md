@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Study Group: 帆哥出品 品質保證 - Linux 目錄結構 '
 permalink: 'stydeGroup/linux-tree-like-structure'
 tags: 讀書會 linux

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'React: Happy react Note'
 permalink: 'react/hyappy-react-note'
 tags: react udemy-react

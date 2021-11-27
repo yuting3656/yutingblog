@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " HackerRank 靠邀 XD "
 permalink: 'diary/:year-:month-:day'
 tags: 今日隨意 紮馬步

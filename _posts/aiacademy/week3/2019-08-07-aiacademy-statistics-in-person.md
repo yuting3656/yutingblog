@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: '機率與統計 Data visualization'
 permalink: 'aiacademy/week3/statistics-data-visualization'
 tags: aiacademy statistics

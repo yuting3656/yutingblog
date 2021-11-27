@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " HackerRank: Bubble Sort "
 permalink: 'code-practice/hackerrank-two-strings'
 tags: 紮馬步 hackerrank

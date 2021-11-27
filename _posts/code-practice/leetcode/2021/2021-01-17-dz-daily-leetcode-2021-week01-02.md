@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "DZ 快樂 LeetCode: 2021 week01-02"
 permalink: 'dz-happy-leetcode/2021-week01-02'
 tags: 紮馬步 leetcode

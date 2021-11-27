@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " HackerRank: Repeated String "
 permalink: 'code-practice/hackerrank-repeated-string'
 tags: 紮馬步 hackerrank

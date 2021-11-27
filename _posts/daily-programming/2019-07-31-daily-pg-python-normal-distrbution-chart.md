@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: python normal distribution chart'
 permalink: 'daily-programming/normal-distribution-chart'
 tags: daily-programming python 

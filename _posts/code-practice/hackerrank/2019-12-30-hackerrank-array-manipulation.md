@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " HackerRank: Array Manipulation"
 permalink: 'code-practice/hackerrank-array-mainpulation'
 tags: 紮馬步 hackerrank

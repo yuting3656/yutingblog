@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 transfer-learning tensorflow example'
 permalink: 'aiacademy/week8/transfer-learning-tensorflow-example'
 tags: aiacademy transfer-learning tensorflow

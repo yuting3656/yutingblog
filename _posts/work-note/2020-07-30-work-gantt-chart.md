@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: '工作筆記: 你今天甘蔗了嗎? '
 permalink: 'work-note/gantt-charts-lol'
 tags: 工作筆記 javascript 

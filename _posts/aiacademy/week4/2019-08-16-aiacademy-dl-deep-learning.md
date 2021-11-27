@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 Deep Learning 神經網路架構'
 permalink: 'aiacademy/week5/deep-learning-nerual-network'
 tags: aiacademy deep-learning neural-networks

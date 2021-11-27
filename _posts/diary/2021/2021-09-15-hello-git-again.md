@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "Hello Git Again 之 工程師要有能力 喬到你要的樣子 😎"
 permalink: "diary/:year-:month-:day/hello-git-again"
 tags: 今日隨意

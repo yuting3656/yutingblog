@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: UML 一姐出品  品質保證!'
 permalink: 'daily-programming/uml-intro'
 tags: daily-programming uml 讀書會

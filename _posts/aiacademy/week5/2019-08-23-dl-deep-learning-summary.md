@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 老師來拉!!!!'
 permalink: 'aiacademy/week5/deep-learning-teacher-is-here'
 tags: aiacademy deep-learning neural-networks

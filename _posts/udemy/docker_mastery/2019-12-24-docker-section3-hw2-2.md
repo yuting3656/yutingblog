@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section3 作業阿!!!! Round-robin DNS'
 permalink: 'docker_mastery/docker-sections3-hw2-2-round-robin-DNS'
 tags: udemy-docker

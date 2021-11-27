@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'NLP & Word Embeddings: Applications using World Embeddings'
 permalink: 'dl-coursera-sequence-models/week2/nlp-and-word-embeddings-application-using-word-embeddings'
 tags: coursera-deep-learning nlp word-embeddings

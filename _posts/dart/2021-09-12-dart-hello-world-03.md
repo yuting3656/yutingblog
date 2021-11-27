@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "Dart: Hello World 003 之 颱風來了室內時間比較多 XDD"
 permalink: "dart/dart-hello-world-03"
 tags: dart

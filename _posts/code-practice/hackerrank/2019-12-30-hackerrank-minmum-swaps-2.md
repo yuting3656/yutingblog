@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " HackerRank: Minimum Swaps 2 "
 permalink: 'code-practice/hackerrank-minimum-swaps-2'
 tags: 紮馬步 hackerrank

@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "aiacademy day1 隨選筆記"
 permalink: 'diary/:year-:month-:day'
 tags: 今日隨意 aiacademy

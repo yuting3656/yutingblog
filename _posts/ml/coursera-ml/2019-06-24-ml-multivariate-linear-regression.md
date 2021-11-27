@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: "single"
 title: '機器學習 - multivariate linear regression'
 permalink: 'ml-coursera/week2/multivariate-linear-regression'
 tags: coursera-machine-learning

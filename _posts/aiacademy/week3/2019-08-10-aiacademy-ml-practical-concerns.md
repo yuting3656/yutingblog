@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 機器學習 Practical Concerns '
 permalink: 'aiacademy/week3/practical-concerns'
 tags: aiacademy machine-learning ml-practical-concerns

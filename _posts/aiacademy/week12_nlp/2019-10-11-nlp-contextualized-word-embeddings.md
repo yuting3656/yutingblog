@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 自然語言處理 NLP 4.1 Contextualized Word Embeddings'
 permalink: 'aiacademy/week12/nlp-contextualized-word-embeddings'
 tags: aiacademy nlp

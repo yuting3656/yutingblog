@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Advanced Topics: Online Learning, Map Reduce and Data Parallelism'
 permalink: 'ml-coursera/week10/advanced-topics-online-learning-map-reduce-data-parallelism'
 tags: coursera-machine-learning

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 4 - Building Image'
 permalink: 'docker_mastery/docker-sections4-building-image'
 tags: udemy-docker docker-image

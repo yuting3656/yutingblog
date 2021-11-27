@@ -1,6 +1,8 @@
 ---
-layout: page
+layout: "splash"
 title: "Yuting Projects"
+permalink: /yuting-projects
+classes: wide
 ---
 
 ## [Yuting Daily Seed][yuting]

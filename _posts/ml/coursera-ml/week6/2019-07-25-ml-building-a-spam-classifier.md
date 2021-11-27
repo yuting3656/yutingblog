@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'building a spam classifier'
 permalink: 'ml-coursera/week6/building-a-spam-classifier'
 tags: coursera-machine-learning

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 生成對抗網路 GAN - Conditional GAN'
 permalink: 'aiacademy/week11/gan-condtional-gan'
 tags: aiacademy GAN conditional-gan

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Study Group: 內湖成五 品質保證 docker-讀書會-05 docker compose '
 permalink: 'stydeGroup/docker-05'
 tags: 讀書會 docker

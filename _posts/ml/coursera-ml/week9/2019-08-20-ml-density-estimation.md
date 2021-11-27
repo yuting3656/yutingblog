@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Density Estimation'
 permalink: 'ml-coursera/week9/density-estimation'
 tags: coursera-machine-learning

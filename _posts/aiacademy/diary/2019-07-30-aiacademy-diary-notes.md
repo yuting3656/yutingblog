@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single" 
 title: '戰場開很多紀錄一下怕發散 XDD'
 permalink: 'aiacademy/diary/:year-:month-:day'
 tags: aiacademy

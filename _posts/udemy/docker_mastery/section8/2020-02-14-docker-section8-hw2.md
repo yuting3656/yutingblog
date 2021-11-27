@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 8 作業2阿～！！！ Create Stack w/ Secrets'
 permalink: 'docker_mastery/docker-sections8-hw2-create-stack-with-secrets'
 tags: udemy-docker swarm swarm-secrets ubuntu

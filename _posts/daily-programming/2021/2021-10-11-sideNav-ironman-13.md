@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "daily Programming:  自製 鐵人賽 (13th) Side Navigation "
 permalink: "daily-programming/ironman-13th-side-nav"
 tags: daily-programming js

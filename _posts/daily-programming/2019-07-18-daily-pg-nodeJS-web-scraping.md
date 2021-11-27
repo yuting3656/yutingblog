@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: node.js web scraping'
 permalink: 'daily-programming/nodejs-web-scraping'
 tags: daily-programming Node.js 讀書會

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 9 - Full App Lifecycle: Dev, Build and Deploy With a Single Compose Design'
 permalink: 'docker_mastery/docker-sections9-full-app-lifecycle-dev-build-deploy'
 tags: udemy-docker  docker-full-app-lifecycle

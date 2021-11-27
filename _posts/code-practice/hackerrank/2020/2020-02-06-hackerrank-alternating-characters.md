@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " HackerRank: String- Alternating Characters"
 permalink: 'code-practice/hackerrank-string-alternating characters'
 tags: 紮馬步 hackerrank

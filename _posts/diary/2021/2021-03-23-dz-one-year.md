@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "ＤＺ 一年回顧"
 permalink: 'diary/:year-:month-:day/dz-one-year-reflection'
 tags: 今日隨意

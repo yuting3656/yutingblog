@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'python intro 1'
 permalink: 'aiacademy/week1/python-intro-1'
 tags: aiacademy python

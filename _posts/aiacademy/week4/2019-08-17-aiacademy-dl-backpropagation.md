@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 Deep Learning back-propagation'
 permalink: 'aiacademy/week4/deep-learning-back-propagation'
 tags: aiacademy deep-learning neural-networks backpropagation

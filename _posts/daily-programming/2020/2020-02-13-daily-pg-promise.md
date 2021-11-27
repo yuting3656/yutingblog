@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: 家姐出品 品質保證 promise & async & awit'
 permalink: 'daily-programming/javascript-promise-async-await'
 tags: daily-programming javascript 讀書會
