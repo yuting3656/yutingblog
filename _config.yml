@@ -210,7 +210,7 @@ footer:
       # url:
     - label: "Youtube"
       icon: "fab fa-fw fa-youtube"
-      url: "https://www.youtube.com/channel/UCmQUwE2QxWdZrLRRtiZQvbg"
+      # url: "https://www.youtube.com/channel/UCmQUwE2QxWdZrLRRtiZQvbg"
 
 
 # Reading Files
