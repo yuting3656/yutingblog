@@ -3,6 +3,9 @@ layout: "splash"
 title: about
 permalink: /about/
 classes: wide
+excerpt: "有夢最美，希望相隨"
+header:
+  overlay_image: /assets/images/river_side_bike.jpg
 ---
 
 ### 為什麼開始這個 Blog ?

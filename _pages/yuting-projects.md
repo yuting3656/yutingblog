@@ -3,6 +3,9 @@ layout: "splash"
 title: "Yuting Projects"
 permalink: /yuting-projects
 classes: wide
+excerpt: "Fake It Until You Become It :)"
+header:
+  overlay_image: /assets/images/river_side_fish.jpg
 ---
 
 ## [Yuting Daily Seed][yuting]
