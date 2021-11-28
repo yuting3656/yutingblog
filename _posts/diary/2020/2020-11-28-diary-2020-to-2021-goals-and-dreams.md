@@ -2,7 +2,7 @@
 layout: "single"
 title: '2020 銜接 2021 當個快樂的小飛俠~~~ :) '
 permalink: 'diary/:year-:month-:day'
-tags: 今日隨意
+tags: 今日隨意 年度計畫
 ---
 
 ![Imgur](https://i.imgur.com/1F61geg.jpg)
