@@ -49,12 +49,10 @@ gallery:
 
     - 我自己有 想要讓首頁的 標題也可以顯示 `tag` 朝連結
        - `/_layouts/home.html`
-         - {% include gallery caption="範例唷唷!!" %}
+         {% include gallery caption="範例唷唷!!" %}
     
     - blog 上面的 `About` `Tags` `Yuting Projects`
-
       - /_data/navigation.yml
-         
          ~~~yml
             main:
              - title: "About"
@@ -64,7 +62,6 @@ gallery:
              - title: "Yuting Projects"
                url: /yuting-projects
          ~~~
-
       - /_pages/
          - 放上自己 navigation 的 md 檔案
 
