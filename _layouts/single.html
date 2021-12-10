@@ -16,14 +16,6 @@ layout: default
 
 <div id="main" role="main">
   {% include sidebar.html %}
-  
-  <!-- 2021-12-10 custom-->
-  <header class="page__meta">
-    {% if site.data.ui-text[site.locale].meta_label %}
-      <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
-    {% endif %}
-    {% include page__taxonomy.html %}
-  </header>
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
     {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
@@ -40,6 +32,15 @@ layout: default
           {% include page__meta.html %}
         </header>
       {% endunless %}
+
+      <!-- 2021-12-10 custom-->
+     <header class="page__meta">
+       {% if site.data.ui-text[site.locale].meta_label %}
+         <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
+       {% endif %}
+       {% include page__taxonomy.html %}
+     </header>
+      <!-- end  2021-12-10 custom-->
 
       <section class="page__content e-content" itemprop="text">
         {% if page.toc %}
