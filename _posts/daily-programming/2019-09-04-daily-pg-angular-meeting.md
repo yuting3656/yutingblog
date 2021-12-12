@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: Angular 小聚#6'
 permalink: 'daily-programming/angualr-meeting-ml-tensorflowJS'
 tags: daily-programming

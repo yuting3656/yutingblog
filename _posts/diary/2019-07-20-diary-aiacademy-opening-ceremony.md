@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "aiacademy 開學典禮"
 permalink: 'diary/:year-:month-:day'
 tags: 今日隨意 aiacademy

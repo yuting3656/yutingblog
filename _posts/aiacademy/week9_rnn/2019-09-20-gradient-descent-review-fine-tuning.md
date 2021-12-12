@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 複習 & 調教'
 permalink: 'aiacademy/week9/deep-learning-review-fine-turning'
 tags: aiacademy gradient-descent

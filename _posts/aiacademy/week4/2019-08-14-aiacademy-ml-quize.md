@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 機器學習 考試講解'
 permalink: 'aiacademy/week4/ml-quiz'
 tags: aiacademy machine-learning

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 Deep Learning 概論'
 permalink: 'aiacademy/week4/deep-learning-intro'
 tags: aiacademy deep-learning

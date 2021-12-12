@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: docker networks'
 permalink: 'docker_mastery/docker-networks'
 tags: udemy-docker docker-network

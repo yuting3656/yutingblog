@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " 紮馬步: Arrays Minimum number swaps "
 permalink: 'code-practice/arrays-minimum-number-swaps'
 tags: 紮馬步 

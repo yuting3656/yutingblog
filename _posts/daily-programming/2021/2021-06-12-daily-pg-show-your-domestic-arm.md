@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "daily Programming: 獻出你的國產手臂!"
 permalink: "daily-programming/show-your-domestic-arm"
 tags: daily-programming photopea

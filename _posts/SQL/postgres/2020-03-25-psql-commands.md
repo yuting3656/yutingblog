@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'SQL: postgres commands && others'
 permalink: 'sql/postgres-commands'
 tags: sql postgres

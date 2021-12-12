@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 自然語言處理 NLP 2. Word Embeddings'
 permalink: 'aiacademy/week11/nlp-word-embeddings-wrod2vec'
 tags: aiacademy nlp word-embeddings Word2Vec

@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "Flutter: Create the starter Flutter app"
 permalink: "dart/flutter-create-the-starter-flutter-app"
 tags: dart flutter

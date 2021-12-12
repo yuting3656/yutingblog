@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: go notes for life'
 permalink: 'daily-programming/go-notes-for-life'
 tags: daily-programming go

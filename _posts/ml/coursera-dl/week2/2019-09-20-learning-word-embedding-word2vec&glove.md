@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'NLP & Word Embeddings: Word2vec & GloVe'
 permalink: 'dl-coursera-sequence-models/week2/nlp-and-word-embeddings-word2vec-glove'
 tags: coursera-deep-learning nlp word-embeddings Word2Vec

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: docker Container cli'
 permalink: 'docker_mastery/docker-containers-cli'
 tags: udemy-docker docker-cli

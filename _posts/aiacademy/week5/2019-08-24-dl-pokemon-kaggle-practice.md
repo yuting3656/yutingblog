@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 神奇寶貝!!! pokemon-kaggle'
 permalink: 'aiacademy/week5/deep-learning-neural-network-pokemon-kaggle'
 tags: aiacademy tensorflow keras deep-learning kaggle

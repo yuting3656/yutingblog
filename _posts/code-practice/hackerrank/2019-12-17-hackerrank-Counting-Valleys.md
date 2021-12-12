@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " HackerRank: Counting Valleys "
 permalink: 'code-practice/hackerrank-counting-valleys'
 tags: 紮馬步 hackerrank

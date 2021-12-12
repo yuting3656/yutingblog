@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " HackerRank: 2D Array DS "
 permalink: 'code-practice/hackerrank-2d-array'
 tags: 紮馬步 hackerrank

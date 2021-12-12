@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 RNN Attention'
 permalink: 'aiacademy/week9/rnn-attention'
 tags: aiacademy rnn attention

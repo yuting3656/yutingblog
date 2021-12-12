@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 CNN 老師來啦!!!!'
 permalink: 'aiacademy/week6/deep-learning-cnn-teacher-is-here'
 tags: aiacademy cnn

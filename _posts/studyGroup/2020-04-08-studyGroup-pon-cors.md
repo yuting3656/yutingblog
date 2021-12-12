@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Study Group: 一姊出品 品質保證 CORS'
 permalink: 'stydeGroup/pon-cors'
 tags: 讀書會

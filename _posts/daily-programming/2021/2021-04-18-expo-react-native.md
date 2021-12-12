@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: react-native & expo'
 permalink: 'daily-programming/react-native-and-expo'
 tags: daily-programming react-native expo

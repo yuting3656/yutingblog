@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 機器學習 Decision Trees '
 permalink: 'aiacademy/week3/decicion-trees'
 tags: aiacademy machine-learning decision-trees

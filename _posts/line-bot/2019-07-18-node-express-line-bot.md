@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Line Bot'
 permalink: 'ndoe/line-bot'
 tags: line-bot Node.js heroku 讀書會

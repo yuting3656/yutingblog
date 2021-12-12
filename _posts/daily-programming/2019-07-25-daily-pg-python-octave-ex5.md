@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: python coursera-machine-learning octave2python'
 permalink: 'daily-programming/coursera-machine-learning-octave2python'
 tags: daily-programming python octave

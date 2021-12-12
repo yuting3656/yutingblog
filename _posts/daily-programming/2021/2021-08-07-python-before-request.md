@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "daily Programming: Python Flask before_request"
 permalink: "daily-programming/python-flask-before-request"
 tags: daily-programming python flask

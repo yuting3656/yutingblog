@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: python wiht bs4'
 permalink: 'daily-programming/python-bs4'
 tags: daily-programming python

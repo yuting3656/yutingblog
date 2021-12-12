@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 機器學習 Unsupervised Learning'
 permalink: 'aiacademy/week3/unsupervised-learning'
 tags: aiacademy machine-learning unsupervised-learning dimensionality-reduction

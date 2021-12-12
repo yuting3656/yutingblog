@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Dimensionality Reduction:Motivation'
 permalink: 'ml-coursera/week8/dimensionality-reduction-motivation'
 tags: coursera-machine-learning dimensionality-reduction

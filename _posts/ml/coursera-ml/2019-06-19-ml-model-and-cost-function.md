@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: '機器學習 - model and cost function'
 permalink: "ml-coursera/week1/model-and-cost-function"
 tags: coursera-machine-learning

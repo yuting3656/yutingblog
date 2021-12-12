@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'octave2python: ex1-gradient-descent'
 permalink: 'octave2python/ex1-gradient-descent'
 tags: coursera-machine-learning octave2python

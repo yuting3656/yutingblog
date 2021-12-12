@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "DZ Debate"
 permalink: "diary/:year-:month-:day/dz-debate"
 tags: 今日隨意

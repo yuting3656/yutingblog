@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 6 - Adding image building to compose files'
 permalink: 'docker_mastery/docker-sections6-adding-image-building-to-compose-files'
 tags: udemy-docker docker-compose

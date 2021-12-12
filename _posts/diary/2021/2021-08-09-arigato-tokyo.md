@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "Arigoto, Tokyo ❤️"
 permalink: "diary/:year-:month-:day/arigato-tokyo"
 tags: 今日隨意

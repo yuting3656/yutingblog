@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "智慧工廠&製造: PDCA 之 要不要一起生牛寶寶 😎 "
 permalink: "diary/:year-:month-:day/smart-manufacturing-industry4-pdca"
 tags: 今日隨意 智慧工廠&製造 PDCA 阿葛之聲 chartjs

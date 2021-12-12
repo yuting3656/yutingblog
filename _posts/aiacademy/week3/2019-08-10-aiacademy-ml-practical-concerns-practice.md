@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 機器學習 - 實作: ch08 (practical concers) '
 permalink: 'aiacademy/week3/practical-concerns-practice'
 tags: aiacademy machine-learning ml-practical-concerns

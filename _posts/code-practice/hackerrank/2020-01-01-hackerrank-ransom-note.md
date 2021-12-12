@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: " HackerRank: Hash Tables- Ransom Note "
 permalink: 'code-practice/hackerrank-ransom-note'
 tags: 紮馬步 hackerrank

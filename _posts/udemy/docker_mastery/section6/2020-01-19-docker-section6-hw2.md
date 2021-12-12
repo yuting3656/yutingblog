@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 6 作業阿～！！！ Build and Run Compose'
 permalink: 'docker_mastery/docker-sections6-hw2-build-and-run-compose'
 tags: udemy-docker docker-compose

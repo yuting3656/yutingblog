@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: '模組化建構工作細節~'
 permalink: 'diary/:year-:month-:day'
 tags: 今日隨意

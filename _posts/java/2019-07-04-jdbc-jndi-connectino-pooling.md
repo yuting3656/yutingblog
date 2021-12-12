@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: '挖賽! 是java耶~ jdbc and connection pooling'
 permalink: 'java/jdbc-and-connection-pooling'
 tags: java connection-pooling jdbc

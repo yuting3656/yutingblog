@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'week1 ~ week2 自我整理複習'
 permalink: 'ml-coursera/review/week1-week2'
 tags: coursera-machine-learning

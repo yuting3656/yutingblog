@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: '機率與統計: 練習'
 permalink: 'aiacademy/week2/statistics-exercies'
 tags: aiacademy statistics

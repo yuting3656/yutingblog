@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Go: Hello World'
 permalink: 'go/go-hello-world'
 tags: go 

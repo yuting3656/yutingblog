@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: numpy clip'
 permalink: 'daily-programming/numpy-clip'
 tags: daily-programming numpy

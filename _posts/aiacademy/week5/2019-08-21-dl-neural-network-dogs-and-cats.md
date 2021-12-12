@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 貓狗大戰! model tuning'
 permalink: 'aiacademy/week5/deep-learning-neural-network-dogs-and-cats-datasets'
 tags: aiacademy deep-learning neural-networks model-tuning tensorflow

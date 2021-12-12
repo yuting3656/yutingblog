@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Study Group: 內湖澄鵡 出品 webSockets'
 permalink: 'stydeGroup/yuting-webSockets'
 tags: 讀書會

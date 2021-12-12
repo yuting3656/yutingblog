@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'numpy 基本練習 dot'
 permalink: 'python/numpy/basic-practice-dot'
 tags: python numpy

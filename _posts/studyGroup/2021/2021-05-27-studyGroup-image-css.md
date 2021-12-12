@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "Study Group: 珊謎姐出品 一年一齣 品質保證 CSS 神奇圖片的魔法"
 permalink: "stydeGroup/magic-image-css"
 tags: 讀書會 css

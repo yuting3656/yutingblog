@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'React: Hello World II XDD'
 permalink: 'react/hello-world-II'
 tags: react

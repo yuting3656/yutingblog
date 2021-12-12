@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Angular Object Detection 2 Heroku'
 permalink: 'ai-side-project/angular-object-detection'
 tags: ai-side-project angular object-detection

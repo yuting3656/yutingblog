@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: python docker-python evn jupyter-notebook and pandas XD'
 permalink: 'daily-programming/python-docker-python-env-jupyter-notebook-pandas'
 tags: daily-programming python pandas

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: 一姐重構'
 permalink: 'daily-programming/programmin-refactoring'
 tags: daily-programming 讀書會

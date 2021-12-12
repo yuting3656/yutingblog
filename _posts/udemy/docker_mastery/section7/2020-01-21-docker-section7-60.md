@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Docker Mastery: Section 7 - (Swarm) create first service and scale it locally'
 permalink: 'docker_mastery/docker-sections7-swarm-create-first-service-and-scale-it-locally'
 tags: udemy-docker swarm

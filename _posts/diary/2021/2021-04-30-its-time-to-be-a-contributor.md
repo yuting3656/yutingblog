@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "是時候當個愛情的 Contributor 了"
 permalink: 'diary/:year-:month-:day/it-is-time-to-be-a-contirbutor'
 tags: 今日隨意 mdn

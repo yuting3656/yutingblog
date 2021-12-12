@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 專題開始!!! '
 permalink: 'aiacademy/week13/ai-porject-start'
 tags: aiacademy ai-project 

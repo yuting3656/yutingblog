@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'React: Hello World III XDDD'
 permalink: 'react/hello-world-III'
 tags: react react-router axios

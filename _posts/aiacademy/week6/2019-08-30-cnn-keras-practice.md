@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 CNN wtih keras (cifar10)'
 permalink: 'aiacademy/week6/deep-learning-cnn-keras-cifar10'
 tags: aiacademy cnn keras

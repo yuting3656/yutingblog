@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "Spark AR: Spark AR 03 - picker ui"
 permalink: "spark-ar/spark-ar-picker-ui-"
 tags: SparkAR

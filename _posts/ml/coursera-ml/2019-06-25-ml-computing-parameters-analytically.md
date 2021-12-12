@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: '機器學習 - computing parameters analytically'
 permalink: 'ml-coursera/week2/computing-parameters-analytically'
 tags: coursera-machine-learning

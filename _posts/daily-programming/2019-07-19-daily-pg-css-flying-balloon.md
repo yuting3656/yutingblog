@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: css flying balloon'
 permalink: 'daily-programming/css-flying-balloon'
 tags: daily-programming css

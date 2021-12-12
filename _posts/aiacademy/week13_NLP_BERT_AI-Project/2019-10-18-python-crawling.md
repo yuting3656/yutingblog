@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 網路爬蟲 '
 permalink: 'aiacademy/week13/python-crawling'
 tags: aiacademy python crawling

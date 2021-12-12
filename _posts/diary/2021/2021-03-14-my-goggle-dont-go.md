@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "我的蛙鏡 你別走阿~~~~~~~~~~~~~~"
 permalink: 'diary/:year-:month-:day/my-goggle-dont-leave-me'
 tags: 今日隨意 javascript svg

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 機器學習 K-nearest neighbors (knn) & 實作:ch03'
 permalink: 'aiacademy/week3/K-nearest-neighbors'
 tags: aiacademy machine-learning knn

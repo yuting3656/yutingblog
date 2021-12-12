@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "Dart: Hello World 001 之 謝謝你 小狐狸 🐶 "
 permalink: "dart/dart-hello-world-01"
 tags: dart

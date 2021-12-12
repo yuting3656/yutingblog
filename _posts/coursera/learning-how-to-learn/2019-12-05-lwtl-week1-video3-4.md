@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Learning How to Learn: week 1: Focused versus Diffuse Thinking (video 3, 4)'
 permalink: 'coursera-learning-how-to-learn/week1-focused-versus-diffuse-thinking-video3-and-4'
 tags: coursera-learning-how-to-learn

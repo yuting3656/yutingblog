@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'week1 ~ week4 review VS TensorFlow.js'
 permalink: 'ml-coursera/week4/week1-to-week4-review-vs-tensorflowJS'
 tags: coursera-machine-learning neural-networks tensorflow linear-regression

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'daily Programming: 從 tendorflow 官網 小改一個 tensorflow image 變成自己的兒~ XDD'
 permalink: 'daily-programming/custom-tensorlfow-dokcer-image'
 tags: daily-programming docker python tensorflow

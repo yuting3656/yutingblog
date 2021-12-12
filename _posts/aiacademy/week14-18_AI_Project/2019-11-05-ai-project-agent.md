@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 專題: 精心的model !?'
 permalink: 'aiacademy/week14-18/ai-porject-what-is-agent'
 tags: aiacademy ai-project reinforcement-learning q-learning

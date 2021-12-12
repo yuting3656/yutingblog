@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Neural Networks: Applications'
 permalink: 'ml-coursera/week4/neural-networks-applications'
 tags: coursera-machine-learning neural-networks

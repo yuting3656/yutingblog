@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Go: Simple RESTful API'
 permalink: 'go/go-simple-restful-api'
 tags: go 

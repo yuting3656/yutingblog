@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 深度學習 RNN- Tesla Stock Predict'
 permalink: 'aiacademy/week9/rnn-tesla-stock-predict'
 tags: aiacademy rnn stock-predict

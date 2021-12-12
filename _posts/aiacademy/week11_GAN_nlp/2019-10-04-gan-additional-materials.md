@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'aiacademy: 生成對抗網路 GAN - 補充教材'
 permalink: 'aiacademy/week11/gan-additional-materials'
 tags: aiacademy GAN

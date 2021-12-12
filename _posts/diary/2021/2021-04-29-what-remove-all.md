@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: "single"
 title: "什麼? 刪光光 LOL!"
 permalink: 'diary/:year-:month-:day/git-rm-r'
 tags: 今日隨意 git

@@ -1,5 +1,5 @@
 ---
-layout: 'post'
+layout: "single"
 title: 'Gradient Descent with Large Datasets'
 permalink: 'ml-coursera/week10/gradient-descent-with-large-datasets'
 tags: coursera-machine-learning
