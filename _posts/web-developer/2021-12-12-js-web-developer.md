@@ -3,6 +3,9 @@ layout: "single"
 title: '挖賽! 我可能只是個打雜的！Closures 之 我不同意'
 permalink: 'web-developer/not-a-web-developer-closures'
 tags: js web-developer closures
+excerpt: "四個不同意．一起來遊戲"
+header:
+  overlay_image: https://i.imgur.com/BkdhL0V.jpg
 ---
 
 
