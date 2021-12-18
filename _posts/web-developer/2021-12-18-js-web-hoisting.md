@@ -3,9 +3,6 @@ layout: "single"
 title: '挖賽! 我可能只是個打雜的！Hoisting'
 permalink: 'web-developer/not-a-web-developer-hoisting'
 tags: js web-developer hoisting
-excerpt: ""
-header:
-  overlay_image: https://i.imgur.com/BkdhL0V.jpg
 ---
 
 
