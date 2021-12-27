@@ -62,4 +62,5 @@ const result2 = cityCombination2.reduce(bigHsinchuProject, 1450)
 
 console.log("cityCombination1 [ '新竹市', '新竹縣', '苗栗縣']:", result1)
 console.log("cityCombination2 [ '新竹市', '新竹縣']:", result2)
- ~~~
+
+~~~
