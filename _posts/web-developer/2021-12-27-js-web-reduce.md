@@ -43,8 +43,6 @@ console.log(array1.reduce(reducer, 5));
 
 
 ### 大新竹計畫 XD
-
-
 ~~~js
  const cityCombination1 = [ '新竹市', '新竹縣', '苗栗縣']
  const cityCombination2 = [ '新竹市', '新竹縣']
