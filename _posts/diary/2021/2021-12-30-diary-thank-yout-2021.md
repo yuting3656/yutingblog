@@ -878,7 +878,9 @@ header {
 .page__meta {
     display: none !important;
 }
-
+#main {
+    max-width: 100vw !important;
+}
 
 </style>
 </head>
