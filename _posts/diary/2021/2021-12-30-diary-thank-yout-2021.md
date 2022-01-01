@@ -858,6 +858,12 @@ tags: 今日隨意
     background-position: center; 
     background-size:cover;
 }
+.s143{
+    background: url('https://i.imgur.com/n9PxILd.jpg');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size:cover;
+}
 .s142{
         text-align: left;
     font-size: 2rem;
@@ -884,12 +890,15 @@ header {
 
 </style>
 </head>
-
+ 
 <body >
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js" ></script>
 
 
 <div id="fullPage">
+   <div class="section">
+      <iframe src="https://www.youtube.com/embed/bdq6n4xsTMA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 <div class="section"  data-percentage="50" data-centered="true">
     <div class="slide s1">
        <h1>2021</h1> 
@@ -1172,6 +1181,8 @@ header {
     <div class="slide s140">
     </div>
     <div class="slide s141">
+    </div>
+    <div class="slide s143">
     </div>
     </div>
 <div class="section s142">
