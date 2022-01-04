@@ -46,9 +46,10 @@ header:
 2. 在你的專案 安裝 [react-native-builder-bob](https://github.com/callstack/react-native-builder-bob)
    - `npm install react-native-builder-bob`
 3. 打包前置作業 **configuration setup** (有兩招) 
-   a. 透過 [react-native-builder-bob](https://github.com/callstack/react-native-builder-bob) 自動幫你整理專案
+
+  -  a. 透過 [react-native-builder-bob](https://github.com/callstack/react-native-builder-bob) 自動幫你整理專案
       - `npx react-native-builder-bob init`
-   b. 自己手動改各種設定
+  -  b. 自己手動改各種設定
       - [Manual configuration: 愛情連結](https://github.com/callstack/react-native-builder-bob#manual-configuration)
 4. 打包
   - `npm run prepare`
