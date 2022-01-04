@@ -51,6 +51,8 @@ header:
       - `npx react-native-builder-bob init`
   -  b. 自己手動改各種設定
       - [Manual configuration: 愛情連結](https://github.com/callstack/react-native-builder-bob#manual-configuration)
+
+
 4. 打包
   - `npm run prepare`
   - `npm publish`
