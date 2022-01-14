@@ -2,7 +2,7 @@
 layout: "single"
 title: 'React Native: Expo 專案打包 + 發佈到 Google Play 上'
 permalink: 'react-native/react-native-release-android'
-tags: react react-native npm expo eas google-play
+tags: react react-native npm expo eas google-play android
 excerpt: "工作 能夠玩到自己想玩的技術 是一件很幸福的事情 :)"
 header:
   overlay_image: https://i.imgur.com/L5aG843.jpg
@@ -27,4 +27,4 @@ header:
    - [愛情手把手文件](https://github.com/expo/fyi/blob/master/first-android-submission.md){:target="_back"}
 
    - 發佈到 Google 上需要提供 Privacy Policies 
-      - [超棒棒工具](https://app.privacypolicies.com/) **感謝同事的強大😎😎😎**
+      - [超棒棒工具](https://app.privacypolicies.com/) **感謝小雞老師的強大😎😎😎**
