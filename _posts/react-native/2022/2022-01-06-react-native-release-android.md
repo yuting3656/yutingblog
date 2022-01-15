@@ -27,4 +27,4 @@ header:
    - [愛情手把手文件](https://github.com/expo/fyi/blob/master/first-android-submission.md){:target="_back"}
 
    - 發佈到 Google 上需要提供 Privacy Policies 
-      - [超棒棒工具](https://app.privacypolicies.com/) **感謝小雞老師的強大😎😎😎**
+      - ![超棒棒工具](https://app.privacypolicies.com/) **感謝小雞老師的強大😎😎😎**
