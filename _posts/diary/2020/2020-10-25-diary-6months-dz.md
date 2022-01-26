@@ -2,7 +2,7 @@
 layout: "single"
 title: '半年 6個月 + 1個月 200+多天 '
 permalink: 'diary/:year-:month-:day'
-tags: 今日隨意
+tags: 今日隨意 工作反思
 ---
 
 > 所有的安排 都是最好的安排 :heart:
