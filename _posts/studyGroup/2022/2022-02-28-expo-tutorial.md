@@ -2,7 +2,7 @@
 layout: "single"
 title: "Study Group: React Native Expo 土魠魚 01"
 permalink: "stydeGroup/react-native-expo-tutorial-01"
-tags: 讀書會 expo
+tags: 讀書會 expo react-native
 ---
 
 ## [Expo](https://docs.expo.dev/){:target="_back"}
