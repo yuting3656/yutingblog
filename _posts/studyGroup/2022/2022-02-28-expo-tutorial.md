@@ -137,7 +137,7 @@ npm start
        // ...
        class MyWebComponent extends Component {
          render() {
-           return <WebView source={{ uri: 'https://reactnative.dev/' }} />;
+           return <WebView source=\{\{ uri: 'https://reactnative.dev/' \}\} />;
          }
        }
    ~~~
@@ -151,7 +151,7 @@ npm start
       export default function App() {
         // 換上你 Blog 的 url!
         return (<WebView 
-          source={{ uri: 'https://yuting3656.github.io/yutingblog/' }} />
+          source=\{\{ uri: 'https://yuting3656.github.io/yutingblog/' \}\} />
         );
       }
    ~~~
