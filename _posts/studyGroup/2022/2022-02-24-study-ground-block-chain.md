@@ -1,7 +1,7 @@
 ---
 layout: "single"
 title: "Study Group: 久違的讀書會~~~ 一定要來區塊一下的拉!"
-permalink: "stydeGroup/kaboom-js"
+permalink: "stydeGroup/block-chain"
 tags: 讀書會 block-chain
 ---
 
