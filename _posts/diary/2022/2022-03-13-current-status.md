@@ -3,9 +3,9 @@ layout: "single"
 title: '三月情緒多多~ '
 permalink: 'diary/:year-:month-:day'
 tags: 今日隨意 
-excerpt: "我一直以為就是 xxx, 自以為...., 自負&自大, 我超級急~~~"
+excerpt: "心要安 神要靜 情要穩 魂要定"
 header:
-  overlay_image: https://i.imgur.com/BYWTYcE.jpg
+  overlay_image: https://i.imgur.com/zg62XBB.jpg
 ---
 
 
