@@ -31,7 +31,7 @@ __開~ 紮馬步__，紮了一整個禮拜
 
 |![Imgur](https://i.imgur.com/518yUG6h.jpg)|
 
-
+[時間複雜度分析](https://www.scaler.com/topics/data-structures/time-complexity-in-data-structure/)
 
 ## Best Case, Worst Case, and Expected Case
 
