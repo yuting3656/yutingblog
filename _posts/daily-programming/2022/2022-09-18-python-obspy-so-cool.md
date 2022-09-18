@@ -90,7 +90,7 @@ st.plot( linewidth=0.75, equl_scale=False)
           USP         http://sismo.iag.usp.br
       ~~~
 
-## 輸入時間
+### 輸入時間
 
 - 台灣主震時間 `今（18）日下午14時44分台東又發生芮氏規模6.8地震`
 - UTC 時間
@@ -98,6 +98,9 @@ st.plot( linewidth=0.75, equl_scale=False)
 
 - `t = UTCDateTime("2022-09-18 06:44:14")`
 
+### 拿地震抖動的資料
+
+- [obspy.clients.fdsn.client.Client.get_waveforms](https://docs.obspy.org/packages/autogen/obspy.clients.fdsn.client.Client.get_waveforms.html?highlight=get_wave#obspy.clients.fdsn.client.Client.get_waveforms){:target="_back"}
 
 ## Reference
 
