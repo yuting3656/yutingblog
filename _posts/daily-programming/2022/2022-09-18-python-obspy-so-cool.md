@@ -46,17 +46,57 @@ st = client.get_waveforms("IU", "MAJO", "10", "BH*", t - sbef, t + saft)
 st.plot( linewidth=0.75, equl_scale=False)
 ~~~
 
-- [Client] (from obspy.clients.fdsn import Client){:target="_back"}
-
+- [Client: **from obspy.clients.fdsn import Client**](){:target="_back"}
+   
+   > 給你去抓世界各地震資料的 Function
+  
    - [FDSN Web Service](https://www.fdsn.org/webservices/){:target="_back"}
       - `This specification defines RESTful web service interfaces for accessing common FDSN data types. This specification serves as a baseline level of compatibility allowing data request tools to work with any FDSN data center implementing these services.`
 
+
+### `Client("IRIS")` 　　　　
+   - 新聞的挪威專家用　[`IRIS`](http://service.iris.edu){:target="_back"}  
+   
+   - ~~~
+          AUSPASS     http://auspass.edu.au
+          BGR         http://eida.bgr.de
+          EMSC        http://www.seismicportal.eu
+          ETH         http://eida.ethz.ch
+          GEOFON      http://geofon.gfz-potsdam.de
+          GEONET      http://service.geonet.org.nz
+          GFZ         http://geofon.gfz-potsdam.de
+          ICGC        http://ws.icgc.cat
+          IESDMC      http://batsws.earth.sinica.edu.tw
+          INGV        http://webservices.ingv.it
+          IPGP        http://ws.ipgp.fr
+          IRIS        http://service.iris.edu
+          IRISPH5     http://service.iris.edu
+          ISC         http://isc-mirror.iris.washington.edu
+          KNMI        http://rdsa.knmi.nl
+          KOERI       http://eida.koeri.boun.edu.tr
+          LMU         http://erde.geophysik.uni-muenchen.de
+          NCEDC       http://service.ncedc.org
+          NIEP        http://eida-sc3.infp.ro
+          NOA         http://eida.gein.noa.gr
+          ODC         http://www.orfeus-eu.org
+          ORFEUS      http://www.orfeus-eu.org
+          RASPISHAKE  https://fdsnws.raspberryshakedata.com
+          RESIF       http://ws.resif.fr
+          RESIFPH5    http://ph5ws.resif.fr
+          SCEDC       http://service.scedc.caltech.edu
+          TEXNET      http://rtserve.beg.utexas.edu
+          UIB-NORSAR  http://eida.geo.uib.no
+          USGS        http://earthquake.usgs.gov
+          USP         http://sismo.iag.usp.br
+      ~~~
 
 ## 輸入時間
 
 - 台灣主震時間 `今（18）日下午14時44分台東又發生芮氏規模6.8地震`
 - UTC 時間
    - 2022-09-18 06:44:14
+
+- `t = UTCDateTime("2022-09-18 06:44:14")`
 
 
 ## Reference
