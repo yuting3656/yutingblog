@@ -17,7 +17,7 @@ tags: daily-programming python ocr tesseract
 >
 > 這回先來 看圖 下回再來把影片整個 情境串起來
 
-1. 安裝
+- 安裝
 
  - Tesseract: **OCR engine**
    - [github](https://github.com/tesseract-ocr/tesseract){:target="_back"}
@@ -29,28 +29,31 @@ tags: daily-programming python ocr tesseract
     - [opencv-python](https://pypi.org/project/opencv-python/){:target="_back"}
        - `pip install opencv-python`
 
-2. 範例
+- 範例
 
-- 辨識語系選擇
+ - 辨識語系選擇
   - [github](https://github.com/tesseract-ocr/tessdata){:target="_back"}
   - `lang="chi_tra" --> 我在安裝 tesseract 已經額外選擇安裝 chinese tradition`
 
-~~~python
-import cv2
-import pytesseract
+   ~~~python
+   import cv2
+   import pytesseract
+   
+   # 我灌在
+   # C:\Program Files\Tesseract-OCR
+   pytesseract.pytesseract.tesseract_cmd = r'C:\\Program Files\\Tesseract-OCR\\tesseract'
+   img_cv = cv2.imread(r'yutingBlog.JPG')
+   img_rgb = cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB)
+   ## lang="chi_tra" --> 我在安裝 tesseract 已經額外選擇安裝 chinese tradition
+   print(pytesseract.image_to_string(img_rgb, lang='chi_tra'))
+   ~~~
 
-# 我灌在
-# C:\Program Files\Tesseract-OCR
-pytesseract.pytesseract.tesseract_cmd = r'C:\\Program Files\\Tesseract-OCR\\tesseract'
-img_cv = cv2.imread(r'yutingBlog.JPG')
-img_rgb = cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB)
-## lang="chi_tra" --> 我在安裝 tesseract 已經額外選擇安裝 chinese tradition
-print(pytesseract.image_to_string(img_rgb, lang='chi_tra'))
-~~~
+
+- 成果
+
+   |原圖|辨識結果|
+   |:---:|:---:|
+   |![Imgur](https://i.imgur.com/eB23NWB.png)|![Imgur](https://i.imgur.com/fyxEpXB.jpg) ![Imgur](https://i.imgur.com/aoMnbEE.jpg) ![Imgur](https://i.imgur.com/BIbY0ZO.jpg)|
 
 
-3. 成果
-
-|原圖|辨識結果|
-|:---:|:---:|
-|![Imgur](https://i.imgur.com/eB23NWB.png)|![Imgur](https://i.imgur.com/fyxEpXB.jpg) ![Imgur](https://i.imgur.com/aoMnbEE.jpg) ![Imgur](https://i.imgur.com/BIbY0ZO.jpg)|
+> 結果有點 鳥 XDDDD
