@@ -3,6 +3,9 @@ layout: "single"
 title: "daily Programming: OCR tesseract 看圖"
 permalink: "daily-programming/ocr-python-tesseract"
 tags: daily-programming python ocr tesseract
+excerpt: "OCR!!!"
+header:
+   overlay_image: https://i.imgur.com/eB23NWB.png
 ---
 
 > 到本單位工作快 三年了
