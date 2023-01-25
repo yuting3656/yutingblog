@@ -19,7 +19,7 @@ GEM
       jekyll-sitemap (~> 0.13)
       jemoji (~> 0.11)
     colorator (1.1.0)
-    commonmarker (0.23.2)
+    commonmarker (0.23.7)
     concurrent-ruby (1.1.9)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
@@ -143,7 +143,6 @@ GEM
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2021.5)
       tzinfo (>= 1.0.0)
-    wdm (0.1.1)
 
 PLATFORMS
   ruby
@@ -156,7 +155,6 @@ DEPENDENCIES
   jemoji
   minimal-mistakes-jekyll
   tzinfo-data
-  wdm (~> 0.1.0)
 
 BUNDLED WITH
    2.1.4
