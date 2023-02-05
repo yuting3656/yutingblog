@@ -1,6 +1,6 @@
 ---
 layout: "single"
-title: "daily Programming: 我們終究會老 該記住 還是要筆記一下啊~ XDDD"
+title: "daily Programming: 我們終究會老 該記住 還是要筆記一下啊~ jekyll gcp cmd  XDDD"
 permalink: "daily-programming/i-have-zero-brain"
 tags: daily-programming jekyll gcp 
 ---
