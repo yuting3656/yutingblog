@@ -1,6 +1,6 @@
 ---
 layout: "single"
-title: "daily Programming: 遲來的影像處理拉~~~"
+title: "daily Programming: 遲來的影像處理拉~~~ [py-opencv: image enlarge]"
 permalink: "daily-programming/ocr-img-preprocessing"
 tags: daily-programming python ocr tesseract 
 ---
