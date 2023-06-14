@@ -16,6 +16,8 @@ tags: daily-programming react face-api.js
      npm i face-api.js
    ```
 
+- [face-api.js — JavaScript API for Face Recognition in the Browser with tensorflow.js](https://itnext.io/face-api-js-javascript-api-for-face-recognition-in-the-browser-with-tensorflow-js-bcc2a6c4cf07)
+
 ```jsx
 
 import { Col, Modal, Row, message, Button } from "antd";
