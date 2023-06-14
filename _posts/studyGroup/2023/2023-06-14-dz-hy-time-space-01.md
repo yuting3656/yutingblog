@@ -1,6 +1,6 @@
 ---
 layout: "single"
-title: "Study Group: DZ HY 開課拉～～～ time space"
+title: "Study Group: DZ HY 開課拉～～～ Time and Space Complexity in Data Structure"
 permalink: "stydeGroup/dz-hy-data-structures-02"
 tags: 讀書會 dz-data-sructures
 ---
