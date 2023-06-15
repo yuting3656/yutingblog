@@ -2,16 +2,18 @@
 layout: "single"
 title: "Study Group: DZ HY 開課拉～～～ Queue & Stack"
 permalink: "stydeGroup/dz-hy-data-structures-03"
-tags: 讀書會 dz-data-sructures
+tags: 讀書會 dz-data-structures
 ---
 
 |![Imgur](https://i.imgur.com/BIgyCXl.jpg)|
 |![Imgur](https://i.imgur.com/SHqyNhk.jpg)|
-|![Imgur](https://i.imgur.com/SHqyNhk.jpg)|
+|![Imgur](https://i.imgur.com/F22iyGb.jpg)|
 |![Imgur](https://i.imgur.com/8i8THj4.jpg)|
 
 ## [Depth & Breadth First Search in Go](https://levelup.gitconnected.com/depth-breadth-first-search-in-go-8a6ddcdc73d9)
 
+
+## [Stack & Heap](https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap){:target="_back"}
 ### 回家作業
 
 ### [150. Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/){:target="_back"}

@@ -2,7 +2,7 @@
 layout: "single"
 title: "Study Group: DZ HY 開課拉～～～ Time and Space Complexity in Data Structure"
 permalink: "stydeGroup/dz-hy-data-structures-02"
-tags: 讀書會 dz-data-sructures
+tags: 讀書會 dz-data-structures
 ---
 
 |![Imgur](https://imgur.com/mpFk3R8.png)|
