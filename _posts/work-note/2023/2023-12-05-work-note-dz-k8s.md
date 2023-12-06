@@ -103,7 +103,7 @@ tags: 工作筆記 k8s
 >
 > 終身學習 好好玩喔～～～～ 
 >
-> 然後 原來我們 staging 開 2 pods 
+> 然後 原來我們 staging 開 2 nodes 
 >
 > 下次夜晚 coding 是不是就自己來.... 嘿嘿嘿～
 >
