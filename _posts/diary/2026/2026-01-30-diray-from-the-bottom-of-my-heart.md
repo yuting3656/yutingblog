@@ -232,6 +232,24 @@ tags: RTSP mediamtx WebRTC 影像 串流 AI
 
 ## 六、目前系統流程圖（實際架構版）
 
-<div style="max-width: 960px; margin: 0 auto;">
-  <img src="{{ \"/assets/images/rtsp-flow.svg\" | relative_url }}" alt="RTSP 串流實際架構流程圖" style="width: 100%; height: auto;" />
-</div>
+```text
+                 (唯一 RTSP 來源)
+[A] 攝影機 -------------------------------> [M] Docker mediamtx
+                                              | \
+                                              |  \ (RTSP 內網)
+                                              |   \
+                                              |    v
+                                              |  後端 AI / Vision
+                                              |    |
+                                              |    | 產出 [B] bonding box + pose + object detection JSON
+                                              |    v
+                                              |  前端：疊圖顯示 [B]
+                                              |
+                                              | (WebRTC 低延遲串流)
+                                              v
+                                       前端：播放 live 影像
+
+前端畫面 = mediamtx 串流畫面 + [B] 的疊圖結果
+```
+
+> 補充：前端的 RTSP 輸入欄位主要是「測試/除錯用」，正式流程不需要直接拉攝影機 RTSP。
