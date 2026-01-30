@@ -233,5 +233,5 @@ tags: RTSP mediamtx WebRTC 影像 串流 AI
 ## 六、目前系統流程圖（實際架構版）
 
 <div style="max-width: 960px; margin: 0 auto;">
-  <img src="{{ site.baseurl }}/assets/images/rtsp-flow.svg" alt="RTSP 串流實際架構流程圖" style="width: 100%; height: auto;" />
+  <img src="{{ \"/assets/images/rtsp-flow.svg\" | relative_url }}" alt="RTSP 串流實際架構流程圖" style="width: 100%; height: auto;" />
 </div>
