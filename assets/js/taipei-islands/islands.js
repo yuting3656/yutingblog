@@ -854,6 +854,25 @@ export function mountTaipeiIslands(container) {
   [["dawn", "🌅"], ["day", "☀️"], ["dusk", "🌇"], ["night", "🌙"]].forEach(([k, icon]) => { dayBtns[k] = mk(icon, () => { scene.setDay(k); Object.keys(dayBtns).forEach((j) => dayBtns[j].setAttribute("aria-pressed", j === k ? "true" : "false")); }, { dawn: "清晨", day: "白天", dusk: "黃昏", night: "夜晚" }[k]); });
   dayBtns.day.setAttribute("aria-pressed", "true");
   mk("安可島", () => { scene.stopTour(); scene.flyToIsland(RIVAL.id); showIsland(RIVAL.id); });
+  // 全螢幕：能用 Fullscreen API 就用，不能（iPhone Safari）就改 fixed 蓋版；兩種都靠 ResizeObserver 重算尺寸
+  const fsBtn = mk("⛶ 全螢幕", () => {
+    const isFs = container.classList.contains("fs") || document.fullscreenElement === container || document.webkitFullscreenElement === container;
+    if (isFs) {
+      container.classList.remove("fs");
+      if (document.fullscreenElement || document.webkitFullscreenElement) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      document.body.style.overflow = "";
+    } else {
+      container.classList.add("fs");
+      document.body.style.overflow = "hidden";
+      const req = container.requestFullscreen || container.webkitRequestFullscreen;
+      if (req) { try { const r = req.call(container); if (r && r.catch) r.catch(() => {}); } catch (e) { /* 蓋版仍生效 */ } }
+    }
+  }, "全螢幕看（Esc 或再按一次離開）");
+  const syncFs = () => { const on = container.classList.contains("fs") || document.fullscreenElement === container || document.webkitFullscreenElement === container; fsBtn.setAttribute("aria-pressed", on ? "true" : "false"); fsBtn.textContent = on ? "✕ 離開全螢幕" : "⛶ 全螢幕"; if (!document.fullscreenElement && !document.webkitFullscreenElement && !container.classList.contains("fs")) document.body.style.overflow = ""; scene.resize(); };
+  document.addEventListener("fullscreenchange", () => { if (!document.fullscreenElement) container.classList.remove("fs"); syncFs(); });
+  document.addEventListener("webkitfullscreenchange", () => { if (!document.webkitFullscreenElement) container.classList.remove("fs"); syncFs(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && container.classList.contains("fs")) { container.classList.remove("fs"); syncFs(); } });
+  const fsObs = new MutationObserver(syncFs); fsObs.observe(container, { attributes: true, attributeFilter: ["class"] });
   container.appendChild(pills);
 
   const list = document.createElement("div"); list.className = "tpi-list";
