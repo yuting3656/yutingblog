@@ -103,3 +103,4 @@
 /* 全景時島名牌只顯示編號 */
 .tpi-labels.far .tpi-island-tag span { display: none; }
 .tpi-labels.far .tpi-island-tag { padding: 4px 6px; gap: 0; }
+.tpi-jack-tag { pointer-events: none; background: #fff3cd; color: #7a5a00; border: 1px solid #c9a227; padding: 2px 10px; border-radius: 999px; font-size: 12px; white-space: nowrap; z-index: 2; }

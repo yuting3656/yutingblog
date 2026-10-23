@@ -488,6 +488,90 @@ export class IslandScene {
     this.scene.add(rim);
     this.campusRp = Rp;
     this.campusHeightAt = (x, z) => heightAt(x - ctr.x, z - ctr.z);
+    this.buildLumberjack();
+  }
+
+  // ---------- 安可島伐木工：偷偷溜出去砍園區的樹（純搞笑，樹會長回來） ----------
+  buildLumberjack() {
+    const rival = this.islands.find((i) => i.rival);
+    if (!rival || this.reducedMotion) return;
+    const hAt = this.campusHeightAt;
+    const ctr = this.center;
+    // 受害樹：安可島外側方向、步道外圈一帶，獨立 Group 才能倒
+    this.victims = [];
+    const baseA = Math.atan2(rival.center.z - ctr.z, rival.center.x - ctr.x);
+    const rnd = mulberry(321);
+    for (let i = 0; i < 5; i++) {
+      const a = baseA + (i - 2) * 0.22;
+      const d = this.campusRp + 3.5 + (i % 2) * 2.2;
+      const x = ctr.x + Math.cos(a) * d, z = ctr.z + Math.sin(a) * d;
+      const g = new THREE.Group();
+      const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.16, 1.1, 6), new THREE.MeshStandardMaterial({ color: 0x8a6a4e, roughness: 0.9 })); trunk.position.y = 0.55;
+      const crown = new THREE.Mesh(new THREE.IcosahedronGeometry(0.75, 1), new THREE.MeshStandardMaterial({ color: [0x7fb36a, 0x9fc77a, 0x8fb37a][i % 3], roughness: 0.9 })); crown.position.y = 1.45;
+      const crown2 = new THREE.Mesh(new THREE.IcosahedronGeometry(0.5, 1), crown.material); crown2.position.set(0.35, 1.15, 0.2);
+      [trunk, crown, crown2].forEach((m) => { m.castShadow = this.shadows; g.add(m); });
+      const sc = 1.1 + rnd() * 0.4; g.scale.setScalar(sc);
+      g.position.set(x, hAt(x, z) - 0.05, z);
+      this.scene.add(g);
+      const stump = new THREE.Mesh(new THREE.CylinderGeometry(0.17 * sc, 0.2 * sc, 0.22, 6), new THREE.MeshStandardMaterial({ color: 0xa8865f, roughness: 0.9 })); stump.position.set(x, hAt(x, z) + 0.06, z); stump.visible = false; this.scene.add(stump);
+      this.victims.push({ g, stump, x, z, standing: true, fall: 0, shake: 0 });
+    }
+    // 伐木工：灰衣、拿斧頭
+    const jack = this.makeFigure(0x777777);
+    const handle = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.42, 0.04), new THREE.MeshStandardMaterial({ color: 0x5a3b2e })); handle.position.set(0, -0.2, 0.08);
+    const head = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.1, 0.04), new THREE.MeshStandardMaterial({ color: 0x9a9a9a, metalness: 0.5, roughness: 0.4 })); head.position.set(0.06, -0.4, 0.08);
+    jack.userData.arms[1].add(handle, head);
+    this.scene.add(jack);
+    const home = new THREE.Vector3(rival.center.x, TOP, rival.center.z + HEX * 0.6);
+    jack.position.copy(home);
+    const tag = this.makeLabel("tpi-jack-tag", "🪓 安可島派來的伐木工（偷偷的）");
+    this.jack = { fig: jack, tag, home, state: "home", t0: 0, target: null, from: null, to: null, dur: 0 };
+    this.onJack && this.onJack("home");
+  }
+  updateLumberjack(t, dt) {
+    const j = this.jack; if (!j) return;
+    const hAt = this.campusHeightAt;
+    const { fig } = j;
+    const legs = fig.userData.legs, arms = fig.userData.arms;
+    const walkAnim = () => { const sw = Math.sin(t * 8) * 0.5; legs[0].rotation.x = sw; legs[1].rotation.x = -sw; arms[0].rotation.x = -sw * 0.6; arms[1].rotation.x = sw * 0.6; };
+    const goTo = (x, z, dur, state) => { j.from = fig.position.clone(); j.to = new THREE.Vector3(x, 0, z); j.dur = dur; j.t0 = t; j.state = state; fig.rotation.y = Math.atan2(x - fig.position.x, z - fig.position.z); };
+    if (j.state === "home") {
+      legs[0].rotation.x = 0; legs[1].rotation.x = 0; arms[1].rotation.x = 0;
+      if (t - j.t0 > 6) {
+        // 樹全倒了就先長回來
+        if (!this.victims.some((v) => v.standing)) { this.victims.forEach((v) => { v.standing = true; v.fall = 0; v.g.rotation.set(0, 0, 0); v.g.visible = true; v.stump.visible = false; }); }
+        const v = this.victims.find((vv) => vv.standing); j.target = v;
+        goTo(v.x + 0.9, v.z + 0.4, 6 + Math.hypot(v.x - fig.position.x, v.z - fig.position.z) * 0.9, "walk");
+      }
+    } else if (j.state === "walk" || j.state === "return") {
+      const k = Math.min(1, (t - j.t0) / j.dur);
+      fig.position.lerpVectors(j.from, j.to, k);
+      fig.position.y = j.state === "return" && k > 0.85 ? TOP : Math.max(TOP, hAt(fig.position.x, fig.position.z)) + 0.02;
+      walkAnim();
+      if (k >= 1) { if (j.state === "walk") { j.state = "chop"; j.t0 = t; fig.rotation.y = Math.atan2(j.target.x - fig.position.x, j.target.z - fig.position.z); } else { j.state = "home"; j.t0 = t; } }
+    } else if (j.state === "chop") {
+      const v = j.target;
+      arms[1].rotation.x = -1.6 + Math.abs(Math.sin(t * 9)) * 1.4; // 掄斧頭
+      legs[0].rotation.x = 0; legs[1].rotation.x = 0;
+      v.g.rotation.z = Math.sin(t * 30) * 0.03; // 樹被砍得發抖
+      if (t - j.t0 > 3.2) { j.state = "fall"; j.t0 = t; const dx = v.x - fig.position.x, dz = v.z - fig.position.z, L = Math.hypot(dx, dz) || 1; v.g.rotation.y = Math.atan2(-dz / L, dx / L); }
+    } else if (j.state === "fall") {
+      const v = j.target;
+      const k = Math.min(1, (t - j.t0) / 1.4);
+      const ang = ease(k) * 1.5 + (k > 0.9 ? Math.sin((k - 0.9) * 60) * 0.06 * (1 - k) * 10 : 0);
+      v.g.rotation.z = -ang;
+      arms[1].rotation.x = -0.4;
+      if (k >= 1) { v.standing = false; v.stump.visible = true; j.state = "pause"; j.t0 = t; }
+    } else if (j.state === "pause") {
+      if (t - j.t0 > 1.2) {
+        const next = this.victims.find((vv) => vv.standing);
+        if (next) { j.target = next; goTo(next.x + 0.9, next.z + 0.4, 2 + Math.hypot(next.x - fig.position.x, next.z - fig.position.z) * 0.9, "walk"); }
+        else goTo(j.home.x, j.home.z, 5 + Math.hypot(j.home.x - fig.position.x, j.home.z - fig.position.z) * 0.9, "return");
+      }
+    }
+    j.tag.position.set(fig.position.x, fig.position.y + 1.05, fig.position.z);
+    this.labelsDirty = true;
+    void dt;
   }
 
   // ---------- 走動的人（大頭小人）＋騎車的人 ----------
@@ -738,6 +822,7 @@ export class IslandScene {
     if (!this.reducedMotion) {
       if (this.walkers && this.walkers.length) this.updateWalkers(t);
       this.rotors.forEach((r) => { r.rotation.z += dt * 1.2; });
+      if (this.jack) this.updateLumberjack(t, dt);
       this.clouds.forEach((c) => { c.g.position.x += dt * c.speed; if (c.g.position.x > 90) c.g.position.x = -90; });
       this.waterMat.uniforms.uTime.value = t;
       animating = true;
@@ -756,7 +841,7 @@ export class IslandScene {
 export function mountTaipeiIslands(container) {
   if (!container) return null;
   let scene;
-  try { scene = new IslandScene(container); }
+  try { scene = new IslandScene(container); window.__tpiScene = scene; }
   catch (err) {
     console.error("taipei-islands init failed", err); container.innerHTML = `<div style="padding:24px;text-align:center;color:#555">這台裝置開不了 3D（WebGL）。政見清單請看 <a href="${HERO.site}" target="_blank" rel="noopener">官方政見</a>。</div>`; return null; }
 
