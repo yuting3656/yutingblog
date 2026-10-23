@@ -4,6 +4,8 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+import { SimplexNoise } from "three/addons/math/SimplexNoise.js";
+import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 import { HERO, HEART_COLOR, HEART_NAME, ISLANDS, FLOWS, RIVAL } from "./data.js?v=2";
 import { drawModel, kindOf } from "./models.js?v=2";
 
@@ -17,11 +19,12 @@ const RING = HEX * 0.82; // 步道環半徑
 // 一天四個時段（天空頂／地平線／太陽色／太陽強度／半球天／半球地／霧／夜燈強度／水色）
 const DAYCYCLE = {
   dawn: { top: 0xf2b58a, horizon: 0xfbe3cf, sun: 0xffc9a0, sunI: 1.4, hemiSky: 0xffd9c2, hemiGround: 0x8a7a66, fog: 0xf6dcc8, lamp: 0.5, water: 0x7a9bb3 },
-  day: { top: 0x9fd0ea, horizon: 0xe9f3f6, sun: 0xfff2d8, sunI: 2.2, hemiSky: 0xdff3ff, hemiGround: 0x7a8f6a, fog: 0xdfeef2, lamp: 0, water: 0x3f7fa6 },
+  day: { top: 0x9fd0ec, horizon: 0xf4f1e8, sun: 0xfff1de, sunI: 2.6, hemiSky: 0xeef6fa, hemiGround: 0x8f8270, fog: 0xeef0e4, lamp: 0, water: 0x6fa9b8 },
   dusk: { top: 0xd97b63, horizon: 0xf7c59f, sun: 0xffb070, sunI: 1.2, hemiSky: 0xf2b58a, hemiGround: 0x5a4a44, fog: 0xe8b7a0, lamp: 0.8, water: 0x5a6f8c },
   night: { top: 0x151a33, horizon: 0x2b3458, sun: 0x8fa6d9, sunI: 0.35, hemiSky: 0x3b4670, hemiGround: 0x1d2130, fog: 0x1b2140, lamp: 1.0, water: 0x1c2b45 },
 };
 
+const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
 const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 const mulberry = (a) => () => {
   a |= 0; a = (a + 0x6d2b79f5) | 0;
@@ -168,26 +171,8 @@ export class IslandScene {
     const water = new THREE.Mesh(new THREE.CircleGeometry(240, 48), this.waterMat);
     water.rotation.x = -Math.PI / 2; water.position.y = WATER_Y;
     scene.add(water);
-    // 盆地：遠山＋山腰小房子與樹
+    this.water = water;
     const rnd = mulberry(7);
-    const hillMat = new THREE.MeshStandardMaterial({ color: 0x7fa36d, roughness: 0.95, flatShading: true });
-    const hillMat2 = new THREE.MeshStandardMaterial({ color: 0x5f8a62, roughness: 0.95, flatShading: true });
-    const kit = createKit();
-    for (let i = 0; i < 30; i++) {
-      const a = (i / 30) * Math.PI * 2 + rnd() * 0.15;
-      const r = 78 + rnd() * 36;
-      const h = 9 + rnd() * 16;
-      const hill = new THREE.Mesh(new THREE.ConeGeometry(12 + rnd() * 16, h, 7), i % 3 ? hillMat : hillMat2);
-      hill.position.set(Math.cos(a) * r, WATER_Y + h / 2 - 2, Math.sin(a) * r);
-      hill.rotation.y = rnd() * Math.PI;
-      scene.add(hill);
-      for (let k = 0; k < 3; k++) {
-        const aa = a + (rnd() - 0.5) * 0.12, rr = r - 6 - rnd() * 6, y = WATER_Y + h * 0.25 + rnd() * h * 0.25;
-        const x = Math.cos(aa) * rr, z = Math.sin(aa) * rr;
-        if (k === 0) { kit.part("box", [x, y + 0.5, z], [1.2, 1.0, 1.0], 0xf6efe2); kit.part("cone", [x, y + 1.3, z], [1.6, 0.7, 1.6], [0xd9534f, 0x4a7fb5, 0xe08a3c][i % 3], [0, Math.PI / 4, 0]); }
-        else kit.part("cone", [x, y + 1.2, z], [1.4, 2.4, 1.4], 0x4e7d57);
-      }
-    }
     this.clouds = [];
     const cloudMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 1, transparent: true, opacity: 0.9 });
     for (let i = 0; i < 9; i++) {
@@ -197,7 +182,6 @@ export class IslandScene {
       scene.add(g);
       this.clouds.push({ g, speed: 0.4 + rnd() * 0.5 });
     }
-    kit.build(scene, new THREE.MeshStandardMaterial({ roughness: 0.9 }), false);
   }
 
   // ---------- 世界：六角政策島拼圖＋安可島 ----------
@@ -219,9 +203,9 @@ export class IslandScene {
     this.byId = byId;
 
     const groundOf = (isl) => {
-      if (isl.rival) return { top: 0xd9d9d9, cliff: 0x8f8f8f, strata: 0x7a7a7a, path: 0xbdbdbd };
+      if (isl.rival) return { top: 0xd9d9d9, cliff: 0x9c9c9c, strata: 0x8a8a8a, path: 0xbdbdbd };
       const c = new THREE.Color(isl.color);
-      return { top: c.clone().lerp(new THREE.Color(0xf6f0e6), 0.72).getHex(), cliff: 0xa8865f, strata: 0x7d5f44, path: c.clone().lerp(new THREE.Color(0xffffff), 0.5).getHex() };
+      return { top: c.clone().lerp(new THREE.Color(0xf6f0e6), 0.72).getHex(), cliff: 0xb9b3a6, strata: 0xa39d90, path: c.clone().lerp(new THREE.Color(0xffffff), 0.5).getHex() };
     };
 
     islands.forEach((isl) => {
@@ -238,9 +222,6 @@ export class IslandScene {
       const strata = new THREE.Mesh(new THREE.CylinderGeometry(HEX + 0.02, HEX - 0.1, 0.22, 6, 1).rotateY(Math.PI / 6), solid(g.strata, { flatShading: true }));
       strata.position.set(c.x, TOP - 0.5, c.z);
       this.scene.add(strata);
-      const halo = new THREE.Mesh(new THREE.ShapeGeometry(hexShape(HEX + 0.7)), new THREE.MeshBasicMaterial({ color: 0xcfe9ea, transparent: true, opacity: 0.35, depthWrite: false }));
-      halo.rotation.x = -Math.PI / 2; halo.position.set(c.x, WATER_Y + 0.01, c.z);
-      this.scene.add(halo);
       const ring = new THREE.Mesh(new THREE.ShapeGeometry(hexShape(RING + 0.25)), solid(g.path));
       ring.rotation.x = -Math.PI / 2; ring.position.set(c.x, TOP + 0.006, c.z); ring.receiveShadow = shadows;
       this.scene.add(ring);
@@ -298,9 +279,9 @@ export class IslandScene {
       }
       if (isl.rival) {
         const sign = this.makeLabel("tpi-rival-sign", esc(RIVAL.sign));
-        sign.position.set(c.x, TOP + 0.3, c.z + HEX * 0.5);
+        sign.position.set(c.x, TOP + 0.2, c.z + HEX * 0.78);
         this.loopLabel = this.makeLabel("tpi-loop", "");
-        this.loopLabel.position.set(c.x, TOP + 4.2, c.z);
+        this.loopLabel.position.set(c.x, TOP + 5.6, c.z);
         kit.part("cone", [c.x - HEX * 0.6, TOP + 0.7, c.z - HEX * 0.3], [0.5, 0.9, 0.5], 0x666666, [Math.PI, 0, 0]);
         kit.part("cyl", [c.x - HEX * 0.6, TOP + 0.2, c.z - HEX * 0.3], [0.08, 0.4, 0.08], 0x444444);
       }
@@ -323,30 +304,7 @@ export class IslandScene {
       });
     });
 
-    // 周邊小島：燈塔、風車、小山、礁岩
-    const rnd = mulberry(5);
-    const bbx = new THREE.Box3(); islands.forEach((i) => { if (!i.rival) bbx.expandByPoint(i.center); });
-    const ctr = bbx.getCenter(new THREE.Vector3());
     this.rotors = [];
-    [{ a: 0.3, r: 26, kind: "lighthouse" }, { a: 1.6, r: 24, kind: "windmill" }, { a: 2.7, r: 22, kind: "hill" }, { a: 3.9, r: 25, kind: "rock" }, { a: 5.0, r: 27, kind: "windmill" }].forEach((it) => {
-      const x = ctr.x + Math.cos(it.a) * it.r, z = ctr.z + Math.sin(it.a) * it.r;
-      const R = 2.2 + rnd();
-      const m = new THREE.Mesh(new THREE.CylinderGeometry(R, R - 0.2, 1.3, 7), [solid(0xa8865f), solid(0xe8dcc3), solid(0x7d5f44)]);
-      m.position.set(x, TOP - 0.65, z); m.castShadow = shadows; m.receiveShadow = shadows; this.scene.add(m);
-      if (it.kind === "lighthouse") {
-        kit.part("cyl", [x, TOP + 1.2, z], [0.6, 2.4, 0.6], 0xffffff); kit.part("cyl", [x, TOP + 1.2, z], [0.62, 0.5, 0.62], 0xd9534f); kit.part("cyl", [x, TOP + 2.5, z], [0.5, 0.3, 0.5], 0x2b2b2b);
-        const gl = new THREE.Mesh(new THREE.SphereGeometry(0.22, 8, 6), new THREE.MeshStandardMaterial({ color: 0xffe9a8, emissive: 0xffd666, emissiveIntensity: 0 })); gl.position.set(x, TOP + 2.45, z); this.scene.add(gl); this.lampGlow.push(gl.material);
-      }
-      if (it.kind === "windmill") {
-        kit.part("cyl", [x, TOP + 1.5, z], [0.18, 3.0, 0.18], 0xf4f4f4);
-        const rotor = new THREE.Group();
-        for (let b = 0; b < 3; b++) { const bl = new THREE.Mesh(new THREE.BoxGeometry(0.12, 1.6, 0.05), new THREE.MeshStandardMaterial({ color: 0xffffff })); bl.position.y = 0.8; const pivot = new THREE.Group(); pivot.add(bl); pivot.rotation.z = (b * Math.PI * 2) / 3; rotor.add(pivot); }
-        rotor.position.set(x, TOP + 3.0, z + 0.2); this.scene.add(rotor); this.rotors.push(rotor);
-      }
-      if (it.kind === "hill") { kit.part("cone", [x, TOP + 0.9, z], [3.2, 1.8, 3.2], 0x8fb37a); kit.part("cone", [x, TOP + 1.8, z], [1.8, 1.2, 1.8], 0x7fa36d); kit.part("cone", [x + 0.9, TOP + 1.0, z + 0.6], [0.7, 1.2, 0.7], 0x4e7d57); }
-      if (it.kind === "rock") { kit.part("sphere", [x, TOP + 0.5, z], [2.0, 1.2, 1.6], 0x8f8f8f); kit.part("sphere", [x + 1.0, TOP + 0.3, z - 0.6], [1.0, 0.8, 0.9], 0x7a7a7a); }
-    });
-
     this.kitMeshes = kit.build(this.scene, new THREE.MeshStandardMaterial({ roughness: 0.8 }), shadows);
     const proxy = new THREE.InstancedMesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshBasicMaterial(), this.buildings.size);
     const d = new THREE.Object3D(); const owners = []; let n = 0;
@@ -359,8 +317,177 @@ export class IslandScene {
     this.center = all.getCenter(new THREE.Vector3()).setY(0);
     this.sceneRadius = all.getSize(new THREE.Vector3()).length() / 2;
     this.sun.target.position.copy(this.center); this.scene.add(this.sun.target);
+    this.buildCampus();
     this.buildWalkers();
     this.flowGroup = new THREE.Group(); this.scene.add(this.flowGroup);
+  }
+
+  // ---------- 園區地形（搬自工廠地圖園區風）：起伏草原＋碎石步道＋池塘＋樹＋樹籬＋路燈＋石頭＋廊館＋風車＋花圃 ----------
+  buildCampus() {
+    const rim = new THREE.Group();
+    const shadows = this.shadows;
+    const noise = new SimplexNoise({ random: mulberry(7) });
+    const ctr = this.center;
+    const islands = this.islands.map((i) => ({ x: i.center.x - ctr.x, z: i.center.z - ctr.z, R: HEX }));
+    const core = new THREE.Box3(); this.islands.forEach((i) => { if (!i.rival) core.expandByPoint(i.center); });
+    const coreR = core.getSize(new THREE.Vector3()).length() / 2 + HEX;
+    const Rp = Math.max(coreR, this.sceneRadius * 0.9) + 5; // 環狀步道半徑
+    const outer = Rp + 36;
+    const size = outer * 2 + 24;
+    const seg = this.weak ? 120 : 190;
+    const fbm = (x, z) => { let v = 0, a = 0.5, f = 1; for (let i = 0; i < 3; i++) { v += a * noise.noise(x * f, z * f); a *= 0.5; f *= 2; } return v; };
+    const ponds = [
+      { x: Math.cos(-2.4) * (Rp + 9), z: Math.sin(-2.4) * (Rp + 9), r: 5.5 },
+      { x: Math.cos(-0.5) * (Rp + 11), z: Math.sin(-0.5) * (Rp + 11), r: 4.5 },
+      { x: Math.cos(1.9) * (Rp + 8), z: Math.sin(1.9) * (Rp + 8), r: 4 },
+    ];
+    const spokes = [-Math.PI / 2 - 1.15, -Math.PI / 2, -Math.PI / 2 + 1.15, Math.PI / 2];
+    const pathDist = (x, z) => {
+      const d = Math.hypot(x, z);
+      let best = Math.abs(d - Rp);
+      if (d > Rp - 1) { const ang = Math.atan2(z, x); spokes.forEach((sa) => { let da = Math.abs(ang - sa); da = Math.min(da, Math.PI * 2 - da); best = Math.min(best, Math.sin(Math.min(da, Math.PI / 2)) * d); }); }
+      return best;
+    };
+    const flatFactor = (x, z) => { let f = 1; islands.forEach((i) => { f = Math.min(f, smooth(i.R + 1.0, i.R + 5, Math.hypot(x - i.x, z - i.z))); }); return f; };
+    const waterLevel = WATER_Y - 0.35;
+    const heightAt = (x, z) => {
+      const d = Math.hypot(x, z);
+      let h = 0.55 * fbm(x * 0.05, z * 0.05) + 0.25 * noise.noise(x * 0.14, z * 0.14);
+      h += smooth(Rp + 6, outer, d) * (2.4 + 3.6 * fbm(x * 0.03 + 9, z * 0.03 - 4));
+      h *= flatFactor(x, z);
+      h *= 0.55 + 0.45 * smooth(0.8, 3.0, pathDist(x, z));
+      ponds.forEach((pnd) => { h -= (1 - smooth(pnd.r * 0.55, pnd.r, Math.hypot(x - pnd.x, z - pnd.z))) * 1.3; });
+      return WATER_Y + 0.03 + h;
+    };
+    const tg = new THREE.PlaneGeometry(size, size, seg, seg);
+    tg.rotateX(-Math.PI / 2);
+    const pos = tg.attributes.position;
+    for (let i = 0; i < pos.count; i++) pos.setY(i, heightAt(pos.getX(i), pos.getZ(i)));
+    tg.computeVertexNormals();
+    const nrm = tg.attributes.normal;
+    const col = new Float32Array(pos.count * 3);
+    const c = new THREE.Color();
+    const lawnA = new THREE.Color(0x8fbf6a), lawnB = new THREE.Color(0xa9cf7e), dry = new THREE.Color(0xc2c98a), dirt = new THREE.Color(0xb9a27a);
+    const gravel = new THREE.Color(0xd8cfbb), sand = new THREE.Color(0xe0d6b4), bed = new THREE.Color(0x8fb3ad), forest = new THREE.Color(0x6f8a62);
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i), z = pos.getZ(i), y = pos.getY(i);
+      const slope = 1 - nrm.getY(i);
+      const n = noise.noise(x * 0.09 + 3, z * 0.09) * 0.5 + 0.5;
+      const n2 = noise.noise(x * 0.3 - 7, z * 0.3 + 2) * 0.5 + 0.5;
+      c.copy(lawnA).lerp(lawnB, n);
+      if (n2 > 0.72) c.lerp(dry, 0.5);
+      if (y > WATER_Y + 1.6) c.lerp(forest, smooth(1.6, 4.5, y - WATER_Y) * 0.6);
+      if (slope > 0.3) c.lerp(dirt, 0.5);
+      const pd = pathDist(x, z);
+      if (pd < 1.1) c.copy(gravel).offsetHSL(0, 0, (n2 - 0.5) * 0.06);
+      else if (pd < 1.6) c.lerp(gravel, 1 - (pd - 1.1) / 0.5);
+      if (y < waterLevel + 0.25) c.copy(sand).lerp(bed, smooth(waterLevel + 0.25, waterLevel - 0.3, y));
+      col[i * 3] = c.r; col[i * 3 + 1] = c.g; col[i * 3 + 2] = c.b;
+    }
+    tg.setAttribute("color", new THREE.BufferAttribute(col, 3));
+    const terrain = new THREE.Mesh(tg, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95, flatShading: true }));
+    terrain.receiveShadow = shadows;
+    rim.add(terrain);
+    this.water.position.y = waterLevel;
+
+    const rnd = mulberry(11);
+    const dummy = new THREE.Object3D();
+    const tc = new THREE.Color();
+    const okSpot = (x, z) => { if (Math.hypot(x, z) > outer + 4) return false; if (flatFactor(x, z) < 0.98) return false; if (pathDist(x, z) < 2.0) return false; const h = heightAt(x, z); if (h < WATER_Y + 0.12) return false; return h; };
+    // 樹：針葉＋圓冠，近疏遠密
+    const treeN = this.weak ? 260 : 700;
+    const pine = mergeGeometries([new THREE.ConeGeometry(0.5, 0.95, 6).translate(0, 0.72, 0), new THREE.ConeGeometry(0.38, 0.8, 6).translate(0, 1.12, 0), new THREE.CylinderGeometry(0.08, 0.1, 0.5, 5).translate(0, 0.25, 0)]);
+    const round = mergeGeometries([new THREE.IcosahedronGeometry(0.55, 1).translate(0, 1.0, 0), new THREE.IcosahedronGeometry(0.4, 1).translate(0.3, 0.8, 0.1), new THREE.CylinderGeometry(0.1, 0.14, 0.7, 6).translate(0, 0.35, 0).toNonIndexed()]);
+    const treeMat = new THREE.MeshStandardMaterial({ roughness: 0.9 });
+    [pine, round].forEach((geo, kind) => {
+      const count = Math.floor(treeN * (kind === 0 ? 0.45 : 0.55));
+      const mesh = new THREE.InstancedMesh(geo, treeMat, count);
+      let placed = 0, tries = 0;
+      while (placed < count && tries < count * 25) {
+        tries += 1;
+        const a = rnd() * Math.PI * 2;
+        const d = Rp - 6 + Math.pow(rnd(), 0.6) * (outer - Rp + 10);
+        const x = Math.cos(a) * d, z = Math.sin(a) * d;
+        const h = okSpot(x, z); if (h === false) continue;
+        const sc = (kind === 0 ? 0.9 : 0.8) + rnd() * 0.8;
+        dummy.position.set(x, h - 0.05, z); dummy.scale.set(sc, sc, sc); dummy.rotation.y = rnd() * Math.PI * 2; dummy.updateMatrix();
+        mesh.setMatrixAt(placed, dummy.matrix);
+        tc.setHex(kind === 0 ? [0x5d7656, 0x6f8a62, 0x4f6a4c][Math.floor(rnd() * 3)] : [0x7fb36a, 0x9fc77a, 0x8fb37a, 0xa8b96a][Math.floor(rnd() * 4)]);
+        mesh.setColorAt(placed, tc); placed += 1;
+      }
+      mesh.count = placed; mesh.castShadow = shadows && kind === 1; rim.add(mesh);
+    });
+    // 樹籬：環狀步道外側，留放射步道開口
+    const hedgeN = 110;
+    const hedges = new THREE.InstancedMesh(new RoundedBoxGeometry(1.6, 0.6, 0.6, 2, 0.15), new THREE.MeshStandardMaterial({ color: 0x5f9a4e, roughness: 0.9 }), hedgeN);
+    let hp = 0;
+    for (let i = 0; i < hedgeN; i++) {
+      const a = (i / hedgeN) * Math.PI * 2;
+      let nearSpoke = false; spokes.forEach((sa) => { let da = Math.abs(a - sa); da = Math.min(da, Math.PI * 2 - da); if (da < 0.09) nearSpoke = true; });
+      if (nearSpoke) continue;
+      const d = Rp + 1.9, x = Math.cos(a) * d, z = Math.sin(a) * d;
+      dummy.position.set(x, heightAt(x, z) + 0.25, z); dummy.scale.set(1, 1, 1); dummy.rotation.set(0, -a, 0); dummy.updateMatrix();
+      hedges.setMatrixAt(hp, dummy.matrix); hp += 1;
+    }
+    hedges.count = hp; hedges.castShadow = shadows; rim.add(hedges);
+    // 路燈：環狀步道內側（夜晚會亮）
+    const lampN = Math.max(10, Math.floor((2 * Math.PI * Rp) / 9));
+    const lampGeo = mergeGeometries([new THREE.CylinderGeometry(0.05, 0.07, 2.4, 6).translate(0, 1.2, 0), new THREE.SphereGeometry(0.16, 8, 6).translate(0, 2.5, 0)]);
+    const lampMat = new THREE.MeshStandardMaterial({ color: 0xf4f4f0, roughness: 0.5, emissive: 0xffe2a0, emissiveIntensity: 0 });
+    this.lampGlow.push(lampMat);
+    const lamps = new THREE.InstancedMesh(lampGeo, lampMat, lampN);
+    for (let i = 0; i < lampN; i++) { const a = (i / lampN) * Math.PI * 2 + 0.1, d = Rp - 1.6, x = Math.cos(a) * d, z = Math.sin(a) * d; dummy.position.set(x, heightAt(x, z), z); dummy.scale.set(1, 1, 1); dummy.rotation.set(0, 0, 0); dummy.updateMatrix(); lamps.setMatrixAt(i, dummy.matrix); }
+    rim.add(lamps);
+    // 石頭
+    const rockN = this.weak ? 24 : 60;
+    const rocks = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.5, 0), new THREE.MeshStandardMaterial({ color: 0xb2a38d, roughness: 1, flatShading: true }), rockN);
+    let rp = 0;
+    for (let t = 0; t < rockN * 20 && rp < rockN; t++) { const a = rnd() * Math.PI * 2, d = Rp + 3 + rnd() * (outer - Rp), x = Math.cos(a) * d, z = Math.sin(a) * d; const h = okSpot(x, z); if (h === false) continue; const sc = 0.4 + rnd() * 1.2; dummy.position.set(x, h - 0.1, z); dummy.scale.set(sc * (0.8 + rnd() * 0.6), sc * 0.7, sc); dummy.rotation.set(rnd(), rnd() * 3, rnd()); dummy.updateMatrix(); rocks.setMatrixAt(rp, dummy.matrix); rp += 1; }
+    rocks.count = rp; rocks.castShadow = shadows; rim.add(rocks);
+    // 玻璃廊館（太陽能屋頂）三座在後方
+    const S = Math.min(2.2, Math.max(1, Rp / 22));
+    const glass = new THREE.MeshStandardMaterial({ color: 0xa9dcee, roughness: 0.15, metalness: 0.1, transparent: true, opacity: 0.6 });
+    const frame = new THREE.MeshStandardMaterial({ color: 0xfbfbf7, roughness: 0.6 });
+    const solar = new THREE.MeshStandardMaterial({ color: 0x2b4a7a, roughness: 0.35, metalness: 0.4 });
+    const warm = new THREE.MeshStandardMaterial({ color: 0xffe2b0, emissive: 0xffc777, emissiveIntensity: 0.5, roughness: 0.8 });
+    const wood = new THREE.MeshStandardMaterial({ color: 0xc9a27a, roughness: 0.9 });
+    [[-0.95, 1.0], [0.0, 1.0], [0.95, 1.0]].forEach(([k, scale], n) => {
+      const a = -Math.PI / 2 + k * 1.15, x = Math.cos(a) * (Rp + 4.5), z = Math.sin(a) * (Rp + 4.5);
+      const w = (6 + n * 1.5) * scale * S, dep = 3.2 * S, h = (1.8 + (n % 2) * 0.5) * Math.sqrt(S);
+      const g = new THREE.Group();
+      const body = new THREE.Mesh(new RoundedBoxGeometry(w, h, dep, 2, 0.3), glass); body.position.y = h / 2;
+      const coreM = new THREE.Mesh(new THREE.BoxGeometry(w * 0.6, h * 0.5, dep * 0.5), warm); coreM.position.y = h * 0.35;
+      const roof = new THREE.Mesh(new RoundedBoxGeometry(w + 0.6, 0.18, dep + 0.6, 2, 0.08), frame); roof.position.y = h + 0.09;
+      const panel = new THREE.Mesh(new THREE.BoxGeometry(w - 0.6, 0.06, dep - 0.6), solar); panel.position.y = h + 0.22;
+      const deck = new THREE.Mesh(new THREE.BoxGeometry(w + 2.4, 0.12, dep + 2.4), wood); deck.position.y = 0.06;
+      [body, coreM, roof, panel, deck].forEach((m) => { m.castShadow = shadows; m.receiveShadow = shadows; g.add(m); });
+      g.position.set(x, heightAt(x, z) + 0.02, z); g.rotation.y = -a + Math.PI / 2; rim.add(g);
+    });
+    // 風車兩座（會轉）
+    const poleMat = new THREE.MeshStandardMaterial({ color: 0xf4f4f0, roughness: 0.6 });
+    [[-1, -0.3], [1, -0.4]].forEach(([sx, sz]) => {
+      const g = new THREE.Group();
+      const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.14, 6, 8), poleMat); pole.position.y = 3;
+      const hub = new THREE.Mesh(new THREE.SphereGeometry(0.22, 10, 8), poleMat); hub.position.set(0, 6, 0.2);
+      g.add(pole, hub); g.scale.setScalar(S);
+      const rotor = new THREE.Group(); rotor.position.set(0, 6, 0.25);
+      for (let b = 0; b < 3; b++) { const blade = new THREE.Mesh(new THREE.BoxGeometry(0.16, 2.6, 0.05), poleMat); blade.geometry.translate(0, 1.3, 0); blade.rotation.z = (b * Math.PI * 2) / 3; rotor.add(blade); }
+      g.add(rotor); this.rotors.push(rotor);
+      const x = sx * (Rp + 8), z = sz * (Rp + 8);
+      g.position.set(x, heightAt(x, z), z);
+      g.traverse((m) => { if (m.isMesh) m.castShadow = shadows; });
+      rim.add(g);
+    });
+    // 花圃：步道內側一圈
+    const flowerN = this.weak ? 70 : 180;
+    const flowers = new THREE.InstancedMesh(new THREE.SphereGeometry(0.16, 6, 5), new THREE.MeshStandardMaterial({ roughness: 0.8 }), flowerN);
+    const fc = new THREE.Color(); const palette = [0xf2a1a1, 0xfcea8b, 0xffffff, 0xf0b2d8, 0xffb46b];
+    for (let i = 0; i < flowerN; i++) { const a = rnd() * Math.PI * 2, d = Rp - 3.2 + rnd() * 1.4, x = Math.cos(a) * d, z = Math.sin(a) * d; dummy.position.set(x, heightAt(x, z) + 0.12, z); const sc = 0.8 + rnd() * 0.6; dummy.scale.set(sc, sc, sc); dummy.rotation.set(0, 0, 0); dummy.updateMatrix(); flowers.setMatrixAt(i, dummy.matrix); fc.setHex(palette[Math.floor(rnd() * palette.length)]); flowers.setColorAt(i, fc); }
+    rim.add(flowers);
+    rim.position.set(ctr.x, 0, ctr.z);
+    this.scene.add(rim);
+    this.campusRp = Rp;
+    this.campusHeightAt = (x, z) => heightAt(x - ctr.x, z - ctr.z);
   }
 
   // ---------- 走動的人（大頭小人）＋騎車的人 ----------
@@ -400,12 +527,22 @@ export class IslandScene {
         this.walkers.push({ fig, cx: isl.center.x, cz: isl.center.z, r: RING + (k % 2 ? 0.12 : -0.12), speed: (bike ? 0.5 : 0.14 + rnd() * 0.08) * (k % 2 ? -1 : 1), phase: rnd() * Math.PI * 2, bike });
       }
     });
+    // 園區外圈步道：散步的人
+    if (this.campusRp) {
+      const hAt = this.campusHeightAt;
+      for (let k = 0; k < (this.weak ? 4 : 8); k++) {
+        const fig = this.makeFigure(shirts[(k * 3) % shirts.length], k % 3 === 0);
+        this.scene.add(fig);
+        this.walkers.push({ fig, cx: this.center.x, cz: this.center.z, r: this.campusRp + (k % 2 ? 0.5 : -0.5), speed: (k % 3 === 0 ? 0.22 : 0.05 + rnd() * 0.03) * (k % 2 ? -1 : 1), phase: rnd() * Math.PI * 2, bike: k % 3 === 0, hAt });
+      }
+    }
     this.guide = this.makeFigure(0xdb6a41); this.guide.visible = false; this.scene.add(this.guide);
   }
   updateWalkers(t) {
     for (const w of this.walkers) {
       const ang = w.phase + t * w.speed;
-      w.fig.position.set(w.cx + Math.cos(ang) * w.r, TOP + (w.bike ? 0.05 : 0), w.cz + Math.sin(ang) * w.r);
+      const wx = w.cx + Math.cos(ang) * w.r, wz = w.cz + Math.sin(ang) * w.r;
+      w.fig.position.set(wx, (w.hAt ? w.hAt(wx, wz) + 0.02 : TOP) + (w.bike ? 0.05 : 0), wz);
       w.fig.rotation.y = -ang + (w.speed > 0 ? Math.PI : 0);
       const sw = w.bike ? 0.2 : Math.sin(t * 7 + w.phase) * 0.5;
       w.fig.userData.legs[0].rotation.x = sw; w.fig.userData.legs[1].rotation.x = -sw;
@@ -481,8 +618,8 @@ export class IslandScene {
   overviewPosition() {
     const aspect = this.camera.aspect || 1.6;
     const fit = Math.max(1, 1.3 / Math.min(aspect, 1.6));
-    const d = (this.sceneRadius * 1.1 * fit) / Math.tan(THREE.MathUtils.degToRad(16)) * 0.82 + 4;
-    return this.center.clone().add(new THREE.Vector3(d * 0.04, d * 0.7, d * 0.74));
+    const d = (this.sceneRadius * 1.1 * fit) / Math.tan(THREE.MathUtils.degToRad(16)) * 0.66 + 4;
+    return this.center.clone().add(new THREE.Vector3(d * 0.04, d * 0.6, d * 0.8));
   }
   flyTo(pos, target, instant) {
     if (instant) { this.camera.position.copy(pos); this.controls.target.copy(target); this.fly = null; }
@@ -620,7 +757,8 @@ export function mountTaipeiIslands(container) {
   if (!container) return null;
   let scene;
   try { scene = new IslandScene(container); }
-  catch (err) { container.innerHTML = `<div style="padding:24px;text-align:center;color:#555">這台裝置開不了 3D（WebGL）。政見清單請看 <a href="${HERO.site}" target="_blank" rel="noopener">官方政見</a>。</div>`; return null; }
+  catch (err) {
+    console.error("taipei-islands init failed", err); container.innerHTML = `<div style="padding:24px;text-align:center;color:#555">這台裝置開不了 3D（WebGL）。政見清單請看 <a href="${HERO.site}" target="_blank" rel="noopener">官方政見</a>。</div>`; return null; }
 
   const pills = document.createElement("div"); pills.className = "tpi-pills";
   const mk = (text, fn, title) => { const b = document.createElement("button"); b.type = "button"; b.textContent = text; if (title) b.title = title; b.addEventListener("click", fn); pills.appendChild(b); return b; };
