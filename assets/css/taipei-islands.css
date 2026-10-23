@@ -64,3 +64,42 @@
   .tpi-card h4 { font-size: 18px; }
   .tpi-pills button { font-size: 13px; min-height: 30px; padding: 3px 10px; }
 }
+
+/* v2：島清單、政見卡子項目、HEART 標籤、時段按鈕 */
+.tpi-island-tag i { font-family: ui-monospace, Menlo, monospace; }
+.tpi-bld-tag i { font-style: normal; color: #db6a41; font-weight: 700; margin-right: 5px; }
+.tpi-bld-tag.rival i { color: #666; }
+.tpi-list {
+  position: absolute; top: 56px; right: 12px; bottom: 12px; width: 300px; max-width: calc(100% - 24px); z-index: 7;
+  background: rgba(255, 248, 244, 0.96); border-radius: 14px; box-shadow: 0 10px 28px rgba(0,0,0,.25); overflow: auto;
+  padding: 8px; display: none; font-size: 14px;
+}
+.tpi-list.open { display: block; }
+.tpi-list-head { padding: 8px 10px 10px; font-weight: 700; color: #211d1d; font-size: 15px; border-bottom: 1px solid rgba(0,0,0,.08); margin-bottom: 6px; }
+.tpi-list-head small { display: block; font-weight: 400; color: #777; font-size: 12px; margin-top: 2px; }
+.tpi-list button { display: flex; align-items: center; gap: 8px; width: 100%; border: none; background: transparent; padding: 7px 10px; border-radius: 10px; cursor: pointer; text-align: left; font-size: 14px; color: #211d1d; }
+.tpi-list button:hover, .tpi-list button.on { background: #ffe9df; }
+.tpi-list button i { font-style: italic; color: #db6a41; font-family: Georgia, serif; width: 26px; }
+.tpi-list button span { flex: 1 1 auto; }
+.tpi-list button em { font-style: normal; color: #999; font-size: 12px; }
+.tpi-list button b u { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-left: 2px; }
+.tpi-card { width: 380px; max-height: calc(100% - 70px); overflow: auto; left: 12px; right: auto; bottom: 12px; }
+.tpi-card .tpi-sub { font-size: 12px; letter-spacing: .06em; opacity: .7; margin-top: 10px; }
+.tpi-card .tpi-items { list-style: none; margin: 6px 0 0; padding: 0; }
+.tpi-card .tpi-items li { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; padding: 6px 8px; border-radius: 8px; background: rgba(255,255,255,.06); margin-bottom: 4px; cursor: pointer; }
+.tpi-card .tpi-items li:hover { background: rgba(255,255,255,.14); }
+.tpi-card .tpi-items li small { opacity: .65; font-size: 12px; white-space: nowrap; }
+.tpi-card .tpi-facts { margin: 8px 0 0; padding-left: 18px; font-size: 14px; opacity: .9; }
+.tpi-card .tpi-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.tpi-card .tpi-chip { --c: #ffd666; display: inline-block; border: 1px solid var(--c); color: #fff; border-radius: 999px; padding: 1px 10px; font-size: 12px; background: rgba(255,255,255,.06); }
+.tpi-card .tpi-link { cursor: pointer; }
+.tpi-card .tpi-link:hover { background: rgba(255,255,255,.18); }
+.tpi-card .tpi-back { color: #8fd3ff; cursor: pointer; font-size: 13px; }
+@media (max-width: 600px) {
+  .tpi-list { top: 50px; width: auto; left: 8px; right: 8px; }
+  .tpi-card { left: 8px; right: 8px; width: auto; max-height: 52%; }
+}
+
+/* 全景時島名牌只顯示編號 */
+.tpi-labels.far .tpi-island-tag span { display: none; }
+.tpi-labels.far .tpi-island-tag { padding: 4px 6px; gap: 0; }

@@ -5,7 +5,7 @@ permalink: 'diary/:year-:month-:day'
 tags: 台北市長 沈伯洋 HEART 政見 three.js 3D
 ---
 
-> 我是沈伯洋的支持者，這篇是純手工的 3D 政見地圖。每一棟樓都是一條政見，有預算或數字的樓會長高、屋頂亮燈；點樓看白話解釋、受益的人和來源報導。對岸那座灰灰的小島是現任的「安可島」，自己看 😆
+> 我是沈伯洋的支持者，這篇是純手工的 3D 政見地圖：14 座六角政策島拼成台北，94 棟小模型就是 94 條政見，全部連到官網原文。對岸那座灰灰的小島是現任的「安可島」，自己看 😆
 >
 > 滑鼠拖拉旋轉、滾輪縮放，手機兩指也行。按「導覽」會有個小人帶你逐島走一圈。
 
@@ -21,23 +21,25 @@ tags: 台北市長 沈伯洋 HEART 政見 three.js 3D
 }
 </script>
 <script type="module">
-  import { mountTaipeiIslands } from "/yutingblog/assets/js/taipei-islands/islands.js?v=1";
+  import { mountTaipeiIslands } from "/yutingblog/assets/js/taipei-islands/islands.js?v=2";
   mountTaipeiIslands(document.getElementById("taipei-islands"));
 </script>
 
-### 這五座島怎麼來的
+### 這些島怎麼來的
 
-沈伯洋 8 月的政見發表會把政見分成五個主軸，首字母合起來是 **HEART**：
+島的資料直接整理自沈伯洋官網的政見頁（puma.taipei/policies，2026-10 版）：**14 項政策主題、94 個細項**。每座六角島是一項主題，島上每一棟小模型是一條細項，拼起來的輪廓是台北市。島的顏色對應 HEART 五主軸：
 
-| 島 | 主軸 | 一句話 |
+| 色 | 主軸 | 一句話 |
 |---|---|---|
-| H | Habitat 空間 | 住得起、走得到、呼吸得到 |
-| E | Empower 培力 | 把機會直接放到年輕人手上 |
-| A | Accompany 陪伴 | 從育兒到長照，市府陪在旁邊 |
-| R | Resilience 韌性 | 安心，來自看不見的基礎建設 |
-| T | Time 時間 | 把塞在路上的時間還給你 |
+| 綠 | H・Habitat 空間 | 住得起、走得到、呼吸得到 |
+| 橘 | E・Empower 培力 | 把機會直接放到年輕人手上 |
+| 紅 | A・Accompany 陪伴 | 從育兒到長照，市府陪在旁邊 |
+| 藍 | R・Resilience 韌性 | 安心，來自看不見的基礎建設 |
+| 紫 | T・Time 時間 | 把塞在路上的時間還給你 |
 
-我把報導裡查得到的政見一條一條放上去：**有數字的樓比較高**，因為「編了預算」和「喊一喊」是兩回事。資料在 `assets/js/taipei-islands/data.js`，他之後有新政見，我加一行就多一棟樓。
+點島看主題卡：白話摘要、細項清單（有分期時程）、「和誰一起做」的協作線會從島上畫出去。點細項飛到那棟樓，看白話解釋、受益的人、重點與時程，底下都有官方原文連結。右上「☰ 清單」可以直接挑島，四個時段按鈕切清晨、白天、黃昏、夜晚，夜晚路燈會亮。
+
+資料在 `assets/js/taipei-islands/data.js`，官網有新政見我就補一行。
 
 ### 關於對岸那座島
 
@@ -45,4 +47,4 @@ tags: 台北市長 沈伯洋 HEART 政見 three.js 3D
 
 ### 技術
 
-純 three.js，沒有模型檔，島、樓、樹、小人全是程式畫的；InstancedMesh 批次、需要時才重繪，老電腦也跑得動。這套引擎是我白天做工廠地圖順手長出來的，晚上就拿來蓋島了。
+純 three.js，沒有模型檔，島、樓、樹、小人、雲、水面全是程式畫的；InstancedMesh 批次、需要時才重繪，弱裝置自動關陰影。這套引擎是我白天做工廠地圖順手長出來的，晚上就拿來蓋島了。畫法參考了沈伯洋官網的 HEART 政策島，資料也是從那裡整理的；程式是自己重寫的。
