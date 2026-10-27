@@ -353,3 +353,6 @@ defaults:
       share: true
       related: true
       show_date: true
+
+# 用 UTC 建站時台灣當天的文章會被當「未來」略過
+future: true
