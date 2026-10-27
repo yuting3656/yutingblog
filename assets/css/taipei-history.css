@@ -1,0 +1,90 @@
+/* 台北械鬥史 3D 導覽：文章內畫布與浮層 */
+.tph-root {
+  position: relative; height: 78vh; min-height: 520px;
+  width: calc(100vw - 32px); max-width: 1280px; left: 50%; transform: translateX(-50%);
+  border-radius: 16px; overflow: hidden; background: #cfe3e6; border: 2px solid #b5c7c9;
+  touch-action: none; user-select: none; margin: 1rem 0 1.5rem; font-family: inherit;
+}
+.tph-root canvas { display: block; }
+.tph-labels { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.tph-labels > div { position: absolute; top: 0; left: 0; will-change: transform; }
+.tph-tag {
+  pointer-events: auto; cursor: pointer; background: rgba(255,255,255,.94); color: #1f1d1b;
+  padding: 3px 10px 3px 8px; border-radius: 999px; font-size: 13px; white-space: nowrap; line-height: 1.2;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18); border: 1px solid rgba(0,0,0,.08); display: inline-flex; align-items: center; gap: 6px; z-index: 1; opacity: .75;
+}
+.tph-tag u { display: inline-block; width: 9px; height: 9px; border-radius: 50%; }
+.tph-tag b { font-weight: 700; }
+.tph-tag small { color: #777; font-size: 11px; }
+.tph-tag.on { opacity: 1; background: #1f1d1b; color: #fff8f2; font-size: 15px; z-index: 2; box-shadow: 0 4px 14px rgba(0,0,0,.35); }
+.tph-tag.on small { color: #d8d0c8; }
+.tph-tag.burn { background: #7a1f12; color: #ffe2c9; }
+.tph-tag.burn::after { content: "🔥"; }
+.tph-labels.far .tph-tag small { display: none; }
+.tph-labels.far .tph-tag:not(.on) { font-size: 11px; padding: 1px 7px; }
+.tph-river-tag { pointer-events: none; color: rgba(20,60,90,.85); font-size: 12px; letter-spacing: .3em; white-space: nowrap; text-shadow: 0 1px 2px rgba(255,255,255,.7); font-style: italic; }
+.tph-labels.far .tph-river-tag { display: none !important; }
+.tph-pills { position: absolute; top: 10px; left: 12px; z-index: 5; display: flex; gap: 8px; flex-wrap: wrap; max-width: 60%; }
+.tph-pills button { font-size: 14px; min-height: 34px; padding: 4px 13px; border-radius: 999px; border: 1px solid rgba(31,29,27,.14); background: #fff; color: #1f1d1b; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.12); }
+.tph-pills button[aria-pressed="true"] { background: #1f1d1b; color: #fff; }
+.tph-badge { position: absolute; top: 10px; right: 12px; z-index: 5; background: rgba(31,29,27,.9); color: #fff8f2; border-radius: 14px; padding: 8px 14px; text-align: right; box-shadow: 0 6px 18px rgba(0,0,0,.25); max-width: 42%; }
+.tph-badge b { display: block; font-size: 34px; line-height: 1; font-family: Georgia, "Times New Roman", serif; letter-spacing: .02em; }
+.tph-badge small { display: block; font-size: 12px; opacity: .75; margin-top: 3px; }
+.tph-badge em { display: block; font-style: normal; font-size: 13px; margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,.2); color: #ffd666; }
+.tph-legend { position: absolute; right: 12px; top: 112px; z-index: 4; display: flex; flex-direction: column; gap: 3px; background: rgba(255,255,255,.88); border-radius: 10px; padding: 6px 10px; font-size: 12px; color: #333; }
+.tph-legend span { display: flex; align-items: center; gap: 6px; }
+.tph-legend u { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
+.tph-timeline { position: absolute; left: 12px; right: 12px; bottom: 10px; z-index: 8; display: flex; align-items: stretch; gap: 6px; }
+.tph-timeline .tph-nav { flex: 0 0 34px; border-radius: 10px; border: none; background: rgba(31,29,27,.9); color: #fff; font-size: 22px; cursor: pointer; }
+.tph-years { flex: 1 1 auto; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.tph-years::-webkit-scrollbar { display: none; }
+.tph-years button { position: relative; flex: 0 0 auto; border: 1px solid rgba(31,29,27,.14); background: rgba(255,255,255,.94); border-radius: 10px; padding: 5px 10px 6px; cursor: pointer; text-align: left; color: #1f1d1b; overflow: hidden; min-width: 96px; }
+.tph-years button b { display: block; font-family: Georgia, serif; font-size: 16px; line-height: 1.1; }
+.tph-years button span { display: block; font-size: 11px; color: #666; white-space: nowrap; max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
+.tph-years button i { position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: #db6a41; }
+.tph-years button.on { background: #1f1d1b; color: #fff; }
+.tph-years button.on span { color: #d8d0c8; }
+.tph-card {
+  position: absolute; left: 12px; top: 56px; bottom: 72px; z-index: 9; width: 400px; max-width: calc(100% - 24px);
+  background: rgba(31,29,27,.93); color: #fff8f2; border-radius: 16px; padding: 14px 16px 12px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.35); font-size: 15px; line-height: 1.6; overflow: auto; display: none;
+}
+.tph-card.show { display: block; }
+.tph-card .tph-axis { font-size: 12px; letter-spacing: .08em; opacity: .7; }
+.tph-card h4 { margin: 2px 0 8px; font-size: 20px; color: #fff; line-height: 1.3; }
+.tph-card h4 small { display: block; font-size: 12px; font-weight: 400; opacity: .7; margin-top: 2px; }
+.tph-card .tph-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+.tph-card p { margin: 0 0 8px; }
+.tph-card a { color: #8fd3ff; font-size: 13px; }
+.tph-card .tph-back { cursor: pointer; }
+.tph-card .tph-sub { font-size: 12px; letter-spacing: .06em; opacity: .7; margin-top: 10px; }
+.tph-card .tph-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 4px; }
+.tph-card .tph-chip { --c: #ffd666; display: inline-block; border: 1px solid var(--c); color: #fff; border-radius: 999px; padding: 1px 10px; font-size: 12px; background: rgba(255,255,255,.06); cursor: pointer; font-family: inherit; }
+.tph-card .tph-chip:hover { background: rgba(255,255,255,.18); }
+.tph-west { margin-top: 12px; background: rgba(255,214,102,.1); border-left: 3px solid #ffd666; border-radius: 0 10px 10px 0; padding: 8px 12px; }
+.tph-west-head { font-size: 12px; letter-spacing: .06em; color: #ffd666; }
+.tph-west h5 { margin: 4px 0 6px; font-size: 16px; color: #fff; }
+.tph-west p { font-size: 14px; opacity: .92; }
+.tph-foot { display: flex; justify-content: space-between; margin-top: 10px; }
+.tph-mini { border: 1px solid rgba(255,255,255,.25); background: transparent; color: #fff; border-radius: 999px; padding: 3px 12px; cursor: pointer; font-size: 13px; }
+.tph-caption { position: absolute; left: 50%; bottom: 72px; transform: translateX(-50%); z-index: 8; pointer-events: none; background: rgba(31,29,27,.88); color: #fff; padding: 6px 14px; border-radius: 12px; font-size: 13px; max-width: 80%; text-align: center; display: none; }
+.tph-caption.show { display: block; }
+@media (max-width: 700px) {
+  .tph-root { height: 86vh; min-height: 560px; }
+  .tph-pills { max-width: 55%; }
+  .tph-pills button { font-size: 12px; min-height: 28px; padding: 2px 9px; }
+  .tph-badge { padding: 6px 10px; }
+  .tph-badge b { font-size: 24px; }
+  .tph-badge em { font-size: 11px; }
+  .tph-legend { display: none; }
+  .tph-card { left: 8px; right: 8px; width: auto; top: auto; bottom: 66px; max-height: 46%; font-size: 14px; padding: 10px 12px; }
+  .tph-card h4 { font-size: 17px; }
+  .tph-caption { display: none !important; }
+}
+/* 全螢幕（真全螢幕或 fixed 蓋版） */
+.tph-root.fs, .tph-root:fullscreen, .tph-root:-webkit-full-screen {
+  position: fixed; inset: 0; width: 100vw; max-width: none; height: 100vh; height: 100dvh;
+  left: 0; transform: none; margin: 0; border-radius: 0; border: none; z-index: 99999; background: #cfe3e6;
+}
+.tph-root.fs .tph-pills, .tph-root:fullscreen .tph-pills { top: max(10px, env(safe-area-inset-top)); left: max(12px, env(safe-area-inset-left)); }
+.tph-root.fs .tph-timeline, .tph-root:fullscreen .tph-timeline { bottom: max(10px, env(safe-area-inset-bottom)); }
