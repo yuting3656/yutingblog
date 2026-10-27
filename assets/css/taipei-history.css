@@ -11,7 +11,7 @@
 .tph-tag {
   pointer-events: auto; cursor: pointer; background: rgba(255,255,255,.94); color: #1f1d1b;
   padding: 3px 10px 3px 8px; border-radius: 999px; font-size: 13px; white-space: nowrap; line-height: 1.2;
-  box-shadow: 0 2px 8px rgba(0,0,0,.18); border: 1px solid rgba(0,0,0,.08); display: inline-flex; align-items: center; gap: 6px; z-index: 1; opacity: .75;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18); border: 1px solid rgba(0,0,0,.08); display: inline-flex; align-items: center; gap: 6px; z-index: 1; opacity: .6;
 }
 .tph-tag u { display: inline-block; width: 9px; height: 9px; border-radius: 50%; }
 .tph-tag b { font-weight: 700; }

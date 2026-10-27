@@ -6,7 +6,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 import { SimplexNoise } from "three/addons/math/SimplexNoise.js";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
-import { GROUP, PLACES, RIVERS, HILLS, EVENTS } from "./data.js?v=1";
+import { GROUP, PLACES, RIVERS, HILLS, EVENTS } from "./data.js?v=2";
 
 const S = 3.0; // 世界單位／公里
 const LNG0 = 121.505, LAT0 = 25.06;
@@ -69,7 +69,7 @@ export class HistoryScene {
     this.buildPlaces();
     this.buildWalkers();
     this.fxGroup = new THREE.Group(); this.scene.add(this.fxGroup);
-    this.fires = []; this.marchers = []; this.pulses = [];
+    this.fires = []; this.marchers = []; this.pulses = []; this.crowd = [];
     this.bindPointer();
     this.setDay("day", true);
     this.ro = new ResizeObserver(() => this.resize()); this.ro.observe(container);
@@ -212,6 +212,38 @@ export class HistoryScene {
       const R = 0.6 + p.size * 0.42;
       const houses = [];
       const n = p.hill ? 3 : 3 + p.size * 3;
+      const concrete = [mat(0xe6e2da), mat(0xd9d4cb), mat(0xcfd6dc), mat(0xf0ebe0)];
+      const win = mat(0x5a6b7a, { roughness: 0.4, metalness: 0.2 });
+      if (p.landmark === "tower") {
+        // 總督府：長條主體＋中央高塔
+        const body = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.7, 0.9), mat(0xb8453a)); body.position.set(x, baseY + 0.35, z);
+        const tower = new THREE.Mesh(new THREE.BoxGeometry(0.42, 1.9, 0.42), mat(0xb8453a)); tower.position.set(x, baseY + 0.95, z);
+        const cap = new THREE.Mesh(new THREE.ConeGeometry(0.34, 0.4, 4), mat(0x4a4a52)); cap.position.set(x, baseY + 2.1, z); cap.rotation.y = Math.PI / 4;
+        const bands = new THREE.Mesh(new THREE.BoxGeometry(2.24, 0.06, 0.94), mat(0xf4ead8)); bands.position.set(x, baseY + 0.45, z);
+        [body, tower, cap, bands].forEach((m) => { m.castShadow = this.shadows; m.receiveShadow = this.shadows; g.add(m); }); houses.push(body, tower);
+      } else if (p.landmark === "hall") {
+        // 中正紀念堂：白色方體＋藍色八角頂＋大廣場＋牌樓
+        const plaza = new THREE.Mesh(new THREE.BoxGeometry(3.2, 0.06, 2.4), mat(0xe9e4d8)); plaza.position.set(x, baseY + 0.03, z);
+        const base2 = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.5, 1.2), mat(0xf7f5f0)); base2.position.set(x - 0.9, baseY + 0.3, z);
+        const roof = new THREE.Mesh(new THREE.ConeGeometry(0.95, 0.6, 8), mat(0x2f5fb3)); roof.position.set(x - 0.9, baseY + 0.85, z);
+        const gate = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.6, 1.4), mat(0xf7f5f0)); gate.position.set(x + 1.4, baseY + 0.3, z);
+        const gateTop = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.1, 1.5), mat(0x2f5fb3)); gateTop.position.set(x + 1.4, baseY + 0.65, z);
+        [plaza, base2, roof, gate, gateTop].forEach((m) => { m.castShadow = this.shadows; m.receiveShadow = this.shadows; g.add(m); }); houses.push(base2, roof);
+      } else if (p.landmark === "t101") {
+        const podium = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.5, 1.1), mat(0x9fb9c9, { roughness: 0.3, metalness: 0.3 })); podium.position.set(x, baseY + 0.25, z); g.add(podium);
+        for (let k = 0; k < 8; k++) { const seg = new THREE.Mesh(new THREE.CylinderGeometry(0.34, 0.26, 0.48, 4), mat(0x7fa3bd, { roughness: 0.25, metalness: 0.4 })); seg.position.set(x, baseY + 0.75 + k * 0.48, z); seg.rotation.y = Math.PI / 4; seg.castShadow = this.shadows; g.add(seg); houses.push(seg, seg); }
+        const spire = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.06, 0.9, 5), mat(0xd9dde0)); spire.position.set(x, baseY + 4.9, z); g.add(spire);
+      } else if (p.modern) {
+        for (let i = 0; i < Math.max(3, n * 0.6); i++) {
+          const a = rnd() * Math.PI * 2, d = Math.sqrt(rnd()) * R;
+          const hx = x + Math.cos(a) * d, hz = z + Math.sin(a) * d;
+          const w = 0.45 + rnd() * 0.4, dep = 0.4 + rnd() * 0.35, hh = 0.5 + rnd() * 0.9 * (p.size / 4);
+          const body = new THREE.Mesh(new THREE.BoxGeometry(w, hh, dep), concrete[i % 4]); body.position.set(hx, baseY + hh / 2, hz); body.rotation.y = rnd() * 0.5 - 0.25;
+          const roof = new THREE.Mesh(new THREE.BoxGeometry(w * 0.9, 0.05, dep * 0.9), roofMat); roof.position.set(hx, baseY + hh + 0.025, hz); roof.rotation.y = body.rotation.y;
+          const glass = new THREE.Mesh(new THREE.BoxGeometry(w * 0.7, hh * 0.7, 0.01), win); glass.position.set(hx, baseY + hh / 2, hz + dep / 2 + 0.006); glass.rotation.y = body.rotation.y;
+          body.castShadow = this.shadows; body.receiveShadow = this.shadows; g.add(body, roof, glass); houses.push(body, roof);
+        }
+      } else
       for (let i = 0; i < n; i++) {
         const a = rnd() * Math.PI * 2, d = p.hill ? 0.5 + rnd() * 0.6 : Math.sqrt(rnd()) * R;
         const hx = x + Math.cos(a) * d, hz = z + Math.sin(a) * d;
@@ -345,13 +377,15 @@ export class HistoryScene {
     (ev.migrate || []).forEach((m) => this.addMigration(m));
     burned.forEach((id) => this.addFire(id));
     (ev.defend || []).forEach((id) => this.addPulse(id));
+    (ev.pulses || []).forEach((pu) => this.addPulse(pu.place, pu.color));
+    (ev.rally || []).forEach((id) => this.addRally(id));
     this.flyToFocus(ev.focus || [], instant);
     this.onEvent && this.onEvent(i, ev);
     this.requestRender();
   }
   clearFx() {
     while (this.fxGroup.children.length) { const c = this.fxGroup.children.pop(); c.traverse((m) => { if (m.geometry) m.geometry.dispose(); if (m.material && m.material.dispose) m.material.dispose(); }); }
-    this.fires = []; this.marchers = []; this.pulses = [];
+    this.fires = []; this.marchers = []; this.pulses = []; this.crowd = [];
   }
   groundY(x, z) { return Math.max(this.heightAt(x, z), WATER_Y + 0.08) + 0.02; }
   pathOf(ids) {
@@ -409,6 +443,22 @@ export class HistoryScene {
     }
     this.fires.push({ flames, smokes });
   }
+  addRally(id) {
+    // 示威人群：圍在地點外圈、舉手、上下跳
+    const pl = this.places.get(id); if (!pl || this.reducedMotion) return;
+    const rnd = mulberry(id.length * 31 + 7);
+    const n = this.weak ? 14 : 28;
+    const shirts = [0xf2b544, 0xffffff, 0x1f1d1b, 0xe0703c, 0xf2b544, 0x3fa7d6];
+    for (let k = 0; k < n; k++) {
+      const a = (k / n) * Math.PI * 2 + rnd() * 0.2, d = pl.R + 0.5 + rnd() * 1.4;
+      const fx = pl.x + Math.cos(a) * d, fz = pl.z + Math.sin(a) * d;
+      const fig = this.makeFigure(shirts[k % shirts.length]);
+      fig.position.set(fx, this.groundY(fx, fz), fz); fig.rotation.y = Math.atan2(pl.x - fx, pl.z - fz);
+      const sign = k % 4 === 0 ? new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.18, 0.02), new THREE.MeshStandardMaterial({ color: k % 8 === 0 ? 0xf2b544 : 0xffffff })) : null;
+      if (sign) { sign.position.set(0, 0.2, 0); fig.userData.arms[1].add(sign); }
+      this.fxGroup.add(fig); this.crowd.push({ fig, ph: rnd() * 6, y0: fig.position.y });
+    }
+  }
   addPulse(id, color) {
     const pl = this.places.get(id); if (!pl) return;
     const ring = new THREE.Mesh(new THREE.RingGeometry(pl.R + 0.9, pl.R + 1.15, 40), new THREE.MeshBasicMaterial({ color: color || GROUP.zhang.color, transparent: true, opacity: 0.8, side: THREE.DoubleSide }));
@@ -426,6 +476,7 @@ export class HistoryScene {
       f.flames.forEach((fl) => { const s = 0.8 + Math.sin(t * 9 + fl.ph) * 0.25; fl.m.scale.set(s, 1 + Math.sin(t * 7 + fl.ph * 2) * 0.35, s); });
       f.smokes.forEach((sk) => { const k = ((t * 0.35 + sk.ph) % 2) / 2; sk.m.position.set(sk.base.x + sk.drift * k * 3, sk.base.y + 0.3 + k * 2.6, sk.base.z + Math.sin(t + sk.ph) * 0.2); const s = 0.6 + k * 1.6; sk.m.scale.set(s, s, s); sk.m.material.opacity = 0.45 * (1 - k); });
     }
+    for (const c of this.crowd) { const A = c.fig.userData.arms; const up = -2.6 + Math.sin(t * 5 + c.ph) * 0.3; A[0].rotation.x = up; A[1].rotation.x = up; c.fig.position.y = c.y0 + Math.max(0, Math.sin(t * 5 + c.ph)) * 0.08; }
     for (const pu of this.pulses) { const k = (t * 0.6) % 1; const s = 1 + k * 0.6; pu.m.scale.set(s, s, 1); pu.m.material.opacity = 0.8 * (1 - k); }
     void dt;
   }
@@ -513,7 +564,7 @@ export class HistoryScene {
       this.clouds.forEach((c) => { c.g.position.x += dt * c.speed; if (c.g.position.x > 120) c.g.position.x = -120; });
       this.waterMat.uniforms.uTime.value = t; animating = true;
     }
-    if (this.tour) { const dur = 16; const k = (t - this.tour.t0) / dur; this.onProgress && this.onProgress(Math.min(1, k)); if (k >= 1) { if (this.eventIdx >= EVENTS.length - 1) this.stopTour(); else this.next(); } }
+    if (this.tour) { const dur = 18; const k = (t - this.tour.t0) / dur; this.onProgress && this.onProgress(Math.min(1, k)); if (k >= 1) { if (this.eventIdx >= EVENTS.length - 1) this.stopTour(); else this.next(); } }
     if (!this.dirty && !animating) return;
     this.dirty = false; this.renderer.render(this.scene, this.camera); this.renderLabels();
   }
@@ -551,7 +602,7 @@ export function mountTaipeiHistory(container) {
   const badge = document.createElement("div"); badge.className = "tph-badge"; container.appendChild(badge);
   // 圖例
   const legend = document.createElement("div"); legend.className = "tph-legend";
-  legend.innerHTML = ["sanyi", "tongan", "anxi", "quan", "zhang", "gov"].map((k) => `<span><u style="background:${hex6(GROUP[k].color)}"></u>${esc(GROUP[k].short)}</span>`).join("");
+  legend.innerHTML = ["sanyi", "tongan", "anxi", "quan", "zhang", "gov", "jp", "kmt", "civic"].map((k) => `<span><u style="background:${hex6(GROUP[k].color)}"></u>${esc(GROUP[k].short)}</span>`).join("");
   container.appendChild(legend);
   // 年表（下方）
   const tl = document.createElement("div"); tl.className = "tph-timeline";
@@ -586,7 +637,7 @@ export function mountTaipeiHistory(container) {
   };
   scene.onEvent = showEvent;
   scene.onPlace = showPlace;
-  scene.onTour = (on) => { tourBtn.setAttribute("aria-pressed", on ? "true" : "false"); tourBtn.textContent = on ? "⏸ 暫停導覽" : "▶ 自動導覽"; caption.classList.toggle("show", on); if (on) caption.textContent = "自動導覽中：每站 16 秒，拖畫面或按年表就停"; tl.classList.toggle("playing", on); };
+  scene.onTour = (on) => { tourBtn.setAttribute("aria-pressed", on ? "true" : "false"); tourBtn.textContent = on ? "⏸ 暫停導覽" : "▶ 自動導覽"; caption.classList.toggle("show", on); if (on) caption.textContent = "自動導覽中：每站 18 秒，拖畫面或按年表就停"; tl.classList.toggle("playing", on); };
   scene.onProgress = (k) => { const b = tl.querySelector("button[data-i].on i"); if (b) b.style.width = `${(k * 100).toFixed(1)}%`; };
   showEvent(scene.eventIdx, scene.event);
   return scene;

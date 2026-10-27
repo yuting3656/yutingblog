@@ -1,13 +1,15 @@
 ---
 layout: "single"
-title: "台北打架史：漳泉械鬥 3D 導覽，同一年西方在幹嘛"
+title: "台北打架史：從漳泉械鬥到太陽花的 3D 導覽，同一年西方在幹嘛"
 permalink: 'diary/:year-:month-:day'
-tags: 台北 漳泉械鬥 頂下郊拚 芝山岩 歷史 three.js 3D 文化徑
+tags: 台北 漳泉械鬥 頂下郊拚 芝山岩 二二八 白色恐怖 野百合 太陽花 歷史 three.js 3D 文化徑
 ---
 
 > 偶是小水滴的啦！！這篇是純ＡＩ手工的 3D 台北盆地：淡水河、基隆河、新店溪、大漢溪照真的位置挖出來，艋舺、八甲庄、大稻埕、枋橋、士林、芝山岩這些聚落放在今天的經緯度上。按下面年表或「自動導覽」，鏡頭會一站一站飛過去：誰打誰畫成弧線、小人拿刀拿火把沿地面走、被燒的庄會冒火冒煙。
 >
 > 每一站的右邊都有一塊黃色框：**同一年西方世界在幹嘛**。因為我們的世界觀都是用西方的年份記的（黑船、達爾文、林肯），把台北放進同一條時間線上，才會有「啊原來是那個時候」的感覺。
+>
+> 一共 31 站：前半是漳泉械鬥（1626–1895），後半接著走日治、二二八、戒嚴、白色恐怖、組黨解嚴、野百合、第一次直選、太陽花、同婚，一路到 2024。
 >
 > 滑鼠拖拉旋轉、滾輪縮放，手機兩指也行；鍵盤 ← → 切站。
 
@@ -23,7 +25,7 @@ tags: 台北 漳泉械鬥 頂下郊拚 芝山岩 歷史 three.js 3D 文化徑
 }
 </script>
 <script type="module">
-  import { mountTaipeiHistory } from "/yutingblog/assets/js/taipei-history/history.js?v=1";
+  import { mountTaipeiHistory } from "/yutingblog/assets/js/taipei-history/history.js?v=2";
   mountTaipeiHistory(document.getElementById("taipei-history"));
 </script>
 
@@ -70,9 +72,34 @@ tags: 台北 漳泉械鬥 頂下郊拚 芝山岩 歷史 three.js 3D 文化徑
 
 全部細節都在 3D 裡的每一站。
 
+### 1895 之後：故事沒有停
+
+械鬥結束不是台北打架史的結束，只是換了對象。後半段 16 站我挑的是**都發生在同一片幾平方公里裡**的事：
+
+| 年 | 台北 | 同一年西方 |
+|---|---|---|
+| 1900–04 | 日本人拆台北城牆改三線道 | 萊特兄弟飛起來 |
+| 1921 | 台灣文化協會在大稻埕靜修女學校成立 | 美國女性拿到投票權（1920） |
+| 1932–35 | 菊元百貨、流籠、台灣博覽會 | 大富翁上市 |
+| 1945 | 5/31 台北大空襲；10/25 日本在公會堂投降 | 10/24 聯合國成立 |
+| **1947** | **二二八**：天馬茶房 → 專賣局 → 行政長官公署開槍 | 《安妮日記》出版 |
+| 1949 | 四六事件、戒嚴、國民政府遷台北 | 《一九八四》出版 |
+| 1950s | 白色恐怖：青島東路軍法處 → 馬場町刑場 | 麥卡錫「我手上有一份名單」 |
+| 1961–71 | 中華商場、加工出口、退出聯合國 | 登月；Intel 4004 |
+| 1979–81 | 林宅血案、陳文成 | 波蘭團結工聯 |
+| 1986–87 | 圓山組黨；解嚴 | 雷根「拆掉這堵牆」 |
+| 1989–90 | 鄭南榕自焚；**野百合**在中正紀念堂廣場 | 柏林圍牆倒下 |
+| 1996 | 第一次民選總統；第一條捷運 | 桃莉羊 |
+| 2000–04 | 政黨輪替；台北 101 | Facebook 上線 |
+| **2014** | **太陽花**佔領立法院 24 天 | 基輔獨立廣場；冰桶挑戰 |
+| 2016–19 | 第一位女總統；亞洲第一個同婚 | 第一張黑洞照片 |
+| 2020–24 | 疫情、青鳥 | 全世界一起停下來 |
+
+最有感的是**青島東路這一條街**：1950 年代是軍法處押政治犯去馬場町的起點，2014 年是太陽花的街，2019 年是四萬人淋雨等同婚三讀的街，2024 年青鳥又回來。同一條街，七十年。地圖上你會看到它就在清代台北城東門外一點點的地方，離 1853 年燒祖師廟的艋舺走路 25 分鐘。
+
 ### 技術
 
-跟上一篇[台北未來島](/yutingblog/diary/2026-10-23)同一套 three.js 手法，但這次是真的地圖：地形是一張 PlaneGeometry，用幾座高斯山（大屯山、觀音山、林口台地、南港山、新店丘陵）加 Simplex 噪聲堆出盆地，四條河照折線往下挖到水面以下；聚落按經緯度換算到世界座標，小房子屋頂顏色＝族群。每一站的 attacks / burned / defend / migrate 寫在 `data.js`，引擎自己畫弧線、生小人、點火。沒有任何模型檔。
+跟上一篇[台北未來島](/yutingblog/diary/2026-10-23)同一套 three.js 手法，但這次是真的地圖：地形是一張 PlaneGeometry，用幾座高斯山（大屯山、觀音山、林口台地、南港山、新店丘陵）加 Simplex 噪聲堆出盆地，四條河照折線往下挖到水面以下；聚落按經緯度換算到世界座標，小房子屋頂顏色＝族群。每一站的 attacks / burned / defend / migrate / rally 寫在 `data.js`，引擎自己畫弧線、生小人、點火、圍人群舉牌子。日治以後的地點用 `modern: true` 畫成水泥方塊，總督府、中正紀念堂、101 各有專屬小模型。沒有任何模型檔。
 
 ### 來源與注意
 
@@ -83,4 +110,5 @@ tags: 台北 漳泉械鬥 頂下郊拚 芝山岩 歷史 three.js 3D 文化徑
 - [芝山岩：漳泉械鬥的遺跡（vocus）](https://vocus.cc/article/64461ad7fd897800010bc211)
 - [舊街與新街，被遺忘的士林發展血淚史](https://blog.udn.com/wonghc70/13882899)、[士林新街（士林國小鄉土教材）](http://country.slps.tp.edu.tw/b/01/1_2.htm)
 - [頂下郊拚。1853 年艋舺地域略圖](https://bimeci.pixnet.net/blog/post/175220553)
+- 1895 之後：[二二八事件（維基百科）](https://zh.wikipedia.org/zh-tw/二二八事件)、[臺灣白色恐怖時期](https://zh.wikipedia.org/zh-tw/臺灣白色恐怖時期)、[野百合學運](https://zh.wikipedia.org/zh-tw/野百合學運)、[太陽花學運](https://zh.wikipedia.org/zh-tw/太陽花學運)、[台灣文化協會](https://zh.wikipedia.org/zh-tw/臺灣文化協會)、[台北大空襲](https://zh.wikipedia.org/zh-tw/臺北大空襲)、[國家人權博物館](https://www.nhrm.gov.tw/)
 - 西方事件：[Perry Expedition](https://en.wikipedia.org/wiki/Perry_Expedition)、[On the Origin of Species](https://en.wikipedia.org/wiki/On_the_Origin_of_Species)、[Big Ben](https://www.history.com/this-day-in-history/big-ben-goes-into-operation-in-london)、[International Meridian Conference](https://en.wikipedia.org/wiki/International_Meridian_Conference)、[Freedom Trail](https://www.thefreedomtrail.org/)
