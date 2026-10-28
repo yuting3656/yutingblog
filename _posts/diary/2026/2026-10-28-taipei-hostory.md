@@ -9,7 +9,7 @@ tags: 台北 漳泉械鬥 頂下郊拚 芝山岩 二二八 白色恐怖 野百�
 >
 > 每一站的右邊都有一塊黃色框：**同一年西方世界在幹嘛**。因為我們的世界觀都是用西方的年份記的（黑船、達爾文、林肯），把台北放進同一條時間線上，才會有「啊原來是那個時候」的感覺。
 >
-> 一共 32 站：前半是漳泉械鬥（1626–1895），後半接著走日治、二二八、戒嚴、白色恐怖、組黨解嚴、野百合、第一次直選、太陽花、同婚，一路到 2024。
+> 一共 32 站：前半是漳泉械鬥（1626–1895），後半接著走日治、二二八、戒嚴、白色恐怖、組黨解嚴、野百合、第一次直選、太陽花、同婚，一路到落筆的此刻（2026-10-28 09:48）。
 >
 > 滑鼠拖拉旋轉、滾輪縮放，手機兩指也行；鍵盤 ← → 切站。
 
@@ -25,7 +25,7 @@ tags: 台北 漳泉械鬥 頂下郊拚 芝山岩 二二八 白色恐怖 野百�
 }
 </script>
 <script type="module">
-  import { mountTaipeiHistory } from "/yutingblog/assets/js/taipei-history/history.js?v=4";
+  import { mountTaipeiHistory } from "/yutingblog/assets/js/taipei-history/history.js?v=5";
   mountTaipeiHistory(document.getElementById("taipei-history"));
 </script>
 

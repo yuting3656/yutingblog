@@ -6,7 +6,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 import { SimplexNoise } from "three/addons/math/SimplexNoise.js";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
-import { GROUP, PLACES, RIVERS, HILLS, EVENTS, URBAN, LINES } from "./data.js?v=4";
+import { GROUP, PLACES, RIVERS, HILLS, EVENTS, URBAN, LINES } from "./data.js?v=5";
 
 const S = 3.0; // 世界單位／公里
 const LNG0 = 121.505, LAT0 = 25.06;
