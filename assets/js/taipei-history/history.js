@@ -6,7 +6,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 import { SimplexNoise } from "three/addons/math/SimplexNoise.js";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
-import { GROUP, PLACES, RIVERS, HILLS, EVENTS, URBAN, LINES } from "./data.js?v=3";
+import { GROUP, PLACES, RIVERS, HILLS, EVENTS, URBAN, LINES } from "./data.js?v=4";
 
 const S = 3.0; // 世界單位／公里
 const LNG0 = 121.505, LAT0 = 25.06;
@@ -122,6 +122,7 @@ export class HistoryScene {
     const rivers = RIVERS.map((r) => ({ ...r, w: r.pts.map(([lng, lat]) => toWorld(lng, lat)) }));
     const hills = HILLS.map((h) => { const [x, z] = toWorld(h.lng, h.lat); const o = { ...h, x, z, R: h.r * S }; if (h.lng2) { const [x2, z2] = toWorld(h.lng2, h.lat2); o.x2 = x2; o.z2 = z2; } return o; });
     const flats = PLACES.filter((p) => !p.hill).map((p) => { const [x, z] = toWorld(p.lng, p.lat); return { x, z, R: 0.9 + p.size * 0.45 }; });
+    const urbanFlats = URBAN.map((u) => { const [x, z] = toWorld(u.lng, u.lat); return { x, z, R: u.r * S }; });
     const riverDepth = (x, z) => { let d = 0, bank = 0; rivers.forEach((r) => { const dist = distToPolyline(x, z, r.w); const inner = r.width, outer = r.width * 1.7; d = Math.max(d, 1 - smooth(inner, outer, dist)); bank = Math.max(bank, 1 - smooth(outer, outer + 2.0, dist)); }); return { d, bank }; };
     const heightAt = (x, z) => {
       let h = 0.12 * fbm(x * 0.06, z * 0.06) + 0.05 * noise.noise(x * 0.25, z * 0.25);
@@ -135,6 +136,8 @@ export class HistoryScene {
       const { d, bank } = riverDepth(x, z);
       h = THREE.MathUtils.lerp(h, Math.min(h, 0.15), bank); // 河岸壓平
       h = THREE.MathUtils.lerp(h, -1.3, d); // 河道挖到水面下，山也擋不住
+      // 市區：山腳的平地（士林、北投、內湖、南港本來就是谷底）
+      urbanFlats.forEach((f) => { const k = 1 - smooth(f.R, f.R + 1.6, Math.hypot(x - f.x, z - f.z)); if (k > 0) h = THREE.MathUtils.lerp(h, Math.min(h, 0.22 + 0.06 * fbm(x * 0.3, z * 0.3)), k); });
       // 聚落平地
       flats.forEach((f) => { const k = 1 - smooth(f.R, f.R + 2.2, Math.hypot(x - f.x, z - f.z)); h = THREE.MathUtils.lerp(h, Math.max(h, 0.06), k); });
       return h;
@@ -173,7 +176,7 @@ export class HistoryScene {
     const urbanIdx = [], urbanFrom = [], urbanW = []; // 攤平：頂點索引、年份、權重（同頂點可多筆，依年份排好）
     for (let i = 0; i < pos.count; i++) {
       const x = pos.getX(i), z = pos.getZ(i), y = pos.getY(i);
-      if (y > 1.0 || y < WATER_Y + 0.35) continue;
+      if (y > 1.3 || y < WATER_Y + 0.35) continue;
       for (const b of blobs) {
         const dist = Math.hypot(x - b.x, z - b.z); if (dist > b.R + 1.8) continue;
         const w = (1 - smooth(b.R, b.R + 1.8, dist)) * (0.75 + 0.25 * (noise.noise(x * 0.5, z * 0.5) * 0.5 + 0.5));
@@ -441,7 +444,7 @@ export class HistoryScene {
         const a = rnd() * Math.PI * 2, d = Math.sqrt(rnd()) * b.R;
         const x = b.x + Math.cos(a) * d, z = b.z + Math.sin(a) * d;
         const h = this.heightAt(x, z);
-        if (h > 0.9 || h < WATER_Y + 0.45) continue;
+        if (h > 1.2 || h < WATER_Y + 0.45) continue;
         if (placeFoot.some((f) => Math.hypot(x - f.x, z - f.z) < f.R)) continue;
         const era = b.from < 1920 ? 0 : b.from < 1950 ? 1 : b.from < 1975 ? 2 : b.from < 1995 ? 3 : 4;
         const base = [0.14, 0.18, 0.28, 0.4, 0.5][era], spread = [0.1, 0.14, 0.25, 0.45, 0.7][era];
