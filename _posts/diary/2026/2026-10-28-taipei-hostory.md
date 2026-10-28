@@ -9,11 +9,11 @@ tags: 台北 漳泉械鬥 頂下郊拚 芝山岩 二二八 白色恐怖 野百�
 >
 > 每一站的右邊都有一塊黃色框：**同一年西方世界在幹嘛**。因為我們的世界觀都是用西方的年份記的（黑船、達爾文、林肯），把台北放進同一條時間線上，才會有「啊原來是那個時候」的感覺。
 >
-> 一共 31 站：前半是漳泉械鬥（1626–1895），後半接著走日治、二二八、戒嚴、白色恐怖、組黨解嚴、野百合、第一次直選、太陽花、同婚，一路到 2024。
+> 一共 32 站：前半是漳泉械鬥（1626–1895），後半接著走日治、二二八、戒嚴、白色恐怖、組黨解嚴、野百合、第一次直選、太陽花、同婚，一路到 2024。
 >
 > 滑鼠拖拉旋轉、滾輪縮放，手機兩指也行；鍵盤 ← → 切站。
 
-<link rel="stylesheet" href="/yutingblog/assets/css/taipei-history.css">
+<link rel="stylesheet" href="/yutingblog/assets/css/taipei-history.css?v=3">
 <div id="taipei-history" class="tph-root"></div>
 
 <script type="importmap">
@@ -25,7 +25,7 @@ tags: 台北 漳泉械鬥 頂下郊拚 芝山岩 二二八 白色恐怖 野百�
 }
 </script>
 <script type="module">
-  import { mountTaipeiHistory } from "/yutingblog/assets/js/taipei-history/history.js?v=2";
+  import { mountTaipeiHistory } from "/yutingblog/assets/js/taipei-history/history.js?v=3";
   mountTaipeiHistory(document.getElementById("taipei-history"));
 </script>
 
@@ -97,9 +97,31 @@ tags: 台北 漳泉械鬥 頂下郊拚 芝山岩 二二八 白色恐怖 野百�
 
 最有感的是**青島東路這一條街**：1950 年代是軍法處押政治犯去馬場町的起點，2014 年是太陽花的街，2019 年是四萬人淋雨等同婚三讀的街，2024 年青鳥又回來。同一條街，七十年。地圖上你會看到它就在清代台北城東門外一點點的地方，離 1853 年燒祖師廟的艋舺走路 25 分鐘。
 
+### 城市怎麼長大：地圖會跟著年份長建築
+
+這一版加了「開發進程」：拖年表的時候，地形上會慢慢出現灰色的街廓與一塊塊城市方塊（哪一年起哪一圈變成市區，是照都市計畫與人口資料概略畫的），鐵路、捷運、高速公路沿線會有小火車和小車在跑，指標性建築在落成那一年長出來，拆掉的那一年消失。每一站故事卡下面有一排「🏗 這一站地圖上長出來的」，點名字會飛過去。
+
+| 年 | 長出來（或拆掉） | 為什麼算指標 |
+|---|---|---|
+| 1884 | 台北城（1904 拆） | 三市街：艋舺、大稻埕、城內 |
+| 1891 | 大稻埕火車票房、清代鐵路、台北橋（木橋） | 台灣第一條鐵路，站設在最有錢的大稻埕 |
+| 1901 | 台北驛（今台北車站）、縱貫線改線、淡水線 | 四代車站同一個位置至今 |
+| 1908–15 | 西門紅樓、新公園＋博物館 | 城牆拆掉後西門外長出娛樂街；公園後來是二二八放送局 |
+| 1919–20 | 總督府；台北設市（約 17 萬人） | 城內變成殖民權力中心 |
+| 1925／1933 | 台北橋鐵橋、明治橋 | 「鐵橋夕照」台北八景；參拜台灣神社的軸線 |
+| 1932–39 | 菊元百貨、公會堂、松山飛行場、松山菸廠；都市計畫 60 萬人 | 摩登台北，市區往東門外、松山擴 |
+| 1949–61 | 眷村、三重／中永和擠滿人；中華商場（1992 拆） | 外省移民，人口從 33 萬到 100 萬 |
+| 1968–78 | 升格直轄市併入士林北投內湖南港；國父紀念館、中山高 | 人口破 180 萬，東區開始長 |
+| 1986–94 | 信義計畫區、世貿、市政府東遷、大安森林公園 | 中心從河邊走到東邊；人口 272 萬高點（1990） |
+| 1996–99 | 捷運木柵線、淡水線（淡水線鐵路 1988 停駛）、板南線 | 城市的距離改用「幾站」算 |
+| 2002–05 | 台北 101、內湖科技園區、板橋新站特區、小巨蛋 | 工作往內科、住往新北 |
+| 2022–23 | 台北表演藝術中心、大巨蛋 | 皮蛋豆腐蓋在士林新街旁，巨蛋蓋在菸廠旁 |
+
+市區範圍與人口都是概數（台北市 1990 年 272 萬是歷史高點，之後往新北流），街廓的位置是示意不是地籍圖。
+
 ### 技術
 
-跟上一篇[台北未來島](/yutingblog/diary/2026-10-23)同一套 three.js 手法，但這次是真的地圖：地形是一張 PlaneGeometry，用幾座高斯山（大屯山、觀音山、林口台地、南港山、新店丘陵）加 Simplex 噪聲堆出盆地，四條河照折線往下挖到水面以下；聚落按經緯度換算到世界座標，小房子屋頂顏色＝族群。每一站的 attacks / burned / defend / migrate / rally 寫在 `data.js`，引擎自己畫弧線、生小人、點火、圍人群舉牌子。日治以後的地點用 `modern: true` 畫成水泥方塊，總督府、中正紀念堂、101 各有專屬小模型。沒有任何模型檔。
+跟上一篇[台北未來島](/yutingblog/diary/2026-10-23)同一套 three.js 手法，但這次是真的地圖：地形是一張 PlaneGeometry，用幾座高斯山（大屯山、觀音山、林口台地、南港山、新店丘陵）加 Simplex 噪聲堆出盆地，四條河照折線往下挖到水面以下；聚落按經緯度換算到世界座標，小房子屋頂顏色＝族群。每一站的 attacks / burned / defend / migrate / rally 寫在 `data.js`，引擎自己畫弧線、生小人、點火、圍人群舉牌子。日治以後的地點用 `modern: true` 畫成水泥方塊，總督府、中正紀念堂、101 各有專屬小模型。沒有任何模型檔。市區擴張是把地形頂點依 `URBAN` 色塊的年份重新上色，城市方塊是一張依年份排序的 InstancedMesh 改 `count`，鐵路／捷運／高速公路是 `LINES` 折線貼地拉成管子，車站、橋、博物館、機場、菸廠、國父紀念館、公園、小巨蛋、大巨蛋、北藝中心各有一個 `landmark` 小模型。
 
 ### 來源與注意
 
@@ -110,5 +132,6 @@ tags: 台北 漳泉械鬥 頂下郊拚 芝山岩 二二八 白色恐怖 野百�
 - [芝山岩：漳泉械鬥的遺跡（vocus）](https://vocus.cc/article/64461ad7fd897800010bc211)
 - [舊街與新街，被遺忘的士林發展血淚史](https://blog.udn.com/wonghc70/13882899)、[士林新街（士林國小鄉土教材）](http://country.slps.tp.edu.tw/b/01/1_2.htm)
 - [頂下郊拚。1853 年艋舺地域略圖](https://bimeci.pixnet.net/blog/post/175220553)
+- 城市發展：[臺北車站（維基百科）](https://zh.wikipedia.org/zh-tw/臺北車站)、[臺北橋（維基百科）](https://zh.wikipedia.org/zh-tw/臺北大橋)、[松山文創園區沿革](https://www.songshanculturalpark.org/)、[臺北市歷年人口](https://zh.wikipedia.org/zh-tw/臺北市人口)
 - 1895 之後：[二二八事件（維基百科）](https://zh.wikipedia.org/zh-tw/二二八事件)、[臺灣白色恐怖時期](https://zh.wikipedia.org/zh-tw/臺灣白色恐怖時期)、[野百合學運](https://zh.wikipedia.org/zh-tw/野百合學運)、[太陽花學運](https://zh.wikipedia.org/zh-tw/太陽花學運)、[台灣文化協會](https://zh.wikipedia.org/zh-tw/臺灣文化協會)、[台北大空襲](https://zh.wikipedia.org/zh-tw/臺北大空襲)、[國家人權博物館](https://www.nhrm.gov.tw/)
 - 西方事件：[Perry Expedition](https://en.wikipedia.org/wiki/Perry_Expedition)、[On the Origin of Species](https://en.wikipedia.org/wiki/On_the_Origin_of_Species)、[Big Ben](https://www.history.com/this-day-in-history/big-ben-goes-into-operation-in-london)、[International Meridian Conference](https://en.wikipedia.org/wiki/International_Meridian_Conference)、[Freedom Trail](https://www.thefreedomtrail.org/)

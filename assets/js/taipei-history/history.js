@@ -6,7 +6,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 import { SimplexNoise } from "three/addons/math/SimplexNoise.js";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
-import { GROUP, PLACES, RIVERS, HILLS, EVENTS } from "./data.js?v=2";
+import { GROUP, PLACES, RIVERS, HILLS, EVENTS, URBAN, LINES } from "./data.js?v=3";
 
 const S = 3.0; // 世界單位／公里
 const LNG0 = 121.505, LAT0 = 25.06;
@@ -67,6 +67,8 @@ export class HistoryScene {
     this.buildEnvironment();
     this.buildTerrain();
     this.buildPlaces();
+    this.buildCity();
+    this.buildLines();
     this.buildWalkers();
     this.fxGroup = new THREE.Group(); this.scene.add(this.fxGroup);
     this.fires = []; this.marchers = []; this.pulses = []; this.crowd = [];
@@ -164,6 +166,22 @@ export class HistoryScene {
     const terrain = new THREE.Mesh(tg, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95, flatShading: true }));
     terrain.receiveShadow = this.shadows; terrain.castShadow = false;
     this.scene.add(terrain); this.terrain = terrain;
+    // 市區擴張：每個頂點記下「哪一年起、多大程度」變成市區（setEvent 再依年份上色）
+    this.baseCol = col.slice(); this.terrainGeo = tg;
+    const blobs = URBAN.map((u) => { const [x, z] = toWorld(u.lng, u.lat); return { from: u.from, x, z, R: u.r * S }; }).sort((a, b) => a.from - b.from);
+    this.urbanBlobs = blobs;
+    const urbanIdx = [], urbanFrom = [], urbanW = []; // 攤平：頂點索引、年份、權重（同頂點可多筆，依年份排好）
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i), z = pos.getZ(i), y = pos.getY(i);
+      if (y > 1.0 || y < WATER_Y + 0.35) continue;
+      for (const b of blobs) {
+        const dist = Math.hypot(x - b.x, z - b.z); if (dist > b.R + 1.8) continue;
+        const w = (1 - smooth(b.R, b.R + 1.8, dist)) * (0.75 + 0.25 * (noise.noise(x * 0.5, z * 0.5) * 0.5 + 0.5));
+        if (w < 0.03) continue;
+        urbanIdx.push(i); urbanFrom.push(b.from); urbanW.push(w);
+      }
+    }
+    this.urban = { idx: urbanIdx, from: urbanFrom, w: urbanW, year: -1 };
     // 山上的樹
     const rnd = mulberry(31);
     const dummy = new THREE.Object3D(); const tc = new THREE.Color();
@@ -233,11 +251,13 @@ export class HistoryScene {
         const podium = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.5, 1.1), mat(0x9fb9c9, { roughness: 0.3, metalness: 0.3 })); podium.position.set(x, baseY + 0.25, z); g.add(podium);
         for (let k = 0; k < 8; k++) { const seg = new THREE.Mesh(new THREE.CylinderGeometry(0.34, 0.26, 0.48, 4), mat(0x7fa3bd, { roughness: 0.25, metalness: 0.4 })); seg.position.set(x, baseY + 0.75 + k * 0.48, z); seg.rotation.y = Math.PI / 4; seg.castShadow = this.shadows; g.add(seg); houses.push(seg, seg); }
         const spire = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.06, 0.9, 5), mat(0xd9dde0)); spire.position.set(x, baseY + 4.9, z); g.add(spire);
+      } else if (p.landmark && this.buildLandmark(p, g, x, z, baseY, houses, mat)) {
+        /* 專屬模型見 buildLandmark */
       } else if (p.modern) {
         for (let i = 0; i < Math.max(3, n * 0.6); i++) {
           const a = rnd() * Math.PI * 2, d = Math.sqrt(rnd()) * R;
           const hx = x + Math.cos(a) * d, hz = z + Math.sin(a) * d;
-          const w = 0.45 + rnd() * 0.4, dep = 0.4 + rnd() * 0.35, hh = 0.5 + rnd() * 0.9 * (p.size / 4);
+          const w = 0.45 + rnd() * 0.4, dep = 0.4 + rnd() * 0.35, hh = (0.5 + rnd() * 0.9 * (p.size / 4)) * (p.tall && i % 3 === 0 ? p.tall : 1);
           const body = new THREE.Mesh(new THREE.BoxGeometry(w, hh, dep), concrete[i % 4]); body.position.set(hx, baseY + hh / 2, hz); body.rotation.y = rnd() * 0.5 - 0.25;
           const roof = new THREE.Mesh(new THREE.BoxGeometry(w * 0.9, 0.05, dep * 0.9), roofMat); roof.position.set(hx, baseY + hh + 0.025, hz); roof.rotation.y = body.rotation.y;
           const glass = new THREE.Mesh(new THREE.BoxGeometry(w * 0.7, hh * 0.7, 0.01), win); glass.position.set(hx, baseY + hh / 2, hz + dep / 2 + 0.006); glass.rotation.y = body.rotation.y;
@@ -302,6 +322,199 @@ export class HistoryScene {
     });
     this.proxies = proxies;
     this.charMat = mat(0x3a3330);
+  }
+
+  // ---------- 指標性建築：一個 landmark 一個小模型 ----------
+  buildLandmark(p, g, x, z, y, houses, mat) {
+    const sh = (m) => { m.castShadow = this.shadows; m.receiveShadow = this.shadows; g.add(m); return m; };
+    const box = (w, h, d, m, dx = 0, dy = 0, dz = 0, ry = 0) => { const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); b.position.set(x + dx, y + dy + h / 2, z + dz); b.rotation.y = ry; return sh(b); };
+    const cyl = (rt, rb, h, m, dx = 0, dy = 0, dz = 0, seg = 12) => { const c = new THREE.Mesh(new THREE.CylinderGeometry(rt, rb, h, seg), m); c.position.set(x + dx, y + dy + h / 2, z + dz); return sh(c); };
+    const white = mat(0xf2ece0), cream = mat(0xe8dcc4), brick = mat(0xa8473c), dark = mat(0x3a3a40), grey = mat(0x8a8d90), glass = mat(0x8fb7d0, { roughness: 0.25, metalness: 0.35 }), green = mat(0x7fb069), steel = mat(0xc9ced3, { roughness: 0.35, metalness: 0.5 });
+    const treeAt = (tx, tz, s = 1) => { const ty = this.heightAt(tx, tz); const tr = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.06, 0.3 * s, 5), mat(0x7d5a3c)); tr.position.set(tx, ty + 0.15 * s, tz); const cr = new THREE.Mesh(new THREE.IcosahedronGeometry(0.26 * s, 1), mat(0x6f9f5e)); cr.position.set(tx, ty + 0.42 * s, tz); sh(tr); sh(cr); };
+    switch (p.landmark) {
+      case "station": {
+        // 月台＋候車室＋拱形屋頂＋一列小火車
+        const old = p.group === "gov";
+        box(1.9, 0.08, 0.9, mat(0xb9b2a4));
+        const hall = box(1.1, 0.42, 0.62, old ? mat(0x8a6a48) : brick, 0, 0.08, -0.08);
+        const vault = new THREE.Mesh(new THREE.CylinderGeometry(0.33, 0.33, 1.16, 14), old ? mat(0x5a4636) : mat(0x4a4a52)); vault.rotation.z = Math.PI / 2; vault.position.set(x, y + 0.5, z - 0.08); sh(vault);
+        if (!old) { const clock = cyl(0.09, 0.09, 0.03, white, 0, 0.55, 0.26); clock.rotation.x = Math.PI / 2; }
+        const loco = box(0.5, 0.18, 0.16, dark, -0.5, 0.08, 0.3); box(0.3, 0.14, 0.14, mat(0x6b2d2d), 0.0, 0.08, 0.3); box(0.3, 0.14, 0.14, mat(0x6b2d2d), 0.38, 0.08, 0.3); cyl(0.03, 0.03, 0.12, dark, -0.65, 0.26, 0.3);
+        houses.push(hall, vault); void loco; return true;
+      }
+      case "octagon": {
+        const body = cyl(0.42, 0.42, 0.62, brick, 0, 0, 0, 8); const roof = new THREE.Mesh(new THREE.ConeGeometry(0.5, 0.3, 8), dark); roof.position.set(x, y + 0.77, z); sh(roof);
+        box(1.2, 0.35, 0.36, brick, 0.9, 0, 0); box(0.36, 0.35, 1.0, brick, 0.9, 0, 0);
+        houses.push(body, roof); return true;
+      }
+      case "museum": {
+        // 公園綠地＋希臘柱式博物館＋圓頂
+        const lawn = new THREE.Mesh(new THREE.CircleGeometry(1.7, 24), green); lawn.rotation.x = -Math.PI / 2; lawn.position.set(x, y + 0.02, z); sh(lawn);
+        const pond = new THREE.Mesh(new THREE.CircleGeometry(0.35, 16), mat(0x6fa9b8)); pond.rotation.x = -Math.PI / 2; pond.position.set(x + 0.6, y + 0.03, z + 0.7); g.add(pond);
+        const hall = box(1.3, 0.5, 0.7, white, 0, 0, -0.6);
+        for (let k = -2; k <= 2; k++) cyl(0.04, 0.04, 0.48, white, k * 0.24, 0.02, -0.22, 8);
+        const dome = new THREE.Mesh(new THREE.SphereGeometry(0.3, 14, 10, 0, Math.PI * 2, 0, Math.PI / 2), mat(0x6f8f85)); dome.position.set(x, y + 0.5, z - 0.6); sh(dome);
+        [[-1.2, 0.3], [1.2, -0.2], [-0.5, 1.1], [0.1, 1.3], [1.1, 0.9]].forEach(([dx, dz]) => treeAt(x + dx, z + dz, 0.9));
+        houses.push(hall, dome); return true;
+      }
+      case "bridge": {
+        // 橋：橋面＋桁架＋橋墩，rot＝方位、len＝長度（世界單位）
+        const L = p.len || 4, rot = p.rot || 0; const deckY = WATER_Y + 0.5;
+        const grpB = new THREE.Group(); grpB.position.set(x, 0, z); grpB.rotation.y = rot; g.add(grpB);
+        const add = (geo, m, px, py, pz) => { const mm = new THREE.Mesh(geo, m); mm.position.set(px, py, pz); mm.castShadow = this.shadows; grpB.add(mm); return mm; };
+        const iron = p.id === "taipeibridge";
+        add(new THREE.BoxGeometry(L, 0.07, 0.36), iron ? grey : mat(0xcfc8bb), 0, deckY, 0);
+        for (let k = -2; k <= 2; k++) add(new THREE.CylinderGeometry(0.07, 0.09, deckY - WATER_Y + 0.6, 8), mat(0x9c9484), k * (L / 5), (deckY + WATER_Y) / 2 - 0.3, 0);
+        if (iron) {
+          for (const sd of [-0.17, 0.17]) { add(new THREE.BoxGeometry(L, 0.04, 0.04), dark, 0, deckY + 0.42, sd); for (let k = -4; k <= 4; k++) add(new THREE.BoxGeometry(0.03, 0.4, 0.03), dark, k * (L / 9), deckY + 0.22, sd); for (let k = -4; k < 4; k++) { const dg = add(new THREE.BoxGeometry(0.03, 0.46, 0.03), dark, (k + 0.5) * (L / 9), deckY + 0.22, sd); dg.rotation.z = (k % 2 ? 1 : -1) * 0.75; } }
+        } else {
+          for (let k = -2; k <= 2; k += 2) { const arch = add(new THREE.TorusGeometry(L / 6.5, 0.035, 6, 16, Math.PI), mat(0xd9d2c4), k * (L / 3.2), deckY, 0); arch.rotation.y = 0; arch.position.y = deckY - 0.02; }
+          for (const sd of [-0.17, 0.17]) add(new THREE.BoxGeometry(L, 0.05, 0.03), mat(0xd9d2c4), 0, deckY + 0.08, sd);
+        }
+        return true;
+      }
+      case "airport": {
+        box(3.4, 0.04, 0.42, mat(0x5f6165), 0, 0, 0.3); box(3.2, 0.045, 0.03, white, 0, 0, 0.3);
+        box(1.2, 0.04, 0.6, mat(0x8d9094), 0, 0, -0.4); const term = box(0.9, 0.22, 0.3, cream, 0, 0.04, -0.55); const tower = cyl(0.05, 0.05, 0.6, white, 0.7, 0.04, -0.6, 8); box(0.2, 0.08, 0.2, glass, 0.7, 0.64, -0.6);
+        // 停機坪上的小飛機
+        const pl = new THREE.Group(); pl.position.set(x - 0.4, y + 0.14, z - 0.35); g.add(pl);
+        const body = new THREE.Mesh(new THREE.CapsuleGeometry(0.06, 0.5, 3, 8), white); body.rotation.z = Math.PI / 2; pl.add(body);
+        const wing = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.02, 0.7), white); pl.add(wing);
+        const tail = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.16, 0.02), mat(0xd9433b)); tail.position.set(-0.28, 0.08, 0); pl.add(tail);
+        pl.traverse((m) => { m.castShadow = this.shadows; });
+        houses.push(term, tower); return true;
+      }
+      case "factory": {
+        const a = box(1.5, 0.34, 0.5, mat(0xb07a62), 0, 0, -0.35); const b = box(1.5, 0.34, 0.5, mat(0xb07a62), 0, 0, 0.35); box(0.5, 0.3, 1.2, mat(0xb07a62), -0.9, 0, 0);
+        for (let k = -2; k <= 2; k++) { const saw = new THREE.Mesh(new THREE.ConeGeometry(0.16, 0.14, 4), mat(0x6e6a66)); saw.rotation.y = Math.PI / 4; saw.position.set(x + k * 0.3, y + 0.41, z - 0.35); g.add(saw); const saw2 = saw.clone(); saw2.position.z = z + 0.35; g.add(saw2); }
+        cyl(0.05, 0.07, 1.3, mat(0x4a4544), 0.9, 0, 0, 8);
+        houses.push(a, b); return true;
+      }
+      case "sys": {
+        box(2.6, 0.05, 2.2, mat(0xe9e4d8));
+        const hall = box(1.3, 0.5, 1.3, cream, 0, 0.05, 0);
+        const roof = new THREE.Mesh(new THREE.ConeGeometry(1.25, 0.34, 4), mat(0xd9a441)); roof.rotation.y = Math.PI / 4; roof.position.set(x, y + 0.72, z); sh(roof);
+        const eave = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.05, 1.8), mat(0xd9a441)); eave.position.set(x, y + 0.56, z); sh(eave);
+        for (let k = 0; k < 4; k++) cyl(0.04, 0.04, 0.5, mat(0x7a2e28), (k % 2 ? 0.6 : -0.6), 0.05, (k < 2 ? 0.6 : -0.6), 6);
+        [[-1.1, 0.9], [1.1, 0.9], [-1.1, -0.9], [1.1, -0.9]].forEach(([dx, dz]) => treeAt(x + dx, z + dz, 0.8));
+        houses.push(hall, roof); return true;
+      }
+      case "park": {
+        const lawn = new THREE.Mesh(new THREE.CircleGeometry(1.9, 28), green); lawn.rotation.x = -Math.PI / 2; lawn.position.set(x, y + 0.02, z); sh(lawn);
+        const pond = new THREE.Mesh(new THREE.CircleGeometry(0.45, 16), mat(0x6fa9b8)); pond.rotation.x = -Math.PI / 2; pond.position.set(x - 0.5, y + 0.03, z + 0.4); pond.scale.x = 1.5; g.add(pond);
+        const rnd = mulberry(77); for (let k = 0; k < 16; k++) { const a = rnd() * Math.PI * 2, d = 0.5 + rnd() * 1.3; treeAt(x + Math.cos(a) * d, z + Math.sin(a) * d, 0.7 + rnd() * 0.6); }
+        const stage = cyl(0.3, 0.3, 0.08, mat(0xd8d2c6), 0.8, 0.02, -0.6, 10); houses.push(stage, stage); return true;
+      }
+      case "arena": {
+        const base = cyl(0.68, 0.72, 0.32, steel, 0, 0, 0, 24);
+        const dome = new THREE.Mesh(new THREE.SphereGeometry(0.68, 20, 10, 0, Math.PI * 2, 0, Math.PI / 2), white); dome.scale.y = 0.42; dome.position.set(x, y + 0.32, z); sh(dome);
+        houses.push(base, dome); return true;
+      }
+      case "dome": {
+        box(2.6, 0.05, 2.4, mat(0xdcd8d0));
+        const base = cyl(1.05, 1.1, 0.3, mat(0xd6d3cc), 0, 0.05, 0, 28);
+        const dome = new THREE.Mesh(new THREE.SphereGeometry(1.05, 28, 14, 0, Math.PI * 2, 0, Math.PI / 2), mat(0xf4f2ee)); dome.scale.y = 0.5; dome.position.set(x, y + 0.35, z); sh(dome);
+        for (let k = 0; k < 6; k++) { const rib = new THREE.Mesh(new THREE.TorusGeometry(1.06, 0.015, 5, 24, Math.PI), mat(0xb9b5ad)); rib.rotation.y = (k / 6) * Math.PI; rib.scale.y = 0.5; rib.position.set(x, y + 0.35, z); g.add(rib); }
+        houses.push(base, dome); return true;
+      }
+      case "tpac": {
+        const cube = box(0.9, 0.9, 0.9, glass, 0, 0.15, 0); for (let k = 0; k < 4; k++) cyl(0.05, 0.05, 0.15, grey, (k % 2 ? 0.35 : -0.35), 0, (k < 2 ? 0.35 : -0.35), 6);
+        const ball = new THREE.Mesh(new THREE.SphereGeometry(0.42, 18, 14), mat(0x9fb9c9, { roughness: 0.3, metalness: 0.4 })); ball.position.set(x - 0.55, y + 0.72, z); sh(ball);
+        box(0.5, 0.4, 0.5, mat(0xd8d2c6), 0.65, 0.5, 0); box(0.5, 0.4, 0.5, mat(0xd8d2c6), 0, 0.55, 0.65);
+        houses.push(cube, ball); return true;
+      }
+      default: return false;
+    }
+  }
+
+  // ---------- 城市方塊：隨年份長出來的街廓（一張 InstancedMesh，依年份排序後改 count） ----------
+  buildCity() {
+    const rnd = mulberry(2026);
+    const items = [];
+    const placeFoot = [...this.places.values()].map((pl) => ({ x: pl.x, z: pl.z, R: pl.R + 0.7 }));
+    const density = this.weak ? 9 : 26; // 每平方公里幾塊
+    for (const b of this.urbanBlobs) {
+      const n = Math.round(density * Math.PI * (b.R / S) * (b.R / S));
+      let tries = 0, placed = 0;
+      while (placed < n && tries < n * 6) {
+        tries += 1;
+        const a = rnd() * Math.PI * 2, d = Math.sqrt(rnd()) * b.R;
+        const x = b.x + Math.cos(a) * d, z = b.z + Math.sin(a) * d;
+        const h = this.heightAt(x, z);
+        if (h > 0.9 || h < WATER_Y + 0.45) continue;
+        if (placeFoot.some((f) => Math.hypot(x - f.x, z - f.z) < f.R)) continue;
+        const era = b.from < 1920 ? 0 : b.from < 1950 ? 1 : b.from < 1975 ? 2 : b.from < 1995 ? 3 : 4;
+        const base = [0.14, 0.18, 0.28, 0.4, 0.5][era], spread = [0.1, 0.14, 0.25, 0.45, 0.7][era];
+        let hh = base + rnd() * spread; if (era >= 3 && rnd() < 0.08) hh *= 2.2;
+        const w = 0.22 + rnd() * 0.22, dp = 0.22 + rnd() * 0.22;
+        const c = era <= 1 ? [0xe3d6c0, 0xd9cbb3, 0xcdbfa8][Math.floor(rnd() * 3)] : era === 2 ? [0xd8d2c6, 0xc9c4ba, 0xd2cbbf][Math.floor(rnd() * 3)] : [0xd9dadb, 0xc7ccd1, 0xe2e4e6, 0xb8c2cc][Math.floor(rnd() * 4)];
+        items.push({ from: b.from, x, z, h, w, dp, hh, ry: rnd() * 0.6 - 0.3, c });
+        placed += 1;
+      }
+    }
+    items.sort((a, b) => a.from - b.from);
+    const geo = new THREE.BoxGeometry(1, 1, 1); geo.translate(0, 0.5, 0);
+    const mesh = new THREE.InstancedMesh(geo, new THREE.MeshStandardMaterial({ roughness: 0.85 }), Math.max(1, items.length));
+    const dummy = new THREE.Object3D(); const col = new THREE.Color();
+    items.forEach((it, i) => { dummy.position.set(it.x, it.h, it.z); dummy.scale.set(it.w, it.hh, it.dp); dummy.rotation.y = it.ry; dummy.updateMatrix(); mesh.setMatrixAt(i, dummy.matrix); mesh.setColorAt(i, col.setHex(it.c)); });
+    mesh.count = 0; mesh.frustumCulled = false; mesh.castShadow = this.shadows && !this.weak; mesh.receiveShadow = this.shadows;
+    this.scene.add(mesh); this.city = { mesh, from: items.map((it) => it.from) };
+  }
+
+  // ---------- 線：鐵路、捷運、高速公路（＋沿線跑的小車） ----------
+  buildLines() {
+    this.lines = []; this.vehicles = [];
+    const pillarGeo = new THREE.CylinderGeometry(0.05, 0.06, 1, 6); pillarGeo.translate(0, 0.5, 0);
+    LINES.forEach((ln) => {
+      const kind = ln.kind;
+      const lift = kind === "mrt" ? 0.55 : kind === "highway" ? 0.42 : kind === "subway" ? 0.05 : 0.06;
+      const w = ln.pts.map(([lng, lat]) => toWorld(lng, lat));
+      const pts = [];
+      for (let i = 0; i < w.length - 1; i++) { const a = new THREE.Vector3(w[i][0], 0, w[i][1]), b = new THREE.Vector3(w[i + 1][0], 0, w[i + 1][1]); const n = Math.max(4, Math.ceil(a.distanceTo(b) / 0.6)); for (let k = (i === 0 ? 0 : 1); k <= n; k++) { const v = a.clone().lerp(b, k / n); v.y = Math.max(this.heightAt(v.x, v.z), WATER_Y + 0.3) + lift; pts.push(v); } }
+      const curve = new THREE.CatmullRomCurve3(pts, false, "catmullrom", 0.15);
+      const g = new THREE.Group(); g.visible = false; this.scene.add(g);
+      const segs = Math.max(40, pts.length * 3);
+      if (kind === "rail") {
+        g.add(new THREE.Mesh(new THREE.TubeGeometry(curve, segs, 0.09, 5, false), new THREE.MeshStandardMaterial({ color: 0xa39a86, roughness: 1 })));
+        const rail = new THREE.Mesh(new THREE.TubeGeometry(curve, segs, 0.045, 5, false), new THREE.MeshStandardMaterial({ color: 0x4a3f36, roughness: 0.8 })); rail.position.y = 0.05; g.add(rail);
+      } else if (kind === "subway") {
+        g.add(new THREE.Mesh(new THREE.TubeGeometry(curve, segs, 0.06, 5, false), new THREE.MeshBasicMaterial({ color: ln.color || 0x2f6fc4, transparent: true, opacity: 0.45 })));
+      } else {
+        const m = new THREE.Mesh(new THREE.TubeGeometry(curve, segs, kind === "highway" ? 0.16 : 0.09, 6, false), new THREE.MeshStandardMaterial({ color: kind === "highway" ? 0x7c7f83 : (ln.color || 0xc48c31), roughness: 0.7 })); m.castShadow = this.shadows; g.add(m);
+        const L = curve.getLength(); const n = Math.floor(L / 1.1);
+        const pil = new THREE.InstancedMesh(pillarGeo, new THREE.MeshStandardMaterial({ color: 0xb5b2aa, roughness: 0.9 }), n); const d = new THREE.Object3D();
+        for (let k = 0; k < n; k++) { const p = curve.getPointAt((k + 0.5) / n); const gy = Math.max(this.heightAt(p.x, p.z), WATER_Y + 0.05); d.position.set(p.x, gy, p.z); d.scale.set(1, Math.max(0.05, p.y - gy), 1); d.updateMatrix(); pil.setMatrixAt(k, d.matrix); }
+        pil.castShadow = this.shadows; g.add(pil);
+      }
+      // 小車
+      if (!this.reducedMotion && kind !== "subway") {
+        const veh = new THREE.Group();
+        if (kind === "rail") { const loco = new THREE.Mesh(new THREE.BoxGeometry(0.46, 0.16, 0.16), new THREE.MeshStandardMaterial({ color: 0x2b2b2b })); loco.position.y = 0.1; veh.add(loco); const ch = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.12, 6), new THREE.MeshStandardMaterial({ color: 0x2b2b2b })); ch.position.set(0.14, 0.22, 0); veh.add(ch); for (let k = 1; k <= 2; k++) { const car = new THREE.Mesh(new THREE.BoxGeometry(0.36, 0.14, 0.15), new THREE.MeshStandardMaterial({ color: 0x6b2d2d })); car.position.set(-0.46 * k, 0.09, 0); veh.add(car); } }
+        else if (kind === "mrt") { for (let k = 0; k < 3; k++) { const car = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.16, 0.16), new THREE.MeshStandardMaterial({ color: 0xf2f2f2 })); car.position.set(-0.46 * k, 0.1, 0); veh.add(car); const stripe = new THREE.Mesh(new THREE.BoxGeometry(0.43, 0.05, 0.17), new THREE.MeshStandardMaterial({ color: ln.color || 0xc48c31 })); stripe.position.set(-0.46 * k, 0.1, 0); veh.add(stripe); } }
+        else { for (let k = 0; k < 3; k++) { const car = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.1, 0.12), new THREE.MeshStandardMaterial({ color: [0xd9433b, 0xf2f2f2, 0x3f7fc4][k] })); car.position.set(-0.9 * k, 0.07, (k % 2 ? 0.07 : -0.07)); veh.add(car); } }
+        veh.traverse((m) => { m.castShadow = this.shadows; }); g.add(veh);
+        this.vehicles.push({ veh, curve, speed: kind === "highway" ? 0.03 : kind === "mrt" ? 0.025 : 0.015, off: Math.random(), g });
+      }
+      this.lines.push({ ln, g });
+    });
+  }
+  applyYear(year) {
+    // 地形上色：市區色塊
+    const u = this.urban; if (u && u.year !== year) {
+      u.year = year;
+      const col = this.terrainGeo.attributes.color.array; col.set(this.baseCol);
+      const cOld = new THREE.Color(0xd9ccb4), cMid = new THREE.Color(0xd3cec4), cNew = new THREE.Color(0xcdd0d3);
+      const c = new THREE.Color();
+      for (let k = 0; k < u.idx.length; k++) {
+        const from = u.from[k]; if (from > year) continue;
+        const i = u.idx[k] * 3; c.setRGB(col[i], col[i + 1], col[i + 2]);
+        c.lerp(from < 1950 ? cOld : from < 1990 ? cMid : cNew, u.w[k] * 0.9);
+        col[i] = c.r; col[i + 1] = c.g; col[i + 2] = c.b;
+      }
+      this.terrainGeo.attributes.color.needsUpdate = true;
+    }
+    if (this.city) { let n = 0; const f = this.city.from; while (n < f.length && f[n] <= year) n += 1; this.city.mesh.count = n; }
+    (this.lines || []).forEach(({ ln, g }) => { g.visible = ln.from <= year && (ln.until == null || year <= ln.until); });
   }
 
   // ---------- 平時走動的人（農夫、挑夫） ----------
@@ -372,6 +585,7 @@ export class HistoryScene {
       pl.tag.el.classList.toggle("burn", charred);
     });
     this.walkers.forEach((w) => { w.fig.visible = w.pl.g.visible && !w.pl.charred; });
+    this.applyYear(year);
     this.clearFx();
     (ev.attacks || []).forEach((a) => this.addAttack(a));
     (ev.migrate || []).forEach((m) => this.addMigration(m));
@@ -561,6 +775,7 @@ export class HistoryScene {
     }
     if (!this.reducedMotion) {
       this.updateWalkers(t); this.updateFx(t, dt);
+      for (const v of this.vehicles || []) { if (!v.g.visible) continue; const k = (v.off + t * v.speed) % 1; const p = v.curve.getPointAt(k), q = v.curve.getPointAt(Math.min(1, k + 0.004)); v.veh.position.copy(p); v.veh.rotation.y = Math.atan2(q.x - p.x, q.z - p.z) - Math.PI / 2; }
       this.clouds.forEach((c) => { c.g.position.x += dt * c.speed; if (c.g.position.x > 120) c.g.position.x = -120; });
       this.waterMat.uniforms.uTime.value = t; animating = true;
     }
@@ -614,12 +829,21 @@ export function mountTaipeiHistory(container) {
   const caption = document.createElement("div"); caption.className = "tph-caption"; container.appendChild(caption);
 
   const placeChip = (id) => { const pl = scene.places.get(id); if (!pl) return ""; return `<button type="button" class="tph-chip" data-place="${id}" style="--c:${hex6(pl.grp.color)}">${esc(pl.p.name)}</button>`; };
+  const bornHtml = (i, ev) => {
+    const prev = i > 0 ? EVENTS[i - 1].year : -Infinity;
+    const born = PLACES.filter((p) => p.from > prev && p.from <= ev.year && !(ev.focus || []).includes(p.id));
+    const lines = LINES.filter((l) => l.from > prev && l.from <= ev.year);
+    const gone = PLACES.filter((p) => p.until != null && p.until > prev && p.until <= ev.year && !(ev.burned || []).includes(p.id));
+    if (!born.length && !lines.length && !gone.length) return "";
+    return `<div class="tph-sub">🏗 這一站地圖上長出來的</div><div class="tph-chips">${born.map((p) => placeChip(p.id)).join("")}${lines.map((l) => `<span class="tph-chip tph-line">${l.kind === "rail" ? "🚂" : l.kind === "highway" ? "🛣" : "🚇"} ${esc(l.name)}</span>`).join("")}${gone.map((p) => `<span class="tph-chip tph-gone">✕ ${esc(p.name)}</span>`).join("")}</div>`;
+  };
   const showEvent = (i, ev) => {
-    badge.innerHTML = `<b>${esc(ev.label)}</b><small>${esc(ev.era)}</small><em>${esc(ev.west.flag)} ${esc(String(ev.west.year))}・${esc(ev.west.title)}</em>`;
+    badge.innerHTML = `<b>${esc(ev.label)}</b><small>${esc(ev.era)}</small>${ev.pop ? `<small class="tph-pop">👥 ${esc(ev.pop)}</small>` : ""}<em>${esc(ev.west.flag)} ${esc(String(ev.west.year))}・${esc(ev.west.title)}</em>`;
     tl.querySelectorAll("button[data-i]").forEach((b) => { const on = Number(b.dataset.i) === i; b.classList.toggle("on", on); if (on) b.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" }); });
     card.innerHTML = `<div class="tph-axis">第 ${i + 1}／${EVENTS.length} 站・${esc(ev.era)}</div><h4>${esc(ev.title)}</h4>` +
       ev.story.map((s) => `<p>${esc(s)}</p>`).join("") +
       `<div class="tph-chips">${(ev.focus || []).map(placeChip).join("")}</div>` +
+      bornHtml(i, ev) +
       `<div class="tph-west"><div class="tph-west-head">${esc(ev.west.flag)} 同一時間的西方世界・${esc(String(ev.west.year))}</div><h5>${esc(ev.west.title)}</h5><p>${esc(ev.west.story)}</p>${ev.west.link ? `<a href="${esc(ev.west.link)}" target="_blank" rel="noopener">延伸閱讀 ↗</a>` : ""}</div>` +
       `<div class="tph-foot"><button type="button" class="tph-mini" data-dir="-1">‹ 上一站</button><button type="button" class="tph-mini" data-dir="1">下一站 ›</button></div>`;
     card.scrollTop = 0;

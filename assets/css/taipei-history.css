@@ -88,3 +88,8 @@
 }
 .tph-root.fs .tph-pills, .tph-root:fullscreen .tph-pills { top: max(10px, env(safe-area-inset-top)); left: max(12px, env(safe-area-inset-left)); }
 .tph-root.fs .tph-timeline, .tph-root:fullscreen .tph-timeline { bottom: max(10px, env(safe-area-inset-bottom)); }
+
+/* v3：人口牌、長出來的地標 chips */
+.tph-badge .tph-pop { color: #9fe0b5; opacity: 1; }
+.tph-card .tph-chip.tph-line { --c: #9fb9c9; cursor: default; opacity: .85; }
+.tph-card .tph-chip.tph-gone { --c: #777; color: #bbb; cursor: default; text-decoration: line-through; }
