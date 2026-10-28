@@ -25,7 +25,7 @@ tags: 台北 漳泉械鬥 頂下郊拚 芝山岩 二二八 白色恐怖 野百�
 }
 </script>
 <script type="module">
-  import { mountTaipeiHistory } from "/yutingblog/assets/js/taipei-history/history.js?v=5";
+  import { mountTaipeiHistory } from "/yutingblog/assets/js/taipei-history/history.js?v=6";
   mountTaipeiHistory(document.getElementById("taipei-history"));
 </script>
 

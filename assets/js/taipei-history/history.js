@@ -6,7 +6,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 import { SimplexNoise } from "three/addons/math/SimplexNoise.js";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
-import { GROUP, PLACES, RIVERS, HILLS, EVENTS, URBAN, LINES } from "./data.js?v=5";
+import { GROUP, PLACES, RIVERS, HILLS, EVENTS, URBAN, LINES } from "./data.js?v=6";
 
 const S = 3.0; // 世界單位／公里
 const LNG0 = 121.505, LAT0 = 25.06;
@@ -122,7 +122,16 @@ export class HistoryScene {
     const rivers = RIVERS.map((r) => ({ ...r, w: r.pts.map(([lng, lat]) => toWorld(lng, lat)) }));
     const hills = HILLS.map((h) => { const [x, z] = toWorld(h.lng, h.lat); const o = { ...h, x, z, R: h.r * S }; if (h.lng2) { const [x2, z2] = toWorld(h.lng2, h.lat2); o.x2 = x2; o.z2 = z2; } return o; });
     const flats = PLACES.filter((p) => !p.hill).map((p) => { const [x, z] = toWorld(p.lng, p.lat); return { x, z, R: 0.9 + p.size * 0.45 }; });
-    const urbanFlats = URBAN.map((u) => { const [x, z] = toWorld(u.lng, u.lat); return { x, z, R: u.r * S }; });
+    const urbanFlats = URBAN.map((u) => { const [x, z] = toWorld(u.lng, u.lat); return { from: u.from, x, z, R: u.r * S }; }).sort((a, b) => a.from - b.from);
+    const smallHills = hills.filter((h) => h.r < 1.5); // 芝山岩、劍潭山：市區整地時保護
+    // 某點被哪幾波市區開發整平（依年份排好；k＝整平程度）
+    const urbanPairsAt = (x, z) => {
+      let protect = 0; smallHills.forEach((h) => { protect = Math.max(protect, 1 - smooth(h.R * 1.3, h.R * 2.4, Math.hypot(x - h.x, z - h.z))); });
+      const out = [];
+      urbanFlats.forEach((f) => { const k = (1 - smooth(f.R, f.R + 1.6, Math.hypot(x - f.x, z - f.z))) * (1 - protect); if (k > 0.02) out.push({ from: f.from, k }); });
+      return out;
+    };
+    const flatTarget = (x, z) => 0.22 + 0.06 * fbm(x * 0.3, z * 0.3);
     const riverDepth = (x, z) => { let d = 0, bank = 0; rivers.forEach((r) => { const dist = distToPolyline(x, z, r.w); const inner = r.width, outer = r.width * 1.7; d = Math.max(d, 1 - smooth(inner, outer, dist)); bank = Math.max(bank, 1 - smooth(outer, outer + 2.0, dist)); }); return { d, bank }; };
     const heightAt = (x, z) => {
       let h = 0.12 * fbm(x * 0.06, z * 0.06) + 0.05 * noise.noise(x * 0.25, z * 0.25);
@@ -136,17 +145,27 @@ export class HistoryScene {
       const { d, bank } = riverDepth(x, z);
       h = THREE.MathUtils.lerp(h, Math.min(h, 0.15), bank); // 河岸壓平
       h = THREE.MathUtils.lerp(h, -1.3, d); // 河道挖到水面下，山也擋不住
-      // 市區：山腳的平地（士林、北投、內湖、南港本來就是谷底）
-      urbanFlats.forEach((f) => { const k = 1 - smooth(f.R, f.R + 1.6, Math.hypot(x - f.x, z - f.z)); if (k > 0) h = THREE.MathUtils.lerp(h, Math.min(h, 0.22 + 0.06 * fbm(x * 0.3, z * 0.3)), k); });
       // 聚落平地
       flats.forEach((f) => { const k = 1 - smooth(f.R, f.R + 2.2, Math.hypot(x - f.x, z - f.z)); h = THREE.MathUtils.lerp(h, Math.max(h, 0.06), k); });
       return h;
     };
-    this.heightAt = heightAt;
+    // 市區整地是漸進的：某一年之後山腳才被鏟平（士林、北投、內湖、南港本來是谷底＋山坡）
+    const heightAtYear = (x, z, year) => {
+      const raw = heightAt(x, z); const pairs = urbanPairsAt(x, z); if (!pairs.length) return raw;
+      let k = 0; for (const p of pairs) if (p.from <= year) k = Math.max(k, p.k);
+      return k > 0 ? THREE.MathUtils.lerp(raw, Math.min(raw, flatTarget(x, z)), k) : raw;
+    };
+    this.heightRaw = heightAt; this.heightAtYear = heightAtYear;
+    this.heightAt = (x, z) => heightAtYear(x, z, Infinity); // 預設＝全部開發完的地形（給現代建物、捷運用）
     const seg = this.weak ? 130 : 230;
     const tg = new THREE.PlaneGeometry(TERRAIN, TERRAIN, seg, seg); tg.rotateX(-Math.PI / 2);
     const pos = tg.attributes.position;
-    for (let i = 0; i < pos.count; i++) pos.setY(i, heightAt(pos.getX(i), pos.getZ(i)));
+    const rawY = new Float32Array(pos.count), flatY = new Float32Array(pos.count); const morph = []; // morph：[頂點 idx, [{from,k}...]]
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i), z = pos.getZ(i); const r = heightAt(x, z); rawY[i] = r; pos.setY(i, r);
+      const pairs = urbanPairsAt(x, z); if (pairs.length && r > flatTarget(x, z) + 0.02) { flatY[i] = Math.min(r, flatTarget(x, z)); morph.push([i, pairs]); } else flatY[i] = r;
+    }
+    this.terrainMorph = { rawY, flatY, morph, year: -1 };
     tg.computeVertexNormals();
     const nrm = tg.attributes.normal;
     const col = new Float32Array(pos.count * 3);
@@ -195,20 +214,20 @@ export class HistoryScene {
     [pine, round].forEach((geo, kind) => {
       const count = Math.floor(treeN * 0.5);
       const mesh = new THREE.InstancedMesh(geo, treeMat, count);
-      let placed = 0, tries = 0;
-      while (placed < count && tries < count * 30) {
+      const items = []; let tries = 0;
+      while (items.length < count && tries < count * 30) {
         tries += 1;
         const x = (rnd() - 0.5) * TERRAIN * 0.96, z = (rnd() - 0.5) * TERRAIN * 0.96;
         const h = heightAt(x, z);
         if (h < 0.7 || rnd() > smooth(0.7, 2.5, h)) continue;
         if (flats.some((f) => Math.hypot(x - f.x, z - f.z) < f.R + 1)) continue;
-        const sc = 0.55 + rnd() * 0.75;
-        dummy.position.set(x, h - 0.05, z); dummy.scale.set(sc, sc, sc); dummy.rotation.y = rnd() * Math.PI * 2; dummy.updateMatrix();
-        mesh.setMatrixAt(placed, dummy.matrix);
-        tc.setHex(kind === 0 ? [0x4f6f4e, 0x5e8458, 0x44654a][Math.floor(rnd() * 3)] : [0x6f9f5e, 0x8ab86f, 0x7aa065][Math.floor(rnd() * 3)]);
-        mesh.setColorAt(placed, tc); placed += 1;
+        let gone = Infinity; urbanPairsAt(x, z).forEach((p) => { if (p.k > 0.45) gone = Math.min(gone, p.from); }); // 哪一年被鏟平
+        items.push({ x, z, h, sc: 0.55 + rnd() * 0.75, ry: rnd() * Math.PI * 2, c: kind === 0 ? [0x4f6f4e, 0x5e8458, 0x44654a][Math.floor(rnd() * 3)] : [0x6f9f5e, 0x8ab86f, 0x7aa065][Math.floor(rnd() * 3)], gone });
       }
-      mesh.count = placed; mesh.castShadow = this.shadows && !this.weak; this.scene.add(mesh);
+      items.sort((a, b) => b.gone - a.gone); // 永遠在的排前面，越早被鏟的排後面
+      items.forEach((it, i) => { dummy.position.set(it.x, it.h - 0.05, it.z); dummy.scale.set(it.sc, it.sc, it.sc); dummy.rotation.y = it.ry; dummy.updateMatrix(); mesh.setMatrixAt(i, dummy.matrix); mesh.setColorAt(i, tc.setHex(it.c)); });
+      mesh.count = items.length; mesh.frustumCulled = false; mesh.castShadow = this.shadows && !this.weak; this.scene.add(mesh);
+      (this.treeMeshes = this.treeMeshes || []).push({ mesh, gone: items.map((it) => it.gone) });
     });
     // 河名牌
     rivers.forEach((r) => { const mid = r.w[Math.floor(r.w.length / 2)]; const tag = this.makeLabel("tph-river-tag", esc(r.name)); tag.position.set(mid[0], WATER_Y + 0.1, mid[1]); tag.always = true; });
@@ -229,7 +248,7 @@ export class HistoryScene {
       const grp = GROUP[p.group] || GROUP.other;
       const roofMat = mat(new THREE.Color(grp.color).lerp(new THREE.Color(0x3a2a22), 0.35).getHex());
       const rnd = mulberry(idx * 13 + 5);
-      const baseY = this.heightAt(x, z);
+      const baseY = this.heightAtYear(x, z, p.from); // 蓋的那一年的地面
       const R = 0.6 + p.size * 0.42;
       const houses = [];
       const n = p.hill ? 3 : 3 + p.size * 3;
@@ -473,7 +492,7 @@ export class HistoryScene {
       const lift = kind === "mrt" ? 0.55 : kind === "highway" ? 0.42 : kind === "subway" ? 0.05 : 0.06;
       const w = ln.pts.map(([lng, lat]) => toWorld(lng, lat));
       const pts = [];
-      for (let i = 0; i < w.length - 1; i++) { const a = new THREE.Vector3(w[i][0], 0, w[i][1]), b = new THREE.Vector3(w[i + 1][0], 0, w[i + 1][1]); const n = Math.max(4, Math.ceil(a.distanceTo(b) / 0.6)); for (let k = (i === 0 ? 0 : 1); k <= n; k++) { const v = a.clone().lerp(b, k / n); v.y = Math.max(this.heightAt(v.x, v.z), WATER_Y + 0.3) + lift; pts.push(v); } }
+      for (let i = 0; i < w.length - 1; i++) { const a = new THREE.Vector3(w[i][0], 0, w[i][1]), b = new THREE.Vector3(w[i + 1][0], 0, w[i + 1][1]); const n = Math.max(4, Math.ceil(a.distanceTo(b) / 0.6)); for (let k = (i === 0 ? 0 : 1); k <= n; k++) { const v = a.clone().lerp(b, k / n); v.y = Math.max(this.heightAtYear(v.x, v.z, ln.from), WATER_Y + 0.3) + lift; pts.push(v); } }
       const curve = new THREE.CatmullRomCurve3(pts, false, "catmullrom", 0.15);
       const g = new THREE.Group(); g.visible = false; this.scene.add(g);
       const segs = Math.max(40, pts.length * 3);
@@ -502,6 +521,13 @@ export class HistoryScene {
     });
   }
   applyYear(year) {
+    // 地形整地：被開發的山腳這一年起往下壓
+    const tm = this.terrainMorph; if (tm && tm.year !== year) {
+      tm.year = year; const pos = this.terrainGeo.attributes.position;
+      for (const [i, pairs] of tm.morph) { let k = 0; for (const p of pairs) if (p.from <= year) k = Math.max(k, p.k); pos.setY(i, k > 0 ? THREE.MathUtils.lerp(tm.rawY[i], tm.flatY[i], k) : tm.rawY[i]); }
+      pos.needsUpdate = true; this.terrainGeo.computeVertexNormals();
+      (this.treeMeshes || []).forEach((t) => { let n = 0; while (n < t.gone.length && t.gone[n] > year) n += 1; t.mesh.count = n; });
+    }
     // 地形上色：市區色塊
     const u = this.urban; if (u && u.year !== year) {
       u.year = year;
