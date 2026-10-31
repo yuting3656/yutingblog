@@ -1,11 +1,12 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { QUOTES, EPISODE } from './data.js';
+import { QUOTES, EPISODE } from './data.js?v=2';
 
 // 小型錄音室，全部以幾何模型生成，與前兩篇共用同版本的 three.js。
 export function mountRadio(root) {
   if (!root || root.dataset.mounted) return;
   root.dataset.mounted = 'true';
+  const categories = [...new Set(QUOTES.map(q => q.category))];
   root.innerHTML = `
     <header class="kyr-header">
       <div><div class="kyr-eyebrow">YUTING'S LITTLE RADIO · 01</div>
@@ -25,7 +26,10 @@ export function mountRadio(root) {
         <button type="button" class="kyr-prev" aria-label="上一句語錄">← 上一句</button>
         <button type="button" class="kyr-next">下一句 →</button>
         <button type="button" class="kyr-auto" aria-pressed="true">暫停輪播</button>
-        <div class="kyr-dots">${QUOTES.map((q, i) => `<button type="button" class="kyr-dot" data-index="${i}" aria-label="第 ${i + 1} 句：${q.topic}" aria-pressed="false"></button>`).join('')}</div>
+        <div class="kyr-picker">
+          <label>主題<select class="kyr-category"><option value="">全部 ${QUOTES.length} 句</option>${categories.map(category => `<option value="${category}">${category}</option>`).join('')}</select></label>
+          <label>挑一句<select class="kyr-select"></select></label>
+        </div>
       </nav>
       <div class="kyr-progress" aria-hidden="true"></div>
     </div>`;
@@ -33,20 +37,33 @@ export function mountRadio(root) {
   const $ = (selector) => root.querySelector(selector);
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let index = 0, playing = !reduced, elapsed = 0, inView = true, sceneHandle;
+  let available = QUOTES.map((_, i) => i);
   const interval = 12000;
+  function populateChoices() {
+    const select = $('.kyr-select');
+    select.replaceChildren(...available.map(i => {
+      const option = document.createElement('option');
+      option.value = String(i);
+      option.textContent = `${String(i + 1).padStart(2, '0')} · ${QUOTES[i].topic}`;
+      return option;
+    }));
+  }
+  function step(direction) {
+    return available[(available.indexOf(index) + direction + available.length) % available.length];
+  }
   function show(next) {
     index = (next + QUOTES.length) % QUOTES.length;
     const q = QUOTES[index];
     elapsed = 0;
     root.style.setProperty('--kyr-accent', q.color);
-    $('.kyr-topic').textContent = `蔡康永 / ${q.topic}`;
-    $('.kyr-counter').textContent = `${String(index + 1).padStart(2, '0')} / ${String(QUOTES.length).padStart(2, '0')}`;
+    $('.kyr-topic').textContent = `${q.category} / ${q.topic}`;
+    $('.kyr-counter').textContent = `${String(available.indexOf(index) + 1).padStart(2, '0')} / ${String(available.length).padStart(2, '0')}`;
     $('.kyr-question p').textContent = q.prompt;
     $('.kyr-quote').textContent = q.text;
     $('.kyr-note').textContent = q.note;
     $('.kyr-source').textContent = `短句來源：${q.source} ↗`;
     $('.kyr-source').href = q.url;
-    root.querySelectorAll('.kyr-dot').forEach((dot, i) => dot.setAttribute('aria-pressed', String(i === index)));
+    $('.kyr-select').value = String(index);
     if (sceneHandle) sceneHandle.setQuote(q, index);
   }
   function syncPlaying() {
@@ -55,16 +72,21 @@ export function mountRadio(root) {
     $('.kyr-live').setAttribute('aria-live', playing ? 'off' : 'polite');
   }
   function manual(next) { playing = false; syncPlaying(); show(next); }
-  $('.kyr-prev').addEventListener('click', () => manual(index - 1));
-  $('.kyr-next').addEventListener('click', () => manual(index + 1));
+  $('.kyr-prev').addEventListener('click', () => manual(step(-1)));
+  $('.kyr-next').addEventListener('click', () => manual(step(1)));
   $('.kyr-auto').addEventListener('click', () => { playing = !playing; elapsed = 0; syncPlaying(); });
-  root.querySelectorAll('.kyr-dot').forEach(dot => dot.addEventListener('click', () => manual(Number(dot.dataset.index))));
+  $('.kyr-select').addEventListener('change', event => manual(Number(event.target.value)));
+  $('.kyr-category').addEventListener('change', event => {
+    available = QUOTES.map((_, i) => i).filter(i => !event.target.value || QUOTES[i].category === event.target.value);
+    populateChoices(); manual(available[0]);
+  });
   root.addEventListener('keydown', event => {
+    if (event.target.closest('select')) return;
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-      event.preventDefault(); manual(index + (event.key === 'ArrowRight' ? 1 : -1));
+      event.preventDefault(); manual(step(event.key === 'ArrowRight' ? 1 : -1));
     }
   });
-  show(0); syncPlaying();
+  populateChoices(); show(0); syncPlaying();
   const stage = $('.kyr-stage');
   try { sceneHandle = createStudio(stage, reduced); sceneHandle.setQuote(QUOTES[0], 0); }
   catch (error) {
@@ -78,7 +100,7 @@ export function mountRadio(root) {
     if (!root.isConnected) { observer.disconnect(); sceneHandle?.dispose(); return; }
     const delta = Math.min(now - last, 100); last = now;
     if (inView && !document.hidden) {
-      if (playing) { elapsed += delta; if (elapsed >= interval) show(index + 1); }
+      if (playing) { elapsed += delta; if (elapsed >= interval) show(step(1)); }
       $('.kyr-progress').style.width = playing ? `${elapsed / interval * 100}%` : '0%';
       sceneHandle?.render(now / 1000);
     }
@@ -277,7 +299,7 @@ function createStudio(stage, reduced) {
     if (!width || !height) return;
     camera.aspect = width / height; camera.updateProjectionMatrix();
     renderer.setSize(width, height, false);
-    const distance = width < 500 ? 13.9 : 11.8;
+    const distance = width < 350 ? 18 : width < 500 ? 13.9 : 11.8;
     camera.position.set(0, 5.3, distance);
     controls.update(); dirty = true;
   }

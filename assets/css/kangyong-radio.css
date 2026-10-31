@@ -18,8 +18,8 @@
 .kyr-root *, .kyr-root *::before, .kyr-root *::after { box-sizing: border-box; }
 .kyr-root a { color: var(--kyr-accent); text-decoration: none; }
 .kyr-root a:hover { text-decoration: underline; }
-.kyr-root button { font: inherit; color: inherit; cursor: pointer; touch-action: manipulation; }
-.kyr-root button:focus-visible, .kyr-root a:focus-visible { outline: 3px solid #fff2cc; outline-offset: 4px; }
+.kyr-root button, .kyr-root select { font: inherit; color: inherit; cursor: pointer; touch-action: manipulation; }
+.kyr-root button:focus-visible, .kyr-root a:focus-visible, .kyr-root select:focus-visible { outline: 3px solid #fff2cc; outline-offset: 4px; }
 .kyr-header { position: absolute; top: 0; left: 0; right: 0; z-index: 3; padding: 25px 30px; display: flex; justify-content: space-between; align-items: start; gap: 12px; background: linear-gradient(#25252af5, #25252a00); pointer-events: none; }
 .kyr-header a { pointer-events: auto; }
 .kyr-eyebrow { color: #c5b7a6; font-size: 10px; letter-spacing: .21em; }
@@ -49,10 +49,9 @@
 .kyr-controls button:hover { background: #ffffff0d; }
 .kyr-controls .kyr-next { background: var(--kyr-accent); border-color: var(--kyr-accent); color: #282429; font-weight: 600; }
 .kyr-controls .kyr-next:hover { filter: brightness(1.12); background: var(--kyr-accent); }
-.kyr-dots { margin-left: auto; display: flex; gap: 0; }
-.kyr-controls .kyr-dot { border: 0; border-radius: 0; background: none; padding: 0; width: 27px; min-height: 44px; position: relative; }
-.kyr-dot::before { content: ''; display: block; margin: auto; height: 5px; width: 5px; border-radius: 50%; background: #716962; transition: transform .2s; }
-.kyr-dot[aria-pressed="true"]::before { background: var(--kyr-accent); transform: scale(1.5); }
+.kyr-picker { margin-left: auto; display: flex; gap: 8px; width: 360px; max-width: 100%; }
+.kyr-picker label { display: flex; align-items: center; gap: 5px; margin: 0; min-width: 0; flex: 1; font-size: 10px; font-weight: 400; color: #bdb7ae; white-space: nowrap; }
+.kyr-root .kyr-picker select { width: 100%; min-width: 0; min-height: 44px; margin: 0; padding: 8px 6px; border: 1px solid #d5c5b139; border-radius: 8px; background: #303036; color: #f6eddf; font-size: 11px; }
 .kyr-progress { position: absolute; bottom: 0; height: 2px; left: 0; background: var(--kyr-accent); width: 0; }
 .kyr-hint { position: absolute; right: 24px; top: 123px; color: #c7beb0; font-size: 10px; z-index: 2; pointer-events: none; }
 .kyr-loading { padding: 45px 24px; color: #e7d1b1; }
@@ -79,8 +78,14 @@
   .kyr-source { margin-bottom: 12px; }
   .kyr-controls { gap: 6px; }
   .kyr-controls button { padding: 8px 10px; }
-  .kyr-dots { width: 100%; justify-content: center; margin: 2px 0 -9px; }
-  .kyr-controls .kyr-dot { width: 34px; }
+  .kyr-picker { width: 100%; margin: 4px 0 0; }
+}
+@media (max-width: 360px) {
+  .kyr-root { height: 860px; }
+  .kyr-eyebrow { font-size: 8px; letter-spacing: .1em; }
+  .kyr-subtitle { font-size: 9px; }
+  .kyr-onair { position: absolute; right: 14px; top: 20px; }
+  .kyr-header > div { width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
   .kyr-root *, .kyr-root *::before { transition: none !important; }
