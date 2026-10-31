@@ -1,0 +1,87 @@
+.kyr-root {
+  --kyr-accent: #e7b978;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 790px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #28282c;
+  color: #f6eddf;
+  margin: 32px 0 22px;
+  box-shadow: 0 18px 65px #29221d25;
+  font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", sans-serif;
+  line-height: 1.6;
+  font-size: 15px;
+  text-align: left;
+}
+.kyr-root *, .kyr-root *::before, .kyr-root *::after { box-sizing: border-box; }
+.kyr-root a { color: var(--kyr-accent); text-decoration: none; }
+.kyr-root a:hover { text-decoration: underline; }
+.kyr-root button { font: inherit; color: inherit; cursor: pointer; touch-action: manipulation; }
+.kyr-root button:focus-visible, .kyr-root a:focus-visible { outline: 3px solid #fff2cc; outline-offset: 4px; }
+.kyr-header { position: absolute; top: 0; left: 0; right: 0; z-index: 3; padding: 25px 30px; display: flex; justify-content: space-between; align-items: start; gap: 12px; background: linear-gradient(#25252af5, #25252a00); pointer-events: none; }
+.kyr-header a { pointer-events: auto; }
+.kyr-eyebrow { color: #c5b7a6; font-size: 10px; letter-spacing: .21em; }
+.kyr-title { margin-top: 6px; font: 500 35px/1.35 "Songti TC", "Noto Serif TC", Georgia, serif; letter-spacing: .08em; }
+.kyr-subtitle { font-size: 12px; color: #b5afa7; margin-top: 5px; }
+.kyr-onair { border: 1px solid #d7977055; border-radius: 5px; padding: 5px 10px; color: #f5bf9d; font-size: 10px; letter-spacing: .17em; white-space: nowrap; }
+.kyr-onair::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: #ef986f; margin-right: 7px; box-shadow: 0 0 10px #ef986f; }
+.kyr-stage { position: absolute; inset: 105px 0 260px; touch-action: pan-y; }
+.kyr-stage canvas { width: 100%; height: 100%; display: block; touch-action: pan-y !important; }
+.kyr-question { position: absolute; left: 24px; top: 143px; z-index: 2; max-width: 240px; pointer-events: none; padding: 11px 14px; background: #e7dccb; color: #4a443e; border-radius: 12px 12px 12px 2px; box-shadow: 0 4px 20px #0001; }
+.kyr-question small { display: block; color: #7a6b5b; font-size: 10px; letter-spacing: .08em; margin-bottom: 5px; }
+.kyr-question p { margin: 0; font-size: 13px; line-height: 1.65; }
+.kyr-names { position: absolute; top: 440px; left: 20%; right: 20%; display: flex; justify-content: space-between; z-index: 2; pointer-events: none; font-size: 12px; letter-spacing: .13em; }
+.kyr-names span { padding: 4px 12px; border: 1px solid #dfc4a436; background: #26262bd9; border-radius: 20px; }
+.kyr-names span:last-child { color: var(--kyr-accent); border-color: var(--kyr-accent); }
+.kyr-card { position: absolute; bottom: 0; left: 0; right: 0; z-index: 4; padding: 19px 30px 20px; background: #242429f5; border-top: 1px solid #ffffff15; }
+.kyr-meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 11px; letter-spacing: .1em; color: #b5afa7; }
+.kyr-topic { color: var(--kyr-accent); }
+.kyr-counter { font-family: ui-monospace, Menlo, monospace; }
+.kyr-root blockquote.kyr-quote { margin: 12px 0 8px; border: 0; padding: 0; font: 500 clamp(22px, 3vw, 31px)/1.65 "Songti TC", "Noto Serif TC", Georgia, serif; font-style: normal; letter-spacing: .035em; min-height: 102px; color: #faf0e0; }
+.kyr-quote::before { content: '「'; color: var(--kyr-accent); }
+.kyr-quote::after { content: '」'; color: var(--kyr-accent); }
+.kyr-root .kyr-note { font-size: 12px; color: #bdb7ae; min-height: 38px; margin: 0 0 8px; line-height: 1.65; }
+.kyr-source { font-size: 10px; display: inline-block; margin-bottom: 16px; }
+.kyr-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.kyr-controls button { border: 1px solid #d5c5b139; background: transparent; border-radius: 8px; padding: 9px 12px; min-height: 44px; font-size: 12px; }
+.kyr-controls button:hover { background: #ffffff0d; }
+.kyr-controls .kyr-next { background: var(--kyr-accent); border-color: var(--kyr-accent); color: #282429; font-weight: 600; }
+.kyr-controls .kyr-next:hover { filter: brightness(1.12); background: var(--kyr-accent); }
+.kyr-dots { margin-left: auto; display: flex; gap: 0; }
+.kyr-controls .kyr-dot { border: 0; border-radius: 0; background: none; padding: 0; width: 27px; min-height: 44px; position: relative; }
+.kyr-dot::before { content: ''; display: block; margin: auto; height: 5px; width: 5px; border-radius: 50%; background: #716962; transition: transform .2s; }
+.kyr-dot[aria-pressed="true"]::before { background: var(--kyr-accent); transform: scale(1.5); }
+.kyr-progress { position: absolute; bottom: 0; height: 2px; left: 0; background: var(--kyr-accent); width: 0; }
+.kyr-hint { position: absolute; right: 24px; top: 123px; color: #c7beb0; font-size: 10px; z-index: 2; pointer-events: none; }
+.kyr-loading { padding: 45px 24px; color: #e7d1b1; }
+.kyr-error { position: absolute; top: 50%; left: 20px; right: 20px; transform: translateY(-50%); padding: 16px; text-align: center; color: #e7d1b1; font-size: 13px; }
+.kyr-transcript { font-size: .9em; }
+@media (min-width: 1000px) {
+  .kyr-question { max-width: 270px; left: 35px; top: 160px; }
+}
+@media (max-width: 600px) {
+  .kyr-root { height: 810px; border-radius: 15px; margin: 22px 0; }
+  .kyr-header { padding: 20px 18px; }
+  .kyr-title { font-size: 29px; }
+  .kyr-subtitle { font-size: 10px; }
+  .kyr-onair { padding: 4px 6px; font-size: 8px; }
+  .kyr-stage { inset: 180px 0 290px; }
+  .kyr-question { top: 126px; left: 18px; right: 18px; max-width: none; padding: 8px 12px; }
+  .kyr-question small { font-size: 9px; margin-bottom: 2px; }
+  .kyr-question p { font-size: 12px; }
+  .kyr-names { top: 432px; left: 13%; right: 13%; font-size: 11px; }
+  .kyr-hint { top: 199px; right: 14px; font-size: 9px; }
+  .kyr-card { padding: 16px 18px 17px; }
+  .kyr-root blockquote.kyr-quote { font-size: 23px; min-height: 100px; line-height: 1.65; margin-top: 9px; }
+  .kyr-root .kyr-note { min-height: 38px; font-size: 11px; }
+  .kyr-source { margin-bottom: 12px; }
+  .kyr-controls { gap: 6px; }
+  .kyr-controls button { padding: 8px 10px; }
+  .kyr-dots { width: 100%; justify-content: center; margin: 2px 0 -9px; }
+  .kyr-controls .kyr-dot { width: 34px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kyr-root *, .kyr-root *::before { transition: none !important; }
+}
