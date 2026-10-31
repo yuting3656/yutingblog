@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "留一點光：王偉忠 × 蔡康永，兩個人的 3D 深夜對談"
-permalink: 'diary/:year-:month-:day'
+permalink: /diary/2026-11-01
 date: 2026-11-01 00:00:00 +0800
 tags: 今日隨意 蔡康永 王偉忠 訪談 three.js 3D 手機開發
 classes: wide
