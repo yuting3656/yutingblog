@@ -1,23 +1,25 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { QUOTES, EPISODE } from './data.js?v=2';
+import { QUOTES as DEFAULT_QUOTES, EPISODE as DEFAULT_EPISODE } from './data.js?v=2';
 
 // 小型錄音室，全部以幾何模型生成，與前兩篇共用同版本的 three.js。
-export function mountRadio(root) {
+export function mountRadio(root, options = {}) {
   if (!root || root.dataset.mounted) return;
   root.dataset.mounted = 'true';
+  const QUOTES = options.quotes || DEFAULT_QUOTES;
+  const EPISODE = options.episode || DEFAULT_EPISODE;
   const categories = [...new Set(QUOTES.map(q => q.category))];
   root.innerHTML = `
     <header class="kyr-header">
-      <div><div class="kyr-eyebrow">YUTING'S LITTLE RADIO · 01</div>
-        <div class="kyr-title">留一點光</div>
-        <div class="kyr-subtitle">王偉忠 × 蔡康永 · ${EPISODE.date} 訪談摘句</div>
-      </div><a class="kyr-onair" href="${EPISODE.url}" target="_blank" rel="noopener noreferrer" aria-label="在 YouTube 開啟原始訪談">原始訪談 ↗</a>
+      <div><div class="kyr-eyebrow">${options.eyebrow || "YUTING'S LITTLE RADIO · 01"}</div>
+        <div class="kyr-title">${options.title || '留一點光'}</div>
+        <div class="kyr-subtitle">${options.subtitle || `王偉忠 × 蔡康永 · ${EPISODE.date} 訪談摘句`}</div>
+      </div><a class="kyr-onair" href="${EPISODE.url}" target="_blank" rel="noopener noreferrer">${options.sourceLabel || '原始訪談'} ↗</a>
     </header>
     <div class="kyr-question"><small>主題提問 · 編輯整理</small><p></p></div>
     <div class="kyr-hint">拖曳轉動 · 兩指縮放</div>
-    <div class="kyr-stage" role="img" aria-label="暖色錄音室，王偉忠與蔡康永坐在圓桌兩側，桌上有兩支麥克風與一盞燈。"></div>
-    <div class="kyr-names"><span>王偉忠</span><span>蔡康永 ✦</span></div>
+    <div class="kyr-stage" role="img" aria-label="${options.sceneLabel || '暖色錄音室，王偉忠與蔡康永坐在圓桌兩側，桌上有兩支麥克風與一盞燈。'}"></div>
+    <div class="kyr-names">${(options.names || ['王偉忠', '蔡康永 ✦']).map(name => `<span>${name}</span>`).join('')}</div>
     <div class="kyr-card">
       <div class="kyr-meta"><span class="kyr-topic"></span><span class="kyr-counter"></span></div>
       <div class="kyr-live" aria-live="off" aria-atomic="true"><blockquote class="kyr-quote"></blockquote><p class="kyr-note"></p></div>
@@ -56,12 +58,13 @@ export function mountRadio(root) {
     const q = QUOTES[index];
     elapsed = 0;
     root.style.setProperty('--kyr-accent', q.color);
-    $('.kyr-topic').textContent = `${q.category} / ${q.topic}`;
     $('.kyr-counter').textContent = `${String(available.indexOf(index) + 1).padStart(2, '0')} / ${String(available.length).padStart(2, '0')}`;
     $('.kyr-question p').textContent = q.prompt;
     $('.kyr-quote').textContent = q.text;
+    $('.kyr-quote').classList.toggle('is-summary', q.kind === 'summary');
+    $('.kyr-topic').textContent = `${q.kind === 'summary' ? '主張整理 · ' : options.showKind ? '原話摘句 · ' : ''}${q.category} / ${q.topic}`;
     $('.kyr-note').textContent = q.note;
-    $('.kyr-source').textContent = `短句來源：${q.source} ↗`;
+    $('.kyr-source').textContent = `${q.kind === 'summary' ? '整理依據' : '短句來源'}：${q.source} ↗`;
     $('.kyr-source').href = q.url;
     $('.kyr-select').value = String(index);
     if (sceneHandle) sceneHandle.setQuote(q, index);
@@ -88,9 +91,9 @@ export function mountRadio(root) {
   });
   populateChoices(); show(0); syncPlaying();
   const stage = $('.kyr-stage');
-  try { sceneHandle = createStudio(stage, reduced); sceneHandle.setQuote(QUOTES[0], 0); }
+  try { sceneHandle = (options.createScene || createStudio)(stage, reduced); sceneHandle.setQuote(QUOTES[0], 0); }
   catch (error) {
-    stage.innerHTML = '<div class="kyr-error">這台裝置暫時無法開啟 3D 錄音室。<br>語錄仍可用下方按鈕閱讀。</div>';
+    stage.innerHTML = '<div class="kyr-error">這台裝置暫時無法開啟 3D 場景。<br>語錄仍可用下方按鈕閱讀。</div>';
     console.warn('Radio 3D unavailable:', error);
   }
   const observer = new IntersectionObserver(entries => { inView = entries[0].isIntersecting; }, { threshold: 0.05 });

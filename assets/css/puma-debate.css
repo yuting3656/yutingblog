@@ -1,0 +1,30 @@
+.puma-root { background: #f8f0e5; color: #211d1d; --kyr-accent: #db6a41; border: 1px solid #db6a4129; }
+.puma-root .kyr-header { background: linear-gradient(#f8f0e5ff, #f8f0e500); }
+.puma-root .kyr-header > div { width: 100%; }
+.puma-root .kyr-title { font-family: "PingFang TC", "Noto Sans TC", sans-serif; font-weight: 900; letter-spacing: -.04em; }
+.puma-root .kyr-card { background: #fffaf3fa; border-top: 3px solid #db6a41; }
+.puma-root .kyr-eyebrow { color: #8c482e; font-size: 9px; letter-spacing: .12em; }
+.puma-root .kyr-subtitle, .puma-root .kyr-hint { color: #665b57; }
+.puma-root .kyr-onair { position: absolute; right: 24px; top: 25px; background: #db6a41; border-color: #db6a41; color: #211d1d; }
+.puma-root .kyr-onair::before { background: #211d1d; box-shadow: none; }
+.puma-root .kyr-question { background: #f3d9c1; color: #35231c; border-left: 4px solid #db6a41; }
+.puma-root .kyr-question small { color: #78523c; }
+.puma-root .kyr-names { justify-content: center; }
+.puma-root .kyr-names span { background: #fff7e9ee; color: #211d1d !important; border-color: #db6a41 !important; }
+.puma-root blockquote.kyr-quote { color: #211d1d; font-weight: 700; }
+.puma-root .kyr-note, .puma-root .kyr-meta, .puma-root .kyr-picker label { color: #665b57; }
+.puma-root a, .puma-root .kyr-topic { color: #9b3e20; }
+.puma-root .kyr-controls button { border-color: #211d1d33; }
+.puma-root .kyr-controls button:hover { background: #db6a4114; }
+.puma-root .kyr-controls .kyr-next { background: #db6a41; color: #211d1d; }
+.puma-root button:focus-visible, .puma-root a:focus-visible, .puma-root select:focus-visible { outline-color: #9b3e20; }
+.puma-root .kyr-quote.is-summary::before, .puma-root .kyr-quote.is-summary::after { content: none; }
+.puma-root .kyr-topic { max-width: 80%; line-height: 1.6; }
+.puma-root .kyr-counter { white-space: nowrap; }
+.puma-root .kyr-picker select { background: #fff8ee; border-color: #211d1d33; color: #211d1d; }
+@media (max-width: 600px) {
+  .puma-root .kyr-meta { font-size: 10px; }
+  .puma-root .kyr-title { font-size: 29px; }
+  .puma-root .kyr-eyebrow { font-size: 8px; letter-spacing: .06em; max-width: calc(100% - 70px); }
+  .puma-root .kyr-onair { right: 15px; top: 20px; }
+}
