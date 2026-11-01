@@ -28,3 +28,9 @@
   .puma-root .kyr-eyebrow { font-size: 8px; letter-spacing: .06em; max-width: calc(100% - 70px); }
   .puma-root .kyr-onair { right: 15px; top: 20px; }
 }
+
+/* Reserve room for paragraph context, including narrow Android screens. */
+.puma-root { height: 850px; }
+.puma-root .kyr-note { min-height: 60px; }
+@media (max-width: 600px) { .puma-root { height: 900px; } .puma-root .kyr-note { min-height: 74px; } }
+@media (max-width: 360px) { .puma-root { height: 960px; } }

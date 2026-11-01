@@ -1,14 +1,14 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { mountRadio } from '../kangyong-radio/radio.js?v=3';
-import { QUOTES, EPISODE } from './data.js?v=2';
+import { QUOTES, EPISODE } from './data.js?v=3';
 
 export function mountDebate(root) {
   mountRadio(root, {
     quotes: QUOTES, episode: EPISODE, createScene: createDebateStage,
     title: '台北順起來', eyebrow: 'THE TAIPEI CURRENT → FUTURE SOON',
-    subtitle: '沈伯洋視角 · 2026.10.31 台北辯論筆記',
-    sourceLabel: '辯論紀錄', showKind: true,
+    subtitle: '你說，我做 · 官方申論與結辯筆記',
+    sourceLabel: '官方整理', showKind: true,
     names: ['沈伯洋 · 台北順起來'],
     sceneLabel: '沈伯洋站在陽光橘色講台前，洋流飄帶在風中飄動；周圍有台北城市、樹木、住宅與公車模型，切換主題會點亮城市區塊。',
   });
@@ -128,7 +128,7 @@ function createDebateStage(stage, reduced) {
   }
   // 每一個主題是一小塊市民日常，切換時點亮對應區塊。
   const neighborhoods = [];
-  const names = ['市民主義', '綠意與照顧', '都更與日常', '未來與專業', '正面選擇'];
+  const names = ['申論與承諾', '把市府打開', '從日常開始', '城市接住你', '先有市民'];
   const locations = [[-2.5, .55], [-1.6, 1.85], [1.65, 1.82], [2.6, .3], [-2.3, -1.15]];
   for (let i = 0; i < names.length; i++) {
     const group = new THREE.Group(); const [x, z] = locations[i]; group.position.set(x, .11, z); world.add(group);
