@@ -26,7 +26,7 @@ function loadXMLDoc() {
       this.responseText;
     }
   };
-  xhttp.open("GET", "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=5min&apikey=QJJEIG66V8ASQX57", true);
+  xhttp.open("GET", "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=5min&apikey=YOUR_ALPHA_VANTAGE_API_KEY", true);
   xhttp.send();
 }
 
@@ -59,7 +59,7 @@ function loadXMLDoc() {
       this.responseText;
     }
   };
-  xhttp.open("GET", "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=5min&apikey=QJJEIG66V8ASQX57", true);
+  xhttp.open("GET", "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=5min&apikey=YOUR_ALPHA_VANTAGE_API_KEY", true);
   xhttp.send();
 }
 </script>

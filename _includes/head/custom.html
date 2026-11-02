@@ -1,21 +1,3 @@
-<!-- start custom head snippets -->
-
-<!-- insert favicons. use https://realfavicongenerator.net/ -->
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YVGM2XGHHV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MHG38MPRZ9');
-</script>
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="{{site.url}}/{{ site.baseurl }}/favicon.ico">
-    {%- feed_meta -%}
-  </head>
+<!-- Site-specific additions inside the layout's existing head element. -->
+<link rel="shortcut icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}">
+{% include analytics.html %}
