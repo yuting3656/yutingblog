@@ -1027,7 +1027,6 @@ export function mountAodi(container) {
   unlockEl.addEventListener("click", (e) => { if (e.target === unlockEl) closeUnlock(); });
   const applyPriv = (priv) => {
     PRIV = priv; renderTree(priv.tree, priv.me); unlockBtn.textContent = "🔓 家族版"; unlockBtn.setAttribute("aria-pressed", "true");
-    const sec = document.getElementById("adi-family-section"); if (sec && priv.post && priv.post.section) { sec.innerHTML = priv.post.section; sec.classList.add("show"); }
     const intro = document.getElementById("adi-family-intro"); if (intro && priv.post && priv.post.intro) { intro.textContent = " " + priv.post.intro; intro.classList.add("show"); }
     const notes = document.getElementById("adi-family-notes"); if (notes && priv.post && priv.post.notes) { notes.innerHTML = priv.post.notes.join(""); notes.classList.add("show"); }
     showEvent(scene.eventIdx, scene.event);
@@ -1035,7 +1034,7 @@ export function mountAodi(container) {
   const lock = () => {
     PRIV = null; try { sessionStorage.removeItem("adi-pw"); } catch (e) { /* 無痕模式 */ }
     renderTree(TREE, ME); unlockBtn.textContent = "🔑 家族版"; unlockBtn.setAttribute("aria-pressed", "false"); treeEl.classList.remove("only");
-    ["adi-family-section", "adi-family-intro", "adi-family-notes"].forEach((id) => { const el = document.getElementById(id); if (el) { el.innerHTML = ""; el.classList.remove("show"); } });
+    ["adi-family-intro", "adi-family-notes"].forEach((id) => { const el = document.getElementById(id); if (el) { el.innerHTML = ""; el.classList.remove("show"); } });
     showEvent(scene.eventIdx, scene.event);
   };
   unlockEl.querySelector("form").addEventListener("submit", async (e) => {
@@ -1063,7 +1062,6 @@ export function mountAodi(container) {
     card.innerHTML = `<div class="adi-axis">第 ${i + 1}／${EVENTS.length} 站・${esc(ev.era)}</div><h4>${esc(ev.title)}</h4>` +
       ev.story.map((s) => `<p>${esc(s)}</p>`).join("") +
       `<div class="adi-chips">${(ev.focus || []).map(placeChip).join("")}</div>` +
-      (ev.gen && PRIV ? `<div class="adi-ours-line">⭐ 我們這一房・第 ${ev.gen} 代：${LINE[ev.gen - 1] ? `<button type="button" class="adi-chip adi-who adi-line" data-who="${esc(LINE[ev.gen - 1])}">${esc(LINE[ev.gen - 1])}</button>` : "<i>族譜圖上還空著</i>"}${ev.ours ? `<span>${esc(ev.ours)}</span>` : ""}</div>` : "") +
       (ev.gen && !PRIV ? `<div class="adi-sub">🔒 這一站的人名在家族版裡 <button type="button" class="adi-chip adi-unlock-chip">🔑 解鎖</button></div>` : "") +
       (ev.people && ev.people.length ? `<div class="adi-sub">🌳 這一站的人（族譜第 ${ev.gen} 代）</div><div class="adi-chips">${ev.people.map((n) => `<button type="button" class="adi-chip adi-who${LINE.includes(n) ? " adi-line" : ""}" data-who="${esc(n)}">${esc(n)}</button>`).join("")}</div>` : "") +
       bornHtml(i, ev) +
