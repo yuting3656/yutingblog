@@ -156,3 +156,31 @@
 .adi-family-section { display: none; }
 .adi-family-section.show { display: block; }
 span.adi-family-section.show { display: inline; }
+/* 樹狀圖視角（跟原圖一樣：世代橫列、名字直寫） */
+.adi-chart { display: none; flex: 1 1 auto; overflow: auto; background: #fff; }
+.adi-tree.chart .adi-tree-body { display: none; }
+.adi-tree.chart .adi-chart { display: block; }
+.adi-chart-svg { display: block; font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+.adi-chart-svg .adi-lines line { stroke: #1f1d1b; stroke-width: 1.6; }
+.adi-chart-svg g.adi-node { cursor: pointer; }
+.adi-chart-svg g.adi-node rect { fill: transparent; }
+.adi-chart-svg g.adi-node:hover rect { fill: rgba(182,83,44,.1); }
+.adi-chart-svg .adi-nm { font-size: 15px; fill: #1f1d1b; font-weight: 600; letter-spacing: 1px; }
+.adi-chart-svg .adi-spn { font-size: 12px; fill: #777; }
+.adi-chart-svg .adi-ntn { font-size: 11px; fill: #b6532c; }
+.adi-chart-svg .adi-lockt { font-size: 11px; fill: #8a5a10; }
+.adi-chart-svg g.adi-node.on rect { fill: rgba(182,83,44,.12); }
+.adi-chart-svg g.adi-node.on .adi-nm { fill: #b6532c; }
+.adi-chart-svg g.adi-node.hit rect { fill: #1f1d1b; }
+.adi-chart-svg g.adi-node.hit .adi-nm { fill: #fff; }
+.adi-chart-svg g.adi-node.line rect { stroke: #d9a441; stroke-width: 2; }
+.adi-chart-svg g.adi-node.line .adi-nm { fill: #8a5a10; }
+.adi-chart-svg g.adi-node.me rect { fill: #d9a441; stroke: #d9a441; }
+.adi-chart-svg g.adi-node.me .adi-nm { fill: #1f1d1b; }
+.adi-chart-svg g.adi-genbox rect { fill: #ffff00; stroke: #e5d800; }
+.adi-chart-svg g.adi-genbox text { font-size: 15px; fill: #1f1d1b; }
+.adi-chart-svg g.adi-genbox.on rect { fill: #b6532c; stroke: #b6532c; }
+.adi-chart-svg g.adi-genbox.on text { fill: #fff; }
+.adi-tree-gens .adi-view { border-color: #1f1d1b; }
+.adi-tree-gens .adi-view[aria-pressed="true"] { background: #1f1d1b; color: #fff; }
+.adi-tree.chart .adi-tree-head small::after { content: "　樹狀圖可以左右、上下捲。"; color: #999; }

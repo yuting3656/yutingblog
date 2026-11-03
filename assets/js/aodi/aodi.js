@@ -921,21 +921,72 @@ export function mountAodi(container) {
     const below = n.below ? `<ul><li class="adi-locked" data-gen="${gen + 1}" data-name=""><span class="adi-person"><i class="adi-nt">🔒 ${esc(n.below)}</i></span></li></ul>` : "";
     return `<li data-gen="${gen}" data-name="${esc(n.name)}"><span class="adi-person"><b>${esc(n.name)}</b>${tags.join("")}</span>${kids ? `<ul>${kids}</ul>` : below}</li>`;
   };
+  // 樹狀圖（跟家裡那張圖一樣：世代橫列、名字直寫、配偶寫在左邊、上面一條橫槓接子女）
+  const renderChart = (tree) => {
+    const SLOT = 46, ROW = 118, TOP = 28, LEFT = 40, CH = 17; // 一格寬、一代高、字高
+    const nodes = []; let leaf = 0, maxGen = 1;
+    const layout = (n, gen) => {
+      const o = { n, gen, kids: [] }; maxGen = Math.max(maxGen, gen);
+      const kids = n.kids || (n.below ? [{ name: "🔒", note: n.below, locked: true }] : []);
+      if (!kids.length) { o.x = leaf * SLOT; leaf += 1; }
+      else { o.kids = kids.map((k) => layout(k, gen + 1)); o.x = (o.kids[0].x + o.kids[o.kids.length - 1].x) / 2; }
+      nodes.push(o); return o;
+    };
+    layout(tree, 1);
+    const W = Math.max(420, LEFT + leaf * SLOT + 20), H = TOP + maxGen * ROW + 20;
+    const yOf = (gen) => TOP + (gen - 1) * ROW;
+    const vt = (x, y, txt, cls) => `<text class="${cls}" x="${x}" y="${y}" style="writing-mode:vertical-rl;text-orientation:mixed">${esc(txt)}</text>`;
+    let lines = "", texts = "";
+    for (const o of nodes) {
+      const x = LEFT + o.x + SLOT / 2, y = yOf(o.gen);
+      const nameLen = o.n.name.length, h = nameLen * CH + 4;
+      const note = o.n.locked ? o.n.note : (o.n.note && o.n.note.length <= 4 ? `（${o.n.note}）` : ""); // 圖上只放短註記（止／無男／在巴西／小名），長的看清單
+      texts += `<g class="adi-node${o.n.locked ? " adi-locked" : ""}" data-gen="${o.gen}" data-name="${esc(o.n.locked ? "" : o.n.name)}" transform="translate(${x},${y})">` +
+        `<rect x="-14" y="-4" width="28" height="${h + 4}" rx="6"></rect>` +
+        vt(0, 0, o.n.name, "adi-nm") +
+        (o.n.spouse ? vt(-19, 0, o.n.spouse, "adi-spn") : "") +
+        (note ? vt(o.n.locked ? 0 : 0, h + 2, o.n.locked ? "" : note, "adi-ntn") : "") +
+        (o.n.locked ? `<text class="adi-ntn adi-lockt" x="-14" y="${h + 14}" text-anchor="start">${esc(o.n.note.split("（")[0])}（家族版）</text>` : "") +
+        `</g>`;
+      if (o.kids.length) {
+        const bus = y + ROW - 22;
+        lines += `<line x1="${x}" y1="${y + h + (note && !o.n.locked ? note.length * CH : 0)}" x2="${x}" y2="${bus}"></line>`;
+        const x0 = LEFT + o.kids[0].x + SLOT / 2, x1 = LEFT + o.kids[o.kids.length - 1].x + SLOT / 2;
+        lines += `<line x1="${x0}" y1="${bus}" x2="${x1}" y2="${bus}"></line>`;
+        o.kids.forEach((k) => { const kx = LEFT + k.x + SLOT / 2; lines += `<line x1="${kx}" y1="${bus}" x2="${kx}" y2="${yOf(k.gen) - 6}"></line>`; });
+      }
+    }
+    let gens = "";
+    for (let g = 1; g <= maxGen; g++) gens += `<g class="adi-genbox" data-g="${g}" transform="translate(6,${yOf(g)})"><rect x="0" y="-4" width="22" height="30" rx="4"></rect><text x="11" y="16" text-anchor="middle">${g}</text></g>`;
+    return `<svg class="adi-chart-svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><g class="adi-lines">${lines}</g>${texts}<g class="adi-gens-col">${gens}</g></svg>`;
+  };
   const oursBtn = document.createElement("button"); oursBtn.type = "button"; oursBtn.className = "adi-ours"; oursBtn.textContent = "⭐ 只看我們這一房";
   oursBtn.addEventListener("click", () => { const on = !treeEl.classList.contains("only"); treeEl.classList.toggle("only", on); oursBtn.setAttribute("aria-pressed", on ? "true" : "false"); });
   const renderTree = (tree, me) => {
     const total = PRIV ? null : TOTAL;
     const sub = PRIV ? `來台九代・全部名字（家族版）。點名字可以看那一代在年表的哪一站。` : `公開版只有來台第一代；全族 ${total.people} 人、${total.gens} 代，名字按「🔑 家族版」解鎖。`;
-    treeEl.innerHTML = `<div class="adi-tree-head"><b>吳合成・澳底尖山腳吳家族譜</b><small>${sub}</small><button type="button" class="adi-tree-x" title="關閉">✕</button></div><div class="adi-tree-gens">${[1, 2, 3, 4, 5, 6, 7, 8, 9].map((g) => `<button type="button" data-g="${g}">第${g}代</button>`).join("")}</div><div class="adi-tree-body"><ul class="adi-tree-root">${renderNode(tree, 1)}</ul></div>`;
+    treeEl.innerHTML = `<div class="adi-tree-head"><b>吳合成・澳底尖山腳吳家族譜</b><small>${sub}</small><button type="button" class="adi-tree-x" title="關閉">✕</button></div><div class="adi-tree-gens">${[1, 2, 3, 4, 5, 6, 7, 8, 9].map((g) => `<button type="button" data-g="${g}">第${g}代</button>`).join("")}</div><div class="adi-tree-body"><ul class="adi-tree-root">${renderNode(tree, 1)}</ul></div><div class="adi-chart">${renderChart(tree)}</div>`;
+    const viewBtn = document.createElement("button"); viewBtn.type = "button"; viewBtn.className = "adi-view"; viewBtn.textContent = "🌲 樹狀圖";
+    viewBtn.addEventListener("click", () => { const on = !treeEl.classList.contains("chart"); treeEl.classList.toggle("chart", on); viewBtn.textContent = on ? "☰ 清單" : "🌲 樹狀圖"; viewBtn.setAttribute("aria-pressed", on ? "true" : "false");
+      if (on) { const meG = treeEl.querySelector("g.adi-node.me"); if (meG) meG.scrollIntoView({ block: "center", inline: "center" }); else treeEl.querySelector(".adi-chart").scrollTo(0, 0); } try { localStorage.setItem("adi-view", on ? "chart" : "list"); } catch (e) { /* 無痕 */ } });
+    treeEl.querySelector(".adi-tree-gens").appendChild(viewBtn);
+    try { if (localStorage.getItem("adi-view") === "chart") viewBtn.click(); } catch (e) { /* 無痕 */ }
     // 直系：從「我」往上走到吳敝公，整條標 line；我標 me；我的小孩也算
     LINE = []; const meLi = me ? treeEl.querySelector(`li[data-name="${CSS.escape(me)}"]`) : null;
     if (meLi) { meLi.classList.add("me"); let el = meLi; while (el && el.tagName === "LI") { el.classList.add("line"); LINE.unshift(el.dataset.name); el = el.parentElement && el.parentElement.closest("li"); } [...meLi.querySelectorAll(":scope > ul > li")].forEach((k) => { k.classList.add("line"); LINE.push(k.dataset.name); }); }
+    treeEl.querySelectorAll("g.adi-node").forEach((g) => { if (LINE.includes(g.dataset.name)) g.classList.add("line"); if (me && g.dataset.name === me) g.classList.add("me"); });
     if (meLi) treeEl.querySelector(".adi-tree-gens").appendChild(oursBtn);
     treeEl.querySelector(".adi-tree-x").addEventListener("click", () => toggleTree(false));
     treeEl.querySelector(".adi-tree-gens").addEventListener("click", (e) => {
       const b = e.target.closest("button[data-g]"); if (!b) return; const g = Number(b.dataset.g);
       const i = EVENTS.findIndex((ev) => ev.gen === g); if (i >= 0) { scene.setEvent(i); } else markGen(g);
-      const first = treeEl.querySelector(`li[data-gen="${g}"]`); if (first) first.scrollIntoView({ block: "center", behavior: "smooth" });
+      const first = treeEl.querySelector(treeEl.classList.contains("chart") ? `g.adi-genbox[data-g="${g}"]` : `li[data-gen="${g}"]`); if (first) first.scrollIntoView({ block: "center", behavior: "smooth" });
+    });
+    treeEl.querySelector(".adi-chart").addEventListener("click", (e) => {
+      const g = e.target.closest("g.adi-node"); if (!g) return;
+      if (g.classList.contains("adi-locked")) { openUnlock(); return; }
+      const gen = Number(g.dataset.gen); const i = EVENTS.findIndex((ev) => ev.gen === gen || (evView(ev).people || []).includes(g.dataset.name));
+      if (i >= 0) scene.setEvent(i);
     });
     treeEl.querySelector(".adi-tree-body").addEventListener("click", (e) => {
       const li = e.target.closest("li"); if (!li) return; e.stopPropagation();
@@ -946,8 +997,8 @@ export function mountAodi(container) {
   };
   const toggleTree = (force) => { const on = force != null ? force : !treeEl.classList.contains("show"); treeEl.classList.toggle("show", on); treeBtn.setAttribute("aria-pressed", on ? "true" : "false"); if (on) scene.stopTour(); };
   const markGen = (gen, people) => {
-    treeEl.querySelectorAll("li").forEach((li) => { li.classList.toggle("on", Number(li.dataset.gen) === gen); li.classList.toggle("hit", !!(people && people.includes(li.dataset.name))); });
-    treeEl.querySelectorAll(".adi-tree-gens button").forEach((b) => b.classList.toggle("on", Number(b.dataset.g) === gen));
+    treeEl.querySelectorAll("li, g.adi-node").forEach((li) => { li.classList.toggle("on", Number(li.dataset.gen) === gen); li.classList.toggle("hit", !!(people && people.includes(li.dataset.name))); });
+    treeEl.querySelectorAll(".adi-tree-gens button[data-g], g.adi-genbox").forEach((b) => b.classList.toggle("on", Number(b.dataset.g) === gen));
   };
   // 這一站的資料：公開的 ev 疊上家族版的覆寫（people／ours／story／pop）
   const evView = (ev) => (PRIV && PRIV.events && PRIV.events[ev.id]) ? { ...ev, ...PRIV.events[ev.id] } : ev;
@@ -1022,7 +1073,7 @@ export function mountAodi(container) {
     card.querySelectorAll(".adi-chip[data-place]").forEach((b) => b.addEventListener("click", () => { scene.stopTour(); scene.flyToPlace(b.dataset.place); showPlace(b.dataset.place); }));
     card.querySelectorAll(".adi-mini[data-dir]").forEach((b) => b.addEventListener("click", () => { scene.stopTour(); Number(b.dataset.dir) > 0 ? scene.next() : scene.prev(); }));
     card.querySelectorAll(".adi-unlock-chip").forEach((b) => b.addEventListener("click", openUnlock));
-    card.querySelectorAll(".adi-who").forEach((b) => b.addEventListener("click", () => { toggleTree(true); const li = treeEl.querySelector(`li[data-name="${CSS.escape(b.dataset.who)}"]`); if (li) li.scrollIntoView({ block: "center", behavior: "smooth" }); }));
+    card.querySelectorAll(".adi-who").forEach((b) => b.addEventListener("click", () => { toggleTree(true); const sel = treeEl.classList.contains("chart") ? `g.adi-node[data-name="${CSS.escape(b.dataset.who)}"]` : `li[data-name="${CSS.escape(b.dataset.who)}"]`; const li = treeEl.querySelector(sel); if (li) li.scrollIntoView({ block: "center", inline: "center", behavior: "smooth" }); }));
   };
   const showPlace = (id) => {
     const pl = scene.places.get(id); if (!pl) return; const p = pl.p; const grp = pl.grp;
