@@ -925,7 +925,7 @@ export function mountAodi(container) {
   oursBtn.addEventListener("click", () => { const on = !treeEl.classList.contains("only"); treeEl.classList.toggle("only", on); oursBtn.setAttribute("aria-pressed", on ? "true" : "false"); });
   const renderTree = (tree, me) => {
     const total = PRIV ? null : TOTAL;
-    const sub = PRIV ? `來台九代・含第 5 代以後全部名字（家族版）。點名字可以看那一代在年表的哪一站。` : `公開版只到第 4 代（1900 年前出生的祖先）；全族 ${total.people} 人、${total.gens} 代，之後的名字按「🔑 家族版」解鎖。`;
+    const sub = PRIV ? `來台九代・全部名字（家族版）。點名字可以看那一代在年表的哪一站。` : `公開版只有來台第一代；全族 ${total.people} 人、${total.gens} 代，名字按「🔑 家族版」解鎖。`;
     treeEl.innerHTML = `<div class="adi-tree-head"><b>吳合成・澳底尖山腳吳家族譜</b><small>${sub}</small><button type="button" class="adi-tree-x" title="關閉">✕</button></div><div class="adi-tree-gens">${[1, 2, 3, 4, 5, 6, 7, 8, 9].map((g) => `<button type="button" data-g="${g}">第${g}代</button>`).join("")}</div><div class="adi-tree-body"><ul class="adi-tree-root">${renderNode(tree, 1)}</ul></div>`;
     // 直系：從「我」往上走到吳敝公，整條標 line；我標 me；我的小孩也算
     LINE = []; const meLi = me ? treeEl.querySelector(`li[data-name="${CSS.escape(me)}"]`) : null;
@@ -968,7 +968,7 @@ export function mountAodi(container) {
   };
   const unlockBtn = mk("🔑 家族版", () => (PRIV ? lock() : openUnlock()), "輸入家族密碼，看第 5 代以後的名字");
   const unlockEl = document.createElement("div"); unlockEl.className = "adi-unlock"; container.appendChild(unlockEl);
-  unlockEl.innerHTML = `<form class="adi-unlock-box"><b>🔑 家族版</b><p>第 5 代以後的名字有加密。密碼在家族群組裡；解開只在你的手機／電腦上進行，不會傳到任何地方。</p><input type="password" name="pw" autocomplete="current-password" placeholder="家族密碼" required><div class="adi-unlock-row"><button type="button" class="adi-mini adi-unlock-x">取消</button><button type="submit" class="adi-mini adi-unlock-go">解鎖</button></div><small class="adi-unlock-msg"></small></form>`;
+  unlockEl.innerHTML = `<form class="adi-unlock-box"><b>🔑 家族版</b><p>族譜上的名字有加密。密碼在家族群組裡；解開只在你的手機／電腦上進行，不會傳到任何地方。</p><input type="password" name="pw" autocomplete="current-password" placeholder="家族密碼" required><div class="adi-unlock-row"><button type="button" class="adi-mini adi-unlock-x">取消</button><button type="submit" class="adi-mini adi-unlock-go">解鎖</button></div><small class="adi-unlock-msg"></small></form>`;
   const openUnlock = () => { unlockEl.classList.add("show"); unlockEl.querySelector(".adi-unlock-msg").textContent = ""; setTimeout(() => unlockEl.querySelector("input").focus(), 50); scene.stopTour(); };
   const closeUnlock = () => { unlockEl.classList.remove("show"); unlockEl.querySelector("input").value = ""; };
   unlockEl.querySelector(".adi-unlock-x").addEventListener("click", closeUnlock);
@@ -976,12 +976,14 @@ export function mountAodi(container) {
   const applyPriv = (priv) => {
     PRIV = priv; renderTree(priv.tree, priv.me); unlockBtn.textContent = "🔓 家族版"; unlockBtn.setAttribute("aria-pressed", "true");
     const sec = document.getElementById("adi-family-section"); if (sec && priv.post && priv.post.section) { sec.innerHTML = priv.post.section; sec.classList.add("show"); }
+    const intro = document.getElementById("adi-family-intro"); if (intro && priv.post && priv.post.intro) { intro.textContent = " " + priv.post.intro; intro.classList.add("show"); }
+    const notes = document.getElementById("adi-family-notes"); if (notes && priv.post && priv.post.notes) { notes.innerHTML = priv.post.notes.join(""); notes.classList.add("show"); }
     showEvent(scene.eventIdx, scene.event);
   };
   const lock = () => {
     PRIV = null; try { sessionStorage.removeItem("adi-pw"); } catch (e) { /* 無痕模式 */ }
     renderTree(TREE, ME); unlockBtn.textContent = "🔑 家族版"; unlockBtn.setAttribute("aria-pressed", "false"); treeEl.classList.remove("only");
-    const sec = document.getElementById("adi-family-section"); if (sec) { sec.innerHTML = ""; sec.classList.remove("show"); }
+    ["adi-family-section", "adi-family-intro", "adi-family-notes"].forEach((id) => { const el = document.getElementById(id); if (el) { el.innerHTML = ""; el.classList.remove("show"); } });
     showEvent(scene.eventIdx, scene.event);
   };
   unlockEl.querySelector("form").addEventListener("submit", async (e) => {
@@ -1010,7 +1012,7 @@ export function mountAodi(container) {
       ev.story.map((s) => `<p>${esc(s)}</p>`).join("") +
       `<div class="adi-chips">${(ev.focus || []).map(placeChip).join("")}</div>` +
       (ev.gen && PRIV ? `<div class="adi-ours-line">⭐ 我們這一房・第 ${ev.gen} 代：${LINE[ev.gen - 1] ? `<button type="button" class="adi-chip adi-who adi-line" data-who="${esc(LINE[ev.gen - 1])}">${esc(LINE[ev.gen - 1])}</button>` : "<i>族譜圖上還空著</i>"}${ev.ours ? `<span>${esc(ev.ours)}</span>` : ""}</div>` : "") +
-      (ev.gen >= 5 && !PRIV ? `<div class="adi-sub">🔒 這一站的人名在家族版裡 <button type="button" class="adi-chip adi-unlock-chip">🔑 解鎖</button></div>` : "") +
+      (ev.gen && !PRIV ? `<div class="adi-sub">🔒 這一站的人名在家族版裡 <button type="button" class="adi-chip adi-unlock-chip">🔑 解鎖</button></div>` : "") +
       (ev.people && ev.people.length ? `<div class="adi-sub">🌳 這一站的人（族譜第 ${ev.gen} 代）</div><div class="adi-chips">${ev.people.map((n) => `<button type="button" class="adi-chip adi-who${LINE.includes(n) ? " adi-line" : ""}" data-who="${esc(n)}">${esc(n)}</button>`).join("")}</div>` : "") +
       bornHtml(i, ev) +
       `<div class="adi-west"><div class="adi-west-head">${esc(ev.west.flag)} 同一時間的西方世界・${esc(String(ev.west.year))}</div><h5>${esc(ev.west.title)}</h5><p>${esc(ev.west.story)}</p>${ev.west.link ? `<a href="${esc(ev.west.link)}" target="_blank" rel="noopener">延伸閱讀 ↗</a>` : ""}</div>` +

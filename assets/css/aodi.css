@@ -155,3 +155,4 @@
 .adi-card .adi-chip.adi-unlock-chip { --c: #d9a441; margin-left: 6px; }
 .adi-family-section { display: none; }
 .adi-family-section.show { display: block; }
+span.adi-family-section.show { display: inline; }

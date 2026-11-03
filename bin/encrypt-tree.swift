@@ -7,7 +7,7 @@ import Foundation
 import CryptoKit
 import CommonCrypto
 
-let PUBLIC_GENS = 4          // 公開版保留到第幾代
+let PUBLIC_GENS = 1          // 公開版保留到第幾代（1＝只有吳敝公）
 let ITER: UInt32 = 600_000
 
 let root = URL(fileURLWithPath: CommandLine.arguments.count > 1 ? CommandLine.arguments[1] : ".")
@@ -39,7 +39,7 @@ func prune(_ n: [String: Any], gen: Int) -> [String: Any] {
 let pub = prune(tree, gen: 1)
 let (allN, allD) = countDesc(tree)
 let pubJSON = try! JSONSerialization.data(withJSONObject: pub, options: [.withoutEscapingSlashes])
-var pubJS = "// 公開版族譜：由 bin/encrypt-tree 產生，只到第 \(PUBLIC_GENS) 代有名字（都是 1900 年以前出生、已過世的祖先），之後只有人數。\n"
+var pubJS = "// 公開版族譜：由 bin/encrypt-tree 產生，只到第 \(PUBLIC_GENS) 代有名字，之後只有人數。\n"
 pubJS += "// 完整版在 tree.enc.json（加密），按頁面上的「🔑 家族版」輸入密碼解開。\n"
 pubJS += "export const TREE = " + String(data: pubJSON, encoding: .utf8)! + ";\n"
 pubJS += "export const ME = null;\n"
