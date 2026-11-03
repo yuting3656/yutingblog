@@ -970,7 +970,8 @@ export function mountAodi(container) {
     viewBtn.addEventListener("click", () => { const on = !treeEl.classList.contains("chart"); treeEl.classList.toggle("chart", on); viewBtn.textContent = on ? "☰ 清單" : "🌲 樹狀圖"; viewBtn.setAttribute("aria-pressed", on ? "true" : "false");
       if (on) { const meG = treeEl.querySelector("g.adi-node.me"); if (meG) meG.scrollIntoView({ block: "center", inline: "center" }); else treeEl.querySelector(".adi-chart").scrollTo(0, 0); } try { localStorage.setItem("adi-view", on ? "chart" : "list"); } catch (e) { /* 無痕 */ } });
     treeEl.querySelector(".adi-tree-gens").appendChild(viewBtn);
-    try { if (localStorage.getItem("adi-view") === "chart") viewBtn.click(); } catch (e) { /* 無痕 */ }
+    let view = "chart"; try { view = localStorage.getItem("adi-view") || "chart"; } catch (e) { /* 無痕 */ } // 預設樹狀圖（跟家裡那張圖一樣），按「☰ 清單」才換
+    if (view === "chart") viewBtn.click();
     // 直系：從「我」往上走到吳敝公，整條標 line；我標 me；我的小孩也算
     LINE = []; const meLi = me ? treeEl.querySelector(`li[data-name="${CSS.escape(me)}"]`) : null;
     if (meLi) { meLi.classList.add("me"); let el = meLi; while (el && el.tagName === "LI") { el.classList.add("line"); LINE.unshift(el.dataset.name); el = el.parentElement && el.parentElement.closest("li"); } [...meLi.querySelectorAll(":scope > ul > li")].forEach((k) => { k.classList.add("line"); LINE.push(k.dataset.name); }); }
