@@ -1,0 +1,12 @@
+#!/bin/sh
+# 家族版加密：從鍵盤讀密碼（不落地、不進 shell history），交給 Swift 做 PBKDF2 + AES-GCM。
+# 用法：bin/encrypt-tree   （改完 assets/js/aodi/tree.private.json 之後跑一次）
+set -eu
+cd "$(dirname "$0")/.."
+if ! grep -q "tree.private.json" .gitignore; then echo "⚠️  .gitignore 裡沒有 tree.private.json，先加進去再跑"; exit 1; fi
+printf "家族版密碼（打字不會顯示；至少 12 字、跟文章內容無關）： "
+stty -echo; read -r PW1; stty echo; echo
+printf "再打一次： "
+stty -echo; read -r PW2; stty echo; echo
+[ "$PW1" = "$PW2" ] || { echo "兩次不一樣"; exit 1; }
+AODI_PW="$PW1" exec swift bin/encrypt-tree.swift "$PWD"

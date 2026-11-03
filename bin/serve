@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+cd "$(dirname "$0")/.."
+export GEM_HOME="$PWD/vendor/gems"
+export GEM_PATH="$GEM_HOME"
+export BUNDLE_FORCE_RUBY_PLATFORM=true
+exec ruby vendor/gems/bin/bundle exec jekyll serve --host 127.0.0.1 --baseurl /yutingblog "$@"

@@ -1,0 +1,157 @@
+/* 台北械鬥史 3D 導覽：文章內畫布與浮層 */
+.adi-root {
+  position: relative; height: 78vh; min-height: 520px;
+  width: calc(100vw - 32px); max-width: 1280px; left: 50%; transform: translateX(-50%);
+  border-radius: 16px; overflow: hidden; background: #cfe3e6; border: 2px solid #b5c7c9;
+  touch-action: none; user-select: none; margin: 1rem 0 1.5rem; font-family: inherit;
+}
+.adi-root canvas { display: block; }
+.adi-labels { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.adi-labels > div { position: absolute; top: 0; left: 0; will-change: transform; }
+.adi-tag {
+  pointer-events: auto; cursor: pointer; background: rgba(255,255,255,.94); color: #1f1d1b;
+  padding: 3px 10px 3px 8px; border-radius: 999px; font-size: 13px; white-space: nowrap; line-height: 1.2;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18); border: 1px solid rgba(0,0,0,.08); display: inline-flex; align-items: center; gap: 6px; z-index: 1; opacity: .6;
+}
+.adi-tag u { display: inline-block; width: 9px; height: 9px; border-radius: 50%; }
+.adi-tag b { font-weight: 700; }
+.adi-tag small { color: #777; font-size: 11px; }
+.adi-tag.on { opacity: 1; background: #1f1d1b; color: #fff8f2; font-size: 15px; z-index: 2; box-shadow: 0 4px 14px rgba(0,0,0,.35); }
+.adi-tag.on small { color: #d8d0c8; }
+.adi-tag.burn { background: #7a1f12; color: #ffe2c9; }
+.adi-tag.burn::after { content: "🔥"; }
+.adi-labels.far .adi-tag small { display: none; }
+.adi-labels.far .adi-tag:not(.on) { font-size: 11px; padding: 1px 7px; }
+.adi-river-tag { pointer-events: none; color: rgba(20,60,90,.85); font-size: 12px; letter-spacing: .3em; white-space: nowrap; text-shadow: 0 1px 2px rgba(255,255,255,.7); font-style: italic; }
+.adi-labels.far .adi-river-tag { display: none !important; }
+.adi-pills { position: absolute; top: 10px; left: 12px; z-index: 5; display: flex; gap: 8px; flex-wrap: wrap; max-width: 60%; }
+.adi-pills button { font-size: 14px; min-height: 34px; padding: 4px 13px; border-radius: 999px; border: 1px solid rgba(31,29,27,.14); background: #fff; color: #1f1d1b; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.12); }
+.adi-pills button[aria-pressed="true"] { background: #1f1d1b; color: #fff; }
+.adi-badge { position: absolute; top: 10px; right: 12px; z-index: 5; background: rgba(31,29,27,.9); color: #fff8f2; border-radius: 14px; padding: 8px 14px; text-align: right; box-shadow: 0 6px 18px rgba(0,0,0,.25); max-width: 42%; }
+.adi-badge b { display: block; font-size: 34px; line-height: 1; font-family: Georgia, "Times New Roman", serif; letter-spacing: .02em; }
+.adi-badge small { display: block; font-size: 12px; opacity: .75; margin-top: 3px; }
+.adi-badge em { display: block; font-style: normal; font-size: 13px; margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,.2); color: #ffd666; }
+.adi-legend { position: absolute; right: 12px; top: 150px; z-index: 4; display: flex; flex-direction: column; gap: 3px; background: rgba(255,255,255,.88); border-radius: 10px; padding: 6px 10px; font-size: 12px; color: #333; }
+.adi-legend span { display: flex; align-items: center; gap: 6px; }
+.adi-legend u { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
+.adi-timeline { position: absolute; left: 12px; right: 12px; bottom: 10px; z-index: 8; display: flex; align-items: stretch; gap: 6px; }
+.adi-timeline .adi-nav { flex: 0 0 34px; border-radius: 10px; border: none; background: rgba(31,29,27,.9); color: #fff; font-size: 22px; cursor: pointer; }
+.adi-years { flex: 1 1 auto; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.adi-years::-webkit-scrollbar { display: none; }
+.adi-years button { position: relative; flex: 0 0 auto; border: 1px solid rgba(31,29,27,.14); background: rgba(255,255,255,.94); border-radius: 10px; padding: 5px 10px 6px; cursor: pointer; text-align: left; color: #1f1d1b; overflow: hidden; min-width: 96px; }
+.adi-years button b { display: block; font-family: Georgia, serif; font-size: 16px; line-height: 1.1; }
+.adi-years button span { display: block; font-size: 11px; color: #666; white-space: nowrap; max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
+.adi-years button i { position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: #db6a41; }
+.adi-years button.on { background: #1f1d1b; color: #fff; }
+.adi-years button.on span { color: #d8d0c8; }
+.adi-card {
+  position: absolute; left: 12px; top: 56px; bottom: 72px; z-index: 9; width: 400px; max-width: calc(100% - 24px);
+  background: rgba(31,29,27,.93); color: #fff8f2; border-radius: 16px; padding: 14px 16px 12px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.35); font-size: 15px; line-height: 1.6; overflow: auto; display: none;
+}
+.adi-card.show { display: block; }
+.adi-card .adi-axis { font-size: 12px; letter-spacing: .08em; opacity: .7; }
+.adi-card h4 { margin: 2px 0 8px; font-size: 20px; color: #fff; line-height: 1.3; }
+.adi-card h4 small { display: block; font-size: 12px; font-weight: 400; opacity: .7; margin-top: 2px; }
+.adi-card .adi-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+.adi-card p { margin: 0 0 8px; }
+.adi-card a { color: #8fd3ff; font-size: 13px; }
+.adi-card .adi-back { cursor: pointer; }
+.adi-card .adi-sub { font-size: 12px; letter-spacing: .06em; opacity: .7; margin-top: 10px; }
+.adi-card .adi-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 4px; }
+.adi-card .adi-chip { --c: #ffd666; display: inline-block; border: 1px solid var(--c); color: #fff; border-radius: 999px; padding: 1px 10px; font-size: 12px; background: rgba(255,255,255,.06); cursor: pointer; font-family: inherit; }
+.adi-card .adi-chip:hover { background: rgba(255,255,255,.18); }
+.adi-west { margin-top: 12px; background: rgba(255,214,102,.1); border-left: 3px solid #ffd666; border-radius: 0 10px 10px 0; padding: 8px 12px; }
+.adi-west-head { font-size: 12px; letter-spacing: .06em; color: #ffd666; }
+.adi-west h5 { margin: 4px 0 6px; font-size: 16px; color: #fff; }
+.adi-west p { font-size: 14px; opacity: .92; }
+.adi-foot { display: flex; justify-content: space-between; margin-top: 10px; }
+.adi-mini { border: 1px solid rgba(255,255,255,.25); background: transparent; color: #fff; border-radius: 999px; padding: 3px 12px; cursor: pointer; font-size: 13px; }
+.adi-caption { position: absolute; left: 50%; bottom: 72px; transform: translateX(-50%); z-index: 8; pointer-events: none; background: rgba(31,29,27,.88); color: #fff; padding: 6px 14px; border-radius: 12px; font-size: 13px; max-width: 80%; text-align: center; display: none; }
+.adi-caption.show { display: block; }
+@media (max-width: 700px) {
+  .adi-root { height: 86vh; min-height: 560px; }
+  .adi-pills { max-width: 55%; }
+  .adi-pills button { font-size: 12px; min-height: 28px; padding: 2px 9px; }
+  .adi-badge { padding: 6px 10px; }
+  .adi-badge b { font-size: 24px; }
+  .adi-badge em { font-size: 11px; }
+  .adi-legend { display: none; }
+  .adi-card { left: 8px; right: 8px; width: auto; top: auto; bottom: 66px; max-height: 46%; font-size: 14px; padding: 10px 12px; }
+  .adi-card h4 { font-size: 17px; }
+  .adi-caption { display: none !important; }
+}
+/* 全螢幕（真全螢幕或 fixed 蓋版） */
+.adi-root.fs, .adi-root:fullscreen, .adi-root:-webkit-full-screen {
+  position: fixed; inset: 0; width: 100vw; max-width: none; height: 100vh; height: 100dvh;
+  left: 0; transform: none; margin: 0; border-radius: 0; border: none; z-index: 99999; background: #cfe3e6;
+}
+.adi-root.fs .adi-pills, .adi-root:fullscreen .adi-pills { top: max(10px, env(safe-area-inset-top)); left: max(12px, env(safe-area-inset-left)); }
+.adi-root.fs .adi-timeline, .adi-root:fullscreen .adi-timeline { bottom: max(10px, env(safe-area-inset-bottom)); }
+
+/* v3：人口牌、長出來的地標 chips */
+.adi-badge .adi-pop { color: #9fe0b5; opacity: 1; }
+.adi-card .adi-chip.adi-line { --c: #9fb9c9; cursor: default; opacity: .85; }
+.adi-card .adi-chip.adi-gone { --c: #777; color: #bbb; cursor: default; text-decoration: line-through; }
+
+/* 澳底版：海名牌、族譜面板 */
+.adi-root { background: #bfd9e3; border-color: #a9c3cc; }
+.adi-root.fs, .adi-root:fullscreen, .adi-root:-webkit-full-screen { background: #bfd9e3; }
+.adi-sea-tag { color: rgba(10,50,90,.75); letter-spacing: .5em; font-size: 14px; }
+.adi-tree { position: absolute; inset: 56px 12px 72px 12px; z-index: 12; display: none; background: #fcf8f0; opacity: 1; color: #1f1d1b; border-radius: 16px; box-shadow: 0 14px 40px rgba(0,0,0,.35); overflow: hidden; flex-direction: column; }
+.adi-tree.show { display: flex; }
+.adi-tree-head { flex: 0 0 auto; display: flex; align-items: baseline; gap: 10px; padding: 12px 16px 8px; border-bottom: 1px solid rgba(0,0,0,.08); flex-wrap: wrap; }
+.adi-tree-head b { font-size: 17px; }
+.adi-tree-head small { color: #666; font-size: 12px; flex: 1 1 auto; }
+.adi-tree-x { border: none; background: #1f1d1b; color: #fff; border-radius: 999px; width: 28px; height: 28px; cursor: pointer; }
+.adi-tree-gens { flex: 0 0 auto; display: flex; gap: 6px; padding: 8px 16px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid rgba(0,0,0,.08); }
+.adi-tree-gens button { flex: 0 0 auto; min-height: 26px; line-height: 1.2; border: 1px solid rgba(31,29,27,.18); background: #fff; border-radius: 999px; padding: 2px 10px; font-size: 12px; cursor: pointer; color: #1f1d1b; }
+.adi-tree-gens button.on { background: #b6532c; color: #fff; border-color: #b6532c; }
+.adi-tree-body { flex: 1 1 auto; overflow: auto; padding: 10px 16px 18px; font-size: 14px; line-height: 1.5; }
+.adi-tree-body ul { list-style: none; margin: 0; padding: 0 0 0 18px; border-left: 2px solid rgba(182,83,44,.22); }
+.adi-tree-body ul.adi-tree-root { padding-left: 0; border-left: none; }
+.adi-tree-body li { position: relative; margin: 3px 0; }
+.adi-tree-body li::before { content: attr(data-gen); position: absolute; left: -26px; top: 3px; width: 16px; height: 16px; border-radius: 50%; background: rgba(31,29,27,.08); color: #777; font-size: 10px; text-align: center; line-height: 16px; }
+.adi-tree-body ul.adi-tree-root > li::before { display: none; }
+.adi-person { display: inline-flex; align-items: baseline; gap: 6px; padding: 1px 8px; border-radius: 8px; cursor: pointer; flex-wrap: wrap; }
+.adi-person:hover { background: rgba(182,83,44,.1); }
+.adi-person b { font-weight: 600; }
+.adi-person i { font-style: normal; font-size: 11px; color: #777; }
+.adi-person .adi-nt { color: #b6532c; }
+.adi-tree-body li.on > .adi-person { background: rgba(182,83,44,.12); }
+.adi-tree-body li.on > .adi-person b { color: #b6532c; }
+.adi-tree-body li.hit > .adi-person { background: #1f1d1b; }
+.adi-tree-body li.hit > .adi-person b, .adi-tree-body li.hit > .adi-person i { color: #fff; }
+.adi-card .adi-chip.adi-who { --c: #9fe0b5; }
+.adi-badge .adi-pop { color: #9fe0b5; opacity: 1; }
+@media (max-width: 700px) { .adi-tree { inset: 48px 8px 66px 8px; } .adi-tree-body { font-size: 13px; } }
+/* 直系（我們這一房） */
+.adi-tree-body li.line > .adi-person { border-left: 3px solid #d9a441; padding-left: 7px; }
+.adi-tree-body li.line > .adi-person b { color: #8a5a10; }
+.adi-tree-body li.me > .adi-person { background: #d9a441; }
+.adi-tree-body li.me > .adi-person b, .adi-tree-body li.me > .adi-person i { color: #1f1d1b; }
+.adi-tree-body li.me > .adi-person::before { content: "⭐ "; }
+.adi-tree.only .adi-tree-body li { display: none; }
+.adi-tree.only .adi-tree-body li.line, .adi-tree.only .adi-tree-body li.line > ul > li { display: block; }
+.adi-tree.only .adi-tree-body li.line > ul > li:not(.line) > ul { display: none; }
+.adi-tree-gens .adi-ours { margin-left: auto; border-color: #d9a441; color: #8a5a10; }
+.adi-tree-gens .adi-ours[aria-pressed="true"] { background: #d9a441; color: #1f1d1b; border-color: #d9a441; }
+.adi-card .adi-ours-line { margin: 10px 0 2px; padding: 6px 10px; background: rgba(217,164,65,.14); border-left: 3px solid #d9a441; border-radius: 0 10px 10px 0; font-size: 13px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.adi-card .adi-ours-line span { opacity: .9; }
+.adi-card .adi-ours-line i { opacity: .6; }
+.adi-card .adi-chip.adi-line { --c: #d9a441; background: rgba(217,164,65,.25); font-weight: 700; }
+/* 🔑 家族版解鎖 */
+.adi-unlock { position: absolute; inset: 0; z-index: 20; display: none; align-items: center; justify-content: center; background: rgba(31,29,27,.55); }
+.adi-unlock.show { display: flex; }
+.adi-unlock-box { background: #fcf8f0; color: #1f1d1b; border-radius: 16px; padding: 18px 20px; width: 340px; max-width: calc(100% - 32px); box-shadow: 0 14px 40px rgba(0,0,0,.4); display: flex; flex-direction: column; gap: 8px; }
+.adi-unlock-box b { font-size: 17px; }
+.adi-unlock-box p { margin: 0; font-size: 13px; color: #555; line-height: 1.5; }
+.adi-unlock-box input { font-size: 16px; padding: 8px 10px; border: 1px solid rgba(0,0,0,.2); border-radius: 8px; width: 100%; box-sizing: border-box; }
+.adi-unlock-row { display: flex; justify-content: flex-end; gap: 8px; }
+.adi-unlock-box .adi-mini { color: #1f1d1b; border-color: rgba(0,0,0,.25); }
+.adi-unlock-box .adi-unlock-go { background: #1f1d1b; color: #fff; }
+.adi-unlock-msg { font-size: 12px; color: #b6532c; min-height: 1em; }
+.adi-tree-body li.adi-locked > .adi-person { cursor: pointer; background: rgba(31,29,27,.05); }
+.adi-card .adi-chip.adi-unlock-chip { --c: #d9a441; margin-left: 6px; }
+.adi-family-section { display: none; }
+.adi-family-section.show { display: block; }
