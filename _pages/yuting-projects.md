@@ -24,8 +24,15 @@ header:
 
 [2020](https://yuting3656.github.io/yutingblog//diary/2020-12-18){:target="\_back"} 跨 2021 前，給自己的[目標](https://yuting3656.github.io/yutingblog//diary/2020-11-28){:target="\_back"}，其中一直想把 object-detection 用好用滿 :heart:，就趁著這次端午連假，從發想到實作不到半天就上[firebase-hosting](https://firebase.google.com/docs/hosting){:target="\_back"} 超級感動的拉!!! :heart_eyes::heart_eyes::heart_eyes: 隨然目前(`此時此刻 2021/06/14`)整體進度才 **10%** XD 但滿滿成就感阿! 真的覺得又進步不少了! :star::star::star: 還結合了 [GitHub Action for Firebase](https://github.com/marketplace/actions/github-action-for-firebase){:target="\_back"} 真心爽!! :notes::notes:
 
+## [Yuting AI Music][yuting-ai-music]
+
+想把玩音樂和網頁的火花，就做了這個 side project :notes: 可以在 [Jam Room][yuting-ai-music-jam]{:target="\_back"} 即興合奏、讓程式偵測和弦，也能在 [Diary][yuting-ai-music-diary]{:target="\_back"} 寫音樂日記。用 `Next.js` + `Tone.js` 做成純靜態網站，放在 [Cloudflare Workers](https://workers.cloudflare.com/){:target="\_back"}，**完全免費** XD
+
 [yuting]: https://yuting-daily-seed.appspot.com/
 [yuting-dl]: https://yuting-dl-dream.appspot.com/
 [aia]: https://yuting3656.github.io/yutingblog//aiacademy/so-it-is
 [yuting-poekgo-gallery]: https://yuting-pokego-gallery.appspot.com/
 [yuring-object-detection]: https://yuting-object-detection.web.app/
+[yuting-ai-music]: https://ai-music.tim23656.workers.dev/
+[yuting-ai-music-jam]: https://ai-music.tim23656.workers.dev/jam
+[yuting-ai-music-diary]: https://ai-music.tim23656.workers.dev/diary
