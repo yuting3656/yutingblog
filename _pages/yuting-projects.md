@@ -26,7 +26,7 @@ header:
 
 ## [Yuting AI Music][yuting-ai-music]
 
-想把玩音樂和網頁的火花，就做了這個 side project :notes: 可以在 [Jam Room][yuting-ai-music-jam]{:target="\_back"} 即興合奏、讓程式偵測和弦，也能在 [Diary][yuting-ai-music-diary]{:target="\_back"} 寫音樂日記。用 `Next.js` + `Tone.js` 做成純靜態網站，放在 [Cloudflare Workers](https://workers.cloudflare.com/){:target="\_back"}，**完全免費** XD
+**2026 年，在這個 AI 時代，用 AI 幫我寫的 side project！** :robot::sparkles: 想把玩音樂和網頁的火花，就請 AI 一起做了這個 side project :notes: 可以在 [Jam Room][yuting-ai-music-jam]{:target="\_back"} 即興合奏、讓程式偵測和弦，也能在 [Diary][yuting-ai-music-diary]{:target="\_back"} 寫音樂日記。用 `Next.js` + `Tone.js` 做成純靜態網站，放在 [Cloudflare Workers](https://workers.cloudflare.com/){:target="\_back"}，**完全免費** XD
 
 [yuting]: https://yuting-daily-seed.appspot.com/
 [yuting-dl]: https://yuting-dl-dream.appspot.com/
