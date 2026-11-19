@@ -218,6 +218,7 @@ include:
   - .htaccess
   - _pages
 exclude:
+  - assets/js/aodi/tree.private.json
   - "*.sublime-project"
   - "*.sublime-workspace"
   - vendor

@@ -868,6 +868,8 @@ export class HistoryScene {
 
 // ---------- 掛到頁面：按鈕列、年表、故事卡、年份牌 ----------
 export function mountAodi(container) {
+  // 清除舊版留在這個分頁的密碼，即使裝置無法啟動 WebGL 也要清除。
+  try { sessionStorage.removeItem("adi-pw"); } catch (e) { /* 瀏覽器停用儲存時略過 */ }
   if (!container) return null;
   let scene;
   try { scene = new HistoryScene(container); window.__adiScene = scene; }
@@ -1032,7 +1034,7 @@ export function mountAodi(container) {
     showEvent(scene.eventIdx, scene.event);
   };
   const lock = () => {
-    PRIV = null; try { sessionStorage.removeItem("adi-pw"); } catch (e) { /* 無痕模式 */ }
+    PRIV = null;
     renderTree(TREE, ME); unlockBtn.textContent = "🔑 家族版"; unlockBtn.setAttribute("aria-pressed", "false"); treeEl.classList.remove("only");
     ["adi-family-intro", "adi-family-notes"].forEach((id) => { const el = document.getElementById(id); if (el) { el.innerHTML = ""; el.classList.remove("show"); } });
     showEvent(scene.eventIdx, scene.event);
@@ -1040,11 +1042,16 @@ export function mountAodi(container) {
   unlockEl.querySelector("form").addEventListener("submit", async (e) => {
     e.preventDefault(); const pw = unlockEl.querySelector("input").value; const msg = unlockEl.querySelector(".adi-unlock-msg"); const go = unlockEl.querySelector(".adi-unlock-go");
     go.disabled = true; msg.textContent = "解密中（故意算得慢，幾秒）…";
-    try { const priv = await decryptTree(pw); try { sessionStorage.setItem("adi-pw", pw); } catch (e2) { /* 無痕模式 */ } closeUnlock(); applyPriv(priv); toggleTree(true); }
+    unlockEl.querySelector("input").value = "";
+    try {
+      const priv = await decryptTree(pw);
+      closeUnlock();
+      applyPriv(priv);
+      toggleTree(true);
+    }
     catch (err) { msg.textContent = "密碼不對（或這台裝置不支援 WebCrypto）。"; }
     go.disabled = false;
   });
-  try { const saved = sessionStorage.getItem("adi-pw"); if (saved) decryptTree(saved).then(applyPriv).catch(() => sessionStorage.removeItem("adi-pw")); } catch (e) { /* 無痕模式 */ }
 
   const placeChip = (id) => { const pl = scene.places.get(id); if (!pl) return ""; return `<button type="button" class="adi-chip" data-place="${id}" style="--c:${hex6(pl.grp.color)}">${esc(pl.p.name)}</button>`; };
   const bornHtml = (i, ev) => {
